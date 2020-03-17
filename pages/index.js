@@ -1,203 +1,160 @@
-import Head from 'next/head'
+import withLayout from "../components/Layout";
 
 const Home = () => (
-  <div className="container">
-    <Head>
-      <title>Create Next App</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
-    <main>
-      <h1 className="title">
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
-
-      <p className="description">
-        Get started by editing <code>pages/index.js</code>
-      </p>
-
-      <div className="grid">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Learn &rarr;</h3>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
-        </a>
-
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Discover and deploy boilerplate example Next.js projects.</p>
-        </a>
-
-        <a
-          href="https://zeit.co/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          className="card"
-        >
-          <h3>Deploy &rarr;</h3>
-          <p>
-            Instantly deploy your Next.js site to a public URL with ZEIT Now.
-          </p>
-        </a>
+  <main>
+    <section>
+      <div>
+        <h2>Mais barato, porque você merece</h2>
+        <h3>
+          Toda tecnologia que o ensino a distância pode te proporcionar, por
+          valores que se ajustam a sua renda mensal. Converse agora com um
+          consultor e monte o seu plano personalizado.
+        </h3>
+        <button className="btn btn-red" style={{ marginTop: 40 + "px" }}>
+          Falar com um consultor
+        </button>
       </div>
-    </main>
+      <img src="/smile_girl_nature.webp" alt="Mulher sorrindo" />
+    </section>
+    <section>
+      <article>
+        <h3>3 motivos para escolher nossos cursos</h3>
+        <ul>
+          <li>
+            <img
+              src="/icons/star.webp"
+              alt="Cursos com qualidade no MEC nota 4"
+            />
+            <span flex="1">
+              Todos os nossos cursos possuem qualidade garantida pelo Decreto nº
+              5.773/06 do MEC, avaliado como nota 4 (de 1 a 5) pelo IGC.
+            </span>
+          </li>
+          <li>
+            <img src="/icons/school.webp" alt="Certificado em 6 meses" />
+            <span>
+              Garanta a sua certificação em um prazo mínimo de 6 meses, de
+              acordo com o que você precisa nesse momento.
+            </span>
+          </li>
+          <li>
+            <img
+              src="/icons/calendar.webp"
+              alt="O melhor horário para estudar"
+            />
+            <span>
+              Você está no controle e decide qual o melhor horário e local para
+              estudar.
+            </span>
+          </li>
+        </ul>
+      </article>
+    </section>
+    <section>
+      <img src="/success_man.webp" alt="Homem de sucesso em seu escritório" />
+      <article>
+        <h3>Profissionais de sucesso estão se especializando neste momento</h3>
+        <span>
+          Profissionais da atualidade precisam de uma pós graduação rápida para
+          atender sua necessidade, e de qualidade para se destacar e ter
+          autonomia no mercado de trabalho.
+        </span>
+        <span>
+          Segundo o site de empresas Catho, fazer uma pós graduação pode
+          aumentar seu salário em até 50% no meio privado ou em até 47% se
+          tratando de servidores públicos, segundo o jornal extra. Nisso nós
+          podemos te ajudar.
+        </span>
+        <button className="btn btn-red">Falar com um consultor</button>
+      </article>
+    </section>
+    <section>
+      <img
+        src="/smile_girl_mac.webp"
+        alt="Aluna feliz enquanto usa o seu portal de aluno"
+      />
+      <article>
+        <h3>O que estão falando sobre nós</h3>
+      </article>
+    </section>
+    <section>
+      <form>
+        <div>
+          <h3>Deixe seu contato</h3>
+          <h4>
+            E ganhe uma consultoria totalmente gratuita com um especialista de
+            aconselhamento educacional capaz de te ajudar a escolher o curso que
+            mais atende sua necessidade.
+          </h4>
+          <div>
+            <div style={{ flex: 1 }}>
+              <label for="name">Nome</label>
+              <input type="text" name="name" />
+            </div>
+            <div>
+              <label for="phone">Telefone</label>
+              <input type="text" name="phone" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="email">Email</label>
+              <input type="text" name="email" />
+            </div>
+          </div>
+          <div>
+            <button className="btn btn-black">Enviar</button>
+            <span>
+              Ou entre em contato conosco
+              <button className="btn btn-green">Via whatsapp</button>
+            </span>
+          </div>
+        </div>
+      </form>
+      <img src="/smile_man.webp" alt="Aluno feliz com nossos cursos online" />
+    </section>
+    <section>
+      <h3>Perguntas frequentes</h3>
+      <article>
+        <strong>Quais as formas de pagamento?</strong>
+        <span></span>
+      </article>
+      <article>
+        <strong>Qual a duração dos cursos?</strong>
+        <span></span>
+      </article>
+      <article>
+        <strong>Os cursos são 100% online?</strong>
+        <span></span>
+      </article>
+      <article>
+        <strong>Qual instituição certifica os cursos?</strong>
+        <span></span>
+      </article>
+      <article>
+        <strong>Todos os cursos são autorizados pelo MEC?</strong>
+        <span></span>
+      </article>
+      <article>
+        <strong>Preciso fazer o TCC?</strong>
+        <span></span>
+      </article>
+      <article>
+        <strong>
+          Qual a diferença entre os cursos presenciais e a distância?
+        </strong>
+        <span></span>
+      </article>
+      <article>
+        <strong>Quais documentos são necessários para começar?</strong>
+        <span></span>
+      </article>
+      <article>
+        <strong>Qual a diferença entre Pós-Graduação e MBA?</strong>
+        <span></span>
+      </article>
+    </section>
+  </main>
+);
 
-    <footer>
-      <a
-        href="https://zeit.co?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
-      </a>
-    </footer>
-
-    <style jsx>{`
-      .container {
-        min-height: 100vh;
-        padding: 0 0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      main {
-        padding: 5rem 0;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer {
-        width: 100%;
-        height: 100px;
-        border-top: 1px solid #eaeaea;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer img {
-        margin-left: 0.5rem;
-      }
-
-      footer a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .title a {
-        color: #0070f3;
-        text-decoration: none;
-      }
-
-      .title a:hover,
-      .title a:focus,
-      .title a:active {
-        text-decoration: underline;
-      }
-
-      .title {
-        margin: 0;
-        line-height: 1.15;
-        font-size: 4rem;
-      }
-
-      .title,
-      .description {
-        text-align: center;
-      }
-
-      .description {
-        line-height: 1.5;
-        font-size: 1.5rem;
-      }
-
-      code {
-        background: #fafafa;
-        border-radius: 5px;
-        padding: 0.75rem;
-        font-size: 1.1rem;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-      }
-
-      .grid {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        max-width: 800px;
-        margin-top: 3rem;
-      }
-
-      .card {
-        margin: 1rem;
-        flex-basis: 45%;
-        padding: 1.5rem;
-        text-align: left;
-        color: inherit;
-        text-decoration: none;
-        border: 1px solid #eaeaea;
-        border-radius: 10px;
-        transition: color 0.15s ease, border-color 0.15s ease;
-      }
-
-      .card:hover,
-      .card:focus,
-      .card:active {
-        color: #0070f3;
-        border-color: #0070f3;
-      }
-
-      .card h3 {
-        margin: 0 0 1rem 0;
-        font-size: 1.5rem;
-      }
-
-      .card p {
-        margin: 0;
-        font-size: 1.25rem;
-        line-height: 1.5;
-      }
-
-      @media (max-width: 600px) {
-        .grid {
-          width: 100%;
-          flex-direction: column;
-        }
-      }
-    `}</style>
-
-    <style jsx global>{`
-      html,
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-    `}</style>
-  </div>
-)
-
-export default Home
+export default withLayout(Home);
