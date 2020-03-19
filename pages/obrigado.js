@@ -93,7 +93,6 @@ const ThankYou = () => (
         main > div {
           width: auto;
           padding: 0;
-          // height: auto !important;
           margin-bottom: 50px;
         }
         main > img {
