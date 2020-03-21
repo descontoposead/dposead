@@ -1,20 +1,20 @@
 import withLayout from "../components/Layout";
 
-import SectionOne from "../components/SectionOne";
-import SectionTwo from "../components/SectionTwo";
-import SectionTree from "../components/SectionTree";
-import SectionFour from "../components/SectionFour";
-import SectionFive from "../components/SectionFive";
-import SectionSix from "../components/SectionSix";
+import About from "../components/home/About";
+import ThreeReasons from "../components/home/ThreeReasons";
+import Scarcity from "../components/home/Scarcity";
+import Audience from "../components/home/Audience";
+import Capitation from "../components/home/Capitation";
+import Faq from "../components/home/Faq";
 
 const Home = () => (
   <main>
-    <SectionOne />
-    <SectionTwo />
-    <SectionTree />
-    <SectionFour />
-    <SectionFive />
-    <SectionSix />
+    <About />
+    <ThreeReasons />
+    <Scarcity />
+    <Audience />
+    <Capitation />
+    <Faq />
   </main>
 );
 
