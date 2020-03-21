@@ -1,5 +1,7 @@
 import withLayout from "../components/Layout";
 
+export const config = { amp: true };
+
 const ThankYou = () => (
   <main>
     <img

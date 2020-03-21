@@ -7,6 +7,8 @@ import Audience from "../components/home/Audience";
 import Capitation from "../components/home/Capitation";
 import Faq from "../components/home/Faq";
 
+export const config = { amp: true };
+
 const Home = () => (
   <main>
     <About />
