@@ -29,7 +29,7 @@ const Audience = () => (
 
       @media (max-width: 999px) {
         section > article {
-          height: 400px !important;
+          height: 400px;
         }
       }
       @media (max-width: 750px) {
@@ -37,14 +37,14 @@ const Audience = () => (
       @media (max-width: 650px) {
         section {
           position: relative;
-          margin: 400px 0px !important;
+          margin: 400px 0px;
         }
         section > img {
-          width: 90% !important;
+          width: 90%;
         }
         section > article {
-          width: 100% !important;
-          top: 250px !important;
+          width: 100%;
+          top: 250px;
         }
         section > article > h3 {
           font-size: 2rem;
@@ -58,7 +58,7 @@ const Audience = () => (
       }
       @media (max-width: 330px) {
         section > article {
-          top: 170px !important;
+          top: 170px;
         }
       }
     `}</style>

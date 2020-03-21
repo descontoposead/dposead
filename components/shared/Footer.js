@@ -69,7 +69,7 @@ const Footer = () => (
       }
       @media (max-width: 450px) {
         footer > ul {
-          flex-wrap: wrap !important;
+          flex-wrap: wrap;
         }
       }
       @media (max-width: 376px) {

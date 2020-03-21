@@ -50,13 +50,13 @@ const Toolbar = () => (
       }
       @media (max-width: 650px) {
         .toolbar {
-          height: 80px !important;
+          height: 80px;
         }
         .toolbar .btn {
           padding: 5px 10px;
         }
         .toolbar img {
-          width: 40% !important;
+          width: 40%;
         }
         .toolbar .cta {
           display: flex;
@@ -67,12 +67,12 @@ const Toolbar = () => (
           margin-bottom: 5px;
         }
         .toolbar .cta > .btn:nth-child(1) {
-          margin-right: 5px !important;
+          margin-right: 5px;
         }
       }
       @media (max-width: 550px) {
         .toolbar .cta > .btn:nth-child(1) {
-          margin-right: 0px !important;
+          margin-right: 0px;
         }
       }
       @media (max-width: 450px) {
@@ -80,23 +80,23 @@ const Toolbar = () => (
           flex-wrap: wrap;
           justify-content: center;
           align-content: space-between;
-          height: 175px !important;
+          height: 175px;
         }
         .toolbar .cta {
           width: 100%;
           justify-content: space-between;
         }
         .toolbar .cta .btn {
-          padding: 15px 10px !important;
+          padding: 15px 10px;
           font-size: 1rem;
           width: 100%;
         }
         .toolbar .btn {
-          padding: 5px !important;
+          padding: 5px;
           margin-right: 10px;
         }
         .toolbar img {
-          width: 97% !important;
+          width: 97%;
         }
       }
       @media (max-width: 376px) {
@@ -106,9 +106,9 @@ const Toolbar = () => (
           margin-bottom: 10px;
         }
         .toolbar .cta > button:nth-child(1) {
-          padding: 10px 5px !important;
+          padding: 10px 5px;
           font-size: 0.9rem;
-          margin-right: 1px !important;
+          margin-right: 1px;
         }
       }
     `}</style>

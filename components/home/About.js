@@ -57,7 +57,7 @@ const About = () => (
       @media (max-width: 999px) {
         section > img {
           right: var(--margin-sm);
-          width: 80% !important;
+          width: 80%;
         }
         section > div {
           left: var(--margin-sm);
@@ -75,32 +75,35 @@ const About = () => (
       }
       @media (max-width: 550px) {
         section {
-          margin-top: 70px !important;
-          margin-bottom: 235px !important;
+          margin-top: 70px;
+          margin-bottom: 235px;
         }
         section > div {
-          width: 75vw !important;
-          bottom: 0 !important;
+          width: 75vw;
+          bottom: 0;
         }
       }
       @media (max-width: 450px) {
         section {
-          margin-top: 100px !important;
-          margin-bottom: 355px !important;
+          margin-top: 100px;
+          margin-bottom: 355px;
+        }
+        section > img {
+          width: 90%;
         }
       }
       @media (max-width: 376px) {
         section {
-          margin-top: 200px !important;
-          margin-bottom: 470px !important;
+          margin-top: 200px;
+          margin-bottom: 470px;
         }
         section > div {
-          bottom: -264px !important;
+          bottom: -264px;
         }
       }
       @media (max-width: 330px) {
         section {
-          margin-top: 300px !important;
+          margin-top: 300px;
         }
       }
     `}</style>

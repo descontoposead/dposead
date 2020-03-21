@@ -50,43 +50,43 @@ const Scarcity = () => (
 
       @media (max-width: 999px) {
         section > article {
-          top: 50% !important;
-          right: 15% !important;
+          top: 50%;
+          right: 15%;
         }
       }
       @media (max-width: 750px) {
       }
       @media (max-width: 650px) {
         section {
-          margin: 60px 40px 333px 40px !important;
+          margin: 60px 40px 333px 40px;
         }
         section > img {
-          width: 100% !important;
+          width: 100%;
         }
         section > article {
-          width: 100% !important;
-          right: auto !important;
-          top: 70% !important;
+          width: 100%;
+          right: auto;
+          top: 70%;
         }
       }
       @media (max-width: 550px) {
         section {
-          margin: 60px 40px 475px 40px !important;
+          margin: 60px 40px 475px 40px;
         }
       }
       @media (max-width: 450px) {
         section {
-          margin: 60px 40px 528px 40px !important;
+          margin: 60px 40px 528px 40px;
         }
       }
       @media (max-width: 376px) {
         section {
-          margin: 60px 40px 700px 40px !important;
+          margin: 60px 40px 700px 40px;
         }
       }
       @media (max-width: 330px) {
         section {
-          margin: 60px 40px 735px 40px !important;
+          margin: 60px 40px 735px 40px;
         }
       }
     `}</style>

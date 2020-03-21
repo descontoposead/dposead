@@ -133,63 +133,63 @@ const Capitation = () => (
 
       @media (max-width: 999px) {
         section {
-          margin: 50px 0 0 !important;
+          margin: 50px 0 0;
         }
       }
       @media (max-width: 750px) {
         section {
-          margin: 150px 0 0 !important;
+          margin: 150px 0 0;
         }
       }
       @media (max-width: 650px) {
         section {
           flex-direction: column-reverse;
-          margin: 350px 0 !important;
-          height: 800px !important;
+          margin: 350px 0;
+          height: 800px;
         }
         section > form {
-          height: 535px !important;
+          height: 525px;
           background: var(--red);
           z-index: 1;
-          padding: 20px 20px 155px;
+          padding: 20px;
           display: flex;
-          width: 100% !important;
-          position: absolute !important;
+          width: 100%;
+          position: absolute;
           top: 448px;
           box-sizing: border-box;
         }
         section > img {
-          width: 90% !important;
-          position: initial !important;
+          width: 90%;
+          position: initial;
         }
         section > form > div > div > div {
-          padding: 0 !important;
-          margin: 5px !important;
+          padding: 0;
+          margin: 5px;
         }
       }
       @media (max-width: 550px) {
         section {
-          margin: -30px 0 400px !important;
+          margin: -30px 0 400px;
         }
         section > form > div > div:nth-of-type(1) {
           flex-wrap: wrap;
           width: 100%;
-          flex: auto !important;
+          flex: auto;
         }
       }
       @media (max-width: 450px) {
         section {
-          margin: -220px 0 490px !important;
+          margin: -220px 0 490px;
         }
         section > form {
-          top: 630px !important;
+          top: 623px;
         }
       }
       @media (max-width: 376px) {
       }
       @media (max-width: 330px) {
         section {
-          margin: -318px 0 413px !important;
+          margin: -318px 0 413px;
         }
       }
     `}</style>

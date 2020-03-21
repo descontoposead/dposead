@@ -12,7 +12,7 @@ const BtnCta = props => (
           width: 100%;
         }
         button {
-          padding: 15px 10px !important;
+          padding: 15px 10px;
           font-size: 1rem;
           width: 100%;
           margin-bottom: 5px;

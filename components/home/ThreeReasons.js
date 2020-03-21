@@ -82,7 +82,7 @@ const ThreeReasons = () => (
       }
       @media (max-width: 750px) {
         section > article {
-          margin: 0 !important;
+          margin: 0;
         }
         section > article > h3,
         section > article > ul {
