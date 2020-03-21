@@ -188,6 +188,9 @@ const Capitation = () => (
       @media (max-width: 376px) {
       }
       @media (max-width: 330px) {
+        section {
+          margin: -318px 0 413px !important;
+        }
       }
     `}</style>
   </section>

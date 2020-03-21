@@ -99,6 +99,14 @@ const ThreeReasons = () => (
       @media (max-width: 450px) {
       }
       @media (max-width: 376px) {
+        section {
+          margin-top: 340px;
+          margin-bottom: 150px;
+        }
+        section {
+          margin-top: 340px;
+          margin-bottom: 150px;
+        }
       }
       @media (max-width: 330px) {
       }

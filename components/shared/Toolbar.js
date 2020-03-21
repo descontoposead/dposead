@@ -76,17 +76,20 @@ const Toolbar = () => (
         }
       }
       @media (max-width: 450px) {
+        div.toolbar {
+          flex-wrap: wrap;
+          justify-content: center;
+          align-content: space-between;
+          height: 175px !important;
+        }
         .toolbar .cta {
           width: 100%;
           justify-content: space-between;
         }
-        .toolbar .cta > button {
+        .toolbar .cta .btn {
           padding: 15px 10px !important;
           font-size: 1rem;
-        }
-        div.toolbar {
-          flex-wrap: wrap;
-          height: 150px !important;
+          width: 100%;
         }
         .toolbar .btn {
           padding: 5px !important;
@@ -99,6 +102,14 @@ const Toolbar = () => (
       @media (max-width: 376px) {
       }
       @media (max-width: 330px) {
+        .toolbar img {
+          margin-bottom: 10px;
+        }
+        .toolbar .cta > button:nth-child(1) {
+          padding: 10px 5px !important;
+          font-size: 0.9rem;
+          margin-right: 1px !important;
+        }
       }
     `}</style>
   </div>

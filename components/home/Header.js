@@ -89,6 +89,9 @@ const Header = props => (
       @media (max-width: 450px) {
       }
       @media (max-width: 376px) {
+        header {
+          height: 100vh !important;
+        }
       }
       @media (max-width: 330px) {
       }

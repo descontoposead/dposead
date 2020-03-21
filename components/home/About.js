@@ -84,10 +84,24 @@ const About = () => (
         }
       }
       @media (max-width: 450px) {
+        section {
+          margin-top: 100px !important;
+          margin-bottom: 355px !important;
+        }
       }
       @media (max-width: 376px) {
+        section {
+          margin-top: 200px !important;
+          margin-bottom: 470px !important;
+        }
+        section > div {
+          bottom: -264px !important;
+        }
       }
       @media (max-width: 330px) {
+        section {
+          margin-top: 300px !important;
+        }
       }
     `}</style>
   </section>

@@ -6,6 +6,18 @@ const BtnCta = props => (
         padding: 10px 30px;
         font-size: 1.2rem;
       }
+
+      @media (max-width: 450px) {
+        .btn-red {
+          width: 100%;
+        }
+        button {
+          padding: 15px 10px !important;
+          font-size: 1rem;
+          width: 100%;
+          margin-bottom: 5px;
+        }
+      }
     `}</style>
   </button>
 );

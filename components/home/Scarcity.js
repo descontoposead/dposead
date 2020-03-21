@@ -75,10 +75,19 @@ const Scarcity = () => (
         }
       }
       @media (max-width: 450px) {
+        section {
+          margin: 60px 40px 528px 40px !important;
+        }
       }
       @media (max-width: 376px) {
+        section {
+          margin: 60px 40px 700px 40px !important;
+        }
       }
       @media (max-width: 330px) {
+        section {
+          margin: 60px 40px 735px 40px !important;
+        }
       }
     `}</style>
   </section>
