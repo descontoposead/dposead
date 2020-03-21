@@ -8,7 +8,7 @@ const ThreeReasons = () => (
             src="/icons/star.webp"
             alt="Cursos com qualidade no MEC nota 4"
           />
-          <span flex="1">
+          <span>
             Todos os nossos cursos possuem qualidade garantida pelo Decreto nº
             5.773/06 do MEC, avaliado como nota 4 (de 1 a 5) pelo IGC.
           </span>

@@ -8,7 +8,7 @@ const Header = props => (
     ) : (
       <header>
         <Toolbar />
-        <div style={{ zIndex: 1 }} className="cta">
+        <div className="cta">
           <h1>Você não precisa pagar caro para ter educação de qualidade</h1>
           <hr />
           <div>
@@ -28,6 +28,9 @@ const Header = props => (
         display: flex;
         flex-wrap: wrap;
         color: #fff;
+      }
+      header > div {
+        z-index: 1;
       }
       div.cta {
         display: flex;

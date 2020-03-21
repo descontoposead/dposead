@@ -16,7 +16,7 @@ const Scarcity = () => (
         servidores públicos, segundo o jornal extra. Nisso nós podemos te
         ajudar.
       </span>
-      <BtnCta className="btn btn-red" style={{ marginTop: 15 }} />
+      <BtnCta className="mt15 btn btn-red" />
     </article>
 
     <style jsx>{`

@@ -48,6 +48,12 @@ const withLayout = (Page, opts = { onlyToolbar: false }) => () => (
       .btn-write {
         background: var(--write);
       }
+      .mt40 {
+        margin-top: 40px;
+      }
+      .mt15 {
+        margin-top: 15px;
+      }
     `}</style>
   </>
 );

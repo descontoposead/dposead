@@ -9,7 +9,7 @@ const About = () => (
         valores que se ajustam a sua renda mensal. Converse agora com um
         consultor e monte o seu plano personalizado.
       </h3>
-      <BtnCta style={{ marginTop: 40 + "px" }} className="btn btn-red" />
+      <BtnCta className="mt40 btn btn-red" />
     </div>
     <img src="/smile_girl_nature.webp" alt="Mulher sorrindo" />
 

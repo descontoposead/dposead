@@ -9,7 +9,7 @@ const Capitation = () => (
           mais atende sua necessidade.
         </h4>
         <div>
-          <div style={{ flex: 1 }}>
+          <div>
             <label for="name">Nome</label>
             <input type="text" name="name" />
           </div>
