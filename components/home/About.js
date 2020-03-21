@@ -101,7 +101,7 @@ const About = () => (
       }
       @media (max-width: 450px) {
         section {
-          margin-top: 100px;
+          margin-top: 180px;
           margin-bottom: 355px;
         }
         section > amp-img {

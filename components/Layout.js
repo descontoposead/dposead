@@ -20,7 +20,7 @@ const withLayout = (Page, opts = { onlyToolbar: false }) => () => (
         --rgb-blue: 10, 20, 30;
         --write: #fff;
         --red: #df2936;
-        --alpha: 0.8;
+        --alpha: 0.99;
         --margin-lg: 150px;
         --margin-sm: 70px;
         --margin-between: 60px;

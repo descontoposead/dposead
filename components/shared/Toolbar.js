@@ -17,6 +17,10 @@ const Toolbar = () => (
 
     <style jsx>{`
       div.toolbar {
+        position: fixed;
+        z-index: 9;
+        background: #0c141d;
+        box-shadow: 1px -8px 20px 0px #263954;
         background: rgba(var(--rgb-blue), var(--alpha));
         align-items: center;
         width: 100%;
