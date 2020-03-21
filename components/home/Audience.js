@@ -1,9 +1,21 @@
 const Audience = () => (
   <section>
-    <img
+    <amp-img
+      media="(min-width: 500px)"
+      alt="Aluna satisfeita com o portal do aluno"
       src="/smile_girl_mac.webp"
-      alt="Aluna feliz enquanto usa o seu portal de aluno"
-    />
+      width="835"
+      height="550"
+      layout="responsive"
+    ></amp-img>
+    <amp-img
+      media="(max-width: 499px)"
+      alt="Aluna satisfeita com o portal do aluno"
+      src="/smile_girl_mac__mobile.webp"
+      width="835"
+      height="550"
+      layout="responsive"
+    ></amp-img>
     <article>
       <h3>O que estão falando sobre nós</h3>
     </article>
@@ -12,7 +24,7 @@ const Audience = () => (
       section {
         position: relative;
       }
-      section > img {
+      section > amp-img {
         width: 65%;
       }
       section > article {
@@ -39,7 +51,7 @@ const Audience = () => (
           position: relative;
           margin: 400px 0px;
         }
-        section > img {
+        section > amp-img {
           width: 90%;
         }
         section > article {

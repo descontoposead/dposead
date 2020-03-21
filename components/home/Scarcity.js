@@ -2,7 +2,22 @@ import BtnCta from "../shared/BtnCta";
 
 const Scarcity = () => (
   <section>
-    <img src="/success_man.webp" alt="Homem de sucesso em seu escritório" />
+    <amp-img
+      media="(min-width: 500px)"
+      alt="Aluno da POSEAD estudando na comodidade do ser escritório."
+      src="/success_man.webp"
+      width="835"
+      height="550"
+      layout="responsive"
+    ></amp-img>
+    <amp-img
+      media="(max-width: 499px)"
+      alt="Aluno da POSEAD estudando na comodidade do ser escritório."
+      src="/success_man__mobile.webp"
+      width="835"
+      height="550"
+      layout="responsive"
+    ></amp-img>
     <article>
       <h3>Profissionais de sucesso estão se especializando neste momento</h3>
       <span>
@@ -60,7 +75,7 @@ const Scarcity = () => (
         section {
           margin: 60px 40px 333px 40px;
         }
-        section > img {
+        section > amp-img {
           width: 100%;
         }
         section > article {

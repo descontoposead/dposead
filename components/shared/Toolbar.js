@@ -2,11 +2,14 @@ import BtnCta from "./BtnCta";
 
 const Toolbar = () => (
   <div className="toolbar">
-    <img
+    <amp-img
       className="logotipo"
-      src="/logotipo.webp"
       alt="Logo da Desconto POSEAD"
-    />
+      src="/logotipo.webp"
+      width="288"
+      height="28"
+      layout="responsive"
+    ></amp-img>
     <div className="cta">
       <BtnCta className="btn btn-outline" style={{ marginRight: 10 }} />
       <button className="btn btn-write">Matricule-se</button>
@@ -21,10 +24,9 @@ const Toolbar = () => (
         display: flex;
         justify-content: space-between;
       }
-      div.toolbar > div.logotipo {
-        background: url("/logotipo.webp");
-        background-size: cover;
-        background-repeat: no-repeat;
+      div.toolbar > amp-img {
+        width: 288px;
+        height: 28px;
       }
       button {
         padding: 10px 30px;

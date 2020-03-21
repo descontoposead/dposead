@@ -1,6 +1,6 @@
 const Capitation = () => (
   <section>
-    <form>
+    <form action-xhr="/subscribe" method="post">
       <div>
         <h3>Deixe seu contato</h3>
         <h4>
@@ -33,7 +33,22 @@ const Capitation = () => (
         </div>
       </div>
     </form>
-    <img src="/smile_man.webp" alt="Aluno feliz com nossos cursos online" />
+    <amp-img
+      media="(min-width: 500px)"
+      alt="Aluno feliz com nossos cursos online"
+      src="/smile_man.webp"
+      width="460"
+      height="610"
+      layout="responsive"
+    ></amp-img>
+    <amp-img
+      media="(max-width: 499px)"
+      alt="Aluno feliz com nossos cursos online"
+      src="/smile_man__mobile.webp"
+      width="460"
+      height="610"
+      layout="responsive"
+    ></amp-img>
 
     <style jsx>{`
       section {
@@ -43,7 +58,7 @@ const Capitation = () => (
         display: flex;
         align-items: center;
       }
-      section > img {
+      section > amp-img {
         width: 40vw;
         position: absolute;
         right: 0;
@@ -158,8 +173,8 @@ const Capitation = () => (
           top: 448px;
           box-sizing: border-box;
         }
-        section > img {
-          width: 90%;
+        section > amp-img {
+          width: 80%;
           position: initial;
         }
         section > form > div > div > div {

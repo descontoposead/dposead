@@ -4,10 +4,10 @@ export const config = { amp: true };
 
 const ThankYou = () => (
   <main>
-    <img
+    {/* <img
       src="/man_happy.webp"
       alt="Homem feliz porque se inscreveu numa incrivel oportunidade de curso a distância"
-    />
+    /> */}
     <div>
       <h1>Pronto, falta muito pouco para mudar seu futuro.</h1>
       <span>

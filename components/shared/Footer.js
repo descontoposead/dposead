@@ -4,7 +4,13 @@ import WhatsappIcon from "../icon/WhatsappIcon";
 
 const Footer = () => (
   <footer>
-    <img src="/footer_logo.webp" alt="Logo da Desconto Pos EAD" />
+    <amp-img
+      alt="Logo da Desconto POSEAD"
+      src="/footer_logo.webp"
+      width="147"
+      height="48"
+      layout="responsive"
+    ></amp-img>
     <ul>
       <li>
         <InstagramIcon />
@@ -27,7 +33,7 @@ const Footer = () => (
         padding-top: 30px;
         padding-bottom: 30px;
       }
-      footer > img {
+      footer > amp-img {
         width: 147px;
       }
       footer > address {
@@ -55,12 +61,12 @@ const Footer = () => (
       }
       @media (max-width: 999px) {
         footer {
-          padding: 10px var(--margin-sm);
+          padding: 20px var(--margin-sm);
         }
       }
       @media (max-width: 750px) {
         footer {
-          padding: 10px 20px;
+          padding: 30px 20px;
         }
       }
       @media (max-width: 650px) {

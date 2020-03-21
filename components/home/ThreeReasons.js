@@ -4,24 +4,39 @@ const ThreeReasons = () => (
       <h3>3 motivos para escolher nossos cursos</h3>
       <ul>
         <li>
-          <img
-            src="/icons/star.webp"
+          <amp-img
             alt="Cursos com qualidade no MEC nota 4"
-          />
+            src="/icons/star.webp"
+            width="60"
+            height="30"
+            layout="responsive"
+          ></amp-img>
           <span>
             Todos os nossos cursos possuem qualidade garantida pelo Decreto nº
             5.773/06 do MEC, avaliado como nota 4 (de 1 a 5) pelo IGC.
           </span>
         </li>
         <li>
-          <img src="/icons/school.webp" alt="Certificado em 6 meses" />
+          <amp-img
+            alt="Certificado em 6 meses"
+            src="/icons/school.webp"
+            width="40"
+            height="40"
+            layout="responsive"
+          ></amp-img>
           <span>
             Garanta a sua certificação em um prazo mínimo de 6 meses, de acordo
             com o que você precisa nesse momento.
           </span>
         </li>
         <li>
-          <img src="/icons/calendar.webp" alt="O melhor horário para estudar" />
+          <amp-img
+            alt="O melhor horário para estudar"
+            src="/icons/calendar.webp"
+            width="40"
+            height="40"
+            layout="responsive"
+          ></amp-img>
           <span>
             Você está no controle e decide qual o melhor horário e local para
             estudar.
@@ -62,9 +77,11 @@ const ThreeReasons = () => (
         padding-bottom: 40px;
         align-items: center;
       }
-      section > article > ul > li > img {
-        width: 63px;
+      section > article > ul > li > amp-img {
+        width: 40px;
+        height: 35px;
         padding-right: 30px;
+        margin-right: 10px;
       }
 
       @media (min-width: 1000px) {

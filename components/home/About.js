@@ -11,7 +11,22 @@ const About = () => (
       </h3>
       <BtnCta className="mt40 btn btn-red" />
     </div>
-    <img src="/smile_girl_nature.webp" alt="Mulher sorrindo" />
+    <amp-img
+      media="(min-width: 500px)"
+      alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
+      src="/smile_girl_nature.webp"
+      width="664"
+      height="332"
+      layout="responsive"
+    ></amp-img>
+    <amp-img
+      media="(max-width: 499px)"
+      alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
+      src="/smile_girl_nature__mobile.webp"
+      width="664"
+      height="332"
+      layout="responsive"
+    ></amp-img>
 
     <style jsx>{`
       section {
@@ -19,15 +34,16 @@ const About = () => (
         height: var(--section-height);
         background: var(--blue);
         box-shadow: 0px 0px 100px 80px var(--blue);
+        margin-top: 100px;
         margin-bottom: 100px;
       }
-      section > img {
-        width: 60%;
+      section > amp-img {
+        width: 664px;
         position: absolute;
         top: var(--margin-between);
       }
       section > div {
-        width: 500px;
+        width: 60%;
         background: var(--blue);
         color: var(--write);
         padding: 15px;
@@ -47,7 +63,7 @@ const About = () => (
       }
 
       @media (min-width: 1000px) {
-        section > img {
+        section > amp-img {
           right: var(--margin-lg);
         }
         section > div {
@@ -55,7 +71,7 @@ const About = () => (
         }
       }
       @media (max-width: 999px) {
-        section > img {
+        section > amp-img {
           right: var(--margin-sm);
           width: 80%;
         }
@@ -64,7 +80,7 @@ const About = () => (
         }
       }
       @media (max-width: 750px) {
-        section > img {
+        section > amp-img {
           right: 20px;
         }
         section > div {
@@ -88,7 +104,7 @@ const About = () => (
           margin-top: 100px;
           margin-bottom: 355px;
         }
-        section > img {
+        section > amp-img {
           width: 90%;
         }
       }
