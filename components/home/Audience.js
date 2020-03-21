@@ -63,8 +63,17 @@ const Audience = () => (
         }
       }
       @media (max-width: 550px) {
+        section {
+          margin: 500px 0px;
+        }
       }
       @media (max-width: 450px) {
+        section {
+          margin: 569px 0 750px;
+        }
+        section > article {
+          top: 200px;
+        }
       }
       @media (max-width: 376px) {
       }
