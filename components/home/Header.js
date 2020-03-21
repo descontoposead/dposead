@@ -90,6 +90,9 @@ const Header = props => (
       @media (max-width: 550px) {
       }
       @media (max-width: 450px) {
+        header {
+          background-image: url("/head__mobile.webp");
+        }
       }
       @media (max-width: 376px) {
         header {
