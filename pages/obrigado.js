@@ -20,7 +20,7 @@ const ThankYou = () => (
     <amp-img
       media='(min-width: 500px)'
       alt='Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância'
-      src='/man_happy.webp'
+      src='/static/images/man_happy.webp'
       width='700'
       height='844'
       layout='responsive'
@@ -28,7 +28,7 @@ const ThankYou = () => (
     <amp-img
       media='(max-width: 499px)'
       alt='Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância'
-      src='/man_happy__mobile.webp'
+      src='/static/images/man_happy__mobile.webp'
       width='700'
       height='844'
       layout='responsive'

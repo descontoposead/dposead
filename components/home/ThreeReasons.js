@@ -5,11 +5,11 @@ const ThreeReasons = () => (
       <ul>
         <li>
           <amp-img
-            alt="Cursos com qualidade no MEC nota 4"
-            src="/icons/star.webp"
-            width="60"
-            height="30"
-            layout="responsive"
+            alt='Cursos com qualidade no MEC nota 4'
+            src='/static/icons/star.webp'
+            width='60'
+            height='30'
+            layout='responsive'
           ></amp-img>
           <span>
             Todos os nossos cursos possuem qualidade garantida pelo Decreto nº
@@ -18,11 +18,11 @@ const ThreeReasons = () => (
         </li>
         <li>
           <amp-img
-            alt="Certificado em 6 meses"
-            src="/icons/school.webp"
-            width="40"
-            height="40"
-            layout="responsive"
+            alt='Certificado em 6 meses'
+            src='/static/icons/school.webp'
+            width='40'
+            height='40'
+            layout='responsive'
           ></amp-img>
           <span>
             Garanta a sua certificação em um prazo mínimo de 6 meses, de acordo
@@ -31,11 +31,11 @@ const ThreeReasons = () => (
         </li>
         <li>
           <amp-img
-            alt="O melhor horário para estudar"
-            src="/icons/calendar.webp"
-            width="40"
-            height="40"
-            layout="responsive"
+            alt='O melhor horário para estudar'
+            src='/static/icons/calendar.webp'
+            width='40'
+            height='40'
+            layout='responsive'
           ></amp-img>
           <span>
             Você está no controle e decide qual o melhor horário e local para
@@ -53,7 +53,7 @@ const ThreeReasons = () => (
       section > article {
         width: 100%;
         height: 1000px;
-        background: url("/footer.webp");
+        background: url('/static/images/footer.webp');
         background-size: cover;
         background-repeat: no-repeat;
         display: flex;

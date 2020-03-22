@@ -11,7 +11,7 @@ export const config = { amp: true };
 
 const Home = () => (
   <main>
-    <Modal opened={modalOpened} />
+    <Modal />
     <About />
     <ThreeReasons />
     <Scarcity />

@@ -1,20 +1,20 @@
 const Audience = () => (
   <section>
     <amp-img
-      media="(min-width: 500px)"
-      alt="Aluna satisfeita com o portal do aluno"
-      src="/smile_girl_mac.webp"
-      width="835"
-      height="550"
-      layout="responsive"
+      media='(min-width: 500px)'
+      alt='Aluna satisfeita com o portal do aluno'
+      src='/static/images/smile_girl_mac.webp'
+      width='835'
+      height='550'
+      layout='responsive'
     ></amp-img>
     <amp-img
-      media="(max-width: 499px)"
-      alt="Aluna satisfeita com o portal do aluno"
-      src="/smile_girl_mac__mobile.webp"
-      width="835"
-      height="550"
-      layout="responsive"
+      media='(max-width: 499px)'
+      alt='Aluna satisfeita com o portal do aluno'
+      src='/static/images/smile_girl_mac__mobile.webp'
+      width='835'
+      height='550'
+      layout='responsive'
     ></amp-img>
     <article>
       <h3>O que estão falando sobre nós</h3>

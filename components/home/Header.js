@@ -1,5 +1,5 @@
-import Toolbar from "../shared/Toolbar";
-import BtnCta from "../shared/BtnCta";
+import Toolbar from '../shared/Toolbar';
+import BtnCta from '../shared/BtnCta';
 
 const Header = props => (
   <>
@@ -8,12 +8,12 @@ const Header = props => (
     ) : (
       <header>
         <Toolbar />
-        <div className="cta">
+        <div className='cta'>
           <h1>Você não precisa pagar caro para ter educação de qualidade</h1>
           <hr />
           <div>
             <span>Estude agora com descontos imperdiveis</span>
-            <BtnCta className="btn btn-red" />
+            <BtnCta className='btn btn-red' />
           </div>
         </div>
       </header>
@@ -21,7 +21,7 @@ const Header = props => (
 
     <style jsx>{`
       header {
-        background-image: url("/head.webp");
+        background-image: url('/static/images/head.webp');
         background-repeat: no-repeat;
         background-size: cover;
         height: 600px;
@@ -91,7 +91,7 @@ const Header = props => (
       }
       @media (max-width: 450px) {
         header {
-          background-image: url("/head__mobile.webp");
+          background-image: url('/static/images/head__mobile.webp');
         }
         .cta {
           margin-top: 225px;

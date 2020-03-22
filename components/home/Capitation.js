@@ -1,6 +1,6 @@
 const Capitation = () => (
   <section>
-    <form action-xhr="/saveLead" method="post">
+    <form action-xhr='/saveLead' method='post'>
       <div>
         <h3>Deixe seu contato</h3>
         <h4>
@@ -10,44 +10,44 @@ const Capitation = () => (
         </h4>
         <div>
           <div>
-            <label htmlFor="name">Nome</label>
-            <input id="name" type="text" name="name" />
+            <label htmlFor='name'>Nome</label>
+            <input id='name' type='text' name='name' />
           </div>
           <div>
-            <label htmlFor="phone">Telefone</label>
-            <input id="phone" type="text" name="phone" />
+            <label htmlFor='phone'>Telefone</label>
+            <input id='phone' type='text' name='phone' />
           </div>
         </div>
         <div>
           <div>
-            <label htmlFor="email">Email</label>
-            <input id="email" type="text" name="email" />
+            <label htmlFor='email'>Email</label>
+            <input id='email' type='text' name='email' />
           </div>
         </div>
         <div>
-          <button className="btn btn-black">Enviar</button>
+          <button className='btn btn-black'>Enviar</button>
           <span>
             Ou entre em contato conosco
-            <button className="btn btn-green">Via whatsapp</button>
+            <button className='btn btn-green'>Via whatsapp</button>
           </span>
         </div>
       </div>
     </form>
     <amp-img
-      media="(min-width: 500px)"
-      alt="Aluno feliz com nossos cursos online"
-      src="/smile_man.webp"
-      width="460"
-      height="610"
-      layout="responsive"
+      media='(min-width: 500px)'
+      alt='Aluno feliz com nossos cursos online'
+      src='/static/images/smile_man.webp'
+      width='460'
+      height='610'
+      layout='responsive'
     ></amp-img>
     <amp-img
-      media="(max-width: 499px)"
-      alt="Aluno feliz com nossos cursos online"
-      src="/smile_man__mobile.webp"
-      width="460"
-      height="610"
-      layout="responsive"
+      media='(max-width: 499px)'
+      alt='Aluno feliz com nossos cursos online'
+      src='/static/images/smile_man__mobile.webp'
+      width='460'
+      height='610'
+      layout='responsive'
     ></amp-img>
 
     <style jsx>{`

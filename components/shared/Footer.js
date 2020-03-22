@@ -1,15 +1,15 @@
-import InstagramIcon from "../icon/InstagramIcon";
-import FacebookIcon from "../icon/FacebookIcon";
-import WhatsappIcon from "../icon/WhatsappIcon";
+import InstagramIcon from '../icon/InstagramIcon';
+import FacebookIcon from '../icon/FacebookIcon';
+import WhatsappIcon from '../icon/WhatsappIcon';
 
 const Footer = () => (
   <footer>
     <amp-img
-      alt="Logo da Desconto POSEAD"
-      src="/footer_logo.webp"
-      width="147"
-      height="48"
-      layout="responsive"
+      alt='Logo da Desconto POSEAD'
+      src='/static/images/footer_logo.webp'
+      width='147'
+      height='48'
+      layout='responsive'
     ></amp-img>
     <ul>
       <li>
