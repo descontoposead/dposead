@@ -28,22 +28,22 @@ const Modal = () => (
     <style jsx>{`
       @keyframes openModal {
         from {
-          opacity: 0;
+          transform: translate(0, 0);
         }
         to {
-          opacity: 1;
+          transform: translate(0, -40vh);
         }
       }
       amp-script {
-        animation: openModal 1s;
-        animation-delay: 1s;
+        animation: openModal 0.5s;
+        animation-delay: 10s;
         animation-fill-mode: forwards;
-        opacity: 0;
+        opacity: 1;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-content: space-evenly;
-        top: 60vh;
+        top: 100vh;
         background: rgb(10, 19, 29);
         z-index: 2;
         position: fixed;
