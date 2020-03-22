@@ -7,9 +7,19 @@
     "build": "next build",
     "start": "next start"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "dependencies": {
     "next": "9.3.0",
     "react": "16.13.0",
     "react-dom": "16.13.0"
+  },
+  "devDependencies": {
+    "husky": "^4.2.3",
+    "prettier": "2.0.1",
+    "pretty-quick": "^2.0.1"
   }
 }
