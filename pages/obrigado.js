@@ -1,13 +1,9 @@
-import withLayout from "../components/Layout";
+import withLayout from '../components/Layout';
 
 export const config = { amp: true };
 
 const ThankYou = () => (
   <main>
-    {/* <img
-      src="/man_happy.webp"
-      alt="Homem feliz porque se inscreveu numa incrivel oportunidade de curso a distância"
-    /> */}
     <div>
       <h1>Pronto, falta muito pouco para mudar seu futuro.</h1>
       <span>
@@ -21,21 +17,36 @@ const ThankYou = () => (
         <button>Matricule-se</button>
       </div>
     </div>
+    <amp-img
+      media='(min-width: 500px)'
+      alt='Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância'
+      src='/man_happy.webp'
+      width='700'
+      height='844'
+      layout='responsive'
+    ></amp-img>
+    <amp-img
+      media='(max-width: 499px)'
+      alt='Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância'
+      src='/man_happy__mobile.webp'
+      width='700'
+      height='844'
+      layout='responsive'
+    ></amp-img>
 
     <style jsx>{`
       main {
         display: flex;
         position: relative;
-        height: calc(100vh - 179px);
+        height: calc(100vh - 68px);
         align-items: center;
         padding: 0 var(--margin-lg);
       }
 
-      main > img {
+      main > amp-img {
         min-width: 288px;
         min-height: 350px;
         width: 30%;
-        background-size: cover;
       }
 
       main > div {
@@ -95,10 +106,15 @@ const ThankYou = () => (
         main > div {
           width: auto;
           padding: 0;
-          margin-bottom: 50px;
+          margin-top: 80px;
         }
-        main > img {
-          margin-top: 50px;
+        main > amp-img {
+          margin-bottom: 100px;
+        }
+      }
+      @media (max-width: 450px) {
+        main > div {
+          margin-top: 190px;
         }
       }
     `}</style>
