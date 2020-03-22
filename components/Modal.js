@@ -1,26 +1,26 @@
 const Modal = () => (
   <>
     <amp-script
-      layout='container'
-      src='https://descontoposead.com.br/amp-scripts/hideModal.js'
+      layout="container"
+      src="https://descontoposead.com.br/amp-scripts/hideModal.js"
     >
       <div>
         <button>&times;</button>
       </div>
-      <form action-xhr='/saveLead' method='post'>
+      <form action-xhr="/saveLead" method="post">
         <div>
-          <label htmlFor='email'>
+          <label htmlFor="email">
             Falar com um <strong>especialista</strong>
           </label>
           <input
-            id='email'
-            name='email'
-            type='email'
-            placeholder='Digite seu melhor e-mail'
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Digite seu melhor e-mail"
           />
         </div>
         <div>
-          <button className='btn btn-red'>Enviar</button>
+          <button className="btn btn-red">Enviar</button>
         </div>
       </form>
     </amp-script>
@@ -104,6 +104,6 @@ const Modal = () => (
       }
     `}</style>
   </>
-);
+)
 
-export default Modal;
+export default Modal

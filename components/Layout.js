@@ -1,5 +1,5 @@
-import Header from "./home/Header";
-import Footer from "./shared/Footer";
+import Header from './home/Header'
+import Footer from './shared/Footer'
 
 const withLayout = (Page, opts = { onlyToolbar: false }) => () => (
   <>
@@ -56,6 +56,6 @@ const withLayout = (Page, opts = { onlyToolbar: false }) => () => (
       }
     `}</style>
   </>
-);
+)
 
-export default withLayout;
+export default withLayout
