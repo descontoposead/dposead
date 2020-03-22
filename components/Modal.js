@@ -28,7 +28,7 @@ const Modal = () => (
       }
       form {
         animation: openModal 1s;
-        animation-delay: 5s;
+        animation-delay: 10s;
         animation-fill-mode: forwards;
         opacity: 1;
         display: flex;
