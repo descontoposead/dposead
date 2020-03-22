@@ -3,5 +3,7 @@
     "javascript": "javascriptreact"
   },
   "emmet.triggerExpansionOnTab": true,
-  "emmet.showSuggestionsAsSnippets": true
+  "emmet.showSuggestionsAsSnippets": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true
 }

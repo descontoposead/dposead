@@ -1,24 +1,41 @@
-const Modal = props => (
+const Modal = () => (
   <>
-    <form action-xhr="/saveLead" method="post">
+    <form action-xhr='/saveLead' method='post'>
       <div>
-        <label htmlFor="email">
+        <label htmlFor='email'>
           Falar com um <strong>especialista</strong>
         </label>
-        <input id="email" name="email" placeholder="Digite seu melhor e-mail" />
+        <input
+          id='email'
+          name='email'
+          type='email'
+          placeholder='Digite seu melhor e-mail'
+        />
       </div>
       <div>
-        <button className="btn btn-red">Enviar</button>
+        <button className='btn btn-red'>Enviar</button>
       </div>
     </form>
 
     <style jsx>{`
+      @keyframes openModal {
+        from {
+          top: 100vh;
+        }
+        to {
+          top: 60vh;
+        }
+      }
       form {
+        animation: openModal 1s;
+        animation-delay: 5s;
+        animation-fill-mode: forwards;
+        opacity: 1;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-content: space-evenly;
-        top: ${props.opened ? "60vh" : "100vh"};
+        top: 100vh;
         background: rgb(10, 19, 29);
         z-index: 2;
         position: fixed;
@@ -31,7 +48,7 @@ const Modal = props => (
         padding: 10px 20px;
         border: 4px solid #fdfdfd;
         color: white;
-        transition: all 1s;
+        transition: top 1s;
       }
       form > div:first-child {
         display: flex;
