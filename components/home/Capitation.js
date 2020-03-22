@@ -1,6 +1,6 @@
 const Capitation = () => (
   <section>
-    <form action-xhr="/subscribe" method="post">
+    <form action-xhr="/saveLead" method="post">
       <div>
         <h3>Deixe seu contato</h3>
         <h4>
@@ -10,18 +10,18 @@ const Capitation = () => (
         </h4>
         <div>
           <div>
-            <label for="name">Nome</label>
-            <input type="text" name="name" />
+            <label htmlFor="name">Nome</label>
+            <input id="name" type="text" name="name" />
           </div>
           <div>
-            <label for="phone">Telefone</label>
-            <input type="text" name="phone" />
+            <label htmlFor="phone">Telefone</label>
+            <input id="phone" type="text" name="phone" />
           </div>
         </div>
         <div>
           <div>
-            <label for="email">Email</label>
-            <input type="text" name="email" />
+            <label htmlFor="email">Email</label>
+            <input id="email" type="text" name="email" />
           </div>
         </div>
         <div>
