@@ -1,4 +1,4 @@
-const BtnCta = props => (
+const BtnCta = (props) => (
   <button {...props}>
     Falar com um consultor
     <style jsx>{`
@@ -20,6 +20,6 @@ const BtnCta = props => (
       }
     `}</style>
   </button>
-);
+)
 
-export default BtnCta;
+export default BtnCta

@@ -90,6 +90,6 @@ const Faq = () => (
       }
     `}</style>
   </section>
-);
+)
 
-export default Faq;
+export default Faq

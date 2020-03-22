@@ -1,22 +1,22 @@
-import BtnCta from '../shared/BtnCta';
+import BtnCta from '../shared/BtnCta'
 
 const Scarcity = () => (
   <section>
     <amp-img
-      media='(min-width: 500px)'
-      alt='Aluno da POSEAD estudando na comodidade do ser escritório.'
-      src='/static/images/success_man.webp'
-      width='835'
-      height='550'
-      layout='responsive'
+      media="(min-width: 500px)"
+      alt="Aluno da POSEAD estudando na comodidade do ser escritório."
+      src="/static/images/success_man.webp"
+      width="835"
+      height="550"
+      layout="responsive"
     ></amp-img>
     <amp-img
-      media='(max-width: 499px)'
-      alt='Aluno da POSEAD estudando na comodidade do ser escritório.'
-      src='/static/images/success_man__mobile.webp'
-      width='835'
-      height='550'
-      layout='responsive'
+      media="(max-width: 499px)"
+      alt="Aluno da POSEAD estudando na comodidade do ser escritório."
+      src="/static/images/success_man__mobile.webp"
+      width="835"
+      height="550"
+      layout="responsive"
     ></amp-img>
     <article>
       <h3>Profissionais de sucesso estão se especializando neste momento</h3>
@@ -31,7 +31,7 @@ const Scarcity = () => (
         servidores públicos, segundo o jornal extra. Nisso nós podemos te
         ajudar.
       </span>
-      <BtnCta className='mt15 btn btn-red' />
+      <BtnCta className="mt15 btn btn-red" />
     </article>
 
     <style jsx>{`
@@ -106,6 +106,6 @@ const Scarcity = () => (
       }
     `}</style>
   </section>
-);
+)
 
-export default Scarcity;
+export default Scarcity

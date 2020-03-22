@@ -1,4 +1,4 @@
-const btn = document.querySelector('button');
+const btn = document.querySelector('button')
 btn.addEventListener('click', () => {
-  document.textContent = '';
-});
+  document.textContent = ''
+})

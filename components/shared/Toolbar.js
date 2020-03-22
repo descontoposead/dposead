@@ -1,18 +1,18 @@
-import BtnCta from './BtnCta';
+import BtnCta from './BtnCta'
 
 const Toolbar = () => (
-  <div className='toolbar'>
+  <div className="toolbar">
     <amp-img
-      className='logotipo'
-      alt='Logo da Desconto POSEAD'
-      src='/static/images/logotipo.webp'
-      width='288'
-      height='28'
-      layout='responsive'
+      className="logotipo"
+      alt="Logo da Desconto POSEAD"
+      src="/static/images/logotipo.webp"
+      width="288"
+      height="28"
+      layout="responsive"
     ></amp-img>
-    <div className='cta'>
-      <BtnCta className='btn btn-outline' style={{ marginRight: 10 }} />
-      <button className='btn btn-write'>Matricule-se</button>
+    <div className="cta">
+      <BtnCta className="btn btn-outline" style={{ marginRight: 10 }} />
+      <button className="btn btn-write">Matricule-se</button>
     </div>
 
     <style jsx>{`
@@ -119,6 +119,6 @@ const Toolbar = () => (
       }
     `}</style>
   </div>
-);
+)
 
-export default Toolbar;
+export default Toolbar

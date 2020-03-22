@@ -1,4 +1,4 @@
-import BtnCta from '../shared/BtnCta';
+import BtnCta from '../shared/BtnCta'
 
 const About = () => (
   <section>
@@ -9,23 +9,23 @@ const About = () => (
         valores que se ajustam a sua renda mensal. Converse agora com um
         consultor e monte o seu plano personalizado.
       </h3>
-      <BtnCta className='mt40 btn btn-red' />
+      <BtnCta className="mt40 btn btn-red" />
     </div>
     <amp-img
-      media='(min-width: 500px)'
-      alt='Estudante feliz por estudar a distância com cursos EAD de qualidade.'
-      src='/static/images/smile_girl_nature.webp'
-      width='664'
-      height='332'
-      layout='responsive'
+      media="(min-width: 500px)"
+      alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
+      src="/static/images/smile_girl_nature.webp"
+      width="664"
+      height="332"
+      layout="responsive"
     ></amp-img>
     <amp-img
-      media='(max-width: 499px)'
-      alt='Estudante feliz por estudar a distância com cursos EAD de qualidade.'
-      src='/static/images/smile_girl_nature__mobile.webp'
-      width='664'
-      height='332'
-      layout='responsive'
+      media="(max-width: 499px)"
+      alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
+      src="/static/images/smile_girl_nature__mobile.webp"
+      width="664"
+      height="332"
+      layout="responsive"
     ></amp-img>
 
     <style jsx>{`
@@ -124,6 +124,6 @@ const About = () => (
       }
     `}</style>
   </section>
-);
+)
 
-export default About;
+export default About

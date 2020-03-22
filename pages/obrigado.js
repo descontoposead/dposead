@@ -1,6 +1,6 @@
-import withLayout from '../components/Layout';
+import withLayout from '../components/Layout'
 
-export const config = { amp: true };
+export const config = { amp: true }
 
 const ThankYou = () => (
   <main>
@@ -18,20 +18,20 @@ const ThankYou = () => (
       </div>
     </div>
     <amp-img
-      media='(min-width: 500px)'
-      alt='Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância'
-      src='/static/images/man_happy.webp'
-      width='700'
-      height='844'
-      layout='responsive'
+      media="(min-width: 500px)"
+      alt="Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância"
+      src="/static/images/man_happy.webp"
+      width="700"
+      height="844"
+      layout="responsive"
     ></amp-img>
     <amp-img
-      media='(max-width: 499px)'
-      alt='Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância'
-      src='/static/images/man_happy__mobile.webp'
-      width='700'
-      height='844'
-      layout='responsive'
+      media="(max-width: 499px)"
+      alt="Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância"
+      src="/static/images/man_happy__mobile.webp"
+      width="700"
+      height="844"
+      layout="responsive"
     ></amp-img>
 
     <style jsx>{`
@@ -119,6 +119,6 @@ const ThankYou = () => (
       }
     `}</style>
   </main>
-);
+)
 
-export default withLayout(ThankYou, { onlyToolbar: true });
+export default withLayout(ThankYou, { onlyToolbar: true })

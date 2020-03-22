@@ -1,19 +1,19 @@
-import Toolbar from '../shared/Toolbar';
-import BtnCta from '../shared/BtnCta';
+import Toolbar from '../shared/Toolbar'
+import BtnCta from '../shared/BtnCta'
 
-const Header = props => (
+const Header = (props) => (
   <>
     {props.onlyToolbar ? (
       <Toolbar />
     ) : (
       <header>
         <Toolbar />
-        <div className='cta'>
+        <div className="cta">
           <h1>Você não precisa pagar caro para ter educação de qualidade</h1>
           <hr />
           <div>
             <span>Estude agora com descontos imperdiveis</span>
-            <BtnCta className='btn btn-red' />
+            <BtnCta className="btn btn-red" />
           </div>
         </div>
       </header>
@@ -106,6 +106,6 @@ const Header = props => (
       }
     `}</style>
   </>
-);
+)
 
-export default Header;
+export default Header
