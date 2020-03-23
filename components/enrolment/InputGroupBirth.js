@@ -1,14 +1,21 @@
-const InputGroupBirth = (props) =>
-  props.stepView('InputGroupBirth') && (
-    <>
-      <h1>Agora, informacoes de nascimento</h1>
-      <input type="text" name="name" />
-      <button
-        onClick={() => props.stepNext({ currentStep: 'InputGroupParent' })}
-      >
-        Continuar
-      </button>
-    </>
+import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+
+const InputGroupBirth = () => {
+  const [step, stepNextStep] = useSharedStep()
+
+  return (
+    currentStepIs('InputGroupBirth', step) && (
+      <>
+        <h1>Agora, informacoes de nascimento</h1>
+        <input type="text" name="name" />
+        <button
+          onClick={() => stepNextStep({ currentStep: 'InputGroupParent' })}
+        >
+          Continuar
+        </button>
+      </>
+    )
   )
+}
 
 export default InputGroupBirth
