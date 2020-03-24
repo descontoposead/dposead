@@ -6,13 +6,19 @@ const InputCourse = () => {
   return (
     currentStepIs('InputCourse', step) && (
       <>
-        <h1>Qual curso vc deseja?</h1>
-        <input type="text" name="name" />
-        <button
-          onClick={() => stepNextStep({ currentStep: 'InputGroupPayment' })}
-        >
-          Este é meu nome
-        </button>
+        <div>
+          <h1>Qual curso vc deseja?</h1>
+        </div>
+        <div>
+          <input type="text" name="name" />
+        </div>
+        <div>
+          <button
+            onClick={() => stepNextStep({ currentStep: 'InputGroupPayment' })}
+          >
+            Este é meu nome
+          </button>
+        </div>
       </>
     )
   )

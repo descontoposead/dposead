@@ -6,13 +6,29 @@ const InputGroupParent = () => {
   return (
     currentStepIs('InputGroupParent', step) && (
       <>
-        <h1>Agora, informacoes dos pais</h1>
-        <input type="text" name="name" />
-        <button
-          onClick={() => stepNextStep({ currentStep: 'InputCivilStatus' })}
-        >
-          Continuar
-        </button>
+        <div>
+          <h1>Agora meu certificado fica lindo...</h1>
+        </div>
+        <div>
+          <input
+            autoFocus
+            type="text"
+            name="parentName"
+            placeholder="nome do seu pai..."
+          />
+          <input
+            type="text"
+            name="motherName"
+            placeholder="nome da sua mãe..."
+          />
+        </div>
+        <div>
+          <button
+            onClick={() => stepNextStep({ currentStep: 'InputCivilStatus' })}
+          >
+            Vamos lá...
+          </button>
+        </div>
       </>
     )
   )

@@ -6,13 +6,24 @@ const InputCivilStatus = () => {
   return (
     currentStepIs('InputCivilStatus', step) && (
       <>
-        <h1>Informação civil</h1>
-        <input type="text" name="name" />
-        <button
-          onClick={() => stepNextStep({ currentStep: 'InputProfession' })}
-        >
-          Este é meu nome
-        </button>
+        <div>
+          <h1>Informação civil</h1>
+        </div>
+        <div>
+          <label htmlFor="married">
+            <input id="married" type="radio" name="civilStatus" /> Casado
+          </label>
+          <label htmlFor="single">
+            <input id="single" type="radio" name="civilStatus" /> Solteiro
+          </label>
+        </div>
+        <div>
+          <button
+            onClick={() => stepNextStep({ currentStep: 'InputProfession' })}
+          >
+            Continuar...
+          </button>
+        </div>
       </>
     )
   )

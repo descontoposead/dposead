@@ -93,6 +93,12 @@ const Scarcity = () => (
         section {
           margin: 60px 40px 528px 40px;
         }
+        section > article h3 {
+          font-size: 2.2rem;
+        }
+        section > article span {
+          font-size: 1.3rem;
+        }
       }
       @media (max-width: 376px) {
         section {

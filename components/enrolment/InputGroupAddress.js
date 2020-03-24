@@ -6,13 +6,25 @@ const InputGroupAddress = () => {
   return (
     currentStepIs('InputGroupAddress', step) && (
       <>
-        <h1>Agora, informacoes de endereco</h1>
-        <input type="text" name="name" />
-        <button
-          onClick={() => stepNextStep({ currentStep: 'InputGroupGraduation' })}
-        >
-          Continuar
-        </button>
+        <div>
+          <h1>Encontramos você?</h1>
+        </div>
+        <div>
+          <textarea
+            autoFocus
+            name="name"
+            value="R PE Dionisio - 278 - Centro, Córrego novo, Minas Gerais"
+          ></textarea>
+        </div>
+        <div>
+          <button
+            onClick={() =>
+              stepNextStep({ currentStep: 'InputGroupGraduation' })
+            }
+          >
+            Isso mesmo!
+          </button>
+        </div>
       </>
     )
   )

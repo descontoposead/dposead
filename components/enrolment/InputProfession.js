@@ -6,11 +6,17 @@ const InputProfession = () => {
   return (
     currentStepIs('InputProfession', step) && (
       <>
-        <h1>Qual é sua profissao</h1>
-        <input type="text" name="name" />
-        <button onClick={() => stepNextStep({ currentStep: 'InputZip' })}>
-          Este é meu nome
-        </button>
+        <div>
+          <h1>O que você faz? (Profissão)</h1>
+        </div>
+        <div>
+          <input type="text" name="name" placeholder="escreva aqui..." />
+        </div>
+        <div>
+          <button onClick={() => stepNextStep({ currentStep: 'InputZip' })}>
+            Este é meu nome
+          </button>
+        </div>
       </>
     )
   )

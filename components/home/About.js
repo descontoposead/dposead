@@ -107,6 +107,12 @@ const About = () => (
         section > amp-img {
           width: 90%;
         }
+        section > div h2 {
+          font-size: 2.3rem;
+        }
+        section > div h3 {
+          font-size: 1.4rem;
+        }
       }
       @media (max-width: 376px) {
         section {

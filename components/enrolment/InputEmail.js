@@ -6,13 +6,24 @@ const InputEmail = () => {
   return (
     currentStepIs('InputEmail', step) && (
       <>
-        <h1>Agora, seu endereço de e-mail principal</h1>
-        <input type="text" name="name" />
-        <button
-          onClick={() => stepNextStep({ currentStep: 'InputGroupPhone' })}
-        >
-          Continuar
-        </button>
+        <div>
+          <h1>Qual e-mail você usa?</h1>
+        </div>
+        <div>
+          <input
+            autoFocus
+            type="text"
+            placeholder="escreva seu email..."
+            name="name"
+          />
+        </div>
+        <div>
+          <button
+            onClick={() => stepNextStep({ currentStep: 'InputGroupPhone' })}
+          >
+            É meu melhor e-mail
+          </button>
+        </div>
       </>
     )
   )

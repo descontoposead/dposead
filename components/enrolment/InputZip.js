@@ -1,3 +1,5 @@
+import MaskedInput from 'react-text-mask'
+
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 
 const InputZip = () => {
@@ -6,13 +8,24 @@ const InputZip = () => {
   return (
     currentStepIs('InputZip', step) && (
       <>
-        <h1>Qual é seu cep?</h1>
-        <input type="text" name="name" />
-        <button
-          onClick={() => stepNextStep({ currentStep: 'InputGroupAddress' })}
-        >
-          Este é meu nome
-        </button>
+        <div>
+          <h1>Qual é seu cep?</h1>
+        </div>
+        <div>
+          <MaskedInput
+            autoFocus
+            name="zipCode"
+            placeholder="escreva o cep..."
+            mask={[/\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
+          />
+        </div>
+        <div>
+          <button
+            onClick={() => stepNextStep({ currentStep: 'InputGroupAddress' })}
+          >
+            Este é meu nome
+          </button>
+        </div>
       </>
     )
   )

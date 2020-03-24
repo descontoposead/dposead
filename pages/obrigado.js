@@ -72,7 +72,7 @@ const ThankYou = () => (
 
       main > div > div button {
         margin-right: 7px;
-        border-radius: 2px;
+        border-radius: 10px;
         font-size: 1rem;
         height: 36px;
         border: 0px;

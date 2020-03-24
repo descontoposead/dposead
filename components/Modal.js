@@ -52,7 +52,7 @@ const Modal = () => (
         left: 0;
         right: 0;
         margin: 0 auto;
-        border-radius: 2px;
+        border-radius: 10px;
         padding: 10px 20px;
         border: 4px solid #fdfdfd;
         color: white;
@@ -91,7 +91,7 @@ const Modal = () => (
         color: var(--red);
       }
       amp-script input {
-        border-radius: 2px;
+        border-radius: 10px;
         border: 0;
         padding: 5px 20px;
         font-size: 1.1rem;

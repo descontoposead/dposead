@@ -1,3 +1,5 @@
+import MaskedInput from 'react-text-mask'
+
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 
 const InputGroupBirth = () => {
@@ -6,13 +8,26 @@ const InputGroupBirth = () => {
   return (
     currentStepIs('InputGroupBirth', step) && (
       <>
-        <h1>Agora, informacoes de nascimento</h1>
-        <input type="text" name="name" />
-        <button
-          onClick={() => stepNextStep({ currentStep: 'InputGroupParent' })}
-        >
-          Continuar
-        </button>
+        <div>
+          <h1>Também necessário para seu certificado</h1>
+        </div>
+        <div>
+          <input autoFocus type="text" placeholder="estado que vc nasceu..." />
+          <input type="text" placeholder="cidade que vc nasceu..." />
+          <strong>Quando?</strong>
+          <MaskedInput
+            name="dateOfBirth"
+            placeholder="dia/mês/ano"
+            mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+          />
+        </div>
+        <div>
+          <button
+            onClick={() => stepNextStep({ currentStep: 'InputGroupParent' })}
+          >
+            Estou indo bem
+          </button>
+        </div>
       </>
     )
   )

@@ -75,7 +75,7 @@ const Capitation = () => (
         align-items: center;
       }
       section > form input {
-        border-radius: 2px;
+        border-radius: 10px;
       }
       section > form > div {
         display: flex;

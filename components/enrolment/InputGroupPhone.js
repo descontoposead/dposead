@@ -1,3 +1,5 @@
+import MaskedInput from 'react-text-mask'
+
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 
 const InputGroupPhone = () => {
@@ -6,12 +8,60 @@ const InputGroupPhone = () => {
   return (
     currentStepIs('InputGroupPhone', step) && (
       <>
-        <h1>telefones</h1>
-        <input type="text" name="name" />
-        <input type="text" name="name" />
-        <button onClick={() => stepNextStep({ currentStep: 'InputGroupDoc' })}>
-          Continuar
-        </button>
+        <div>
+          <h1>Caso precisemos entrar em contato</h1>
+        </div>
+        <div>
+          <MaskedInput
+            name="phone"
+            placeholder="seu telefone..."
+            autoFocus
+            mask={[
+              '(',
+              /\d/,
+              /\d/,
+              ')',
+              ' ',
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+            ]}
+          />
+          <MaskedInput
+            name="whatsapp"
+            placeholder="seu whatsapp..."
+            mask={[
+              '(',
+              /\d/,
+              /\d/,
+              ')',
+              ' ',
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+            ]}
+          />
+        </div>
+        <div>
+          <button
+            onClick={() => stepNextStep({ currentStep: 'InputGroupDoc' })}
+          >
+            Podemos conversar
+          </button>
+        </div>
       </>
     )
   )

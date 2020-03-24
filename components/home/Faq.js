@@ -54,7 +54,7 @@ const Faq = () => (
         margin-bottom: 10px;
         padding: 10px;
         color: #fff;
-        border-radius: 2px;
+        border-radius: 10px;
       }
 
       @media (min-width: 1000px) {

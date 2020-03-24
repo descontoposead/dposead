@@ -1,3 +1,5 @@
+import MaskedInput from 'react-text-mask'
+
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 
 const InputGroupDoc = () => {
@@ -6,14 +8,40 @@ const InputGroupDoc = () => {
   return (
     currentStepIs('InputGroupDoc', step) && (
       <>
-        <h1>Agora, documentos pessoais rg, cpf</h1>
-        <input type="text" name="name" />
-        <input type="text" name="name" />
-        <button
-          onClick={() => stepNextStep({ currentStep: 'InputGroupBirth' })}
-        >
-          Continuar
-        </button>
+        <div>
+          <h1>Para te certificar no futuro</h1>
+        </div>
+        <div>
+          <MaskedInput
+            autoFocus
+            placeholder="escreva seu cpf..."
+            name="cpf"
+            mask={[
+              /\d/,
+              /\d/,
+              /\d/,
+              '.',
+              /\d/,
+              /\d/,
+              /\d/,
+              '.',
+              /\d/,
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+            ]}
+          />
+          <input type="text" name="name" placeholder="escreva seu rg..." />
+        </div>
+        <div>
+          <button
+            onClick={() => stepNextStep({ currentStep: 'InputGroupBirth' })}
+          >
+            Quase pronto
+          </button>
+        </div>
       </>
     )
   )

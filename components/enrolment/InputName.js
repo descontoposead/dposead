@@ -6,11 +6,22 @@ const InputName = () => {
   return (
     currentStepIs('InputName', step) && (
       <>
-        <h1>Qual é seu nome completo?</h1>
-        <input type="text" name="name" />
-        <button onClick={() => stepNextStep({ currentStep: 'InputEmail' })}>
-          Este é meu nome
-        </button>
+        <div>
+          <h1>Qual é seu nome completo?</h1>
+        </div>
+        <div>
+          <textarea
+            autoFocus
+            placeholder="escreva seu nome..."
+            type="text"
+            name="name"
+          ></textarea>
+        </div>
+        <div>
+          <button onClick={() => stepNextStep({ currentStep: 'InputEmail' })}>
+            Este é meu nome
+          </button>
+        </div>
       </>
     )
   )
