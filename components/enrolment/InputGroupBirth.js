@@ -28,6 +28,11 @@ const InputGroupBirth = () => {
             Estou indo bem
           </button>
         </div>
+        <style jsx>{`
+          div:nth-child(2) {
+            height: 8vh;
+          }
+        `}</style>
       </>
     )
   )

@@ -24,6 +24,22 @@ const InputCivilStatus = () => {
             Continuar...
           </button>
         </div>
+        <style jsx>{`
+          div:nth-child(2) {
+            flex-direction: column;
+          }
+          div:nth-child(2) label input {
+            margin-right: 10px;
+            width: 30px;
+          }
+          label {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 60px;
+            align-items: center;
+            font-size: 2rem;
+          }
+        `}</style>
       </>
     )
   )

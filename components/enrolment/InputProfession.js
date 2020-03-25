@@ -10,7 +10,12 @@ const InputProfession = () => {
           <h1>O que você faz? (Profissão)</h1>
         </div>
         <div>
-          <input type="text" name="name" placeholder="escreva aqui..." />
+          <input
+            autoFocus
+            type="text"
+            name="name"
+            placeholder="escreva aqui..."
+          />
         </div>
         <div>
           <button onClick={() => stepNextStep({ currentStep: 'InputZip' })}>

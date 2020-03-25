@@ -13,7 +13,8 @@ import InputZip from './InputZip'
 import InputGroupAddress from './InputGroupAddress'
 import InputGroupGraduation from './InputGroupGraduation'
 import InputCourse from './InputCourse'
-import InputGroupPayment from './InputGroupPayment'
+import InputPaymentValues from './InputPaymentValues'
+import InputPaymentMethod from './InputPaymentMethod'
 import Resume from './Resume'
 
 const Form = () => {
@@ -37,7 +38,8 @@ const Form = () => {
       <InputGroupAddress />
       <InputGroupGraduation />
       <InputCourse />
-      <InputGroupPayment />
+      <InputPaymentValues />
+      <InputPaymentMethod />
       <Resume />
 
       <style jsx global>{`
@@ -54,7 +56,7 @@ const Form = () => {
           height: 100vh;
           flex-direction: column;
           align-items: center;
-          justify-content: space-evenly;
+          justify-content: space-around;
         }
         form > div {
           width: 100vw;
@@ -63,10 +65,10 @@ const Form = () => {
           box-sizing: border-box;
         }
         form > div:nth-child(2) {
-          height: 30vh;
           display: flex;
           flex-wrap: wrap;
           align-content: center;
+          justify-content: center;
         }
         form > div:nth-child(2) input:first-child {
           margin-bottom: 5px;
@@ -82,6 +84,7 @@ const Form = () => {
         form > div:nth-child(2) textarea,
         form > div:nth-child(2) input {
           width: 100vw;
+          height: 100%;
           border: 0;
           font-size: 1.8rem;
           text-align: center;
@@ -96,7 +99,8 @@ const Form = () => {
           color: #292929;
           font-size: 2.5rem;
         }
-        form > div:nth-child(3) button {
+        form > div:nth-child(3) button,
+        form > div:nth-child(4) button {
           font-size: 1.5rem;
           border: solid 4px;
           padding: 10px 15px;

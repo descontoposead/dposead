@@ -25,6 +25,11 @@ const InputGroupAddress = () => {
             Isso mesmo!
           </button>
         </div>
+        <style jsx>{`
+          div:nth-child(2) {
+            height: 20vh;
+          }
+        `}</style>
       </>
     )
   )
