@@ -4,7 +4,7 @@ import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputGroupBirth = () => {
-  const [step, stepNextStep] = useSharedStep()
+  const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
 
   const assignNewValue = (target) =>
@@ -38,13 +38,13 @@ const InputGroupBirth = () => {
         <div>
           <button
             className="prev"
-            onClick={() => stepNextStep({ currentStep: 'InputGroupDoc' })}
+            onClick={() => setNextStep({ currentStep: 'InputGroupDoc' })}
           >
             Voltar
           </button>
           <button
             className="next"
-            onClick={() => stepNextStep({ currentStep: 'InputGroupParent' })}
+            onClick={() => setNextStep({ currentStep: 'InputGroupParent' })}
           >
             Estou indo bem
           </button>

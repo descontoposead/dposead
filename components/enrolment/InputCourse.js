@@ -6,7 +6,7 @@ import { useSharedValues } from '../../hooks/useSharedValues'
 import like from '../../helpers/like'
 
 const InputCourse = () => {
-  const [step, stepNextStep] = useSharedStep()
+  const [step, setNextStep] = useSharedStep()
   const [courses, setCourses] = useState([
     {
       name: 'Administração de negocios',
@@ -78,15 +78,13 @@ const InputCourse = () => {
         <div>
           <button
             className="prev"
-            onClick={() =>
-              stepNextStep({ currentStep: 'InputGroupGraduation' })
-            }
+            onClick={() => setNextStep({ currentStep: 'InputGroupGraduation' })}
           >
             Voltar
           </button>
           <button
             className="next"
-            onClick={() => stepNextStep({ currentStep: 'InputPaymentMethod' })}
+            onClick={() => setNextStep({ currentStep: 'InputPaymentMethod' })}
           >
             É este que eu quero
           </button>

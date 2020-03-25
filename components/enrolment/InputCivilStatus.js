@@ -2,7 +2,7 @@ import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputCivilStatus = () => {
-  const [step, stepNextStep] = useSharedStep()
+  const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
 
   const assignNewValue = (target) =>
@@ -40,13 +40,13 @@ const InputCivilStatus = () => {
         <div>
           <button
             className="prev"
-            onClick={() => stepNextStep({ currentStep: 'InputGroupParent' })}
+            onClick={() => setNextStep({ currentStep: 'InputGroupParent' })}
           >
             Voltar
           </button>
           <button
             className="next"
-            onClick={() => stepNextStep({ currentStep: 'InputProfession' })}
+            onClick={() => setNextStep({ currentStep: 'InputProfession' })}
           >
             Continuar...
           </button>
