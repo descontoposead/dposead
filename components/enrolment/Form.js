@@ -49,6 +49,7 @@ const Form = () => {
         @import url('https://fonts.googleapis.com/css?family=Baloo+2&display=swap');
 
         :root {
+          touch-action: none;
           overflow: hidden;
           font-family: 'Baloo 2', cursive;
         }

@@ -12,18 +12,36 @@ const InputPaymentValues = () => {
     currentStepIs('InputPaymentValues', step) && (
       <>
         <div>
-          <h1>Adeque ao seu bolso</h1>
+          {values.paymentMethod === 'creditCard' ? (
+            <h1>Adeque ao seu bolso</h1>
+          ) : (
+            <h1>A vista com</h1>
+          )}
         </div>
         <section>
-          <strong>Curso</strong>
-          <button>&#10092;</button>
           <strong>
-            1 x de 2.000 <i>reais</i>
+            O <mark>Curso</mark> por
           </strong>
-          <button>&#10093;</button>
+          {values.paymentMethod === 'creditCard' ? (
+            <>
+              <button>&#10092;</button>
+              <strong>
+                1 x de 2.000 <i>reais</i>
+              </strong>
+              <button>&#10093;</button>
+            </>
+          ) : (
+            <>
+              <strong>
+                2.000 <i>reais</i>
+              </strong>
+            </>
+          )}
         </section>
         <section>
-          <strong>Matricula</strong>
+          <strong>
+            A <mark>Matricula</mark> por
+          </strong>
           <strong>
             200 <i>reais</i>
           </strong>
@@ -65,6 +83,12 @@ const InputPaymentValues = () => {
           }
           i {
             font-size 1.5rem
+          }
+          mark {
+            padding: 0 10px
+          }
+          strong {
+            font-size: 1.8rem;
           }
         `}</style>
       </>

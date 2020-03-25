@@ -5,8 +5,10 @@ const InputPaymentMethod = () => {
   const [step, stepNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
 
-  const assignNewValue = (target) =>
+  const assignNewValue = (target) => {
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
+    console.log(values)
+  }
 
   return (
     currentStepIs('InputPaymentMethod', step) && (
@@ -18,7 +20,7 @@ const InputPaymentMethod = () => {
           <label htmlFor="creditCard">
             <input
               onChange={({ currentTarget }) => assignNewValue(currentTarget)}
-              checked
+              defaultChecked={true}
               id="creditCard"
               type="radio"
               name="paymentMethod"
