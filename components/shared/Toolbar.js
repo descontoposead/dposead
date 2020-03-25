@@ -41,6 +41,8 @@ const Toolbar = () => (
         font-size: 1.2rem;
       }
       a {
+        padding: 10px 30px;
+        font-size: 1.2rem;
         text-align: center;
         color: var(--blue);
         text-decoration: none;

@@ -36,8 +36,9 @@ const Scarcity = () => (
 
     <style jsx>{`
       section {
-        margin: 60px 40px 250px 40px;
+        margin: 130px 40px 250px 40px;
         position: relative;
+        height: 800px;
       }
       section > img {
         width: 100%;
@@ -46,6 +47,7 @@ const Scarcity = () => (
         position: absolute;
         color: var(--write);
         width: 500px;
+        top: 65%;
         right: 20%;
       }
       section > article > h3 {
@@ -63,11 +65,19 @@ const Scarcity = () => (
       }
 
       @media (max-width: 999px) {
+        section {
+          margin: 130px 40px 150px 40px;
+        }
         section > article {
+          top: 50%;
           right: 15%;
         }
       }
       @media (max-width: 750px) {
+        section > article {
+          top: 25%;
+          right: 15%;
+        }
       }
       @media (max-width: 650px) {
         section {
@@ -106,7 +116,7 @@ const Scarcity = () => (
       }
       @media (max-width: 330px) {
         section {
-          height: 868px;
+          height: 910px;
         }
       }
     `}</style>

@@ -127,7 +127,7 @@ const ThreeReasons = () => (
       }
       @media (max-width: 330px) {
         section {
-          margin-bottom: 140px;
+          margin-bottom: 120px;
         }
       }
     `}</style>
