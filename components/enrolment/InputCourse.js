@@ -36,6 +36,7 @@ const InputCourse = () => {
 
   const setSelectedCourse = (name) => {
     inputRef.current.value = name
+    inputRef.current.classList.add('selected')
     assignNewValue(inputRef.current)
   }
 
@@ -93,7 +94,14 @@ const InputCourse = () => {
 
         <style jsx global>{`
           div:nth-child(2) {
-            height: 8vh;
+            height: 250px;
+          }
+          div:nth-child(2) textarea {
+            height: 43%;
+          }
+          div:nth-child(2) textarea.selected {
+            color: #ff9800;
+            font-weight: bold;
           }
           div.result {
             border-top: 4px solid;

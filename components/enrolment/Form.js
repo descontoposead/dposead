@@ -101,6 +101,7 @@ const Form = () => {
         form > div h1 {
           color: #292929;
           font-size: 2.5rem;
+          line-height: 1.25;
         }
         form > div button {
           font-size: 1.5rem;
