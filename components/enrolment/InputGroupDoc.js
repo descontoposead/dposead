@@ -50,6 +50,13 @@ const InputGroupDoc = () => {
         </div>
         <div>
           <button
+            className="prev"
+            onClick={() => stepNextStep({ currentStep: 'InputGroupPhone' })}
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
             onClick={() => stepNextStep({ currentStep: 'InputGroupBirth' })}
           >
             Quase pronto

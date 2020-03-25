@@ -66,6 +66,13 @@ const InputGroupPhone = () => {
         </div>
         <div>
           <button
+            className="prev"
+            onClick={() => stepNextStep({ currentStep: 'InputEmail' })}
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
             onClick={() => stepNextStep({ currentStep: 'InputGroupDoc' })}
           >
             Podemos conversar

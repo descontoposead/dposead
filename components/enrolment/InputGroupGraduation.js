@@ -36,7 +36,16 @@ const InputGroupGraduation = () => {
           />
         </div>
         <div>
-          <button onClick={() => stepNextStep({ currentStep: 'InputCourse' })}>
+          <button
+            className="prev"
+            onClick={() => stepNextStep({ currentStep: 'InputFullAddress' })}
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
+            onClick={() => stepNextStep({ currentStep: 'InputCourse' })}
+          >
             Ultimos passos...
           </button>
         </div>

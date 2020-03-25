@@ -33,6 +33,13 @@ const InputGroupParent = () => {
         </div>
         <div>
           <button
+            className="prev"
+            onClick={() => stepNextStep({ currentStep: 'InputGroupBirth' })}
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
             onClick={() => stepNextStep({ currentStep: 'InputCivilStatus' })}
           >
             Vamos lá...

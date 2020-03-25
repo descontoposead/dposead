@@ -25,7 +25,16 @@ const InputProfession = () => {
           />
         </div>
         <div>
-          <button onClick={() => stepNextStep({ currentStep: 'InputZip' })}>
+          <button
+            className="prev"
+            onClick={() => stepNextStep({ currentStep: 'InputCivilStatus' })}
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
+            onClick={() => stepNextStep({ currentStep: 'InputZip' })}
+          >
             Este é meu nome
           </button>
         </div>

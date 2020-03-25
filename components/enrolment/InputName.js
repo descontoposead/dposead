@@ -25,7 +25,10 @@ const InputName = () => {
           ></textarea>
         </div>
         <div>
-          <button onClick={() => stepNextStep({ currentStep: 'InputEmail' })}>
+          <button
+            className="next"
+            onClick={() => stepNextStep({ currentStep: 'InputEmail' })}
+          >
             Este é meu nome
           </button>
         </div>

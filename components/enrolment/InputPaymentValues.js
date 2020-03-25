@@ -1,7 +1,12 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputPaymentValues = () => {
   const [step, stepNextStep] = useSharedStep()
+  const [values, setSharedValues] = useSharedValues()
+
+  const assignNewValue = (target) =>
+    setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   return (
     currentStepIs('InputPaymentValues', step) && (
@@ -24,7 +29,16 @@ const InputPaymentValues = () => {
           </strong>
         </section>
         <div>
-          <button onClick={() => stepNextStep({ currentStep: 'Resume' })}>
+          <button
+            className="prev"
+            onClick={() => stepNextStep({ currentStep: 'InputPaymentMethod' })}
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
+            onClick={() => stepNextStep({ currentStep: 'Resume' })}
+          >
             Assim está bom
           </button>
         </div>

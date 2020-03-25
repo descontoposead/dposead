@@ -76,7 +76,16 @@ const InputCourse = () => {
         </div>
         <div>
           <button
-            onClick={() => stepNextStep({ currentStep: 'InputPaymentValues' })}
+            className="prev"
+            onClick={() =>
+              stepNextStep({ currentStep: 'InputGroupGraduation' })
+            }
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
+            onClick={() => stepNextStep({ currentStep: 'InputPaymentMethod' })}
           >
             É este que eu quero
           </button>

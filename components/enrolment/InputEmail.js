@@ -26,6 +26,13 @@ const InputEmail = () => {
         </div>
         <div>
           <button
+            className="prev"
+            onClick={() => stepNextStep({ currentStep: 'InputName' })}
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
             onClick={() => stepNextStep({ currentStep: 'InputGroupPhone' })}
           >
             É meu melhor e-mail

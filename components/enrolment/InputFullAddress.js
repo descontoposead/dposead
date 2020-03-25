@@ -25,6 +25,13 @@ const InputFullAddress = () => {
         </div>
         <div>
           <button
+            className="prev"
+            onClick={() => stepNextStep({ currentStep: 'InputZip' })}
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
             onClick={() =>
               stepNextStep({ currentStep: 'InputGroupGraduation' })
             }

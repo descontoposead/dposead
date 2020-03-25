@@ -102,14 +102,22 @@ const Form = () => {
           color: #292929;
           font-size: 2.5rem;
         }
-        form > div:nth-child(3) button,
-        form > div:nth-child(4) button {
+        form > div button {
           font-size: 1.5rem;
           border: solid 4px;
           padding: 10px 15px;
           border-radius: 10px;
           font-weight: bold;
           background: transparent;
+        }
+        form > div button.prev {
+          border-color: #6b6b6b;
+          color: #6b6b6b;
+          margin-bottom: 5px;
+          margin-right: 5px;
+        }
+        form > div button.next {
+          border-color: #292929;
           color: #292929;
         }
       `}</style>

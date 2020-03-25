@@ -39,6 +39,13 @@ const InputCivilStatus = () => {
         </div>
         <div>
           <button
+            className="prev"
+            onClick={() => stepNextStep({ currentStep: 'InputGroupParent' })}
+          >
+            Voltar
+          </button>
+          <button
+            className="next"
             onClick={() => stepNextStep({ currentStep: 'InputProfession' })}
           >
             Continuar...
