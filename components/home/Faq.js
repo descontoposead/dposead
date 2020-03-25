@@ -81,10 +81,10 @@ const Faq = () => (
       }
       @media (max-width: 450px) {
         section {
-          margin: 0 0 140px;
+          margin: 0 0 100px;
         }
       }
-      @media (max-width: 376px) {
+      @media (max-width: 384px) {
       }
       @media (max-width: 330px) {
       }

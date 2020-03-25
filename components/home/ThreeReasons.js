@@ -114,18 +114,21 @@ const ThreeReasons = () => (
         }
       }
       @media (max-width: 450px) {
-      }
-      @media (max-width: 376px) {
         section {
-          margin-top: 340px;
-          margin-bottom: 150px;
+          margin-top: 80px;
         }
+      }
+      @media (max-width: 384px) {
         section {
-          margin-top: 340px;
-          margin-bottom: 150px;
+          height: 997px;
+          margin-top: 80px;
+          margin-bottom: 100px;
         }
       }
       @media (max-width: 330px) {
+        section {
+          margin-bottom: 140px;
+        }
       }
     `}</style>
   </section>

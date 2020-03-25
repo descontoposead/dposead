@@ -45,7 +45,6 @@ const Scarcity = () => (
       section > article {
         position: absolute;
         color: var(--write);
-        top: 70%;
         width: 500px;
         right: 20%;
       }
@@ -65,7 +64,6 @@ const Scarcity = () => (
 
       @media (max-width: 999px) {
         section > article {
-          top: 50%;
           right: 15%;
         }
       }
@@ -81,7 +79,6 @@ const Scarcity = () => (
         section > article {
           width: 100%;
           right: auto;
-          top: 70%;
         }
       }
       @media (max-width: 550px) {
@@ -91,23 +88,25 @@ const Scarcity = () => (
       }
       @media (max-width: 450px) {
         section {
-          margin: 60px 40px 528px 40px;
+          margin: 100px 40px 0;
+          height: 817px;
         }
         section > article h3 {
-          font-size: 2.2rem;
+          font-size: 2rem;
         }
         section > article span {
           font-size: 1.3rem;
         }
       }
-      @media (max-width: 376px) {
+      @media (max-width: 384px) {
         section {
-          margin: 60px 40px 700px 40px;
+          height: 830px;
+          margin: 0 20px;
         }
       }
       @media (max-width: 330px) {
         section {
-          margin: 60px 40px 735px 40px;
+          height: 868px;
         }
       }
     `}</style>

@@ -101,31 +101,41 @@ const About = () => (
       }
       @media (max-width: 450px) {
         section {
-          margin-top: 180px;
-          margin-bottom: 355px;
+          margin-top: 10px;
+          margin-bottom: 0px;
+          height: 600px;
+        }
+        section > div {
+          width: 85vw;
         }
         section > amp-img {
           width: 90%;
         }
         section > div h2 {
-          font-size: 2.3rem;
+          font-size: 2rem;
         }
         section > div h3 {
           font-size: 1.4rem;
         }
       }
-      @media (max-width: 376px) {
+      @media (max-width: 384px) {
         section {
-          margin-top: 200px;
-          margin-bottom: 470px;
+          margin-top: 10px;
+          margin-bottom: 0;
+          height: 640px;
         }
         section > div {
-          bottom: -264px;
+          width: 100vw;
+          left: 0;
         }
       }
       @media (max-width: 330px) {
         section {
-          margin-top: 300px;
+          margin-top: 70px;
+          height: 664px;
+        }
+        section > div {
+          top: 190px;
         }
       }
     `}</style>

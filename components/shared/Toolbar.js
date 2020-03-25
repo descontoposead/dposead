@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import BtnCta from './BtnCta'
 
 const Toolbar = () => (
@@ -12,7 +14,9 @@ const Toolbar = () => (
     ></amp-img>
     <div className="cta">
       <BtnCta className="btn btn-outline" style={{ marginRight: 10 }} />
-      <button className="btn btn-write">Matricule-se</button>
+      <Link href="/matricular">
+        <a className="btn btn-write">Matricule-se</a>
+      </Link>
     </div>
 
     <style jsx>{`
@@ -35,6 +39,11 @@ const Toolbar = () => (
       button {
         padding: 10px 30px;
         font-size: 1.2rem;
+      }
+      a {
+        text-align: center;
+        color: var(--blue);
+        text-decoration: none;
       }
 
       @media (min-width: 1000px) {
@@ -105,7 +114,7 @@ const Toolbar = () => (
           width: 97%;
         }
       }
-      @media (max-width: 376px) {
+      @media (max-width: 384px) {
       }
       @media (max-width: 330px) {
         .toolbar img {

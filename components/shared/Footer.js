@@ -78,7 +78,7 @@ const Footer = () => (
           flex-wrap: wrap;
         }
       }
-      @media (max-width: 376px) {
+      @media (max-width: 384px) {
       }
       @media (max-width: 330px) {
       }

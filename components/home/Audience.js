@@ -69,18 +69,23 @@ const Audience = () => (
       }
       @media (max-width: 450px) {
         section {
-          margin: 569px 0 750px;
+          height: 560px;
+          margin: 100px 40px 0 40px;
         }
         section > article {
-          top: 200px;
+          top: 160px;
         }
       }
-      @media (max-width: 376px) {
+      @media (max-width: 384px) {
+        section {
+          height: 560px;
+          margin: 100px 20px 0 20px;
+        }
+        section > article {
+          top: 160px;
+        }
       }
       @media (max-width: 330px) {
-        section > article {
-          top: 170px;
-        }
       }
     `}</style>
   </section>

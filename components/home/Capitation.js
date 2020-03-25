@@ -194,18 +194,17 @@ const Capitation = () => (
       }
       @media (max-width: 450px) {
         section {
-          margin: -220px 0 490px;
-        }
-        section > form {
-          top: 623px;
+          height: 650px;
+          margin: 100px 0 415px;
         }
       }
-      @media (max-width: 376px) {
+      @media (max-width: 384px) {
+        section {
+          height: 550px;
+          margin: 100px 0 524px;
+        }
       }
       @media (max-width: 330px) {
-        section {
-          margin: -318px 0 413px;
-        }
       }
     `}</style>
   </section>

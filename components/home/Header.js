@@ -93,6 +93,7 @@ const Header = (props) => (
         header {
           background-image: url('/static/images/head__mobile.webp');
           background-position-x: -535px;
+          height: 100vh;
         }
         header .cta {
           margin-top: 225px;
@@ -101,12 +102,15 @@ const Header = (props) => (
           font-size: 2.5rem;
         }
       }
-      @media (max-width: 376px) {
+      @media (max-width: 384px) {
         header {
           height: 100vh;
         }
       }
       @media (max-width: 330px) {
+        header {
+          height: 616px;
+        }
       }
     `}</style>
   </>
