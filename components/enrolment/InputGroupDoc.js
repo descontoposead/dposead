@@ -1,9 +1,14 @@
 import MaskedInput from 'react-text-mask'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputGroupDoc = () => {
   const [step, stepNextStep] = useSharedStep()
+  const [values, setSharedValues] = useSharedValues()
+
+  const assignNewValue = (target) =>
+    setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   return (
     currentStepIs('InputGroupDoc', step) && (
@@ -13,9 +18,11 @@ const InputGroupDoc = () => {
         </div>
         <div>
           <MaskedInput
+            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+            autoComplete="off"
             autoFocus
             placeholder="escreva seu cpf..."
-            name="cpf"
+            name="personalDocument"
             mask={[
               /\d/,
               /\d/,
@@ -33,7 +40,13 @@ const InputGroupDoc = () => {
               /\d/,
             ]}
           />
-          <input type="text" name="name" placeholder="escreva seu rg..." />
+          <input
+            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+            autoComplete="off"
+            type="text"
+            name="personalRegistry"
+            placeholder="escreva seu rg..."
+          />
         </div>
         <div>
           <button

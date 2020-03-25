@@ -1,9 +1,14 @@
 import MaskedInput from 'react-text-mask'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputZip = () => {
   const [step, stepNextStep] = useSharedStep()
+  const [values, setSharedValues] = useSharedValues()
+
+  const assignNewValue = (target) =>
+    setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   return (
     currentStepIs('InputZip', step) && (
@@ -13,6 +18,8 @@ const InputZip = () => {
         </div>
         <div>
           <MaskedInput
+            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+            autoComplete="off"
             autoFocus
             name="zipCode"
             placeholder="escreva o cep..."
@@ -21,7 +28,7 @@ const InputZip = () => {
         </div>
         <div>
           <button
-            onClick={() => stepNextStep({ currentStep: 'InputGroupAddress' })}
+            onClick={() => stepNextStep({ currentStep: 'InputFullAddress' })}
           >
             Este é meu nome
           </button>

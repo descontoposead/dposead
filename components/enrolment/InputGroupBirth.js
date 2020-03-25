@@ -1,9 +1,14 @@
 import MaskedInput from 'react-text-mask'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputGroupBirth = () => {
   const [step, stepNextStep] = useSharedStep()
+  const [values, setSharedValues] = useSharedValues()
+
+  const assignNewValue = (target) =>
+    setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   return (
     currentStepIs('InputGroupBirth', step) && (
@@ -12,10 +17,19 @@ const InputGroupBirth = () => {
           <h1>Também necessário para seu certificado</h1>
         </div>
         <div>
-          <input autoFocus type="text" placeholder="estado que vc nasceu..." />
+          <input
+            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+            autoComplete="off"
+            autoFocus
+            name="stateOfBirth"
+            type="text"
+            placeholder="estado que vc nasceu..."
+          />
           <input type="text" placeholder="cidade que vc nasceu..." />
           <strong>Quando?</strong>
           <MaskedInput
+            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+            autoComplete="off"
             name="dateOfBirth"
             placeholder="dia/mês/ano"
             mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}

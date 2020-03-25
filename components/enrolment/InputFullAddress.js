@@ -1,18 +1,25 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
-const InputGroupAddress = () => {
+const InputFullAddress = () => {
   const [step, stepNextStep] = useSharedStep()
+  const [values, setSharedValues] = useSharedValues()
+
+  const assignNewValue = (target) =>
+    setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   return (
-    currentStepIs('InputGroupAddress', step) && (
+    currentStepIs('InputFullAddress', step) && (
       <>
         <div>
           <h1>Encontramos você?</h1>
         </div>
         <div>
           <textarea
+            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+            autoComplete="off"
             autoFocus
-            name="name"
+            name="fullAddress"
             value="R PE Dionisio - 278 - Centro, Córrego novo, Minas Gerais"
           ></textarea>
         </div>
@@ -35,4 +42,4 @@ const InputGroupAddress = () => {
   )
 }
 
-export default InputGroupAddress
+export default InputFullAddress

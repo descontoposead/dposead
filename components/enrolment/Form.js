@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 
 import { useSharedStep } from '../../hooks/useSharedStep'
+import { SharedValuesProvider } from '../../hooks/useSharedValues'
 import InputName from './InputName'
 import InputEmail from './InputEmail'
 import InputGroupPhone from './InputGroupPhone'
@@ -10,7 +11,7 @@ import InputGroupParent from './InputGroupParent'
 import InputCivilStatus from './InputCivilStatus'
 import InputProfession from './InputProfession'
 import InputZip from './InputZip'
-import InputGroupAddress from './InputGroupAddress'
+import InputFullAddress from './InputFullAddress'
 import InputGroupGraduation from './InputGroupGraduation'
 import InputCourse from './InputCourse'
 import InputPaymentValues from './InputPaymentValues'
@@ -18,7 +19,7 @@ import InputPaymentMethod from './InputPaymentMethod'
 import Resume from './Resume'
 
 const Form = () => {
-  const [step, _] = useSharedStep()
+  const [step] = useSharedStep()
 
   useEffect(() => {
     console.log(step)
@@ -26,21 +27,23 @@ const Form = () => {
 
   return (
     <form>
-      <InputName />
-      <InputEmail />
-      <InputGroupPhone />
-      <InputGroupDoc />
-      <InputGroupBirth />
-      <InputGroupParent />
-      <InputCivilStatus />
-      <InputProfession />
-      <InputZip />
-      <InputGroupAddress />
-      <InputGroupGraduation />
-      <InputCourse />
-      <InputPaymentValues />
-      <InputPaymentMethod />
-      <Resume />
+      <SharedValuesProvider>
+        <InputName />
+        <InputEmail />
+        <InputGroupPhone />
+        <InputGroupDoc />
+        <InputGroupBirth />
+        <InputGroupParent />
+        <InputCivilStatus />
+        <InputProfession />
+        <InputZip />
+        <InputFullAddress />
+        <InputGroupGraduation />
+        <InputCourse />
+        <InputPaymentValues />
+        <InputPaymentMethod />
+        <Resume />
+      </SharedValuesProvider>
 
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css?family=Baloo+2&display=swap');

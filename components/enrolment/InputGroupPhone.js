@@ -1,9 +1,14 @@
 import MaskedInput from 'react-text-mask'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputGroupPhone = () => {
   const [step, stepNextStep] = useSharedStep()
+  const [values, setSharedValues] = useSharedValues()
+
+  const assignNewValue = (target) =>
+    setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   return (
     currentStepIs('InputGroupPhone', step) && (
@@ -13,6 +18,8 @@ const InputGroupPhone = () => {
         </div>
         <div>
           <MaskedInput
+            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+            autoComplete="off"
             name="phone"
             placeholder="seu telefone..."
             autoFocus
@@ -34,6 +41,8 @@ const InputGroupPhone = () => {
             ]}
           />
           <MaskedInput
+            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+            autoComplete="off"
             name="whatsapp"
             placeholder="seu whatsapp..."
             mask={[

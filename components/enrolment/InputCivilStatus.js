@@ -1,7 +1,12 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputCivilStatus = () => {
   const [step, stepNextStep] = useSharedStep()
+  const [values, setSharedValues] = useSharedValues()
+
+  const assignNewValue = (target) =>
+    setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   return (
     currentStepIs('InputCivilStatus', step) && (
@@ -10,11 +15,26 @@ const InputCivilStatus = () => {
           <h1>Informação civil</h1>
         </div>
         <div>
-          <label htmlFor="married">
-            <input id="married" type="radio" name="civilStatus" /> Casado
-          </label>
           <label htmlFor="single">
-            <input id="single" type="radio" name="civilStatus" /> Solteiro
+            <input
+              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              checked
+              id="single"
+              type="radio"
+              name="civilStatus"
+              value="single"
+            />
+            Solteiro
+          </label>
+          <label htmlFor="married">
+            <input
+              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              id="married"
+              type="radio"
+              name="civilStatus"
+              value="married"
+            />
+            Casado
           </label>
         </div>
         <div>

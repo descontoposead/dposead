@@ -1,7 +1,12 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputEmail = () => {
   const [step, stepNextStep] = useSharedStep()
+  const [values, setSharedValues] = useSharedValues()
+
+  const assignNewValue = (target) =>
+    setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   return (
     currentStepIs('InputEmail', step) && (
@@ -11,10 +16,12 @@ const InputEmail = () => {
         </div>
         <div>
           <input
+            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+            autoComplete="off"
             autoFocus
             type="text"
             placeholder="escreva seu email..."
-            name="name"
+            name="email"
           />
         </div>
         <div>

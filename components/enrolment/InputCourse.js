@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { useDebounce } from 'react-use'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 import like from '../../helpers/like'
 
 const InputCourse = () => {
@@ -25,8 +26,18 @@ const InputCourse = () => {
   ])
   const [coursesDesires, setCoursesDesires] = useState([])
   const [typed, setTyped] = useState('')
+  const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef()
+
   useDebounce(() => similarCourseFrom(typed), 1000, [typed])
+
+  const assignNewValue = (target) =>
+    setSharedValues(Object.assign(values, { [target.name]: target.value }))
+
+  const setSelectedCourse = (name) => {
+    inputRef.current.value = name
+    assignNewValue(inputRef.current)
+  }
 
   const similarCourseFrom = (match) =>
     setCoursesDesires(
@@ -44,21 +55,18 @@ const InputCourse = () => {
         </div>
         <div>
           <textarea
+            onChange={({ target: { value } }) => setTyped(value)}
             ref={inputRef}
-            auto-complete="off"
+            autoComplete="off"
             autoFocus
             name="course"
-            onChange={({ target: { value } }) => setTyped(value)}
           ></textarea>
           {coursesDesires.length > 0 && (
             <div className="result">
               <strong>Encontramos esses:</strong>
               <ul>
                 {coursesDesires.map((course, i) => (
-                  <li
-                    key={i}
-                    onClick={() => (inputRef.current.value = course.name)}
-                  >
+                  <li key={i} onClick={() => setSelectedCourse(course.name)}>
                     {course.name} de <i>{course.hours} horas</i>
                   </li>
                 ))}
