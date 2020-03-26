@@ -48,6 +48,17 @@ const Form = () => {
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css?family=Baloo+2&display=swap');
 
+        strong.hasError {
+          opacity: 0;
+        }
+        .error + strong.hasError {
+          opacity: 1;
+          color: #f44336;
+        }
+        .error {
+          border-bottom: 4px solid #f44336 !important;
+        }
+
         :root {
           touch-action: none;
           overflow: hidden;
