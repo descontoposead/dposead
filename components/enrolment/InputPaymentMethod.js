@@ -1,14 +1,18 @@
 import { currentStepIs, useSharedStep } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
+import { useEffect } from 'react'
 
 const InputPaymentMethod = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
 
-  const assignNewValue = (target) => {
+  const assignNewValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
-    console.log(values)
-  }
+
+  useEffect(
+    () => assignNewValue({ name: 'paymentMethod', value: 'creditCard' }),
+    []
+  )
 
   return (
     currentStepIs('InputPaymentMethod', step) && (

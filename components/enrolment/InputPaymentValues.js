@@ -1,9 +1,47 @@
+import { useState, useEffect } from 'react'
+
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
 
 const InputPaymentValues = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
+  const [inputCourse, setInputCourse] = useState()
+  const [inputTax, setInputTax] = useState()
+
+  useEffect(() => {
+    setInputCourse({ parcels: 1, value: 2000, parceled: 0 })
+    setInputTax({ parcels: 1, value: 200 })
+
+    assignNewValue({ name: 'course', value: inputCourse })
+    assignNewValue({ name: 'tax', value: inputTax })
+  }, [])
+
+  const incrementParcels = (e) => {
+    e.preventDefault()
+    const limitIncrement = 3
+    if (inputCourse.parcels < limitIncrement) {
+      setInputCourse({
+        parcels: ++inputCourse.parcels,
+        parceled: inputCourse.value / inputCourse.parcels,
+        value: inputCourse.value,
+      })
+      assignNewValue({ name: 'course', value: inputCourse })
+    }
+  }
+
+  const decrementParcels = (e) => {
+    e.preventDefault()
+    const limitDecrement = 1
+    if (inputCourse.parcels > limitDecrement) {
+      setInputCourse({
+        parcels: --inputCourse.parcels,
+        parceled: inputCourse.value / inputCourse.parcels,
+        value: inputCourse.value,
+      })
+      assignNewValue({ name: 'course', value: inputCourse })
+    }
+  }
 
   const assignNewValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
@@ -24,16 +62,19 @@ const InputPaymentValues = () => {
           </strong>
           {values.paymentMethod === 'creditCard' ? (
             <>
-              <button>&#10092;</button>
+              <button onClick={(e) => incrementParcels(e)}>&#10092;</button>
               <strong>
-                1 x de 2.000 <i>reais</i>
+                {inputCourse.parcels} x de{' '}
+                <i>
+                  {(inputCourse.parceled || inputCourse.value).toFixed(2)} reais
+                </i>
               </strong>
-              <button>&#10093;</button>
+              <button onClick={(e) => decrementParcels(e)}>&#10093;</button>
             </>
           ) : (
             <>
               <strong>
-                2.000 <i>reais</i>
+                <i>{inputCourse.value.toFixed(2)} reais</i>
               </strong>
             </>
           )}
@@ -43,7 +84,7 @@ const InputPaymentValues = () => {
             A <mark>Matricula</mark> por
           </strong>
           <strong>
-            200 <i>reais</i>
+            {inputTax.value} <i>reais</i>
           </strong>
         </section>
         <div>
