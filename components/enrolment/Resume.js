@@ -9,7 +9,12 @@ const Resume = () => {
     currentStepIs('Resume', step) && (
       <>
         <p>Fim</p>
-        <button onClick={() => console.log(values)}></button>
+        <button
+          onClick={(e) => {
+            e.preventDefault()
+            console.log(values)
+          }}
+        ></button>
       </>
     )
   )

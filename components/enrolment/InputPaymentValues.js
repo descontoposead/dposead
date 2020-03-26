@@ -6,15 +6,16 @@ import { useSharedValues } from '../../hooks/useSharedValues'
 const InputPaymentValues = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
-  const [inputCourse, setInputCourse] = useState()
-  const [inputTax, setInputTax] = useState()
+  const [inputCourse, setInputCourse] = useState({
+    parcels: 1,
+    value: 2000,
+    parceled: 0,
+  })
+  const [inputTax] = useState({ parcels: 1, value: 200 })
 
   useEffect(() => {
-    setInputCourse({ parcels: 1, value: 2000, parceled: 0 })
-    setInputTax({ parcels: 1, value: 200 })
-
-    assignNewValue({ name: 'course', value: inputCourse })
-    assignNewValue({ name: 'tax', value: inputTax })
+    assignNewValue({ name: 'courseValue', value: inputCourse })
+    assignNewValue({ name: 'courseTaxValue', value: inputTax })
   }, [])
 
   const incrementParcels = (e) => {
@@ -26,7 +27,7 @@ const InputPaymentValues = () => {
         parceled: inputCourse.value / inputCourse.parcels,
         value: inputCourse.value,
       })
-      assignNewValue({ name: 'course', value: inputCourse })
+      assignNewValue({ name: 'courseValue', value: inputCourse })
     }
   }
 
@@ -39,7 +40,7 @@ const InputPaymentValues = () => {
         parceled: inputCourse.value / inputCourse.parcels,
         value: inputCourse.value,
       })
-      assignNewValue({ name: 'course', value: inputCourse })
+      assignNewValue({ name: 'courseValue', value: inputCourse })
     }
   }
 
