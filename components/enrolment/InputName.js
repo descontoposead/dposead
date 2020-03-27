@@ -25,7 +25,12 @@ const InputName = () => {
       setNextFn: () => setNextStep({ currentStep: 'InputEmail' }),
       vibrateFn: () => toggleVibrating(),
     })
-  }, [])
+
+    //set cache value to input
+    if (inputRef.current) {
+      inputRef.current.value = values[inputRef.current.name] || ''
+    }
+  }, [inputRef.current, step]) //on open step
 
   return (
     currentStepIs('InputName', step) && (

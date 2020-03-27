@@ -5,8 +5,6 @@ const goToNext = (
 
   const isValid = opts.inputEl.value
 
-  console.log(opts)
-
   if (!isValid) {
     opts.inputEl.classList.add('error')
     opts.vibrateFn()

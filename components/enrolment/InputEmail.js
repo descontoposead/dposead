@@ -1,12 +1,36 @@
+import { useRef, useEffect, useState } from 'react'
+import { useVibrate, useToggle } from 'react-use'
+
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
+import { timers, isInfiniteLoop } from '../../helpers/vibrateTimer'
+import goToNext from '../../helpers/goToNext'
 
 const InputEmail = () => {
+  const [vibrating, toggleVibrating] = useToggle(false)
+  const [optsNextStep, setOptNextStep] = useState()
+
+  useVibrate(vibrating, timers, isInfiniteLoop)
+
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
+  const inputRef = useRef()
 
   const assignNewValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
+
+  useEffect(() => {
+    setOptNextStep({
+      inputEl: inputRef.current,
+      setNextFn: () => setNextStep({ currentStep: 'InputGroupPhone' }),
+      vibrateFn: () => toggleVibrating(),
+    })
+
+    //set cache value to input
+    if (inputRef.current) {
+      inputRef.current.value = values[inputRef.current.name] || ''
+    }
+  }, [inputRef.current, step]) //on open step
 
   return (
     currentStepIs('InputEmail', step) && (
@@ -16,6 +40,7 @@ const InputEmail = () => {
         </div>
         <div>
           <input
+            ref={inputRef}
             onChange={({ currentTarget }) => assignNewValue(currentTarget)}
             autoComplete="off"
             autoFocus
@@ -23,6 +48,7 @@ const InputEmail = () => {
             placeholder="escreva seu email..."
             name="email"
           />
+          <strong className="hasError">Você não adicionou um e-mail!</strong>
         </div>
         <div>
           <button
@@ -31,10 +57,7 @@ const InputEmail = () => {
           >
             Voltar
           </button>
-          <button
-            className="next"
-            onClick={() => setNextStep({ currentStep: 'InputGroupPhone' })}
-          >
+          <button className="next" onClick={goToNext(optsNextStep)}>
             É meu melhor e-mail
           </button>
         </div>
