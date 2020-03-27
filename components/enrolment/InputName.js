@@ -1,12 +1,16 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useVibrate, useToggle } from 'react-use'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
+import goToNext from '../../helpers/goToNext'
+import { timers, isInfiniteLoop } from '../../helpers/vibrateTimer'
 
 const InputName = () => {
   const [vibrating, toggleVibrating] = useToggle(false)
-  useVibrate(vibrating, [300, 100, 200, 100, 500, 300], false)
+  const [optsNextStep, setOptNextStep] = useState()
+
+  useVibrate(vibrating, timers, isInfiniteLoop)
 
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
@@ -15,20 +19,13 @@ const InputName = () => {
   const assignNewValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
-  const goToNext = (nextStep) => (e) => {
-    e.preventDefault()
-
-    const isValid = inputRef.current.value
-
-    if (!isValid) {
-      inputRef.current.classList.add('error')
-      toggleVibrating()
-
-      return
-    }
-
-    setNextStep({ currentStep: nextStep })
-  }
+  useEffect(() => {
+    setOptNextStep({
+      inputEl: inputRef.current,
+      setNextFn: () => setNextStep({ currentStep: 'InputEmail' }),
+      vibrateFn: () => toggleVibrating(),
+    })
+  }, [])
 
   return (
     currentStepIs('InputName', step) && (
@@ -49,7 +46,7 @@ const InputName = () => {
           <strong className="hasError">Precisamos saber quem é você!</strong>
         </div>
         <div>
-          <button className="next" onClick={goToNext('InputEmail')}>
+          <button className="next" onClick={goToNext(optsNextStep)}>
             Este é meu nome
           </button>
         </div>
