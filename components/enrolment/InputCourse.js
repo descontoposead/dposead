@@ -1,8 +1,10 @@
-import { useState, useRef } from 'react'
-import { useDebounce } from 'react-use'
+import { useRef, useEffect, useState } from 'react'
+import { useVibrate, useToggle, useDebounce } from 'react-use'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
+import { timers, isInfiniteLoop } from '../../helpers/vibrateTimer'
+import goToNext from '../../helpers/goToNext'
 import like from '../../helpers/like'
 
 const InputCourse = () => {
@@ -26,19 +28,17 @@ const InputCourse = () => {
   ])
   const [coursesDesires, setCoursesDesires] = useState([])
   const [typed, setTyped] = useState('')
-  const [values, setSharedValues] = useSharedValues()
-  const inputRef = useRef()
 
+  const [vibrating, toggleVibrating] = useToggle(false)
+  const [optsNextStep, setOptNextStep] = useState()
+  const [values, setSharedValues] = useSharedValues()
+  const inputRef = useRef(null)
+
+  useVibrate(vibrating, timers, isInfiniteLoop)
   useDebounce(() => similarCourseFrom(typed), 1000, [typed])
 
   const assignNewValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
-
-  const setSelectedCourse = (name) => {
-    inputRef.current.value = name
-    inputRef.current.classList.add('selected')
-    assignNewValue(inputRef.current)
-  }
 
   const similarCourseFrom = (match) =>
     setCoursesDesires(
@@ -48,6 +48,19 @@ const InputCourse = () => {
         .reverse() //just 2 firsts
     )
 
+  useEffect(() => {
+    setOptNextStep({
+      inputEl: () => inputRef.current,
+      setNextFn: () => setNextStep({ currentStep: 'InputPaymentMethod' }),
+      vibrateFn: () => toggleVibrating(),
+    })
+
+    //set cache value to input
+    if (inputRef.current) {
+      inputRef.current.value = values[inputRef.current.name] || ''
+    }
+  }, [step]) //on open step
+
   return (
     currentStepIs('InputCourse', step) && (
       <>
@@ -55,23 +68,44 @@ const InputCourse = () => {
           <h1>Que curso você deseja iniciar?</h1>
         </div>
         <div>
-          <textarea
-            onChange={({ target: { value } }) => setTyped(value)}
-            ref={inputRef}
-            autoComplete="off"
-            autoFocus
-            name="course"
-          ></textarea>
+          <div>
+            <textarea
+              ref={inputRef}
+              name="courseName"
+              onChange={({ target: { value } }) => setTyped(value)}
+              autoComplete="off"
+              autoFocus
+            ></textarea>
+            <strong className="hasError">Você nem pesquisou o curso!</strong>
+          </div>
           {coursesDesires.length > 0 && (
             <div className="result">
-              <strong>Encontramos esses:</strong>
-              <ul>
+              {!values.courseName && (
+                <label htmlFor="courseNameSelect">
+                  <strong>É algum desses?</strong>
+                </label>
+              )}
+              {values.courseName && (
+                <label htmlFor="courseNameSelect">
+                  Este é o curso que você deseja estudar
+                </label>
+              )}
+              <select
+                ref={inputRef}
+                onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+                name="courseName"
+                id="courseNameSelect"
+              >
+                <option value="">Escolha aqui...</option>
                 {coursesDesires.map((course, i) => (
-                  <li key={i} onClick={() => setSelectedCourse(course.name)}>
-                    {course.name} de <i>{course.hours} horas</i>
-                  </li>
+                  <option key={i} value={course.name}>
+                    {course.name}
+                  </option>
                 ))}
-              </ul>
+              </select>
+              <strong className="hasError">
+                Você precisa escolher um curso!
+              </strong>
             </div>
           )}
         </div>
@@ -82,42 +116,31 @@ const InputCourse = () => {
           >
             Voltar
           </button>
-          <button
-            className="next"
-            onClick={() => setNextStep({ currentStep: 'InputPaymentMethod' })}
-          >
+          <button className="next" onClick={goToNext(optsNextStep)}>
             É este que eu quero
           </button>
         </div>
 
-        <style jsx global>{`
-          div:nth-child(2) {
-            height: 250px;
-          }
-          div:nth-child(2) textarea {
-            height: 43%;
-          }
+        <style jsx>{`
           div:nth-child(2) textarea.selected {
             color: #ff9800;
             font-weight: bold;
           }
           div.result {
-            border-top: 4px solid;
+            margin-top: -8px;
             display: flex;
             flex-wrap: wrap;
             flex-direction: column;
             justify-content: center;
           }
-          div.result ul {
-            list-style: none;
-            font-size: 1.2rem;
-            margin-bottom: 70px;
-            margin-top: 0;
-            padding: 0;
-          }
-          div.result ul li {
-            text-decoration: underline;
-            cursor: pointer;
+          div.result select {
+            font-size: 1.3rem;
+            width: 100%;
+            border: 4px solid #292929;
+            background: #fff;
+            padding: 5px 0px;
+            font-weight: 700;
+            border-radius: 6px;
           }
           div.result strong {
             font-size: 2rem;

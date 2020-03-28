@@ -20,7 +20,7 @@ const InputPaymentValues = () => {
 
   const incrementParcels = (e) => {
     e.preventDefault()
-    const limitIncrement = 3
+    const limitIncrement = 18
     if (inputCourse.parcels < limitIncrement) {
       setInputCourse({
         parcels: ++inputCourse.parcels,
@@ -57,37 +57,40 @@ const InputPaymentValues = () => {
             <h1>A vista com</h1>
           )}
         </div>
-        <section>
-          <strong>
-            O <mark>Curso</mark> por
-          </strong>
-          {values.paymentMethod === 'creditCard' ? (
-            <>
-              <button onClick={(e) => incrementParcels(e)}>&#10092;</button>
-              <strong>
-                {inputCourse.parcels} x de{' '}
-                <i>
-                  {(inputCourse.parceled || inputCourse.value).toFixed(2)} reais
-                </i>
-              </strong>
-              <button onClick={(e) => decrementParcels(e)}>&#10093;</button>
-            </>
-          ) : (
-            <>
-              <strong>
-                <i>{inputCourse.value.toFixed(2)} reais</i>
-              </strong>
-            </>
-          )}
-        </section>
-        <section>
-          <strong>
-            A <mark>Matricula</mark> por
-          </strong>
-          <strong>
-            {inputTax.value} <i>reais</i>
-          </strong>
-        </section>
+        <div>
+          <section>
+            <strong>
+              O <mark>Curso</mark> por
+            </strong>
+            {values.paymentMethod === 'creditCard' ? (
+              <>
+                <button onClick={(e) => incrementParcels(e)}>&#10092;</button>
+                <strong>
+                  {inputCourse.parcels} x de{' '}
+                  <i>
+                    {(inputCourse.parceled || inputCourse.value).toFixed(2)}{' '}
+                    reais
+                  </i>
+                </strong>
+                <button onClick={(e) => decrementParcels(e)}>&#10093;</button>
+              </>
+            ) : (
+              <>
+                <strong>
+                  <i>{inputCourse.value.toFixed(2)} reais</i>
+                </strong>
+              </>
+            )}
+          </section>
+          <section>
+            <strong>
+              A <mark>Matricula</mark> por
+            </strong>
+            <strong>
+              {inputTax.value} <i>reais</i>
+            </strong>
+          </section>
+        </div>
         <div>
           <button
             className="prev"
@@ -97,7 +100,9 @@ const InputPaymentValues = () => {
           </button>
           <button
             className="next"
-            onClick={() => setNextStep({ currentStep: 'Resume' })}
+            onClick={() =>
+              setNextStep({ currentStep: 'Resume', values: values })
+            }
           >
             Assim está bom
           </button>
@@ -110,11 +115,16 @@ const InputPaymentValues = () => {
             flex-direction: column;
             font-size: 2rem;
             align-items: baseline;
+            text-align: left;
+            margin-bottom: 40px
+          }
+          section:last-child {
+            margin-bottom: 0;
           }
           section button {
             transform: rotate(90deg);
-            padding: 2px;
-            font-size: 1.2rem;
+            padding: 5px;
+            font-size: 1.5rem;
             border: 0;
             background: #ffffff;
             color: #292929;
@@ -122,6 +132,9 @@ const InputPaymentValues = () => {
             cursor: pointer;
             border: 4px solid;
             margin-left: 6px;
+          }
+          section > strong:first-child {
+            margin-bottom: 10px;
           }
           i {
             font-size 1.5rem

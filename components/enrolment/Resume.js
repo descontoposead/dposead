@@ -5,6 +5,8 @@ const Resume = () => {
   const [step] = useSharedStep()
   const [values] = useSharedValues()
 
+  console.log(values)
+
   return (
     currentStepIs('Resume', step) && (
       <>

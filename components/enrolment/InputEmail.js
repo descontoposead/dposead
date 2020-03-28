@@ -14,14 +14,14 @@ const InputEmail = () => {
 
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
-  const inputRef = useRef()
+  const inputRef = useRef(null)
 
   const assignNewValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
     setOptNextStep({
-      inputEl: inputRef.current,
+      inputEl: () => inputRef.current,
       setNextFn: () => setNextStep({ currentStep: 'InputGroupPhone' }),
       vibrateFn: () => toggleVibrating(),
     })
@@ -30,7 +30,7 @@ const InputEmail = () => {
     if (inputRef.current) {
       inputRef.current.value = values[inputRef.current.name] || ''
     }
-  }, [inputRef.current, step]) //on open step
+  }, [step]) //on open step
 
   return (
     currentStepIs('InputEmail', step) && (
@@ -39,16 +39,21 @@ const InputEmail = () => {
           <h1>Qual e-mail você usa?</h1>
         </div>
         <div>
-          <input
-            ref={inputRef}
-            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
-            autoComplete="off"
-            autoFocus
-            type="text"
-            placeholder="escreva seu email..."
-            name="email"
-          />
-          <strong className="hasError">Você não adicionou um e-mail!</strong>
+          <div>
+            {values.email && (
+              <label htmlFor="email">E-mail que você informou</label>
+            )}
+            <input
+              ref={inputRef}
+              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              autoComplete="off"
+              autoFocus
+              type="text"
+              placeholder="escreva seu email..."
+              name="email"
+            />
+            <strong className="hasError">Você não adicionou um e-mail!</strong>
+          </div>
         </div>
         <div>
           <button

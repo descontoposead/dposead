@@ -14,14 +14,14 @@ const InputName = () => {
 
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
-  const inputRef = useRef()
+  const inputRef = useRef(null)
 
   const assignNewValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
     setOptNextStep({
-      inputEl: inputRef.current,
+      inputEl: () => inputRef.current,
       setNextFn: () => setNextStep({ currentStep: 'InputEmail' }),
       vibrateFn: () => toggleVibrating(),
     })
@@ -30,7 +30,7 @@ const InputName = () => {
     if (inputRef.current) {
       inputRef.current.value = values[inputRef.current.name] || ''
     }
-  }, [inputRef.current, step]) //on open step
+  }, [step]) //on open step
 
   return (
     currentStepIs('InputName', step) && (
@@ -39,16 +39,21 @@ const InputName = () => {
           <h1>Qual é seu nome completo?</h1>
         </div>
         <div>
-          <textarea
-            ref={inputRef}
-            onChange={({ currentTarget }) => assignNewValue(currentTarget)}
-            autoComplete="off"
-            autoFocus
-            placeholder="escreva seu nome..."
-            type="text"
-            name="name"
-          ></textarea>
-          <strong className="hasError">Precisamos saber quem é você!</strong>
+          <div>
+            {values.name && (
+              <label htmlFor="dateOfBirth">Nome que você informou</label>
+            )}
+            <textarea
+              ref={inputRef}
+              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              autoComplete="off"
+              autoFocus
+              placeholder="escreva seu nome..."
+              type="text"
+              name="name"
+            ></textarea>
+            <strong className="hasError">Precisamos saber quem é você!</strong>
+          </div>
         </div>
         <div>
           <button className="next" onClick={goToNext(optsNextStep)}>

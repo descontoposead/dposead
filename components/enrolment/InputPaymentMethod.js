@@ -1,18 +1,23 @@
+import { useRef, useEffect } from 'react'
+
 import { currentStepIs, useSharedStep } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
-import { useEffect } from 'react'
 
 const InputPaymentMethod = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
+  const inputRef = useRef(null)
 
   const assignNewValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
-  useEffect(
-    () => assignNewValue({ name: 'paymentMethod', value: 'creditCard' }),
-    []
-  )
+  useEffect(() => {
+    assignNewValue({ name: 'paymentMethod', value: 'creditCard' })
+
+    if (inputRef.current) {
+      inputRef.current.value = values[inputRef.current.name]
+    }
+  }, [])
 
   return (
     currentStepIs('InputPaymentMethod', step) && (
@@ -24,7 +29,9 @@ const InputPaymentMethod = () => {
           <label htmlFor="creditCard">
             <input
               onChange={({ currentTarget }) => assignNewValue(currentTarget)}
-              defaultChecked={true}
+              defaultChecked={
+                !values.paymentMethod || values.paymentMethod === 'creditCard'
+              }
               id="creditCard"
               type="radio"
               name="paymentMethod"
@@ -35,6 +42,7 @@ const InputPaymentMethod = () => {
           <label htmlFor="billet">
             <input
               onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              defaultChecked={values.paymentMethod === 'billet'}
               id="billet"
               type="radio"
               name="paymentMethod"
@@ -65,6 +73,7 @@ const InputPaymentMethod = () => {
           div:nth-child(2) label input {
             margin-right: 10px;
             width: 30px;
+            height: 30px;
           }
           label {
             display: flex;

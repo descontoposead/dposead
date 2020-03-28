@@ -22,6 +22,7 @@ const Form = () => {
   const [step] = useSharedStep()
 
   useEffect(() => {
+    console.log('Formlário completo:')
     console.log(step)
   }, [step])
 
@@ -48,30 +49,37 @@ const Form = () => {
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css?family=Baloo+2&display=swap');
 
+        @media (min-width: 449px) {
+          form {
+            justify-content: space-around;
+          }
+        }
+        @media (max-width: 450px) {
+          form {
+            justify-content: space-between;
+            padding: 0 0 20px;
+            box-sizing: border-box;
+          }
+        }
+
         strong.hasError {
-          opacity: 0;
+          display: none;
         }
         .error + strong.hasError {
-          opacity: 1;
+          display: block;
           color: #f44336;
         }
         .error {
           border-bottom: 4px solid #f44336 !important;
         }
-
         :root {
-          touch-action: none;
-          overflow: hidden;
+          touch-action: pan-y;
           font-family: 'Baloo 2', cursive;
         }
         form {
           width: 100vw;
           display: flex;
           flex-wrap: wrap;
-          height: 100vh;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-around;
         }
         form > div {
           width: 100vw;
@@ -79,11 +87,27 @@ const Form = () => {
           padding: 0 16px;
           box-sizing: border-box;
         }
+        form > div:nth-child(1),
+        form > div:nth-child(2) {
+          align-self: flex-start;
+        }
+        form > div:nth-child(3) {
+          display: flex;
+          justify-content: center;
+          align-items: stretch;
+        }
+        form > div:nth-child(2) > div {
+          margin-bottom: 15px;
+        }
+        form > div:nth-child(2) > div:last-child {
+          margin-bottom: 0;
+        }
         form > div:nth-child(2) {
           display: flex;
           flex-wrap: wrap;
           align-content: center;
           justify-content: center;
+          margin-bottom: 30px;
         }
         form > div:nth-child(2) input:first-child {
           margin-bottom: 5px;
@@ -94,20 +118,17 @@ const Form = () => {
         }
         form > div:nth-child(2) textarea {
           resize: none;
-          height: 100%;
         }
         form > div:nth-child(2) textarea,
         form > div:nth-child(2) input {
-          width: 100vw;
-          height: 100%;
+          width: 90vw;
           border: 0;
           font-size: 1.8rem;
           text-align: center;
           overflow: hidden;
         }
         form > div:nth-child(2) strong {
-          flex: 1;
-          margin-top: 20px;
+          width: 100%;
           font-size: 1.5rem;
         }
         form > div h1 {
@@ -126,7 +147,6 @@ const Form = () => {
         form > div button.prev {
           border-color: #6b6b6b;
           color: #6b6b6b;
-          margin-bottom: 5px;
           margin-right: 5px;
         }
         form > div button.next {
