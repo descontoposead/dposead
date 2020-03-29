@@ -72,7 +72,11 @@ const Form = () => {
         .error {
           border-bottom: 4px solid #f44336 !important;
         }
+        body {
+          margin: 0;
+        }
         :root {
+          margin: 0;
           touch-action: pan-y;
           font-family: 'Baloo 2', cursive;
         }
