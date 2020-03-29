@@ -17,6 +17,7 @@ import InputCourse from './InputCourse'
 import InputPaymentValues from './InputPaymentValues'
 import InputPaymentMethod from './InputPaymentMethod'
 import Resume from './Resume'
+import FinalStep from './FinalStep'
 
 const Form = () => {
   const [step] = useSharedStep()
@@ -44,6 +45,7 @@ const Form = () => {
         <InputPaymentValues />
         <InputPaymentMethod />
         <Resume />
+        <FinalStep />
       </SharedValuesProvider>
 
       <style jsx global>{`
