@@ -34,9 +34,20 @@ const InputCourse = () => {
 
   //scrap-fetch courses
   useEffect(() => {
-    fetch('/api/scrap')
-      .then((res) => res.json())
-      .then(setCourses)
+    let page = 1
+
+    ;(async function paginate() {
+      const stream = await fetch('/api/courses/' + page++)
+      const res = await stream.json()
+
+      if (stream.status === 200) {
+        setCourses((data) => [...data, ...res])
+      } else {
+        return
+      }
+
+      await paginate()
+    })()
   }, [])
 
   useEffect(() => {
