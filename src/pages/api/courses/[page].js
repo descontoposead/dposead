@@ -1,4 +1,4 @@
-import osmosis from 'osmosis'
+import scraper from 'osmosis'
 
 export default (req, res) => {
   let data
@@ -7,13 +7,13 @@ export default (req, res) => {
     query: { page },
   } = req
 
-  osmosis
+  scraper
     .get('https://www.faculdadeunicaposgraduacao.com.br/pos-graduacao/', {
       pg: page || 1,
     })
     .find('.graduacao > .items')
     .set({
-      courses: osmosis
+      courses: scraper
         .find('a')
         .set('name', 'h3.name')
         .set('hours', 'span.duration')

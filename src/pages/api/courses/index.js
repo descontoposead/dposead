@@ -1,4 +1,4 @@
-import osmosis from 'osmosis'
+import scraper from 'osmosis'
 
 export default (req, res) => {
   let data
@@ -14,11 +14,11 @@ export default (req, res) => {
     })
   }
 
-  osmosis
+  scraper
     .get(link)
     .find('#grades')
     .set({
-      grades: osmosis
+      grades: scraper
         .find('.discipline')
         .set('discipline', 'td:first-child')
         .set('hours', 'td:last-child'),
