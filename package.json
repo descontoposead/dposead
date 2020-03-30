@@ -16,6 +16,7 @@
   "dependencies": {
     "gn-api-sdk-node": "^1.0.0",
     "next": "9.3.0",
+    "osmosis": "^1.1.10",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "react-text-mask": "^5.4.3",

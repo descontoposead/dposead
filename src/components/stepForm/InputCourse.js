@@ -9,23 +9,7 @@ import like from '../../helpers/like'
 
 const InputCourse = () => {
   const [step, setNextStep] = useSharedStep()
-  const [courses, setCourses] = useState([
-    {
-      name: 'Administração de negocios',
-      area: 'Administração',
-      hours: 400,
-    },
-    {
-      name: 'Pedagogia para crianças do segundo grau',
-      area: 'Pedagogia',
-      hours: 200,
-    },
-    {
-      name: 'Educação fisica nas escolas',
-      area: 'Pedagogia',
-      hours: 200,
-    },
-  ])
+  const [courses, setCourses] = useState([])
   const [coursesDesires, setCoursesDesires] = useState([])
   const [typed, setTyped] = useState('')
 
@@ -43,10 +27,17 @@ const InputCourse = () => {
   const similarCourseFrom = (match) =>
     setCoursesDesires(
       courses
-        .filter(({ name, area }) => like(match, name) || like(match, area))
-        .splice(0, 2)
-        .reverse() //just 2 firsts
+        .filter(({ name }) => like(match, name))
+        .splice(0, 5)
+        .reverse() //just 10 firsts
     )
+
+  //scrap-fetch courses
+  useEffect(() => {
+    fetch('/api/scrap')
+      .then((res) => res.json())
+      .then(setCourses)
+  }, [])
 
   useEffect(() => {
     setOptNextStep({

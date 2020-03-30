@@ -7,7 +7,11 @@ const Enrolment = () => (
       <Form />
     </SharedStepProvider>
 
-    <img id="logo" src="/static/images/logo-prominas.webp" alt="" />
+    <img
+      id="logo"
+      src="/static/images/logo-prominas.webp"
+      alt="Logo da Instituição parceira ofertante dos cursos"
+    />
 
     <style jsx>{`
       img#logo {
