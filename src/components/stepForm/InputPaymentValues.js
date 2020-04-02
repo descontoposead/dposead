@@ -14,8 +14,8 @@ const InputPaymentValues = () => {
   const [inputTax] = useState({ parcels: 1, value: 200 })
 
   useEffect(() => {
-    assignNewValue({ name: 'courseValue', value: inputCourse })
-    assignNewValue({ name: 'courseTaxValue', value: inputTax })
+    controlInputValue({ name: 'courseValue', value: inputCourse })
+    controlInputValue({ name: 'courseTaxValue', value: inputTax })
   }, [])
 
   const incrementParcels = (e) => {
@@ -27,7 +27,7 @@ const InputPaymentValues = () => {
         parceled: inputCourse.value / inputCourse.parcels,
         value: inputCourse.value,
       })
-      assignNewValue({ name: 'courseValue', value: inputCourse })
+      controlInputValue({ name: 'courseValue', value: inputCourse })
     }
   }
 
@@ -40,11 +40,11 @@ const InputPaymentValues = () => {
         parceled: inputCourse.value / inputCourse.parcels,
         value: inputCourse.value,
       })
-      assignNewValue({ name: 'courseValue', value: inputCourse })
+      controlInputValue({ name: 'courseValue', value: inputCourse })
     }
   }
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   return (

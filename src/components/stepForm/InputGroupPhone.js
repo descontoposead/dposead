@@ -22,7 +22,7 @@ const InputGroupPhone = () => {
     inputPhoneRef: useRef(null),
   }
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const InputGroupPhone = () => {
             )}
             <MaskedInput
               ref={inputGroupRefs.inputPhoneRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               name="phone"
               placeholder="seu telefone..."
@@ -89,7 +89,7 @@ const InputGroupPhone = () => {
             )}
             <MaskedInput
               ref={inputGroupRefs.inputWhatsappRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               name="whatsapp"
               placeholder="seu whatsapp..."

@@ -22,7 +22,7 @@ const InputGroupGraduation = () => {
     dateOfGraduation: useRef(null),
   }
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const InputGroupGraduation = () => {
             <label htmlFor="graduation">Nome da sua graduação</label>
             <input
               ref={inputGroupRefs.graduation}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               autoFocus
               type="text"
@@ -72,7 +72,7 @@ const InputGroupGraduation = () => {
             <label htmlFor="dateOfGraduation">Quando eu colei grau</label>
             <MaskedInput
               ref={inputGroupRefs.dateOfGraduation}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               name="dateOfGraduation"
               placeholder="dia/mês/ano"

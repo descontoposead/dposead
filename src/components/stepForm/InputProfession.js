@@ -16,7 +16,7 @@ const InputProfession = () => {
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const InputProfession = () => {
             )}
             <textarea
               ref={inputRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               autoFocus
               name="profession"

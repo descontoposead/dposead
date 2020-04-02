@@ -21,7 +21,7 @@ const InputGroupParent = () => {
     inputMotherNameRef: useRef(null),
   }
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const InputGroupParent = () => {
             )}
             <input
               ref={inputGroupRefs.inputParentNameRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               autoFocus
               type="text"
@@ -73,7 +73,7 @@ const InputGroupParent = () => {
             )}
             <input
               ref={inputGroupRefs.inputMotherNameRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               type="text"
               name="motherName"

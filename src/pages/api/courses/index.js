@@ -10,7 +10,7 @@ export default (req, res) => {
   if (!link) {
     return res.status(400).json({
       link: 'required',
-      example: '/api/courses&link=example.com',
+      example: '/api/courses?link=example.com',
     })
   }
 

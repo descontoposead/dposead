@@ -16,7 +16,7 @@ const InputFullAddress = () => {
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const InputFullAddress = () => {
             <label htmlFor="fullAdress"> É aqui que eu moro</label>
             <textarea
               ref={inputRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               autoFocus
               name="fullAddress"

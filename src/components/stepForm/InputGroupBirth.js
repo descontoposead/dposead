@@ -23,7 +23,7 @@ const InputGroupBirth = () => {
     inputDateOfBirthRef: useRef(null),
   }
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const InputGroupBirth = () => {
             )}
             <input
               ref={inputGroupRefs.inputStateOfBirthRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               autoFocus
               name="stateOfBirth"
@@ -81,7 +81,7 @@ const InputGroupBirth = () => {
             )}
             <input
               ref={inputGroupRefs.inputCityOfBirthRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               type="text"
               name="cityOfBirth"
               placeholder="cidade que vc nasceu..."
@@ -93,7 +93,7 @@ const InputGroupBirth = () => {
             <MaskedInput
               id="dateOfBirth"
               ref={inputGroupRefs.inputDateOfBirthRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               name="dateOfBirth"
               placeholder="dia/mês/ano"

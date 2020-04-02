@@ -12,6 +12,8 @@ const InputCourse = () => {
   const [courses, setCourses] = useState([])
   const [coursesDesires, setCoursesDesires] = useState([])
   const [typed, setTyped] = useState('')
+  const [selectedGrade, setSelectedGrade] = useState(null)
+  const [isToggleGrade, setToggleGrade] = useState(false)
 
   const [vibrating, toggleVibrating] = useToggle(false)
   const [optsNextStep, setOptNextStep] = useState()
@@ -20,9 +22,6 @@ const InputCourse = () => {
 
   useVibrate(vibrating, timers, isInfiniteLoop)
   useDebounce(() => similarCourseFrom(typed), 1000, [typed])
-
-  const assignNewValue = (target) =>
-    setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   const similarCourseFrom = (match) =>
     setCoursesDesires(
@@ -34,7 +33,7 @@ const InputCourse = () => {
 
   //scrap-fetch courses
   useEffect(() => {
-    let page = 1
+    let page = 0
 
     ;(async function paginate() {
       const stream = await fetch('/api/courses/' + page++)
@@ -61,7 +60,42 @@ const InputCourse = () => {
     if (inputRef.current) {
       inputRef.current.value = values[inputRef.current.name] || ''
     }
-  }, [step]) //on open step
+  }, [step])
+
+  const controlInputValue = (target) =>
+    setSharedValues(
+      Object.assign(values, {
+        [target.name]: target.value,
+      })
+    )
+
+  const onSelectCourse = () => ({ target }) => {
+    if (!target.value) return
+
+    const optionSelected = JSON.parse(
+      target.options[target.selectedIndex].getAttribute('data-object')
+    )
+
+    fetch(optionSelected._detail)
+      .then((res) => res.json())
+      .then(setSelectedGrade)
+      .catch(console.log)
+
+    setSelectedGrade([])
+    setToggleGrade(false)
+    controlInputValue(target)
+  }
+
+  const onSearchCourse = (target) => {
+    if (target.value) {
+      setTyped(target.value)
+    } else {
+      controlInputValue(target)
+    }
+
+    setSelectedGrade([])
+    setToggleGrade(false)
+  }
 
   return (
     currentStepIs('InputCourse', step) && (
@@ -74,7 +108,7 @@ const InputCourse = () => {
             <textarea
               ref={inputRef}
               name="courseName"
-              onChange={({ target: { value } }) => setTyped(value)}
+              onChange={({ target }) => onSearchCourse(target)}
               autoComplete="off"
               autoFocus
             ></textarea>
@@ -83,28 +117,55 @@ const InputCourse = () => {
           {coursesDesires.length > 0 && (
             <div className="result">
               {!values.courseName && (
-                <label htmlFor="courseNameSelect">
+                <label htmlFor="courseNameSelected">
                   <strong>É algum desses?</strong>
                 </label>
               )}
               {values.courseName && (
-                <label htmlFor="courseNameSelect">
+                <label htmlFor="courseNameSelected">
                   Este é o curso que você deseja estudar
                 </label>
               )}
               <select
                 ref={inputRef}
-                onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+                onChange={onSelectCourse()}
                 name="courseName"
-                id="courseNameSelect"
+                id="courseNameSelected"
               >
                 <option value="">Escolha aqui...</option>
                 {coursesDesires.map((course, i) => (
-                  <option key={i} value={course.name}>
+                  <option
+                    key={i}
+                    value={course.name}
+                    data-object={JSON.stringify(course)}
+                  >
                     {course.name}
                   </option>
                 ))}
               </select>
+              {!isToggleGrade && (
+                <button
+                  onClick={(event) => {
+                    event.preventDefault()
+                    setToggleGrade(true)
+                  }}
+                >
+                  Ver a grade
+                </button>
+              )}
+              {isToggleGrade &&
+                (selectedGrade.length ? (
+                  <ul>
+                    {selectedGrade.map((grade) => (
+                      <li>
+                        <span>{grade.discipline}</span>
+                        <mark>{grade.hours}</mark>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="fetching">Buscando no servidor...</div>
+                ))}
               <strong className="hasError">
                 Você precisa escolher um curso!
               </strong>
@@ -135,6 +196,11 @@ const InputCourse = () => {
             flex-direction: column;
             justify-content: center;
           }
+          div.result > div.fetching {
+            font-weight: bold;
+            margin-top: 28px;
+            font-size: 1.3rem;
+          }
           div.result select {
             font-size: 1.3rem;
             width: 100%;
@@ -146,6 +212,31 @@ const InputCourse = () => {
           }
           div.result strong {
             font-size: 2rem;
+          }
+          div.result > button {
+            margin-top: 10px;
+            padding: 5px;
+          }
+          div.result > ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1.5rem;
+            height: 31vh;
+            overflow-y: auto;
+          }
+          div.result > ul li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+          }
+          div.result > ul li mark {
+            padding: 0 5px;
+            margin-left: 10px;
+            align-self: center;
+          }
+          div.result > ul li span {
+            text-align: left;
+            line-height: 1;
           }
         `}</style>
       </>

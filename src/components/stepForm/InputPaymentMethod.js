@@ -8,11 +8,11 @@ const InputPaymentMethod = () => {
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
-    assignNewValue({ name: 'paymentMethod', value: 'creditCard' })
+    controlInputValue({ name: 'paymentMethod', value: 'creditCard' })
 
     if (inputRef.current) {
       inputRef.current.value = values[inputRef.current.name]
@@ -28,7 +28,7 @@ const InputPaymentMethod = () => {
         <div>
           <label htmlFor="creditCard">
             <input
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               defaultChecked={
                 !values.paymentMethod || values.paymentMethod === 'creditCard'
               }
@@ -41,7 +41,7 @@ const InputPaymentMethod = () => {
           </label>
           <label htmlFor="billet">
             <input
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               defaultChecked={values.paymentMethod === 'billet'}
               id="billet"
               type="radio"

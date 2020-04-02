@@ -8,11 +8,11 @@ const InputCivilStatus = () => {
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
-    assignNewValue({ name: 'civilStatus', value: 'single' })
+    controlInputValue({ name: 'civilStatus', value: 'single' })
 
     if (inputRef.current) {
       inputRef.current.value = values[inputRef.current.name]
@@ -29,7 +29,7 @@ const InputCivilStatus = () => {
           <label htmlFor="single">
             <input
               ref={inputRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               defaultChecked={
                 !values.civilStatus || values.civilStatus === 'single'
               }
@@ -42,7 +42,7 @@ const InputCivilStatus = () => {
           </label>
           <label htmlFor="married">
             <input
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               defaultChecked={values.civilStatus === 'married'}
               id="married"
               type="radio"

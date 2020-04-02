@@ -22,7 +22,7 @@ const InputGroupDoc = () => {
     inputPersonalRegistryRef: useRef(null),
   }
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const InputGroupDoc = () => {
             )}
             <MaskedInput
               ref={inputGroupRefs.inputPersonalDocumentRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               autoFocus
               placeholder="escreva seu cpf..."
@@ -89,7 +89,7 @@ const InputGroupDoc = () => {
             )}
             <input
               ref={inputGroupRefs.inputPersonalRegistryRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               type="text"
               name="personalRegistry"

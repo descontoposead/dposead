@@ -19,7 +19,7 @@ export default (req, res) => {
         .set('hours', 'span.duration')
         .set(
           '_detail',
-          (link) => '/api/courses&link=' + link.getAttribute('href')
+          (link) => '/api/courses?link=' + link.getAttribute('href')
         ),
     })
     .data((scrpData) => (data = scrpData))

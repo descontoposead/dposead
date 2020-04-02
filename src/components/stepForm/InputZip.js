@@ -17,7 +17,7 @@ const InputZip = () => {
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
 
-  const assignNewValue = (target) =>
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const InputZip = () => {
             {values.zipCode && <label htmlFor="zipCode">Seu CEP é este</label>}
             <MaskedInput
               ref={inputRef}
-              onChange={({ currentTarget }) => assignNewValue(currentTarget)}
+              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               autoFocus
               name="zipCode"
