@@ -12,8 +12,9 @@ const InputCourse = () => {
   const [courses, setCourses] = useState([])
   const [coursesDesires, setCoursesDesires] = useState([])
   const [typed, setTyped] = useState('')
-  const [selectedGrade, setSelectedGrade] = useState(null)
-  const [isToggleGrade, setToggleGrade] = useState(false)
+  const [fetchedGrade, setFetchedGrade] = useState([])
+  const [isToggleGradeButton, setToggleGradeButton] = useState(false)
+  const [isSelectedOption, setSelectedOption] = useState(false)
 
   const [vibrating, toggleVibrating] = useToggle(false)
   const [optsNextStep, setOptNextStep] = useState()
@@ -70,19 +71,24 @@ const InputCourse = () => {
     )
 
   const onSelectCourse = () => ({ target }) => {
-    if (!target.value) return
+    if (!target.value) {
+      setSelectedOption(false)
+      return
+    }
 
     const optionSelected = JSON.parse(
       target.options[target.selectedIndex].getAttribute('data-object')
     )
 
+    setSelectedOption(true)
+
     fetch(optionSelected._detail)
       .then((res) => res.json())
-      .then(setSelectedGrade)
+      .then(setFetchedGrade)
       .catch(console.log)
 
-    setSelectedGrade([])
-    setToggleGrade(false)
+    setFetchedGrade([])
+    setToggleGradeButton(false)
     controlInputValue(target)
   }
 
@@ -93,8 +99,9 @@ const InputCourse = () => {
       controlInputValue(target)
     }
 
-    setSelectedGrade([])
-    setToggleGrade(false)
+    setFetchedGrade([])
+    setToggleGradeButton(false)
+    setSelectedOption(false)
   }
 
   return (
@@ -143,28 +150,30 @@ const InputCourse = () => {
                   </option>
                 ))}
               </select>
-              {!isToggleGrade && (
+              {!isToggleGradeButton && isSelectedOption && (
                 <button
                   onClick={(event) => {
                     event.preventDefault()
-                    setToggleGrade(true)
+                    setToggleGradeButton(true)
                   }}
                 >
                   Ver a grade
                 </button>
               )}
-              {isToggleGrade &&
-                (selectedGrade.length ? (
+              {isToggleGradeButton &&
+                (fetchedGrade.length ? (
                   <ul>
-                    {selectedGrade.map((grade) => (
-                      <li>
+                    {fetchedGrade.map((grade, i) => (
+                      <li key={i}>
                         <span>{grade.discipline}</span>
                         <mark>{grade.hours}</mark>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <div className="fetching">Buscando no servidor...</div>
+                  <div className="fetching">
+                    Buscando no servidor, isso pode levar alguns segundos...
+                  </div>
                 ))}
               <strong className="hasError">
                 Você precisa escolher um curso!
@@ -216,6 +225,7 @@ const InputCourse = () => {
           div.result > button {
             margin-top: 10px;
             padding: 5px;
+            border-radius: 6px;
           }
           div.result > ul {
             list-style: none;

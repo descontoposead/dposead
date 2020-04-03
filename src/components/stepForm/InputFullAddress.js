@@ -40,14 +40,13 @@ const InputFullAddress = () => {
         </div>
         <div>
           <div>
-            <label htmlFor="fullAdress"> É aqui que eu moro</label>
+            <label htmlFor="fullAdress">Este endereço está completo?</label>
             <textarea
               ref={inputRef}
               onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               autoComplete="off"
               autoFocus
               name="fullAddress"
-              value="R PE Dionisio - 278 - Centro, Córrego novo, Minas Gerais"
             ></textarea>
             <strong className="hasError">
               Precisamos saber onde você está!

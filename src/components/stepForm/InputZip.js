@@ -34,6 +34,35 @@ const InputZip = () => {
     }
   }, [step]) //on open step
 
+  const onType = () => ({ currentTarget }) => {
+    const zipFullLength = 9
+    const isCompletedZipValue =
+      currentTarget.value.replace(/_/, '').length === zipFullLength
+
+    if (isCompletedZipValue) {
+      controlInputValue(currentTarget)
+
+      fetch(
+        'https://apps.widenet.com.br/busca-cep/api/cep.json?code=' +
+          currentTarget.value
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.status === 200) {
+            const addresses = [res.city, res.state, res.district, res.address]
+            const inputFullAddressTarget = {
+              name: 'fullAddress',
+              value: addresses.filter(Boolean).join(', '),
+            }
+            controlInputValue(inputFullAddressTarget)
+          }
+
+          if (res.status === 404) {
+          }
+        })
+    }
+  }
+
   return (
     currentStepIs('InputZip', step) && (
       <>
@@ -45,12 +74,12 @@ const InputZip = () => {
             {values.zipCode && <label htmlFor="zipCode">Seu CEP é este</label>}
             <MaskedInput
               ref={inputRef}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={onType()}
               autoComplete="off"
               autoFocus
               name="zipCode"
               placeholder="escreva o cep..."
-              mask={[/\d/, /\d/, '-', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]}
+              mask={[/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]}
             />
             <strong className="hasError">
               Precisamos saber onde você está!

@@ -109,6 +109,9 @@ const InputPaymentValues = () => {
         </div>
 
         <style jsx>{`
+          div:nth-child(2) {
+            flex-direction: column;
+          }
           section {
             width: 215px;
             display: flex;
