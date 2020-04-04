@@ -28,8 +28,30 @@ const InputGroupPhone = () => {
   useEffect(() => {
     setOptNextStep({
       inputGroup: [
-        () => inputGroupRefs.inputPhoneRef.current.inputElement,
-        () => inputGroupRefs.inputWhatsappRef.current.inputElement,
+        () => ({
+          inputEl: inputGroupRefs.inputPhoneRef.current.inputElement,
+          validator: () => [
+            new RegExp(/^[1-9]{2}9?[0-9]{8}$/).test(
+              inputGroupRefs.inputPhoneRef.current.inputElement.value.replace(
+                /\D/g,
+                ''
+              )
+            ),
+            'invalid-value-error',
+          ],
+        }),
+        () => ({
+          inputEl: inputGroupRefs.inputWhatsappRef.current.inputElement,
+          validator: () => [
+            new RegExp(/^[1-9]{2}9?[0-9]{8}$/).test(
+              inputGroupRefs.inputWhatsappRef.current.inputElement.value.replace(
+                /\D/g,
+                ''
+              )
+            ),
+            'invalid-value-error',
+          ],
+        }),
       ],
       setNextFn: () => setNextStep({ currentStep: 'InputGroupDoc' }),
       vibrateFn: () => toggleVibrating(),
@@ -81,7 +103,10 @@ const InputGroupPhone = () => {
                 /\d/,
               ]}
             />
-            <strong className="hasError">Você esqueceu o telefone!</strong>
+            <strong className="hasEmptyError">Você esqueceu o telefone!</strong>
+            <strong className="hasInvalidError">
+              O telefone não é válido! Como entrariamos em contato?
+            </strong>
           </div>
           <div>
             {values.whatsapp && (
@@ -111,7 +136,10 @@ const InputGroupPhone = () => {
                 /\d/,
               ]}
             />
-            <strong className="hasError">Você esqueceu o whatsapp!</strong>
+            <strong className="hasEmptyError">Você esqueceu o whatsapp!</strong>
+            <strong className="hasInvalidError">
+              Precisamos de um Whatsapp válido, como conversariamos?
+            </strong>
           </div>
         </div>
         <div>
@@ -122,7 +150,7 @@ const InputGroupPhone = () => {
             Voltar
           </button>
           <button className="next" onClick={goToNext(optsNextStep)}>
-            Podemos conversar
+            Contatos OK
           </button>
         </div>
       </>

@@ -29,9 +29,15 @@ const InputGroupBirth = () => {
   useEffect(() => {
     setOptNextStep({
       inputGroup: [
-        () => inputGroupRefs.inputStateOfBirthRef.current,
-        () => inputGroupRefs.inputCityOfBirthRef.current,
-        () => inputGroupRefs.inputDateOfBirthRef.current.inputElement,
+        () => ({
+          inputEl: inputGroupRefs.inputStateOfBirthRef.current,
+        }),
+        () => ({
+          inputEl: inputGroupRefs.inputCityOfBirthRef.current,
+        }),
+        () => ({
+          inputEl: inputGroupRefs.inputDateOfBirthRef.current.inputElement,
+        }),
       ],
       setNextFn: () => setNextStep({ currentStep: 'InputGroupParent' }),
       vibrateFn: () => toggleVibrating(),

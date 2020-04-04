@@ -27,8 +27,12 @@ const InputGroupParent = () => {
   useEffect(() => {
     setOptNextStep({
       inputGroup: [
-        () => inputGroupRefs.inputParentNameRef.current,
-        () => inputGroupRefs.inputMotherNameRef.current,
+        () => ({
+          inputEl: inputGroupRefs.inputParentNameRef.current,
+        }),
+        () => ({
+          inputEl: inputGroupRefs.inputMotherNameRef.current,
+        }),
       ],
       setNextFn: () => setNextStep({ currentStep: 'InputCivilStatus' }),
       vibrateFn: () => toggleVibrating(),

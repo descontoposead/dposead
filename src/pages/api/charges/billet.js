@@ -39,7 +39,7 @@ export default async (req, res) => {
             .string()
             .min(1)
             .max(255)
-            .pattern(new RegExp('^[a-zA-Z ]+$'))
+            .pattern(new RegExp('^[ ]*(.+[ ]+)+.+[ ]*$'))
             .required(),
           cpf: joi.string().pattern(new RegExp('^[0-9]+$')).required(),
           phone_number: joi

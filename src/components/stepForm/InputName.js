@@ -24,6 +24,10 @@ const InputName = () => {
       inputEl: () => inputRef.current,
       setNextFn: () => setNextStep({ currentStep: 'InputEmail' }),
       vibrateFn: () => toggleVibrating(),
+      validator: () => [
+        new RegExp(/^[ ]*(.+[ ]+)+.+[ ]*$/).test(inputRef.current.value), //boolean validator
+        'invalid-value-error', //class
+      ],
     })
 
     //set cache value to input
@@ -52,7 +56,12 @@ const InputName = () => {
               type="text"
               name="name"
             ></textarea>
-            <strong className="hasError">Precisamos saber quem é você!</strong>
+            <strong className="hasEmptyError">
+              Precisamos saber quem é você!
+            </strong>
+            <strong className="hasInvalidError">
+              Tem certeza que este é seu nome completo?
+            </strong>
           </div>
         </div>
         <div>

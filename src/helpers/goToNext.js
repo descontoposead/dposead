@@ -8,28 +8,69 @@ const goToNext = (
 ) => (e) => {
   e.preventDefault()
 
+  //validate on one input step
   if (opts.hasOwnProperty('inputEl')) {
-    let isValid = opts.inputEl().value
+    opts.inputEl().classList.remove('empty-value-error', 'invalid-value-error') //clean
+
+    opts.validatorEmpty = () => [!!opts.inputEl().value, 'empty-value-error']
+
+    if (!opts.hasOwnProperty('validator')) {
+      opts.validator = opts.validatorEmpty
+    }
+
+    const [isValid, errorClass] = !opts.inputEl().value
+      ? opts.validatorEmpty()
+      : opts.validator()
 
     if (!isValid) {
-      opts.inputEl().classList.add('error')
+      opts.inputEl().classList.add(errorClass)
       opts.vibrateFn()
     } else {
       opts.setNextFn()
     }
   }
 
+  //validate on group input step
   if (opts.hasOwnProperty('inputGroup')) {
-    const invalidInputGroup = opts.inputGroup
-      .map((inputEl) => {
-        inputEl().classList.remove('error')
-        return inputEl
+    let hasErrors = false
+
+    opts.inputGroup
+      .map((inputControl) => {
+        const control = inputControl()
+        control.inputEl.classList.remove(
+          'empty-value-error',
+          'invalid-value-error'
+        ) //clean
+
+        control.validatorEmpty = () => [
+          !!control.inputEl.value,
+          'empty-value-error',
+        ]
+
+        if (!control.hasOwnProperty('validator')) {
+          control.validator = control.validatorEmpty
+        }
+
+        return !control.inputEl.value
+          ? {
+              inputEl: control.inputEl,
+              errors: control.validatorEmpty(),
+            }
+          : {
+              inputEl: control.inputEl,
+              errors: control.validator(),
+            }
       })
-      .filter((inputEl) => !inputEl().value)
-    if (invalidInputGroup.length) {
-      invalidInputGroup.map((inputEl) => inputEl().classList.add('error'))
-      opts.vibrateFn()
-    } else {
+      .forEach((validateInput) => {
+        const [isValid, errorClass] = validateInput.errors
+        if (!isValid) {
+          hasErrors = true
+          validateInput.inputEl.classList.add(errorClass)
+          opts.vibrateFn()
+        }
+      })
+
+    if (!hasErrors) {
       opts.setNextFn()
     }
   }

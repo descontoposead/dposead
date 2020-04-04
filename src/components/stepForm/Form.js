@@ -85,11 +85,21 @@ const Form = () => {
         strong.hasError {
           display: none;
         }
-        .error + strong.hasError {
+        strong.hasEmptyError {
+          display: none;
+        }
+        strong.hasInvalidError {
+          display: none;
+        }
+        .empty-value-error + strong.hasError,
+        .invalid-value-error ~ strong.hasInvalidError,
+        .empty-value-error ~ strong.hasEmptyError {
           display: block;
           color: #f44336;
         }
-        .error {
+        .error,
+        .invalid-value-error,
+        .empty-value-error {
           border-bottom: 4px solid #f44336 !important;
         }
         body {

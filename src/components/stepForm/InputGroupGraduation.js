@@ -28,8 +28,12 @@ const InputGroupGraduation = () => {
   useEffect(() => {
     setOptNextStep({
       inputGroup: [
-        () => inputGroupRefs.graduation.current,
-        () => inputGroupRefs.dateOfGraduation.current.inputElement,
+        () => ({
+          inputEl: inputGroupRefs.graduation.current,
+        }),
+        () => ({
+          inputEl: inputGroupRefs.dateOfGraduation.current.inputElement,
+        }),
       ],
       setNextFn: () => setNextStep({ currentStep: 'InputCourse' }),
       vibrateFn: () => toggleVibrating(),

@@ -24,6 +24,12 @@ const InputEmail = () => {
       inputEl: () => inputRef.current,
       setNextFn: () => setNextStep({ currentStep: 'InputGroupPhone' }),
       vibrateFn: () => toggleVibrating(),
+      validator: () => [
+        new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(
+          inputRef.current.value
+        ), //boolean validator
+        'invalid-value-error', //class
+      ],
     })
 
     //set cache value to input
@@ -52,7 +58,12 @@ const InputEmail = () => {
               placeholder="escreva seu email..."
               name="email"
             />
-            <strong className="hasError">Você não adicionou um e-mail!</strong>
+            <strong className="hasEmptyError">
+              Você não adicionou um e-mail!
+            </strong>
+            <strong className="hasInvalidError">
+              Precisa ser um e-mail válido!
+            </strong>
           </div>
         </div>
         <div>
