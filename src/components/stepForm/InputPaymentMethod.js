@@ -80,7 +80,7 @@ const InputPaymentMethod = () => {
             flex-wrap: nowrap;
             height: 60px;
             align-items: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
           }
         `}</style>
       </>

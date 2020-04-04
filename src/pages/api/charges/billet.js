@@ -1,12 +1,6 @@
 import * as gn from 'gn-api-sdk-node'
 import joi from '@hapi/joi'
 
-const options = {
-  client_id: process.env.gn.clientId,
-  client_secret: process.env.gn.clientSecret,
-  sandbox: true,
-}
-
 const formatDate = (date) => {
   let d = new Date(date),
     month = '' + (d.getMonth() + 1),
@@ -26,52 +20,45 @@ const addDays = (date, days) => {
 }
 
 export default async (req, res) => {
-  const schema = joi.object({
-    product: joi
-      .object({
-        name: joi
-          .string()
-          .min(1)
-          .max(255)
-          .pattern(new RegExp('^[^<>]+$'))
-          .required(),
-        value: joi.number().integer().required(),
-      })
-      .required(),
-    student: joi
-      .object({
-        name: joi
-          .string()
-          .min(1)
-          .max(255)
-          .pattern(new RegExp('^[a-zA-Z ]+$'))
-          .required(),
-        cpf: joi.string().pattern(new RegExp('^[0-9]+$')).required(),
-        phone_number: joi.string().pattern(new RegExp('^[0-9]+$')).required(),
-      })
-      .required(),
-  })
+  const schema = joi
+    .object({
+      product: joi
+        .object({
+          name: joi
+            .string()
+            .min(1)
+            .max(255)
+            .pattern(new RegExp('^[^<>]+$'))
+            .required(),
+          value: joi.number().integer().required(),
+        })
+        .required(),
+      student: joi
+        .object({
+          name: joi
+            .string()
+            .min(1)
+            .max(255)
+            .pattern(new RegExp('^[a-zA-Z ]+$'))
+            .required(),
+          cpf: joi.string().pattern(new RegExp('^[0-9]+$')).required(),
+          phone_number: joi
+            .string()
+            .pattern(new RegExp('^[1-9]{2}9?[0-9]{8}$'))
+            .required(),
+        })
+        .required(),
+    })
+    .required()
+    .label('charge')
 
-  const { error, value } = schema.validate(
-    {
-      product: {
-        name: 'Taxa de inscrição para o curso - Pedagogia, 500h',
-        value: 20000,
-      },
-      student: {
-        name: 'Gustavo Jonathan Oliveira e Lima',
-        cpf: '10847080609',
-        phone_number: '5144916523',
-      },
-    },
-    { abortEarly: false }
-  )
+  const { error, value } = schema.validate(req.body, { abortEarly: false })
 
   if (error) {
     return res.status(400).json(error)
   }
 
-  const gnsdk = new gn(options)
+  const gnsdk = new gn(process.env.gnConfig)
 
   try {
     const charge = await gnsdk.createCharge({}, { items: [value.product] })

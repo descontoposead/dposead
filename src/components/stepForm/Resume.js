@@ -1,7 +1,7 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 
 const Resume = () => {
-  const [step] = useSharedStep()
+  const [step, setNextStep] = useSharedStep()
 
   return (
     currentStepIs('Resume', step) && (
@@ -93,20 +93,25 @@ const Resume = () => {
           <button
             className="next"
             onClick={() =>
-              setNextStep({ currentStep: 'FinalStep', values: values })
+              setNextStep({ currentStep: 'FinalStep', values: step.values })
             }
           >
             Finalizar!
           </button>
         </div>
         <style jsx>{`
+          @media (max-width: 450px) {
+            div:nth-child(3) {
+              justify-content: stretch;
+            }
+          }
           div:nth-child(1) {
             padding: 0;
+            position: sticky;
+            top: 0px;
           }
           div:nth-child(1) > h1 {
-            width: 100vw;
-            position: sticky;
-            top: 1px;
+            width: 100%;
             flex: 1;
             background: rgba(0, 0, 0, 0.9);
             text-align: center;
@@ -114,6 +119,7 @@ const Resume = () => {
             margin-top: 0px;
             padding: 10px 5px;
             font-size: 1.8rem;
+            box-sizing: border-box;
           }
           div:nth-child(2) {
             display: flex;
@@ -126,7 +132,7 @@ const Resume = () => {
           }
           div:nth-child(3) {
             width: 100vw;
-            padding-top: 50px;
+            margin-top: 19px;
             position: sticky;
             top: 0px;
             bottom: 0px;

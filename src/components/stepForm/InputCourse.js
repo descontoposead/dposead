@@ -28,8 +28,8 @@ const InputCourse = () => {
     setCoursesDesires(
       courses
         .filter(({ name }) => like(match, name))
-        .splice(0, 5)
-        .reverse() //just 10 firsts
+        .splice(0, 20)
+        .reverse() //just 20 firsts
     )
 
   //scrap-fetch courses

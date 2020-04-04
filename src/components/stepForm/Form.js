@@ -22,10 +22,7 @@ import FinalStep from './FinalStep'
 const Form = () => {
   const [step] = useSharedStep()
 
-  useEffect(() => {
-    console.log('Formlário completo:')
-    console.log(step)
-  }, [step])
+  useEffect(() => {}, [step])
 
   return (
     <form>
@@ -55,12 +52,33 @@ const Form = () => {
           form {
             justify-content: space-around;
           }
+          form > div button {
+            font-size: 1.4rem;
+          }
+          form > div h1 {
+            line-height: 1.25;
+            font-size: 2.4rem;
+          }
         }
         @media (max-width: 450px) {
           form {
             justify-content: space-between;
             padding: 0 0 20px;
             box-sizing: border-box;
+          }
+          form > div h1 {
+            line-height: 1;
+          }
+          form > div button {
+            font-size: 1.25rem;
+          }
+        }
+        @media (max-width: 350px) {
+          form > div button {
+            font-size: 1rem;
+          }
+          form > div h1 {
+            font-size: 2.3rem;
           }
         }
 
@@ -139,11 +157,8 @@ const Form = () => {
         }
         form > div h1 {
           color: #292929;
-          font-size: 2.5rem;
-          line-height: 1.25;
         }
         form > div button {
-          font-size: 1.5rem;
           border: solid 4px;
           padding: 10px 15px;
           border-radius: 10px;

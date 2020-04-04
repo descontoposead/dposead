@@ -7,40 +7,68 @@ const InputPaymentValues = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
   const [inputCourse, setInputCourse] = useState({
-    parcels: 1,
-    value: 2000,
-    parceled: 0,
+    instalment: 1,
+    value: 200000,
+    currency: 2000,
   })
-  const [inputTax] = useState({ parcels: 1, value: 200 })
+  const [inputTax, setInputTax] = useState({
+    instalment: 1,
+    value: 20000,
+    currency: 200,
+  })
+  const [instalmentsControl] = useState({
+    courseValue: {
+      maxInstalment: 18,
+      minInstalment: 1,
+      state: inputCourse,
+      stateControl: setInputCourse,
+    },
+    courseTaxValue: {
+      maxInstalment: 3,
+      minInstalment: 1,
+      state: inputTax,
+      stateControl: setInputTax,
+    },
+  })
 
   useEffect(() => {
     controlInputValue({ name: 'courseValue', value: inputCourse })
     controlInputValue({ name: 'courseTaxValue', value: inputTax })
   }, [])
 
-  const incrementParcels = (e) => {
+  const incrementInstalment = (e, control) => {
     e.preventDefault()
-    const limitIncrement = 18
-    if (inputCourse.parcels < limitIncrement) {
-      setInputCourse({
-        parcels: ++inputCourse.parcels,
-        parceled: inputCourse.value / inputCourse.parcels,
-        value: inputCourse.value,
+
+    const instalmentControl = instalmentsControl[control]
+
+    if (instalmentControl.state.instalment < instalmentControl.maxInstalment) {
+      instalmentControl.stateControl({
+        instalment: ++instalmentControl.state.instalment,
+        value: instalmentControl.state.value,
+        currency:
+          instalmentControl.state.value /
+          100 /
+          instalmentControl.state.instalment,
       })
-      controlInputValue({ name: 'courseValue', value: inputCourse })
+      controlInputValue({ name: control, value: instalmentControl.state })
     }
   }
 
-  const decrementParcels = (e) => {
+  const decrementInstalment = (e, control) => {
     e.preventDefault()
-    const limitDecrement = 1
-    if (inputCourse.parcels > limitDecrement) {
-      setInputCourse({
-        parcels: --inputCourse.parcels,
-        parceled: inputCourse.value / inputCourse.parcels,
-        value: inputCourse.value,
+
+    const instalmentControl = instalmentsControl[control]
+
+    if (instalmentControl.state.instalment > instalmentControl.minInstalment) {
+      instalmentControl.stateControl({
+        instalment: --instalmentControl.state.instalment,
+        value: instalmentControl.state.value,
+        currency:
+          instalmentControl.state.value /
+          100 /
+          instalmentControl.state.instalment,
       })
-      controlInputValue({ name: 'courseValue', value: inputCourse })
+      controlInputValue({ name: control, value: instalmentControl.state })
     }
   }
 
@@ -51,44 +79,53 @@ const InputPaymentValues = () => {
     currentStepIs('InputPaymentValues', step) && (
       <>
         <div>
-          {values.paymentMethod === 'creditCard' ? (
-            <h1>Adeque ao seu bolso</h1>
-          ) : (
-            <h1>A vista com</h1>
-          )}
+          <h1>Adeque ao seu bolso</h1>
         </div>
         <div>
           <section>
             <strong>
               O <mark>Curso</mark> por
             </strong>
-            {values.paymentMethod === 'creditCard' ? (
-              <>
-                <button onClick={(e) => incrementParcels(e)}>&#10092;</button>
-                <strong>
-                  {inputCourse.parcels} x de{' '}
-                  <i>
-                    {(inputCourse.parceled || inputCourse.value).toFixed(2)}{' '}
-                    reais
-                  </i>
-                </strong>
-                <button onClick={(e) => decrementParcels(e)}>&#10093;</button>
-              </>
-            ) : (
-              <>
-                <strong>
-                  <i>{inputCourse.value.toFixed(2)} reais</i>
-                </strong>
-              </>
-            )}
+            <button onClick={(e) => incrementInstalment(e, 'courseValue')}>
+              &#10092;
+            </button>
+            <strong>
+              {inputCourse.instalment} x de{' '}
+              <i>{inputCourse.currency.toFixed(2)} reais</i>
+            </strong>
+            <button onClick={(e) => decrementInstalment(e, 'courseValue')}>
+              &#10093;
+            </button>
           </section>
           <section>
             <strong>
               A <mark>Matricula</mark> por
             </strong>
-            <strong>
-              {inputTax.value} <i>reais</i>
-            </strong>
+            {values.paymentMethod === 'creditCard' ? (
+              <>
+                <button
+                  onClick={(e) => incrementInstalment(e, 'courseTaxValue')}
+                >
+                  &#10092;
+                </button>
+                <strong>
+                  {inputTax.instalment} x de{' '}
+                  <i>{inputTax.currency.toFixed(2)} reais</i>
+                </strong>
+                <button
+                  onClick={(e) => decrementInstalment(e, 'courseTaxValue')}
+                >
+                  &#10093;
+                </button>
+              </>
+            ) : (
+              <>
+                <strong>
+                  {inputTax.instalment} x de{' '}
+                  <i>{inputTax.currency.toFixed(2)} reais</i>
+                </strong>
+              </>
+            )}
           </section>
         </div>
         <div>
