@@ -38,18 +38,35 @@ const CardForm = () => {
 
   const [cardValidate, setCardValidate] = useState({
     number: {
+      validate: () =>
+        Object.keys(brandRegexTypes).filter((brand) =>
+          new RegExp(brandRegexTypes[brand]).test(
+            inputCardNumberRef.current.value
+          )
+        ).length > 0,
       isValid: false,
     },
     expiration_month: {
+      validate: () =>
+        new RegExp(/^(0[1-9]|1[0-2])$/).test(
+          inputCardExpMonthref.current.value
+        ),
       isValid: false,
     },
     expiration_year: {
+      validate: () =>
+        new RegExp(/^(2021|202[1-9]{1}|203[0-9]{1})$/).test(
+          inputCardExpYearRef.current.value
+        ),
       isValid: false,
     },
     cvv: {
+      validate: () =>
+        new RegExp(/^[0-9]{3,4}$/).test(inputCardCvvRef.current.value),
       isValid: false,
     },
     brand: {
+      validate: () => true,
       isValid: false,
     },
   })
@@ -95,6 +112,25 @@ const CardForm = () => {
     })
   }
 
+  const jusMissingCvv = () => {
+    return (
+      cardValidate.number.isValid &&
+      cardValidate.expiration_month.isValid &&
+      cardValidate.expiration_year.isValid &&
+      !cardValidate.cvv.isValid &&
+      !cardValues.cvv
+    )
+  }
+
+  const cardValuesCompleted = () => {
+    return (
+      cardValidate.number.isValid &&
+      cardValidate.expiration_month.isValid &&
+      cardValidate.expiration_year.isValid &&
+      cardValidate.cvv.isValid
+    )
+  }
+
   const controlCardValue = () => async ({ target }) => {
     setCardValues(
       Object.assign(cardValues, {
@@ -102,89 +138,45 @@ const CardForm = () => {
       })
     )
 
-    if (target.name === 'cvv') {
-      if (new RegExp(/^[0-9]{3,4}$/).test(target.value)) {
-        setCardValidate(
-          Object.assign(cardValidate, {
-            cvv: {
-              isValid: true,
-            },
-          })
-        )
-      } else {
-        return
-      }
-    }
+    setCardValidate(
+      Object.assign(cardValidate, {
+        [target.name]: Object.assign(cardValidate[target.name], {
+          isValid: cardValidate[target.name].validate(),
+        }),
+      })
+    )
 
-    if (target.name === 'expiration_month') {
-      if (new RegExp(/^(0[1-9]|1[0-2])$/).test(target.value)) {
-        setCardValidate(
-          Object.assign(cardValidate, {
-            expiration_month: {
-              isValid: true,
-            },
-          })
-        )
-      }
-    }
-
-    if (target.name === 'expiration_year') {
-      if (new RegExp(/^(2021|202[1-9]{1}|203[0-9]{1})$/).test(target.value)) {
-        setCardValidate(
-          Object.assign(cardValidate, {
-            expiration_year: {
-              isValid: true,
-            },
-          })
-        )
-      }
-    }
-
-    if (
-      cardValidate.number.isValid &&
-      cardValidate.brand.isValid &&
-      cardValidate.expiration_month.isValid &&
-      cardValidate.expiration_year.isValid &&
-      !cardValidate.cvv.isValid
-    ) {
-      setTimeout(() => flipCard()({ preventDefault: () => null }), 200)
-      return
-    }
-
-    try {
-      const {
-        data: { payment_token },
-      } = await getPaymentTokenAsync(cardValues)
-      setPaymentToken(payment_token)
-      setTimeout(() => flipCard()({ preventDefault: () => null }), 200)
-    } catch (e) {
-      if (!e.hasOwnProperty('error_description')) {
+    if (cardValuesCompleted() && isFlipped) {
+      try {
+        const {
+          data: { payment_token },
+        } = await getPaymentTokenAsync(cardValues)
+        setPaymentToken(payment_token)
+        setTimeout(() => flipCard()({ preventDefault: () => null }), 2000)
+      } catch (e) {
         setError(true)
-        return
-      }
 
-      const prop = e.error_description
-        .match(/\[(\w+)\]/g, '')
-        .pop()
-        .replace(/\W/g, '')
+        if (!e.hasOwnProperty('error_description')) {
+          return
+        }
 
-      Array.from(['brand', 'number']).forEach((cardProp) =>
+        const prop = e.error_description
+          .match(/\[(\w+)\]/g, '')
+          .pop()
+          .replace(/\W/g, '')
+
         setCardValidate(
           Object.assign(cardValidate, {
-            [cardProp]: {
-              isValid: true,
-            },
+            [prop]: Object.assign(cardValidate[prop], {
+              isValid: cardValidate[prop].validate(),
+            }),
           })
         )
-      )
+      }
+    }
 
-      setCardValidate(
-        Object.assign(cardValidate, {
-          [prop]: {
-            isValid: false,
-          },
-        })
-      )
+    if (jusMissingCvv()) {
+      setTimeout(() => flipCard()({ preventDefault: () => null }), 200)
     }
   }
 
@@ -208,7 +200,8 @@ const CardForm = () => {
 
   const pay = () => (event) => {
     event.preventDefault()
-    console.log(isValidCardValues())
+
+    console.log(paymentToken)
   }
 
   useEffect(() => {
