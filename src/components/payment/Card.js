@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 
-import HipercardIcon from './icon/HipercardIcon'
-import AmexIcon from './icon/AmexIcon'
-import DinersIcon from './icon/DinersIcon'
-import EloIcon from './icon/EloIcon'
-import MastercardIcon from './icon/MastercardIcon'
-import VisaIcon from './icon/VisaIcon'
+import HipercardIcon from '../icon/HipercardIcon'
+import AmexIcon from '../icon/AmexIcon'
+import DinersIcon from '../icon/DinersIcon'
+import EloIcon from '../icon/EloIcon'
+import MastercardIcon from '../icon/MastercardIcon'
+import VisaIcon from '../icon/VisaIcon'
 
-const CardForm = () => {
+const Card = () => {
   const [brandIconComponents] = useState({
     AmexIcon,
     DinersIcon,
@@ -192,10 +192,6 @@ const CardForm = () => {
     setEndTransition(false)
 
     setTimeout(() => setEndTransition(true), 700)
-  }
-
-  const isValidCardValues = () => {
-    window.$gn.checkout.getPaymentToken(cardValues, console.log)
   }
 
   const pay = () => (event) => {
@@ -512,4 +508,4 @@ const CardForm = () => {
   )
 }
 
-export default CardForm
+export default Card
