@@ -1,7 +1,7 @@
 import { createStateContext } from 'react-use'
 
 const [useSharedStep, SharedStepProvider] = createStateContext({
-  currentStep: 'FinalStep',
+  currentStep: 'InputGroupBirth',
   values: {},
 })
 

@@ -1,79 +1,47 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useEffect, useState } from 'react'
-import CardCredit from '../CardCredit'
+import Card from '../payment/Card'
 
 const FinalStep = () => {
   const [step] = useSharedStep()
   const [paymentResponse, setPaymentResponse] = useState(null)
   const [paymentResponseErr, setPaymentResponseErr] = useState(null)
 
-  const [mockStep, setMockStep] = useState({
-    civilStatus: 'single',
-    courseValue: {
-      instalment: 1,
-      value: 200000,
-      currency: 2000,
-    },
-    courseTaxValue: {
-      instalment: 1,
-      value: 20000,
-      currency: 200,
-    },
-    paymentMethod: 'creditCard',
-    name: 'gustavo jonathan',
-    email: 'gustavojnt@gmail.com',
-    phone: '(33) 9881-2818',
-    whatsapp: '(31) 98828-2382',
-    personalDocument: '108.470.806-09',
-    personalRegistry: '292933',
-    stateOfBirth: 'mg',
-    cityOfBirth: 'corrego novo',
-    dateOfBirth: '12/08/1995',
-    parentName: 'jose antonio',
-    motherName: 'conceicao alves oliveira',
-    profession: 'dev systems',
-    zipCode: '35345-000',
-    fullAddress: 'Córrego Novo, MG',
-    graduation: 'ciencias do pc',
-    dateOfGraduation: '12/08/1995',
-    courseName: 'SUPERVISÃO ESCOLAR',
-  })
+  // const [mockStep, setMockStep] = useState({
+  //   civilStatus: 'single',
+  //   courseValue: {
+  //     instalment: 1,
+  //     value: 200000,
+  //     currency: 2000,
+  //   },
+  //   courseTaxValue: {
+  //     instalment: 1,
+  //     value: 20000,
+  //     currency: 200,
+  //   },
+  //   paymentMethod: 'creditCard',
+  //   name: 'gustavo jonathan',
+  //   email: 'gustavojnt@gmail.com',
+  //   phone: '(33) 9881-2818',
+  //   whatsapp: '(31) 98828-2382',
+  //   personalDocument: '108.470.806-09',
+  //   personalRegistry: '292933',
+  //   stateOfBirth: 'mg',
+  //   cityOfBirth: 'corrego novo',
+  //   dateOfBirth: '12/08/1995',
+  //   parentName: 'jose antonio',
+  //   motherName: 'conceicao alves oliveira',
+  //   profession: 'dev systems',
+  //   zipCode: '35345-000',
+  //   fullAddress: 'Córrego Novo, MG',
+  //   graduation: 'ciencias do pc',
+  //   dateOfGraduation: '12/08/1995',
+  //   courseName: 'SUPERVISÃO ESCOLAR',
+  // })
 
   useEffect(() => {
     console.log(step.values)
-    // switch (step.values?.paymentMethod) {
-    //   case 'billet': {
-    //     fetch('/api/charges/billet', {
-    //       method: 'post',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({
-    //         product: {
-    //           name:
-    //             'Taxa de inscrição para o curso - ' + step.values.courseName,
-    //           value: step.values.courseTaxValue.value,
-    //         },
-    //         student: {
-    //           name: step.values.name,
-    //           cpf: step.values.personalDocument.replace(/\D/g, ''),
-    //           phone_number: step.values.whatsapp.replace(/\D/g, ''),
-    //         },
-    //       }),
-    //     })
-    //       .then((res) => res.json())
-    //       .then(setPaymentResponse)
-    //       .catch(setPaymentResponseErr)
-    //     break
-    //   }
-    //   case 'creditCard': {
-    //     break
-    //   }
-    //   default: {
-    //   }
-    // }
-
-    switch (mockStep.paymentMethod) {
+    switch (step.values?.paymentMethod) {
       case 'billet': {
         fetch('/api/charges/billet', {
           method: 'post',
@@ -82,13 +50,14 @@ const FinalStep = () => {
           },
           body: JSON.stringify({
             product: {
-              name: 'Taxa de inscrição para o curso - ' + mockStep.courseName,
-              value: mockStep.courseTaxValue.value,
+              name:
+                'Taxa de inscrição para o curso - ' + step.values.courseName,
+              value: step.values.courseTaxValue.value,
             },
             student: {
-              name: mockStep.name,
-              cpf: mockStep.personalDocument.replace(/\D/g, ''),
-              phone_number: mockStep.whatsapp.replace(/\D/g, ''),
+              name: step.values.name,
+              cpf: step.values.personalDocument.replace(/\D/g, ''),
+              phone_number: step.values.whatsapp.replace(/\D/g, ''),
             },
           }),
         })
@@ -104,8 +73,38 @@ const FinalStep = () => {
       }
     }
 
-    // }, [step.values?.paymentMethod])
-  }, [])
+    // switch (mockStep.paymentMethod) {
+    //   case 'billet': {
+    //     fetch('/api/charges/billet', {
+    //       method: 'post',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify({
+    //         product: {
+    //           name: 'Taxa de inscrição para o curso - ' + mockStep.courseName,
+    //           value: mockStep.courseTaxValue.value,
+    //         },
+    //         student: {
+    //           name: mockStep.name,
+    //           cpf: mockStep.personalDocument.replace(/\D/g, ''),
+    //           phone_number: mockStep.whatsapp.replace(/\D/g, ''),
+    //         },
+    //       }),
+    //     })
+    //       .then((res) => res.json())
+    //       .then(setPaymentResponse)
+    //       .catch(setPaymentResponseErr)
+    //     break
+    //   }
+    //   case 'creditCard': {
+    //     break
+    //   }
+    //   default: {
+    //   }
+    // }
+  }, [step.values?.paymentMethod])
+  // }, [])
 
   const setToClipboard = () => ({ target }) => {
     target.setSelectionRange(0, target.value.length)
@@ -124,7 +123,7 @@ const FinalStep = () => {
           <h2>Parabéns, você concluiu a matricula com sucesso.</h2>
           <h3>Para liberar o acesso ao portal do aluno, pague a matricula.</h3>
         </div>
-        {mockStep.paymentMethod === 'billet' && paymentResponse && (
+        {step.values.paymentMethod === 'billet' && paymentResponse && (
           <>
             <div>
               <div>
@@ -146,9 +145,9 @@ const FinalStep = () => {
             </div>
           </>
         )}
-        {mockStep.paymentMethod === 'creditCard' && (
+        {step.values.paymentMethod === 'creditCard' && (
           <div>
-            <CardCredit />
+            <Card />
           </div>
         )}
 
