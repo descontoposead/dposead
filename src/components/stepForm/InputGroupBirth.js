@@ -31,12 +31,36 @@ const InputGroupBirth = () => {
       inputGroup: [
         () => ({
           inputEl: inputGroupRefs.inputStateOfBirthRef.current,
+          validator: () => [
+            new RegExp(
+              /^(?:A[CLPM]|BA|CE|DF|ES|GO|M[ATSG]|P[RBAEI]|R[JNSOR]|S[CEP]|TO)$/
+            ).test(inputGroupRefs.inputStateOfBirthRef.current.value),
+            'invalid-value-error',
+          ],
         }),
         () => ({
           inputEl: inputGroupRefs.inputCityOfBirthRef.current,
         }),
         () => ({
           inputEl: inputGroupRefs.inputDateOfBirthRef.current.inputElement,
+          validator: () => [
+            (() => {
+              try {
+                return new RegExp(
+                  /[12][0-9]{3}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/
+                ).test(
+                  new Date(
+                    inputGroupRefs.inputDateOfBirthRef.current.inputElement.value
+                  )
+                    .toISOString()
+                    .replace(/=?T.*/, '')
+                )
+              } catch (e) {
+                return false
+              }
+            })(),
+            'invalid-value-error',
+          ],
         }),
       ],
       setNextFn: () => setNextStep({ currentStep: 'InputGroupParent' }),
@@ -80,7 +104,10 @@ const InputGroupBirth = () => {
               type="text"
               placeholder="estado que vc nasceu..."
             />
-            <strong className="hasError">Faltou o estado aqui!</strong>
+            <strong className="hasEmptyError">Faltou o estado aqui!</strong>
+            <strong className="hasInvalidError">
+              Você está no Brasil? Não reconhecemos esse estado.
+            </strong>
           </div>
           <div>
             {values.cityOfBirth && (
@@ -112,7 +139,10 @@ const InputGroupBirth = () => {
               placeholder="dia/mês/ano"
               mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
             />
-            <strong className="hasError">Faltou a quando aqui!</strong>
+            <strong className="hasEmptyError">
+              Precisamos saber quando você nasceu!
+            </strong>
+            <strong className="hasInvalidError">Essa data não é válida.</strong>
           </div>
         </div>
         <div>
