@@ -43,20 +43,18 @@ const InputGroupBirth = () => {
       vibrateFn: () => toggleVibrating(),
     })
 
-    if (inputGroupRefs.inputStateOfBirthRef.current) {
-      const { current } = inputGroupRefs.inputStateOfBirthRef
-      current.value = values[current.name] || ''
-    }
-
-    if (inputGroupRefs.inputCityOfBirthRef.current) {
-      const { current } = inputGroupRefs.inputCityOfBirthRef
-      current.value = values[current.name] || ''
-    }
-
-    if (inputGroupRefs.inputDateOfBirthRef.current) {
-      const { current } = inputGroupRefs.inputDateOfBirthRef
-      current.inputElement.value = values[current.inputElement.name] || ''
-    }
+    //cache values to input refs masked or not
+    Object.keys(inputGroupRefs).forEach((ref) => {
+      if (inputGroupRefs[ref].current) {
+        if (inputGroupRefs[ref].current.hasOwnProperty('inputElement')) {
+          const { current } = inputGroupRefs[ref]
+          current.inputElement.value = values[current.inputElement.name] || ''
+        } else {
+          const { current } = inputGroupRefs[ref]
+          current.value = values[current.name] || ''
+        }
+      }
+    })
   }, [step])
 
   return (
@@ -72,7 +70,10 @@ const InputGroupBirth = () => {
             )}
             <input
               ref={inputGroupRefs.inputStateOfBirthRef}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={({ currentTarget }) => {
+                currentTarget.value = currentTarget.value.toUpperCase()
+                controlInputValue(currentTarget)
+              }}
               autoComplete="off"
               autoFocus
               name="stateOfBirth"
@@ -87,7 +88,13 @@ const InputGroupBirth = () => {
             )}
             <input
               ref={inputGroupRefs.inputCityOfBirthRef}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={({ currentTarget }) => {
+                currentTarget.value = currentTarget.value.replace(
+                  /(?:^|\s)\S/g,
+                  (word) => word.toUpperCase()
+                )
+                controlInputValue(currentTarget)
+              }}
               type="text"
               name="cityOfBirth"
               placeholder="cidade que vc nasceu..."
