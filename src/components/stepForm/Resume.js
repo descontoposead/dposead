@@ -63,12 +63,12 @@ const Resume = () => {
             <span>{step.values.profession}</span>
           </p>
           <p>
-            <label htmlFor="motherName">CEP</label>
-            <span>{step.values.zipCode}</span>
-          </p>
-          <p>
             <label htmlFor="motherName">Endereço</label>
-            <span>{step.values.fullAdress}</span>
+            <span>
+              {Object.keys(step.values.address)
+                .map((prop) => step.values.address[prop])
+                .join(', ')}
+            </span>
           </p>
           <p>
             <label htmlFor="motherName">Graduação</label>

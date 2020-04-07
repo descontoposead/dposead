@@ -95,8 +95,9 @@ const InputCourse = () => {
   const onSearchCourse = (target) => {
     if (target.value) {
       setTyped(target.value)
-    } else {
       controlInputValue(target)
+    } else {
+      // controlInputValue(target)
     }
 
     setFetchedGrade([])
@@ -115,7 +116,12 @@ const InputCourse = () => {
             <textarea
               ref={inputRef}
               name="courseName"
-              onChange={({ target }) => onSearchCourse(target)}
+              onChange={({ target }) => {
+                target.value = target.value.replace(/(?:^|\s)\S/g, (word) =>
+                  word.toUpperCase()
+                )
+                onSearchCourse(target)
+              }}
               autoComplete="off"
               autoFocus
             ></textarea>

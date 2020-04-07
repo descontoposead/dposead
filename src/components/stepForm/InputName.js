@@ -49,7 +49,13 @@ const InputName = () => {
             )}
             <textarea
               ref={inputRef}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={({ currentTarget }) => {
+                currentTarget.value = currentTarget.value.replace(
+                  /(?:^|\s)\S/g,
+                  (word) => word.toUpperCase()
+                )
+                controlInputValue(currentTarget)
+              }}
               autoComplete="off"
               autoFocus
               placeholder="escreva seu nome..."

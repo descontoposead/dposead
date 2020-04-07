@@ -139,7 +139,10 @@ const InputGroupDoc = () => {
             )}
             <input
               ref={inputGroupRefs.inputPersonalRegistryRef}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={({ currentTarget }) => {
+                currentTarget.value = currentTarget.value.toUpperCase()
+                controlInputValue(currentTarget)
+              }}
               autoComplete="off"
               type="text"
               name="personalRegistry"

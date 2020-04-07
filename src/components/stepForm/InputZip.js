@@ -108,6 +108,13 @@ const InputZip = () => {
             Este é o meu CEP
           </button>
         </div>
+
+        <style jsx>{`
+          div:nth-child(2) > div {
+            display: flex;
+            flex-direction: column;
+          }
+        `}</style>
       </>
     )
   )

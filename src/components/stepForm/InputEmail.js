@@ -51,7 +51,10 @@ const InputEmail = () => {
             )}
             <input
               ref={inputRef}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={({ currentTarget }) => {
+                currentTarget.value = currentTarget.value.toLowerCase()
+                controlInputValue(currentTarget)
+              }}
               autoComplete="off"
               autoFocus
               type="text"
