@@ -7,7 +7,7 @@ import EloIcon from '../icon/EloIcon'
 import MastercardIcon from '../icon/MastercardIcon'
 import VisaIcon from '../icon/VisaIcon'
 
-const Card = () => {
+const Card = (props) => {
   const [brandIconComponents] = useState({
     AmexIcon,
     DinersIcon,
@@ -21,7 +21,9 @@ const Card = () => {
   const [isEndTransition, setEndTransition] = useState(true)
   const [cardValues, setCardValues] = useState({})
   const [paymentToken, setPaymentToken] = useState(null)
-  const [hasError, setError] = useState(false)
+  const [hasTokenError, setTokenError] = useState(false)
+  const [hasFetchError, setFetchError] = useState(false)
+  const [paymentResponse, setPaymentResponse] = useState(null)
 
   const inputCardNumberRef = useRef(null)
   const inputCardExpMonthref = useRef(null)
@@ -152,9 +154,10 @@ const Card = () => {
           data: { payment_token },
         } = await getPaymentTokenAsync(cardValues)
         setPaymentToken(payment_token)
+        setTokenError(false)
         setTimeout(() => flipCard()({ preventDefault: () => null }), 2000)
       } catch (e) {
-        setError(true)
+        setTokenError(true)
 
         if (!e.hasOwnProperty('error_description')) {
           return
@@ -197,7 +200,46 @@ const Card = () => {
   const pay = () => (event) => {
     event.preventDefault()
 
-    console.log(paymentToken)
+    fetch('/api/charges/card', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        installments: props.values.courseTaxValue.instalment,
+        payment_token: paymentToken,
+        product: {
+          name: props.values.courseName,
+          value: props.values.courseTaxValue.value,
+        },
+        student: {
+          name: props.values.name,
+          cpf: props.values.personalDocument.replace(/\D/g, ''),
+          email: props.values.email,
+          phone_number: props.values.whatsapp.replace(/\D/g, ''),
+          birth: new Date(props.values.dateOfBirth)
+            .toISOString()
+            .replace(/=?T.*/, ''),
+        },
+        address: {
+          state: props.values.address.state,
+          city: props.values.address.city,
+          zipcode: props.values.address.zipcode.replace(/\D/g, ''),
+          neighborhood: props.values.address.neighborhood,
+          number: props.values.address.number,
+          street: props.values.address.street,
+        },
+      }),
+    })
+      .then(async (res) => {
+        if (res.status !== 201) throw await res.json()
+        return await res.json()
+      })
+      .then((res) => {
+        setPaymentResponse(res)
+        setFetchError(false)
+      })
+      .catch(setFetchError)
   }
 
   useEffect(() => {
@@ -206,139 +248,187 @@ const Card = () => {
     }
   }, [cardValues?.brand])
 
+  const canViewCard = () => !hasFetchError && !paymentResponse
+  const canViewCardError = () => hasFetchError && !paymentResponse
+  const canViewCardSuccess = () => Boolean(paymentResponse)
+
   return (
     <>
-      <div className="wrapper">
-        <div className="cart">
-          <h3>Matricula</h3>
-          <h4>Gestão de negocios - 1 X de 200.00</h4>
-        </div>
-        <section
-          style={{ padding: isFlipped ? 10 : 10 }}
-          className={isFlipped ? 'flipped' : 'unflipped'}
-        >
-          {!isFlipped && isEndTransition ? (
-            <>
-              <div>
-                <h1>Gustavo J O Lima</h1>
-                <h2>Graduado em Ciências da computação</h2>
-              </div>
-              <div>
-                <div>
-                  <label htmlFor="card-number">Número do cartão</label>
-                  <input
-                    ref={inputCardNumberRef}
-                    name="number"
-                    id="card-number"
-                    type="text"
-                    autoComplete="off"
-                    onChange={(event) => {
-                      controlCardValue()(event)
-                      getBrandByCardNumber()(event)
-                    }}
-                    defaultValue={cardValues?.number}
-                    placeholder="xxxx xxxx xxxxx xxxxx"
-                  />
-                </div>
-                <div>
+      {canViewCard() && (
+        <>
+          <div className="wrapper">
+            <div className="alert alert-warning">
+              <h3>Matricula</h3>
+              <h4>Gestão de negocios - 1 X de 200.00</h4>
+            </div>
+            <section
+              style={{ padding: isFlipped ? 10 : 10 }}
+              className={isFlipped ? 'flipped' : 'unflipped'}
+            >
+              {!isFlipped && isEndTransition ? (
+                <>
                   <div>
-                    <span>Valido até</span>
+                    <h1>Gustavo J O Lima</h1>
+                    <h2>Graduado em Ciências da computação</h2>
+                  </div>
+                  <div>
+                    <div>
+                      <label htmlFor="card-number">Número do cartão</label>
+                      <input
+                        ref={inputCardNumberRef}
+                        name="number"
+                        id="card-number"
+                        type="text"
+                        autoFocus
+                        autoComplete="off"
+                        onChange={(event) => {
+                          controlCardValue()(event)
+                          getBrandByCardNumber()(event)
+                        }}
+                        defaultValue={cardValues?.number}
+                        placeholder="xxxx xxxx xxxxx xxxxx"
+                      />
+                    </div>
                     <div>
                       <div>
-                        <input
-                          ref={inputCardExpMonthref}
-                          name="expiration_month"
-                          type="text"
-                          autoComplete="off"
-                          placeholder="xx"
-                          defaultValue={cardValues?.expiration_month}
-                          onChange={controlCardValue()}
-                        />
+                        <span>Valido até</span>
+                        <div>
+                          <div>
+                            <input
+                              ref={inputCardExpMonthref}
+                              name="expiration_month"
+                              type="text"
+                              autoComplete="off"
+                              placeholder="xx"
+                              defaultValue={cardValues?.expiration_month}
+                              onChange={controlCardValue()}
+                            />
+                          </div>
+                          <div>
+                            <input
+                              ref={inputCardExpYearRef}
+                              name="expiration_year"
+                              type="text"
+                              autoComplete="off"
+                              placeholder="xxxx"
+                              defaultValue={cardValues?.expiration_year}
+                              onChange={controlCardValue()}
+                            />
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <input
-                          ref={inputCardExpYearRef}
-                          name="expiration_year"
-                          type="text"
-                          autoComplete="off"
-                          placeholder="xxxx"
-                          defaultValue={cardValues?.expiration_year}
-                          onChange={controlCardValue()}
-                        />
-                      </div>
+                      {SelectedBrandIcon && SelectedBrandIcon}
                     </div>
                   </div>
-                  {SelectedBrandIcon && SelectedBrandIcon}
-                </div>
-              </div>
-            </>
-          ) : (
-            isEndTransition && (
-              <>
-                <div></div>
-                <div>
-                  <input
-                    ref={inputCardCvvRef}
-                    type="text"
-                    name="cvv"
-                    autoComplete="off"
-                    placeholder="cvv"
-                    defaultValue={cardValues?.cvv}
-                    onChange={controlCardValue()}
-                  />
-                </div>
-              </>
-            )
-          )}
-        </section>
-        <article>
-          <ul>
-            <li>
-              <AmexIcon />
-            </li>
-            <li>
-              <DinersIcon />
-            </li>
-            <li>
-              <EloIcon />
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <HipercardIcon />
-            </li>
-            <li>
-              <MastercardIcon />
-            </li>
-            <li>
-              <VisaIcon />
-            </li>
-          </ul>
-        </article>
-      </div>
-      <div className="actions">
-        {cardValues.cvv && <button onClick={flipCard()}>Alterar CVV</button>}
-        <button
-          className="btnPay"
-          disabled={!paymentToken || hasError}
-          onClick={pay()}
-        >
-          Pagar
-        </button>
-      </div>
+                </>
+              ) : (
+                isEndTransition && (
+                  <>
+                    <div></div>
+                    <div>
+                      <input
+                        ref={inputCardCvvRef}
+                        type="text"
+                        name="cvv"
+                        autoComplete="off"
+                        autoFocus
+                        placeholder="cvv"
+                        defaultValue={cardValues?.cvv}
+                        onChange={controlCardValue()}
+                      />
+                    </div>
+                  </>
+                )
+              )}
+            </section>
+            <article>
+              <ul>
+                <li>
+                  <AmexIcon />
+                </li>
+                <li>
+                  <DinersIcon />
+                </li>
+                <li>
+                  <EloIcon />
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <HipercardIcon />
+                </li>
+                <li>
+                  <MastercardIcon />
+                </li>
+                <li>
+                  <VisaIcon />
+                </li>
+              </ul>
+            </article>
+          </div>
+          <div className="actions">
+            {cardValues.cvv && (
+              <button onClick={flipCard()}>Alterar CVV</button>
+            )}
+            <button
+              className={
+                hasTokenError || hasFetchError ? 'btnPay btnError' : 'btnPay'
+              }
+              onClick={pay()}
+            >
+              {hasTokenError ? '!!! Cartão inválido' : 'Pagar'}
+            </button>
+          </div>
+        </>
+      )}
+      {canViewCardError() && (
+        <>
+          <div className="alert alert-danger">
+            <h3>Pagamento não autorizado!</h3>
+            <h4>Tente usar outro cartão de crédito!</h4>
+          </div>
+          <div className="actions">
+            <button
+              onClick={() => {
+                setFetchError(false)
+              }}
+            >
+              Tentar novamente
+            </button>
+          </div>
+        </>
+      )}
+      {canViewCardSuccess() && (
+        <>
+          <div className="alert alert-success">
+            <h3>Pagamento autorizado com sucesso</h3>
+            <h4>
+              Aguarde até liberarmos o acesso ao seu portal. Fique atento a sua
+              caixa de emails!
+            </h4>
+          </div>
+
+          <div className="actions">
+            <button onClick={() => window.location.replace('/')}>
+              Voltar ao site
+            </button>
+          </div>
+        </>
+      )}
+
       <style jsx>{`
         button.btnPay {
           border: solid 4px #10795c !important;
           color: #10795c !important;
           transition: 1s;
         }
-        button:disabled.btnPay {
-          border: solid 4px #ddd !important;
-          color: #ddd !important;
+        button.btnError {
+          border: solid 4px #d9222a !important;
+          color: #d9222a !important;
         }
         @media (min-width: 400px) {
           section {
-            width: 400px;
+            width: 350px;
           }
         }
         @media (max-width: 350px) {
@@ -355,19 +445,31 @@ const Card = () => {
             justify-content: flex-start;
           }
         }
-        div.cart {
+        div.alert {
           border-radius: 10px;
-          border-left: 4px solid #ffe500;
-          background: #fff59f;
+          border-left: 4px solid;
+
           padding: 10px 20px;
           box-sizing: border-box;
           text-align: left;
           margin-bottom: 10px;
         }
-        div.cart h3,
-        div.cart h4 {
+        div.alert h3,
+        div.alert h4 {
           line-height: 1;
           margin: 0;
+        }
+        div.alert-warning {
+          border-color: #ffe500;
+          background: #fff59f;
+        }
+        div.alert-danger {
+          border-color: #d9222a;
+          background: #ffc5c7;
+        }
+        div.alert-success {
+          border-color: #10795c;
+          background: #d2eee6;
         }
         article {
           display: flex;

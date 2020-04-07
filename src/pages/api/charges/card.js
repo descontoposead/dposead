@@ -102,6 +102,7 @@ export default async (req, res) => {
     )
 
     res.status(201).json(payed)
+    // res.status(201).json({})
   } catch (err) {
     res.status(500).json(err)
   }
