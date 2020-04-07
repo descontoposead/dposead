@@ -27,9 +27,9 @@ const Enrolment = () => {
 
       <style jsx>{`
         img#logo {
-          position: absolute;
+          position: fixed;
           right: 10px;
-          bottom: 13px;
+          bottom: 20px;
         }
       `}</style>
     </>

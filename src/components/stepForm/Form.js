@@ -11,7 +11,7 @@ import InputGroupParent from './InputGroupParent'
 import InputCivilStatus from './InputCivilStatus'
 import InputProfession from './InputProfession'
 import InputZip from './InputZip'
-import InputFullAddress from './InputFullAddress'
+import InputGroupAddress from './InputGroupAddress'
 import InputGroupGraduation from './InputGroupGraduation'
 import InputCourse from './InputCourse'
 import InputPaymentValues from './InputPaymentValues'
@@ -36,7 +36,7 @@ const Form = () => {
         <InputCivilStatus />
         <InputProfession />
         <InputZip />
-        <InputFullAddress />
+        <InputGroupAddress />
         <InputGroupGraduation />
         <InputCourse />
         <InputPaymentValues />

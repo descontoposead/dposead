@@ -33,22 +33,22 @@ const InputCourse = () => {
     )
 
   //scrap-fetch courses
-  useEffect(() => {
-    let page = 0
+  // useEffect(() => {
+  //   let page = 0
 
-    ;(async function paginate() {
-      const stream = await fetch('/api/courses/' + page++)
-      const res = await stream.json()
+  //   ;(async function paginate() {
+  //     const stream = await fetch('/api/courses/' + page++)
+  //     const res = await stream.json()
 
-      if (stream.status === 200) {
-        setCourses((data) => [...data, ...res])
-      } else {
-        return
-      }
+  //     if (stream.status === 200) {
+  //       setCourses((data) => [...data, ...res])
+  //     } else {
+  //       return
+  //     }
 
-      await paginate()
-    })()
-  }, [])
+  //     await paginate()
+  //   })()
+  // }, [])
 
   useEffect(() => {
     setOptNextStep({
