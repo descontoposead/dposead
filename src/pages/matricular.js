@@ -43,17 +43,17 @@ const Enrolment = () => {
         header {
           width: 100vw;
           height: 10px;
-          border: 3px solid;
           border-right: 0;
           border-left: 0;
+          background: #cecece;
         }
         header > div {
           width: ${progressBarValue > 100 ? 100 : progressBarValue}vw;
           height: 10px;
           background: #000;
           transition: 1s;
-          border-top-right-radius: 4x;
-          border-bottom-right-radius: 4px;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 7px;
         }
       `}</style>
     </>
