@@ -2,8 +2,7 @@ import { useEffect } from 'react'
 
 import { useSharedStep } from '../../hooks/useSharedStep'
 import { SharedValuesProvider } from '../../hooks/useSharedValues'
-import InputName from './InputName'
-import InputEmail from './InputEmail'
+import InputLead from './InputLead'
 import InputGroupPhone from './InputGroupPhone'
 import InputGroupDoc from './InputGroupDoc'
 import InputGroupBirth from './InputGroupBirth'
@@ -27,8 +26,7 @@ const Form = () => {
   return (
     <form>
       <SharedValuesProvider>
-        <InputName />
-        <InputEmail />
+        <InputLead />
         <InputGroupPhone />
         <InputGroupDoc />
         <InputGroupBirth />
@@ -108,7 +106,10 @@ const Form = () => {
         :root {
           margin: 0;
           touch-action: pan-y;
+        }
+        * {
           font-family: 'Baloo 2', cursive;
+          line-height: 1;
         }
         form {
           width: 100vw;

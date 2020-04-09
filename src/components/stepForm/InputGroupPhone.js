@@ -145,7 +145,7 @@ const InputGroupPhone = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputEmail' })}
+            onClick={() => setNextStep({ currentStep: 'InputLead' })}
           >
             Voltar
           </button>
