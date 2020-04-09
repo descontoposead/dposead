@@ -2,6 +2,7 @@ import { createStateContext } from 'react-use'
 
 const [useSharedStep, SharedStepProvider] = createStateContext({
   currentStep: 'InputLead',
+  completed: 0,
   values: {},
 })
 

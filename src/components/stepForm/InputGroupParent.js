@@ -34,7 +34,7 @@ const InputGroupParent = () => {
           inputEl: inputGroupRefs.inputMotherNameRef.current,
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputCivilStatus' }),
+      setNextFn: () => setNextStep({ currentStep: 'InputZip' }),
       vibrateFn: () => toggleVibrating(),
     })
 

@@ -7,21 +7,23 @@ import InputGroupPhone from './InputGroupPhone'
 import InputGroupDoc from './InputGroupDoc'
 import InputGroupBirth from './InputGroupBirth'
 import InputGroupParent from './InputGroupParent'
-import InputCivilStatus from './InputCivilStatus'
-import InputProfession from './InputProfession'
 import InputZip from './InputZip'
 import InputGroupAddress from './InputGroupAddress'
 import InputGroupGraduation from './InputGroupGraduation'
 import InputCourse from './InputCourse'
-import InputPaymentValues from './InputPaymentValues'
-import InputPaymentMethod from './InputPaymentMethod'
+import InputChargeValueTax from './InputChargeValueTax'
+import InputPayMethodTax from './InputPayMethodTax'
+import InputChargeValueCourse from './InputChargeValueCourse'
+import InputPayMethodCourse from './InputPayMethodCourse'
 import Resume from './Resume'
 import FinalStep from './FinalStep'
 
 const Form = () => {
   const [step] = useSharedStep()
 
-  useEffect(() => {}, [step])
+  useEffect(() => {
+    console.log(step)
+  }, [step])
 
   return (
     <form>
@@ -31,14 +33,14 @@ const Form = () => {
         <InputGroupDoc />
         <InputGroupBirth />
         <InputGroupParent />
-        <InputCivilStatus />
-        <InputProfession />
         <InputZip />
         <InputGroupAddress />
         <InputGroupGraduation />
         <InputCourse />
-        <InputPaymentValues />
-        <InputPaymentMethod />
+        <InputPayMethodCourse />
+        <InputChargeValueCourse />
+        <InputPayMethodTax />
+        <InputChargeValueTax />
         <Resume />
         <FinalStep />
       </SharedValuesProvider>

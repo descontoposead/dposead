@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react'
 import { currentStepIs, useSharedStep } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
 
-const InputPaymentMethod = () => {
+const InputPayMethodCourse = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
@@ -12,7 +12,7 @@ const InputPaymentMethod = () => {
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
-    controlInputValue({ name: 'paymentMethod', value: 'creditCard' })
+    controlInputValue({ name: 'payMethodCourse', value: 'creditCard' })
 
     if (inputRef.current) {
       inputRef.current.value = values[inputRef.current.name]
@@ -20,21 +20,22 @@ const InputPaymentMethod = () => {
   }, [])
 
   return (
-    currentStepIs('InputPaymentMethod', step) && (
+    currentStepIs('InputPayMethodCourse', step) && (
       <>
         <div>
-          <h1>O que você prefere usar?</h1>
+          <h1>Melhor forma para acertar o curso</h1>
         </div>
         <div>
           <label htmlFor="creditCard">
             <input
               onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               defaultChecked={
-                !values.paymentMethod || values.paymentMethod === 'creditCard'
+                !values.payMethodCourse ||
+                values.payMethodCourse === 'creditCard'
               }
               id="creditCard"
               type="radio"
-              name="paymentMethod"
+              name="payMethodCourse"
               value="creditCard"
             />
             Cartão de crédito
@@ -42,10 +43,10 @@ const InputPaymentMethod = () => {
           <label htmlFor="billet">
             <input
               onChange={({ currentTarget }) => controlInputValue(currentTarget)}
-              defaultChecked={values.paymentMethod === 'billet'}
+              defaultChecked={values.payMethodCourse === 'billet'}
               id="billet"
               type="radio"
-              name="paymentMethod"
+              name="payMethodCourse"
               value="billet"
             />
             Boleto bancário
@@ -60,9 +61,11 @@ const InputPaymentMethod = () => {
           </button>
           <button
             className="next"
-            onClick={() => setNextStep({ currentStep: 'InputPaymentValues' })}
+            onClick={() =>
+              setNextStep({ currentStep: 'InputChargeValueCourse' })
+            }
           >
-            Do meu jeito
+            Assim está bom
           </button>
         </div>
 
@@ -88,4 +91,4 @@ const InputPaymentMethod = () => {
   )
 }
 
-export default InputPaymentMethod
+export default InputPayMethodCourse

@@ -74,7 +74,7 @@ const InputGroupAddress = () => {
     currentStepIs('InputGroupAddress', step) && (
       <>
         <div>
-          <h1>Te Encontramos?</h1>
+          <h1>Achamos você?</h1>
         </div>
         <div>
           <div>
@@ -90,7 +90,7 @@ const InputGroupAddress = () => {
               autoComplete="none"
               type="text"
               name="state"
-              placeholder="estado..."
+              placeholder="estado (sigla)..."
             />
             <strong className="hasEmptyError">Em qual estado você mora?</strong>
             <strong className="hasInvalidError">Este estado existe?</strong>
