@@ -23,7 +23,21 @@ const InputPayMethodTax = () => {
     currentStepIs('InputPayMethodTax', step) && (
       <>
         <div>
-          <h1>Melhor forma para acertar a matricula</h1>
+          <h1>Melhor forma para pagar a matricula</h1>
+          <h3>
+            Pagando a matricula você receberá acesso a:
+            <ul>
+              <li>
+                <mark>Portal Do Aluno</mark>
+              </li>
+              <li>
+                <mark>2 Materiais Didáticos</mark>
+              </li>
+              <li>
+                <mark>2 Avaliações</mark>
+              </li>
+            </ul>
+          </h3>
         </div>
         <div>
           <label htmlFor="creditCard">
@@ -91,6 +105,16 @@ const InputPayMethodTax = () => {
             height: 60px;
             align-items: center;
             font-size: 1.8rem;
+          }
+          mark {
+            padding: 0 10px;
+          }
+          ul {
+            padding: 0;
+            list-style: none;
+          }
+          ul li {
+            margin: 15px 0;
           }
         `}</style>
       </>

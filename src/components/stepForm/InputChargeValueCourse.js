@@ -63,7 +63,7 @@ const InputChargeValueCourse = () => {
     currentStepIs('InputChargeValueCourse', step) && (
       <>
         <div>
-          <h1>Adeque o curso ao seu bolso</h1>
+          <h1>Como você deseja investir o curso?</h1>
         </div>
         <div>
           <section>

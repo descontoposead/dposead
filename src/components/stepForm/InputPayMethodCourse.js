@@ -23,7 +23,7 @@ const InputPayMethodCourse = () => {
     currentStepIs('InputPayMethodCourse', step) && (
       <>
         <div>
-          <h1>Melhor forma para acertar o curso</h1>
+          <h1>Melhor forma para investir no curso</h1>
         </div>
         <div>
           <label htmlFor="creditCard">

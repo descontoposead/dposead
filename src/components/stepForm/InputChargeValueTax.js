@@ -59,7 +59,7 @@ const InputChargeValueTax = () => {
     currentStepIs('InputChargeValueTax', step) && (
       <>
         <div>
-          <h1>Adeque a matricula ao seu bolso</h1>
+          <h1>Como você deseja pagar a matricula?</h1>
         </div>
         <div>
           <section>
@@ -106,7 +106,43 @@ const InputChargeValueTax = () => {
             onClick={() =>
               setNextStep({
                 currentStep: 'Resume',
-                values: values,
+                values: {
+                  address: {
+                    state: 'MG',
+                    city: 'Córrego Novo',
+                    zipcode: '35345-000',
+                    neighborhood: 'Centro',
+                    street: '9292',
+                    number: '83',
+                  },
+                  payMethodCourse: 'creditCard',
+                  chargeValueCourse: {
+                    instalment: 1,
+                    value: 200000,
+                    currency: 2000,
+                  },
+                  payMethodTax: 'billet',
+                  chargeValueTax: {
+                    instalment: 1,
+                    value: 20000,
+                    currency: 200,
+                  },
+                  email: 'gustavo@mail.com',
+                  name: 'Gustavo Jonatan',
+                  phone: '(33) 9838-3838',
+                  whatsapp: '(33) 99393-9399',
+                  personalDocument: '108.470.806-09',
+                  personalRegistry: 'MG9393',
+                  stateOfBirth: 'MG',
+                  cityOfBirth: 'Corrego Novo',
+                  dateOfBirth: '12/09/1995',
+                  parentName: 'Jose Antionio',
+                  motherName: 'Conceicao Alves',
+                  zipcode: '35345-000',
+                  graduation: 'Dev',
+                  dateOfGraduation: '12/08/1995',
+                  courseName: 'SUPERVISÃO E ADMINISTRAÇÃO ESCOLAR',
+                },
                 progressValue: step.progressValue + 7.69,
               })
             }

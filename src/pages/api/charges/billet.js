@@ -75,7 +75,7 @@ export default async (req, res) => {
             expire_at: addDays(new Date(), 1),
             customer: value.student,
             message:
-              'Em até 2 dias depois do boleto pago, seu acesso ao portal do aluno será liberado.',
+              'Em até 2 dias depois do boleto pago, o acesso ao Portal Do Aluno será enviado no e-mail cadastrado.',
           },
         },
       }
@@ -85,8 +85,7 @@ export default async (req, res) => {
       return res.status(charge.code).json(billet)
     }
 
-    res.status(200).json({
-      type: 'billet',
+    res.status(201).json({
       barcode: billet.data.barcode,
       archive: billet.data.pdf.charge,
     })
