@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Card from '../payment/Card'
 
 const FinalStep = () => {
-  const [step] = useSharedStep()
+  const [step, setNextStep] = useSharedStep()
   const [paymentResponse, setPaymentResponse] = useState(null)
   const [paymentResponseErr, setPaymentResponseErr] = useState(null)
 

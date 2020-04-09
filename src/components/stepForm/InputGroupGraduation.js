@@ -35,7 +35,11 @@ const InputGroupGraduation = () => {
           inputEl: inputGroupRefs.dateOfGraduation.current.inputElement,
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputCourse' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputCourse',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 

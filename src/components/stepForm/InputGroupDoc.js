@@ -78,7 +78,11 @@ const InputGroupDoc = () => {
           inputEl: inputGroupRefs.inputPersonalRegistryRef.current,
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputGroupBirth' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputGroupBirth',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 

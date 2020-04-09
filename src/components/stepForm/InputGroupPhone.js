@@ -53,7 +53,11 @@ const InputGroupPhone = () => {
           ],
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputGroupDoc' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputGroupDoc',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 

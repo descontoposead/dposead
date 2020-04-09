@@ -45,7 +45,11 @@ const InputLead = () => {
           ],
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputGroupPhone' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputGroupPhone',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 

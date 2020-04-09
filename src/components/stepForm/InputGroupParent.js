@@ -34,7 +34,11 @@ const InputGroupParent = () => {
           inputEl: inputGroupRefs.inputMotherNameRef.current,
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputZip' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputZip',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 

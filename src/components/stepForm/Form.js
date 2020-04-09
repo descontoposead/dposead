@@ -18,11 +18,11 @@ import InputPayMethodCourse from './InputPayMethodCourse'
 import Resume from './Resume'
 import FinalStep from './FinalStep'
 
-const Form = () => {
+const Form = ({ onProgress }) => {
   const [step] = useSharedStep()
 
   useEffect(() => {
-    console.log(step)
+    onProgress(step.progressValue)
   }, [step])
 
   return (

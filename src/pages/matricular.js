@@ -2,8 +2,14 @@ import Head from 'next/head'
 
 import { SharedStepProvider } from '../hooks/useSharedStep'
 import Form from '../components/stepForm/Form'
+import { useState } from 'react'
 
 const Enrolment = () => {
+  const [progressBarValue, setProgressBarValue] = useState(0)
+  const progressBar = (value) => {
+    setProgressBarValue(value)
+  }
+
   return (
     <>
       <Head>
@@ -16,8 +22,9 @@ const Enrolment = () => {
           }}
         ></script>
       </Head>
+      <header></header>
       <SharedStepProvider>
-        <Form />
+        <Form onProgress={(value) => progressBar(value)} />
       </SharedStepProvider>
       <img
         id="logo"
@@ -30,6 +37,12 @@ const Enrolment = () => {
           position: fixed;
           right: 10px;
           bottom: 20px;
+        }
+        header {
+          height: 5px;
+          background: #000;
+          width: ${progressBarValue > 100 ? 100 : progressBarValue}vw;
+          transition: 1s;
         }
       `}</style>
     </>

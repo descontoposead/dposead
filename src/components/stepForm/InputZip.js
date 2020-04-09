@@ -27,7 +27,11 @@ const InputZip = () => {
 
     setOptNextStep({
       inputEl: () => inputRef.current.inputElement,
-      setNextFn: () => setNextStep({ currentStep: 'InputGroupAddress' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputGroupAddress',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 

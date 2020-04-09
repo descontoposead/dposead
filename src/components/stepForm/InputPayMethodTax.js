@@ -60,7 +60,12 @@ const InputPayMethodTax = () => {
           </button>
           <button
             className="next"
-            onClick={() => setNextStep({ currentStep: 'InputChargeValueTax' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputChargeValueTax',
+                progressValue: step.progressValue + 7.69,
+              })
+            }
           >
             Do meu jeito
           </button>

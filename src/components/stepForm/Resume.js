@@ -93,7 +93,11 @@ const Resume = () => {
           <button
             className="next"
             onClick={() =>
-              setNextStep({ currentStep: 'FinalStep', values: step.values })
+              setNextStep({
+                currentStep: 'FinalStep',
+                progressValue: step.progressValue + 7.69,
+                values: step.values,
+              })
             }
           >
             Finalizar!

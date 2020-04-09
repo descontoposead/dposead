@@ -53,7 +53,11 @@ const InputCourse = () => {
   useEffect(() => {
     setOptNextStep({
       inputEl: () => inputRef.current,
-      setNextFn: () => setNextStep({ currentStep: 'InputPayMethodCourse' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputPayMethodCourse',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 

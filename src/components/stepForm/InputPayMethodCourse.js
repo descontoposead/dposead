@@ -62,7 +62,10 @@ const InputPayMethodCourse = () => {
           <button
             className="next"
             onClick={() =>
-              setNextStep({ currentStep: 'InputChargeValueCourse' })
+              setNextStep({
+                currentStep: 'InputChargeValueCourse',
+                progressValue: step.progressValue + 7.69,
+              })
             }
           >
             Assim está bom

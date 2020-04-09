@@ -57,7 +57,11 @@ const InputGroupAddress = () => {
           inputEl: refGroup.refStreetInput.current,
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputGroupGraduation' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputGroupGraduation',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 
