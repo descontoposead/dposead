@@ -98,7 +98,12 @@ const InputGroupGraduation = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputGroupAddress' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputGroupAddress',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

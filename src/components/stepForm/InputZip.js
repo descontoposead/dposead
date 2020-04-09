@@ -104,7 +104,12 @@ const InputZip = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputProfession' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputProfession',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

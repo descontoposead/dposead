@@ -86,7 +86,12 @@ const Resume = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputChargeValueTax' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputChargeValueTax',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

@@ -149,7 +149,12 @@ const InputGroupPhone = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputLead' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputLead',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

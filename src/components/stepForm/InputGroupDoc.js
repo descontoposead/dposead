@@ -158,7 +158,12 @@ const InputGroupDoc = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputGroupPhone' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputGroupPhone',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

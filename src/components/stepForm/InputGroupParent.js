@@ -105,7 +105,12 @@ const InputGroupParent = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputGroupBirth' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputGroupBirth',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

@@ -194,7 +194,12 @@ const InputCourse = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputGroupGraduation' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputGroupGraduation',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

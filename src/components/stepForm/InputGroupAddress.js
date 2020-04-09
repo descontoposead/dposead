@@ -186,7 +186,12 @@ const InputGroupAddress = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputZip' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputZip',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

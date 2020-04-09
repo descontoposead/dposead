@@ -81,7 +81,12 @@ const InputChargeValueCourse = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputPayMethodCourse' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputPayMethodCourse',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>
