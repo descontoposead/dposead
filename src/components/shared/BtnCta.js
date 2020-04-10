@@ -9,6 +9,7 @@ const BtnCta = (props) => (
         left:10px;
       }
 
+
       @media (max-width: 450px) {
         .btn-red {
           width: 100%;
