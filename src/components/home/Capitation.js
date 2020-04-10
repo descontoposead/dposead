@@ -82,6 +82,7 @@ const Capitation = () => (
         flex-wrap: wrap;
         align-items: center;
       }
+
       section > form > div * {
         color: var(--write);
       }
