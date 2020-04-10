@@ -6,11 +6,7 @@ import { useSharedValues } from '../../hooks/useSharedValues'
 const InputChargeValueTax = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
-  const [chargeValueTax, setChargeValueTax] = useState({
-    instalment: 1,
-    value: 20000,
-    currency: 200,
-  })
+  const [chargeValueTax, setChargeValueTax] = useState(null)
   const [instalmentPlan] = useState({
     creditCard: {
       max: 12,
@@ -23,8 +19,15 @@ const InputChargeValueTax = () => {
   })
 
   useEffect(() => {
-    controlInputValue({ name: 'chargeValueTax', value: chargeValueTax })
-  }, [])
+    if (currentStepIs('InputChargeValueTax', step)) {
+      setChargeValueTax({
+        instalment: 1,
+        value: 20000,
+        currency: 200,
+      })
+      controlInputValue({ name: 'chargeValueTax', value: chargeValueTax })
+    }
+  }, [step])
 
   const incrementInstalment = (e) => {
     e.preventDefault()
@@ -72,8 +75,8 @@ const InputChargeValueTax = () => {
                   &#10092;
                 </button>
                 <strong>
-                  {chargeValueTax.instalment} x de{' '}
-                  <i>{chargeValueTax.currency.toFixed(2)} reais</i>
+                  {chargeValueTax?.instalment} x de{' '}
+                  <i>{chargeValueTax?.currency.toFixed(2)} reais</i>
                 </strong>
                 <button onClick={(e) => decrementInstalment(e)}>
                   &#10093;
@@ -82,8 +85,8 @@ const InputChargeValueTax = () => {
             ) : (
               <>
                 <strong>
-                  {chargeValueTax.instalment} x de{' '}
-                  <i>{chargeValueTax.currency.toFixed(2)} reais</i>
+                  {chargeValueTax?.instalment} x de{' '}
+                  <i>{chargeValueTax?.currency.toFixed(2)} reais</i>
                 </strong>
               </>
             )}
@@ -106,43 +109,7 @@ const InputChargeValueTax = () => {
             onClick={() =>
               setNextStep({
                 currentStep: 'Resume',
-                values: {
-                  address: {
-                    state: 'MG',
-                    city: 'Córrego Novo',
-                    zipcode: '35345-000',
-                    neighborhood: 'Centro',
-                    street: '9292',
-                    number: '83',
-                  },
-                  payMethodCourse: 'creditCard',
-                  chargeValueCourse: {
-                    instalment: 1,
-                    value: 200000,
-                    currency: 2000,
-                  },
-                  payMethodTax: 'billet',
-                  chargeValueTax: {
-                    instalment: 1,
-                    value: 20000,
-                    currency: 200,
-                  },
-                  email: 'gustavo@mail.com',
-                  name: 'Gustavo Jonatan',
-                  phone: '(33) 9838-3838',
-                  whatsapp: '(33) 99393-9399',
-                  personalDocument: '108.470.806-09',
-                  personalRegistry: 'MG9393',
-                  stateOfBirth: 'MG',
-                  cityOfBirth: 'Corrego Novo',
-                  dateOfBirth: '12/09/1995',
-                  parentName: 'Jose Antionio',
-                  motherName: 'Conceicao Alves',
-                  zipcode: '35345-000',
-                  graduation: 'Dev',
-                  dateOfGraduation: '12/08/1995',
-                  courseName: 'SUPERVISÃO E ADMINISTRAÇÃO ESCOLAR',
-                },
+                values: values,
                 progressValue: step.progressValue + 7.69,
               })
             }

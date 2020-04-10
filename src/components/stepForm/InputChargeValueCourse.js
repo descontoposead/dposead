@@ -6,11 +6,7 @@ import { useSharedValues } from '../../hooks/useSharedValues'
 const InputChargeValueCourse = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
-  const [chargeValueCourse, setChargeValueCourse] = useState({
-    instalment: 1,
-    value: 200000,
-    currency: 2000,
-  })
+  const [chargeValueCourse, setChargeValueCourse] = useState(null)
   const [instalmentPlan] = useState({
     creditCard: {
       max: 12,
@@ -23,8 +19,15 @@ const InputChargeValueCourse = () => {
   })
 
   useEffect(() => {
-    controlInputValue({ name: 'chargeValueCourse', value: chargeValueCourse })
-  }, [])
+    if (currentStepIs('InputChargeValueCourse', step)) {
+      setChargeValueCourse({
+        instalment: 1,
+        value: 200000,
+        currency: 2000,
+      })
+      controlInputValue({ name: 'chargeValueCourse', value: chargeValueCourse })
+    }
+  }, [step])
 
   const incrementInstalment = (e) => {
     e.preventDefault()
@@ -72,8 +75,8 @@ const InputChargeValueCourse = () => {
             </strong>
             <button onClick={(e) => incrementInstalment(e)}>&#10092;</button>
             <strong>
-              {chargeValueCourse.instalment} x de{' '}
-              <i>{chargeValueCourse.currency.toFixed(2)} reais</i>
+              {chargeValueCourse?.instalment} x de{' '}
+              <i>{chargeValueCourse?.currency.toFixed(2)} reais</i>
             </strong>
             <button onClick={(e) => decrementInstalment(e)}>&#10093;</button>
           </section>

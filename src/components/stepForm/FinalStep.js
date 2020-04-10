@@ -1,5 +1,5 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
-import Card from '../payment/Card'
+import CreditCard from '../payment/CreditCard'
 import Billet from '../payment/Billet'
 
 const FinalStep = () => {
@@ -21,7 +21,10 @@ const FinalStep = () => {
 
         {step.values.payMethodTax === 'creditCard' && (
           <div>
-            <Card values={step.values} />
+            <CreditCard
+              values={step.values}
+              goToPayMethodTax={goToPayMethodTax}
+            />
           </div>
         )}
 

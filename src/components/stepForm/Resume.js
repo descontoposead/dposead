@@ -1,7 +1,12 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useEffect } from 'react'
 
 const Resume = () => {
   const [step, setNextStep] = useSharedStep()
+
+  useEffect(() => {
+    console.log(step.values)
+  }, [step])
 
   return (
     currentStepIs('Resume', step) && (
@@ -13,10 +18,6 @@ const Resume = () => {
           <p>
             <label htmlFor="name">Aluno</label>
             <span>{step.values.name}</span>
-          </p>
-          <p>
-            <label htmlFor="name">Estado Civil</label>
-            <span>{step.values.civilStatus}</span>
           </p>
           <p>
             <label htmlFor="email">E-Mail</label>
@@ -57,10 +58,6 @@ const Resume = () => {
           <p>
             <label htmlFor="motherName">Nome da mãe</label>
             <span>{step.values.motherName}</span>
-          </p>
-          <p>
-            <label htmlFor="parentName">Profissão</label>
-            <span>{step.values.profession}</span>
           </p>
           <p>
             <label htmlFor="motherName">Endereço</label>

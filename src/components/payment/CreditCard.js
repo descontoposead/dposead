@@ -7,7 +7,7 @@ import EloIcon from '../icon/EloIcon'
 import MastercardIcon from '../icon/MastercardIcon'
 import VisaIcon from '../icon/VisaIcon'
 
-const Card = (props) => {
+const CreditCard = ({ values, goToPayMethodTax }) => {
   const [brandIconComponents] = useState({
     AmexIcon,
     DinersIcon,
@@ -23,6 +23,7 @@ const Card = (props) => {
   const [paymentToken, setPaymentToken] = useState(null)
   const [hasTokenError, setTokenError] = useState(false)
   const [hasFetchError, setFetchError] = useState(false)
+  const [isFetching, setFetching] = useState(false)
   const [paymentResponse, setPaymentResponse] = useState(null)
 
   const inputCardNumberRef = useRef(null)
@@ -148,7 +149,7 @@ const Card = (props) => {
       })
     )
 
-    if (cardValuesCompleted() && isFlipped) {
+    if (cardValuesCompleted()) {
       try {
         const {
           data: { payment_token },
@@ -158,6 +159,7 @@ const Card = (props) => {
         setTimeout(() => flipCard()({ preventDefault: () => null }), 2000)
       } catch (e) {
         setTokenError(true)
+        console.log(e)
 
         if (!e.hasOwnProperty('error_description')) {
           return
@@ -200,34 +202,36 @@ const Card = (props) => {
   const pay = () => (event) => {
     event.preventDefault()
 
+    setFetching(true)
+
     fetch('/api/charges/card', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        installments: props.values.courseTaxValue.instalment,
+        installments: values.chargeValueTax.instalment,
         payment_token: paymentToken,
         product: {
-          name: props.values.courseName,
-          value: props.values.courseTaxValue.value,
+          name: values.courseName,
+          value: values.chargeValueTax.value,
         },
         student: {
-          name: props.values.name,
-          cpf: props.values.personalDocument.replace(/\D/g, ''),
-          email: props.values.email,
-          phone_number: props.values.whatsapp.replace(/\D/g, ''),
-          birth: new Date(props.values.dateOfBirth)
+          name: values.name,
+          cpf: values.personalDocument.replace(/\D/g, ''),
+          email: values.email,
+          phone_number: values.whatsapp.replace(/\D/g, ''),
+          birth: new Date(values.dateOfBirth)
             .toISOString()
             .replace(/=?T.*/, ''),
         },
         address: {
-          state: props.values.address.state,
-          city: props.values.address.city,
-          zipcode: props.values.address.zipcode.replace(/\D/g, ''),
-          neighborhood: props.values.address.neighborhood,
-          number: props.values.address.number,
-          street: props.values.address.street,
+          state: values.address.state,
+          city: values.address.city,
+          zipcode: values.address.zipcode.replace(/\D/g, ''),
+          neighborhood: values.address.neighborhood,
+          number: values.address.number,
+          street: values.address.street,
         },
       }),
     })
@@ -236,10 +240,14 @@ const Card = (props) => {
         return await res.json()
       })
       .then((res) => {
+        setFetching(false)
         setPaymentResponse(res)
         setFetchError(false)
       })
-      .catch(setFetchError)
+      .catch((err) => {
+        setFetchError(err)
+        setFetching(false)
+      })
   }
 
   useEffect(() => {
@@ -256,10 +264,16 @@ const Card = (props) => {
     <>
       {canViewCard() && (
         <>
-          <div className="wrapper">
+          <div>
+            <h2>Pagamento da matricula</h2>
+          </div>
+          <div>
             <div className="alert alert-warning">
-              <h3>Matricula</h3>
-              <h4>Gestão de negocios - 1 X de 200.00</h4>
+              <h3>
+                {values.courseName} <br />
+                {values.chargeValueTax.instalment} X de{' '}
+                {values.chargeValueTax.currency.toFixed(2)}
+              </h3>
             </div>
             <section
               style={{ padding: isFlipped ? 10 : 10 }}
@@ -268,8 +282,7 @@ const Card = (props) => {
               {!isFlipped && isEndTransition ? (
                 <>
                   <div>
-                    <h1>Gustavo J O Lima</h1>
-                    <h2>Graduado em Ciências da computação</h2>
+                    <h1>{values.name}</h1>
                   </div>
                   <div>
                     <div>
@@ -299,7 +312,8 @@ const Card = (props) => {
                               name="expiration_month"
                               type="text"
                               autoComplete="off"
-                              placeholder="xx"
+                              placeholder="Mês (xx)"
+                              maxLength={2}
                               defaultValue={cardValues?.expiration_month}
                               onChange={controlCardValue()}
                             />
@@ -310,7 +324,8 @@ const Card = (props) => {
                               name="expiration_year"
                               type="text"
                               autoComplete="off"
-                              placeholder="xxxx"
+                              placeholder="Ano (xxxx)"
+                              maxLength={4}
                               defaultValue={cardValues?.expiration_year}
                               onChange={controlCardValue()}
                             />
@@ -333,6 +348,7 @@ const Card = (props) => {
                         autoComplete="off"
                         autoFocus
                         placeholder="cvv"
+                        maxLength={4}
                         defaultValue={cardValues?.cvv}
                         onChange={controlCardValue()}
                       />
@@ -367,8 +383,13 @@ const Card = (props) => {
             </article>
           </div>
           <div className="actions">
+            <button onClick={() => goToPayMethodTax()}>
+              Alterar o método de pagamento
+            </button>
             {cardValues.cvv && (
-              <button onClick={flipCard()}>Alterar CVV</button>
+              <button style={{ marginRight: 5 }} onClick={flipCard()}>
+                Vire o cartão
+              </button>
             )}
             <button
               className={
@@ -376,7 +397,11 @@ const Card = (props) => {
               }
               onClick={pay()}
             >
-              {hasTokenError ? '!!! Cartão inválido' : 'Pagar'}
+              {hasTokenError
+                ? '!!! Cartão inválido'
+                : isFetching
+                ? 'Processando pagamento...'
+                : 'Pagar'}
             </button>
           </div>
         </>
@@ -417,6 +442,36 @@ const Card = (props) => {
       )}
 
       <style jsx>{`
+        @media (min-width: 350px) {
+          div.alert {
+            width: 350px;
+            margin: 0 auto;
+          }
+          section {
+            width: 350px;
+            margin: 0 auto;
+          }
+        }
+        @media (max-width: 349px) {
+          div.alert {
+            width: 268px;
+            margin: 0 auto;
+          }
+          section {
+            width: 268px;
+            margin: 0 auto;
+          }
+          div.actions {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+          }
+        }
+        div.actions > button:first-child {
+          margin-bottom: 5px;
+          border-color: #868686;
+          color: #868686;
+        }
         button.btnPay {
           border: solid 4px #10795c !important;
           color: #10795c !important;
@@ -425,25 +480,6 @@ const Card = (props) => {
         button.btnError {
           border: solid 4px #d9222a !important;
           color: #d9222a !important;
-        }
-        @media (min-width: 400px) {
-          section {
-            width: 350px;
-          }
-        }
-        @media (max-width: 350px) {
-          div.wrapper {
-            overflow-y: auto;
-            height: 62vh;
-          }
-          section {
-            width: 278px;
-          }
-          div.actions {
-            flex: 1;
-            display: flex;
-            justify-content: flex-start;
-          }
         }
         div.alert {
           border-radius: 10px;
@@ -516,9 +552,9 @@ const Card = (props) => {
           margin: 0;
         }
         section {
+          height: 190px;
           transform: rotateY(0rad);
           transition: 0.7s;
-          height: 190px;
           background: #639486;
           text-align: left;
           display: flex;
@@ -610,4 +646,4 @@ const Card = (props) => {
   )
 }
 
-export default Card
+export default CreditCard
