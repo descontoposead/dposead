@@ -8,7 +8,7 @@ module.exports = {
       client_id: process.env.DPOS_GN_CLIENT_ID,
       client_secret: process.env.DPOS_GN_CLIENT_SECRET,
     },
-    DPOS_GN_ACCOUNT_ID: process.env.DPOS_GN_ACCOUNT_ID,
+    gnAccountId: process.env.DPOS_GN_ACCOUNT_ID,
     whatsappNumber: '5531994753141',
   },
 }
