@@ -1,5 +1,5 @@
 const BtnCta = (props) => (
-<form action="https://api.whatsapp.com/send?1=pt_BR&phone=5531994753141">
+<form method="GET"  action="https://api.whatsapp.com/send?1=pt_BR&phone=5531994753141">
   <button {...props}>
     Falar com um consultor
     <style jsx>{`
