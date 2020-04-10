@@ -4,10 +4,6 @@ import { useEffect } from 'react'
 const Resume = () => {
   const [step, setNextStep] = useSharedStep()
 
-  useEffect(() => {
-    console.log(step.values)
-  }, [step])
-
   return (
     currentStepIs('Resume', step) && (
       <>

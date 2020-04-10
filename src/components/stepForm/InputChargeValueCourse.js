@@ -19,15 +19,31 @@ const InputChargeValueCourse = () => {
   })
 
   useEffect(() => {
-    if (currentStepIs('InputChargeValueCourse', step)) {
-      setChargeValueCourse({
+    controlInputValue({
+      name: 'chargeValueCourse',
+      value: {
         instalment: 1,
         value: 200000,
         currency: 2000,
+      },
+    })
+  }, []) //oninit
+
+  useEffect(() => {
+    if (currentStepIs('InputChargeValueCourse', step)) {
+      //reset
+      const initialChargeCourseValue = {
+        instalment: 1,
+        value: 200000,
+        currency: 2000,
+      }
+      setChargeValueCourse(initialChargeCourseValue)
+      controlInputValue({
+        name: 'chargeValueCourse',
+        value: initialChargeCourseValue,
       })
-      controlInputValue({ name: 'chargeValueCourse', value: chargeValueCourse })
     }
-  }, [step])
+  }, [step]) //onstepchange
 
   const incrementInstalment = (e) => {
     e.preventDefault()
