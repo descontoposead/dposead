@@ -6,5 +6,6 @@ module.exports = {
       sandbox: true,
     },
     gnAccountId: '43bf82dbcc68c1ff016dd70b4ba47047',
+    whatsappNumber: '5531994753141',
   },
 }
