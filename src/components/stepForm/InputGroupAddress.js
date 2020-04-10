@@ -92,6 +92,7 @@ const InputGroupAddress = () => {
                 controlInputValue(currentTarget)
               }}
               autoComplete="none"
+              autoFocus
               type="text"
               name="state"
               placeholder="estado (sigla)..."
@@ -113,7 +114,6 @@ const InputGroupAddress = () => {
                 controlInputValue(currentTarget)
               }}
               autoComplete="none"
-              autoFocus
               type="text"
               name="city"
               placeholder="cidade..."
