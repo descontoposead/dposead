@@ -1,19 +1,26 @@
 const BtnCta = (props) => (
-<form method="GET"  action="https://api.whatsapp.com/send?1=pt_BR&phone=5531994753141">
-  <button {...props}>
+  <a
+    {...props}
+    href={
+      'https://api.whatsapp.com/send?1=pt_BR&phone=' +
+      process.env.whatsappNumber
+    }
+    target="_blank"
+  >
     Falar com um consultor
     <style jsx>{`
-      button {
+      a {
         padding: 10px 30px;
         font-size: 1.2rem;
-        left:10px;
+        left: 10px;
+        text-decoration: none;
       }
 
       @media (max-width: 450px) {
         .btn-red {
           width: 100%;
         }
-         button {
+        a {
           padding: 15px 10px;
           font-size: 1rem;
           width: 100%;
@@ -21,9 +28,7 @@ const BtnCta = (props) => (
         }
       }
     `}</style>
-  </button>
-
-  </form>
+  </a>
 )
 
 export default BtnCta
