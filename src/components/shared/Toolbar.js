@@ -13,7 +13,7 @@ const Toolbar = () => (
       layout="responsive"
     ></amp-img>
      <div className="bntcon">
-    <BtnCta className="btn btn-outline" style={{ marginRight: 2 }} />
+    <BtnCta className="btn btn-outline" style={{ marginRight: 10 }} />
     </div>
     <div className="cta">
       <Link href="/matricular">
@@ -72,6 +72,12 @@ const Toolbar = () => (
         div.toolbar {
           padding: 10px 20px;
         }
+        div.bntcon{
+          position: relative;
+          left: 0px;
+        }
+
+
       }
       @media (max-width: 650px) {
         .toolbar {
