@@ -1,7 +1,7 @@
 import { createStateContext } from 'react-use'
 
 const [useSharedStep, SharedStepProvider] = createStateContext({
-  currentStep: 'Resume',
+  currentStep: 'InputLead',
   progressValue: 1,
   values: {},
   // values: {
