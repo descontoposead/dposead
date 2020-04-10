@@ -83,7 +83,11 @@ export default async (req, res) => {
     return res.status(400).json(error)
   }
 
-  const gnsdk = new gn(process.env.gnConfig)
+  const gnsdk = new gn(
+    Object.assign(process.env.gnConfig, {
+      sandbox: process.env.NODE_ENV === 'development',
+    })
+  )
 
   try {
     const payed = await gnsdk.oneStep(
