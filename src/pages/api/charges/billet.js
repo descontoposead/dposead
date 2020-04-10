@@ -58,11 +58,11 @@ export default async (req, res) => {
     return res.status(400).json(error)
   }
 
-  const gnsdk = new gn(
-    Object.assign(process.env.gnConfig, {
-      sandbox: process.env.NODE_ENV === 'development',
-    })
-  )
+  const gnsdk = new gn({
+    client_id: process.env.DPOS_GN_CLIENT_ID,
+    client_secret: process.env.DPOS_GN_CLIENT_SECRET,
+    sandbox: process.env.NODE_ENV === 'development',
+  })
 
   try {
     const charge = await gnsdk.createCharge({}, { items: [value.product] })
@@ -94,6 +94,7 @@ export default async (req, res) => {
       archive: billet.data.pdf.charge,
     })
   } catch (err) {
+    console.log(process.env.DPOS_GN_CLIENT_ID)
     res.status(500).json(err)
   }
 }

@@ -25,6 +25,7 @@
     "react-use": "^13.27.0"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "husky": "^4.2.3",
     "prettier": "2.0.1",
     "pretty-quick": "^2.0.1"
