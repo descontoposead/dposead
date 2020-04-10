@@ -12,8 +12,9 @@ const Header = (props) => (
           <h1>Você não precisa pagar caro para ter educação de qualidade</h1>
           <hr />
           <div>
-            <span>Estude agora com descontos imperdiveis</span>
+            <span>Estude agora com descontos imperdíveis</span>
             <BtnCta className="btn btn-red" />
+
           </div>
         </div>
       </header>

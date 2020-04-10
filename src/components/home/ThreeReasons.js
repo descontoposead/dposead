@@ -63,14 +63,14 @@ const ThreeReasons = () => (
         color: var(--write);
       }
       section > article > h3 {
-        width: 100%;
+        width: 60%;
         font-size: 2.5rem;
         padding-bottom: 60px;
       }
       section > article > ul {
         list-style: none;
         font-size: 1.1rem;
-        width: 100%;
+        width: 80%;
       }
       section > article > ul > li {
         display: flex;

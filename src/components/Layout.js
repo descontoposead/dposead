@@ -29,7 +29,7 @@ const withLayout = (Page, opts = { onlyToolbar: false }) => () => (
       .btn {
         border: 0;
         padding: 5px 30px;
-        border-radius: 10px;
+        border-radius: 5px;
         font-weight: 600;
         cursor: pointer;
       }

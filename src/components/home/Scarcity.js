@@ -19,7 +19,7 @@ const Scarcity = () => (
       layout="responsive"
     ></amp-img>
     <article>
-      <h3>Profissionais de sucesso estão se especializando neste momento</h3>
+      <h3> Profissionais de sucesso estão se especializando neste momento</h3>
       <span>
         Profissionais da atualidade precisam de uma pós graduação rápida para
         atender sua necessidade, e de qualidade para se destacar e ter autonomia
@@ -46,9 +46,9 @@ const Scarcity = () => (
       section > article {
         position: absolute;
         color: var(--write);
-        width: 500px;
-        top: 65%;
-        right: 20%;
+        width: 700px;
+        top: 81%;
+        right: 0%;
       }
       section > article > h3 {
         font-size: 2.5rem;

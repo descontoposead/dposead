@@ -5,9 +5,13 @@ const About = () => (
     <div>
       <h2>Mais barato, porque você merece</h2>
       <h3>
-        Toda tecnologia que o ensino a distância pode te proporcionar, por
-        valores que se ajustam a sua renda mensal. Converse agora com um
-        consultor e monte o seu plano personalizado.
+      O ensino presencial não funciona mais. Por
+        conta da correria do dia a dia temos que 
+        dividir a atenção com várias responsabilidades.
+        Mesmo se desdobrando durante todo o dia 
+        você chegou ate aqui. e merece uma educação
+        de qualidade. Fale com um de nossos 
+        consultores para receber mais informações.
       </h3>
       <BtnCta className="mt40 btn btn-red" />
     </div>
@@ -43,14 +47,14 @@ const About = () => (
         top: var(--margin-between);
       }
       section > div {
-        width: 60%;
+        width: 46%;
         background: var(--blue);
         color: var(--write);
         padding: 15px;
         position: absolute;
         bottom: var(--margin-between);
         z-index: 1;
-        top: 235px;
+        top: 133px;
       }
       section > div > h2 {
         font-size: 3.5rem;

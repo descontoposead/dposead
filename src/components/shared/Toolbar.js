@@ -12,14 +12,22 @@ const Toolbar = () => (
       height="28"
       layout="responsive"
     ></amp-img>
+     <div className="bntcon">
+    <BtnCta className="btn btn-outline" style={{ marginRight: 2 }} />
+    </div>
     <div className="cta">
-      <BtnCta className="btn btn-outline" style={{ marginRight: 10 }} />
       <Link href="/matricular">
         <a className="btn btn-write">Matricule-se</a>
       </Link>
     </div>
 
     <style jsx>{`
+
+    div.bntcon{
+      position: relative;
+      left: 147px;
+    }
+
       div.toolbar {
         position: fixed;
         z-index: 9;
@@ -79,12 +87,17 @@ const Toolbar = () => (
           display: flex;
           flex-wrap: wrap;
           justify-content: flex-end;
+          
         }
         .toolbar .cta > * {
           margin-bottom: 5px;
         }
         .toolbar .cta > .btn:nth-child(1) {
           margin-right: 5px;
+        }
+        .bntcon{
+          position:relative;
+          left:-16px;
         }
       }
       @media (max-width: 550px) {
