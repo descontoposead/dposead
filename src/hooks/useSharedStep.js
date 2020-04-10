@@ -1,7 +1,7 @@
 import { createStateContext } from 'react-use'
 
 const [useSharedStep, SharedStepProvider] = createStateContext({
-  currentStep: 'InputLead',
+  currentStep: 'Resume',
   progressValue: 1,
   values: {},
   // values: {
@@ -19,12 +19,12 @@ const [useSharedStep, SharedStepProvider] = createStateContext({
   //     value: 200000,
   //     currency: 2000,
   //   },
-  //   // payMethodTax: 'creditCard',
-  //   // chargeValueTax: {
-  //   //   instalment: 1,
-  //   //   value: 20000,
-  //   //   currency: 200,
-  //   // },
+  //   payMethodTax: 'creditCard',
+  //   chargeValueTax: {
+  //     instalment: 1,
+  //     value: 20000,
+  //     currency: 200,
+  //   },
   //   email: 'gsusu@mail.com',
   //   name: 'Smsk Slks',
   //   phone: '(33) 9999-9999',
