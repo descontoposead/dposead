@@ -19,15 +19,31 @@ const InputChargeValueTax = () => {
   })
 
   useEffect(() => {
-    if (currentStepIs('InputChargeValueTax', step)) {
-      setChargeValueTax({
+    controlInputValue({
+      name: 'chargeValueTax',
+      value: {
         instalment: 1,
         value: 20000,
         currency: 200,
+      },
+    })
+  }, []) //oninit
+
+  useEffect(() => {
+    if (currentStepIs('InputChargeValueTax', step)) {
+      //reset
+      const initialChargeTaxValue = {
+        instalment: 1,
+        value: 20000,
+        currency: 200,
+      }
+      setChargeValueTax(initialChargeTaxValue)
+      controlInputValue({
+        name: 'chargeValueTax',
+        value: initialChargeTaxValue,
       })
-      controlInputValue({ name: 'chargeValueTax', value: chargeValueTax })
     }
-  }, [step])
+  }, [step]) //onstepchange
 
   const incrementInstalment = (e) => {
     e.preventDefault()
