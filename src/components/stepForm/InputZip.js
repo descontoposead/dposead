@@ -21,16 +21,24 @@ const InputZip = () => {
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
+    if (!values.hasOwnProperty('address')) {
+      setSharedValues(Object.assign(values, { address: {} }))
+    }
+
     setOptNextStep({
       inputEl: () => inputRef.current.inputElement,
-      setNextFn: () => setNextStep({ currentStep: 'InputFullAddress' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputGroupAddress',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 
     //set cache value to input
-    if (inputRef.current) {
+    if (inputRef.current && values.address) {
       inputRef.current.inputElement.value =
-        values[inputRef.current.inputElement.name] || ''
+        values.address[inputRef.current.inputElement.name] || ''
     }
   }, [step]) //on open step
 
@@ -49,12 +57,17 @@ const InputZip = () => {
         .then((res) => res.json())
         .then((res) => {
           if (res.status === 200) {
-            const addresses = [res.city, res.state, res.district, res.address]
-            const inputFullAddressTarget = {
-              name: 'fullAddress',
-              value: addresses.filter(Boolean).join(', '),
+            const inputAddress = {
+              name: 'address',
+              value: {
+                state: res.state,
+                city: res.city,
+                zipcode: res.code,
+                neighborhood: res.district,
+                street: res.address,
+              },
             }
-            controlInputValue(inputFullAddressTarget)
+            controlInputValue(inputAddress)
           }
 
           if (res.status === 404) {
@@ -71,13 +84,15 @@ const InputZip = () => {
         </div>
         <div>
           <div>
-            {values.zipCode && <label htmlFor="zipCode">Seu CEP é este</label>}
+            {values.address?.zipcode && (
+              <label htmlFor="zipcode">Seu CEP é este</label>
+            )}
             <MaskedInput
               ref={inputRef}
               onChange={onType()}
               autoComplete="off"
               autoFocus
-              name="zipCode"
+              name="zipcode"
               placeholder="escreva o cep..."
               mask={[/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]}
             />
@@ -89,7 +104,12 @@ const InputZip = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputProfession' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputProfession',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>
@@ -97,6 +117,13 @@ const InputZip = () => {
             Este é o meu CEP
           </button>
         </div>
+
+        <style jsx>{`
+          div:nth-child(2) > div {
+            display: flex;
+            flex-direction: column;
+          }
+        `}</style>
       </>
     )
   )

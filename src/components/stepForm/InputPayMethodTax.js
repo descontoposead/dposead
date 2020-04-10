@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react'
 import { currentStepIs, useSharedStep } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
 
-const InputPaymentMethod = () => {
+const InputPayMethodTax = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
@@ -12,7 +12,7 @@ const InputPaymentMethod = () => {
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
-    controlInputValue({ name: 'paymentMethod', value: 'creditCard' })
+    controlInputValue({ name: 'payMethodTax', value: 'creditCard' })
 
     if (inputRef.current) {
       inputRef.current.value = values[inputRef.current.name]
@@ -20,21 +20,35 @@ const InputPaymentMethod = () => {
   }, [])
 
   return (
-    currentStepIs('InputPaymentMethod', step) && (
+    currentStepIs('InputPayMethodTax', step) && (
       <>
         <div>
-          <h1>O que você prefere usar?</h1>
+          <h1>Melhor forma para pagar a matricula</h1>
+          <h3>
+            Pagando a matricula você receberá acesso a:
+            <ul>
+              <li>
+                <mark>Portal Do Aluno</mark>
+              </li>
+              <li>
+                <mark>2 Materiais Didáticos</mark>
+              </li>
+              <li>
+                <mark>2 Avaliações</mark>
+              </li>
+            </ul>
+          </h3>
         </div>
         <div>
           <label htmlFor="creditCard">
             <input
               onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               defaultChecked={
-                !values.paymentMethod || values.paymentMethod === 'creditCard'
+                !values.payMethodTax || values.payMethodTax === 'creditCard'
               }
               id="creditCard"
               type="radio"
-              name="paymentMethod"
+              name="payMethodTax"
               value="creditCard"
             />
             Cartão de crédito
@@ -42,10 +56,10 @@ const InputPaymentMethod = () => {
           <label htmlFor="billet">
             <input
               onChange={({ currentTarget }) => controlInputValue(currentTarget)}
-              defaultChecked={values.paymentMethod === 'billet'}
+              defaultChecked={values.payMethodTax === 'billet'}
               id="billet"
               type="radio"
-              name="paymentMethod"
+              name="payMethodTax"
               value="billet"
             />
             Boleto bancário
@@ -54,13 +68,23 @@ const InputPaymentMethod = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputCourse' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputPayMethodTax',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>
           <button
             className="next"
-            onClick={() => setNextStep({ currentStep: 'InputPaymentValues' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputChargeValueTax',
+                progressValue: step.progressValue + 7.69,
+              })
+            }
           >
             Do meu jeito
           </button>
@@ -82,10 +106,20 @@ const InputPaymentMethod = () => {
             align-items: center;
             font-size: 1.8rem;
           }
+          mark {
+            padding: 0 10px;
+          }
+          ul {
+            padding: 0;
+            list-style: none;
+          }
+          ul li {
+            margin: 15px 0;
+          }
         `}</style>
       </>
     )
   )
 }
 
-export default InputPaymentMethod
+export default InputPayMethodTax

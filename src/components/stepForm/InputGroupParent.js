@@ -34,7 +34,11 @@ const InputGroupParent = () => {
           inputEl: inputGroupRefs.inputMotherNameRef.current,
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputCivilStatus' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputZip',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 
@@ -60,36 +64,53 @@ const InputGroupParent = () => {
             {values.parentName && (
               <label htmlFor="parentName">O nome do meu pai</label>
             )}
-            <input
+            <textarea
               ref={inputGroupRefs.inputParentNameRef}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={({ currentTarget }) => {
+                currentTarget.value = currentTarget.value.replace(
+                  /(?:^|\s)\S/g,
+                  (word) => word.toUpperCase()
+                )
+                controlInputValue(currentTarget)
+              }}
               autoComplete="off"
               autoFocus
               type="text"
               name="parentName"
               placeholder="nome do seu pai..."
-            />
+            ></textarea>
             <strong className="hasError">Qual é o nome do seu pai?</strong>
           </div>
           <div>
             {values.motherName && (
               <label htmlFor="motherName">O nome da minha mãe</label>
             )}
-            <input
+            <textarea
               ref={inputGroupRefs.inputMotherNameRef}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={({ currentTarget }) => {
+                currentTarget.value = currentTarget.value.replace(
+                  /(?:^|\s)\S/g,
+                  (word) => word.toUpperCase()
+                )
+                controlInputValue(currentTarget)
+              }}
               autoComplete="off"
               type="text"
               name="motherName"
               placeholder="nome da sua mãe..."
-            />
+            ></textarea>
             <strong className="hasError">Qual é o nome da sua mãe?</strong>
           </div>
         </div>
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputGroupBirth' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputGroupBirth',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

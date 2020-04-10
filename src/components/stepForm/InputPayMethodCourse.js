@@ -1,9 +1,9 @@
 import { useRef, useEffect } from 'react'
 
-import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { currentStepIs, useSharedStep } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
 
-const InputCivilStatus = () => {
+const InputPayMethodCourse = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
@@ -12,7 +12,7 @@ const InputCivilStatus = () => {
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
   useEffect(() => {
-    controlInputValue({ name: 'civilStatus', value: 'single' })
+    controlInputValue({ name: 'payMethodCourse', value: 'creditCard' })
 
     if (inputRef.current) {
       inputRef.current.value = values[inputRef.current.name]
@@ -20,52 +20,63 @@ const InputCivilStatus = () => {
   }, [])
 
   return (
-    currentStepIs('InputCivilStatus', step) && (
+    currentStepIs('InputPayMethodCourse', step) && (
       <>
         <div>
-          <h1>Informação civil</h1>
+          <h1>Melhor forma para investir no curso</h1>
         </div>
         <div>
-          <label htmlFor="single">
+          <label htmlFor="creditCard">
             <input
-              ref={inputRef}
               onChange={({ currentTarget }) => controlInputValue(currentTarget)}
               defaultChecked={
-                !values.civilStatus || values.civilStatus === 'single'
+                !values.payMethodCourse ||
+                values.payMethodCourse === 'creditCard'
               }
-              id="single"
+              id="creditCard"
               type="radio"
-              name="civilStatus"
-              value="single"
+              name="payMethodCourse"
+              value="creditCard"
             />
-            Solteiro
+            Cartão de crédito
           </label>
-          <label htmlFor="married">
+          <label htmlFor="billet">
             <input
               onChange={({ currentTarget }) => controlInputValue(currentTarget)}
-              defaultChecked={values.civilStatus === 'married'}
-              id="married"
+              defaultChecked={values.payMethodCourse === 'billet'}
+              id="billet"
               type="radio"
-              name="civilStatus"
-              value="married"
+              name="payMethodCourse"
+              value="billet"
             />
-            Casado
+            Boleto bancário
           </label>
         </div>
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputGroupParent' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputCourse',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>
           <button
             className="next"
-            onClick={() => setNextStep({ currentStep: 'InputProfession' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputChargeValueCourse',
+                progressValue: step.progressValue + 7.69,
+              })
+            }
           >
-            Continuar...
+            Assim está bom
           </button>
         </div>
+
         <style jsx>{`
           div:nth-child(2) {
             flex-direction: column;
@@ -80,7 +91,7 @@ const InputCivilStatus = () => {
             flex-wrap: nowrap;
             height: 60px;
             align-items: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
           }
         `}</style>
       </>
@@ -88,4 +99,4 @@ const InputCivilStatus = () => {
   )
 }
 
-export default InputCivilStatus
+export default InputPayMethodCourse

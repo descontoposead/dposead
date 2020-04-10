@@ -35,7 +35,11 @@ const InputGroupGraduation = () => {
           inputEl: inputGroupRefs.dateOfGraduation.current.inputElement,
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputCourse' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputCourse',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 
@@ -59,15 +63,21 @@ const InputGroupGraduation = () => {
         <div>
           <div>
             <label htmlFor="graduation">Nome da sua graduação</label>
-            <input
+            <textarea
               ref={inputGroupRefs.graduation}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={({ currentTarget }) => {
+                controlInputValue(currentTarget)
+                currentTarget.value = currentTarget.value.replace(
+                  /(?:^|\s)\S/g,
+                  (word) => word.toUpperCase()
+                )
+              }}
               autoComplete="off"
               autoFocus
               type="text"
               name="graduation"
               placeholder="escreva sua graduação"
-            />
+            ></textarea>
             <strong className="hasError">
               Isso é importante para o seu certificado!
             </strong>
@@ -88,7 +98,12 @@ const InputGroupGraduation = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputFullAddress' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputGroupAddress',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

@@ -2,45 +2,45 @@ import { useEffect } from 'react'
 
 import { useSharedStep } from '../../hooks/useSharedStep'
 import { SharedValuesProvider } from '../../hooks/useSharedValues'
-import InputName from './InputName'
-import InputEmail from './InputEmail'
+import InputLead from './InputLead'
 import InputGroupPhone from './InputGroupPhone'
 import InputGroupDoc from './InputGroupDoc'
 import InputGroupBirth from './InputGroupBirth'
 import InputGroupParent from './InputGroupParent'
-import InputCivilStatus from './InputCivilStatus'
-import InputProfession from './InputProfession'
 import InputZip from './InputZip'
-import InputFullAddress from './InputFullAddress'
+import InputGroupAddress from './InputGroupAddress'
 import InputGroupGraduation from './InputGroupGraduation'
 import InputCourse from './InputCourse'
-import InputPaymentValues from './InputPaymentValues'
-import InputPaymentMethod from './InputPaymentMethod'
+import InputChargeValueTax from './InputChargeValueTax'
+import InputPayMethodTax from './InputPayMethodTax'
+import InputChargeValueCourse from './InputChargeValueCourse'
+import InputPayMethodCourse from './InputPayMethodCourse'
 import Resume from './Resume'
 import FinalStep from './FinalStep'
 
-const Form = () => {
+const Form = ({ onProgress }) => {
   const [step] = useSharedStep()
 
-  useEffect(() => {}, [step])
+  useEffect(() => {
+    onProgress(step.progressValue)
+  }, [step])
 
   return (
     <form>
       <SharedValuesProvider>
-        <InputName />
-        <InputEmail />
+        <InputLead />
         <InputGroupPhone />
         <InputGroupDoc />
         <InputGroupBirth />
         <InputGroupParent />
-        <InputCivilStatus />
-        <InputProfession />
         <InputZip />
-        <InputFullAddress />
+        <InputGroupAddress />
         <InputGroupGraduation />
         <InputCourse />
-        <InputPaymentValues />
-        <InputPaymentMethod />
+        <InputPayMethodCourse />
+        <InputChargeValueCourse />
+        <InputPayMethodTax />
+        <InputChargeValueTax />
         <Resume />
         <FinalStep />
       </SharedValuesProvider>
@@ -108,7 +108,10 @@ const Form = () => {
         :root {
           margin: 0;
           touch-action: pan-y;
+        }
+        * {
           font-family: 'Baloo 2', cursive;
+          line-height: 1;
         }
         form {
           width: 100vw;

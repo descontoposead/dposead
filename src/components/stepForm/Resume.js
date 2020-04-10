@@ -1,7 +1,12 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useEffect } from 'react'
 
 const Resume = () => {
   const [step, setNextStep] = useSharedStep()
+
+  useEffect(() => {
+    console.log(step.values)
+  }, [step])
 
   return (
     currentStepIs('Resume', step) && (
@@ -13,10 +18,6 @@ const Resume = () => {
           <p>
             <label htmlFor="name">Aluno</label>
             <span>{step.values.name}</span>
-          </p>
-          <p>
-            <label htmlFor="name">Estado Civil</label>
-            <span>{step.values.civilStatus}</span>
           </p>
           <p>
             <label htmlFor="email">E-Mail</label>
@@ -59,16 +60,12 @@ const Resume = () => {
             <span>{step.values.motherName}</span>
           </p>
           <p>
-            <label htmlFor="parentName">Profissão</label>
-            <span>{step.values.profession}</span>
-          </p>
-          <p>
-            <label htmlFor="motherName">CEP</label>
-            <span>{step.values.zipCode}</span>
-          </p>
-          <p>
             <label htmlFor="motherName">Endereço</label>
-            <span>{step.values.fullAdress}</span>
+            <span>
+              {Object.keys(step.values.address)
+                .map((prop) => step.values.address[prop])
+                .join(', ')}
+            </span>
           </p>
           <p>
             <label htmlFor="motherName">Graduação</label>
@@ -86,14 +83,23 @@ const Resume = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputPaymentValues' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputChargeValueTax',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>
           <button
             className="next"
             onClick={() =>
-              setNextStep({ currentStep: 'FinalStep', values: step.values })
+              setNextStep({
+                currentStep: 'FinalStep',
+                progressValue: step.progressValue + 7.69,
+                values: step.values,
+              })
             }
           >
             Finalizar!

@@ -53,7 +53,11 @@ const InputGroupPhone = () => {
           ],
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputGroupDoc' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputGroupDoc',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 
@@ -145,7 +149,12 @@ const InputGroupPhone = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputEmail' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputLead',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

@@ -32,7 +32,7 @@ const InputCourse = () => {
         .reverse() //just 20 firsts
     )
 
-  //scrap-fetch courses
+  // scrap-fetch courses
   useEffect(() => {
     let page = 0
 
@@ -53,7 +53,11 @@ const InputCourse = () => {
   useEffect(() => {
     setOptNextStep({
       inputEl: () => inputRef.current,
-      setNextFn: () => setNextStep({ currentStep: 'InputPaymentMethod' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputPayMethodCourse',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 
@@ -95,8 +99,9 @@ const InputCourse = () => {
   const onSearchCourse = (target) => {
     if (target.value) {
       setTyped(target.value)
-    } else {
       controlInputValue(target)
+    } else {
+      // controlInputValue(target)
     }
 
     setFetchedGrade([])
@@ -115,7 +120,12 @@ const InputCourse = () => {
             <textarea
               ref={inputRef}
               name="courseName"
-              onChange={({ target }) => onSearchCourse(target)}
+              onChange={({ target }) => {
+                target.value = target.value.replace(/(?:^|\s)\S/g, (word) =>
+                  word.toUpperCase()
+                )
+                onSearchCourse(target)
+              }}
               autoComplete="off"
               autoFocus
             ></textarea>
@@ -184,7 +194,12 @@ const InputCourse = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputGroupGraduation' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputGroupGraduation',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>

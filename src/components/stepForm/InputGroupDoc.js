@@ -78,7 +78,11 @@ const InputGroupDoc = () => {
           inputEl: inputGroupRefs.inputPersonalRegistryRef.current,
         }),
       ],
-      setNextFn: () => setNextStep({ currentStep: 'InputGroupBirth' }),
+      setNextFn: () =>
+        setNextStep({
+          currentStep: 'InputGroupBirth',
+          progressValue: step.progressValue + 7.69,
+        }),
       vibrateFn: () => toggleVibrating(),
     })
 
@@ -139,7 +143,10 @@ const InputGroupDoc = () => {
             )}
             <input
               ref={inputGroupRefs.inputPersonalRegistryRef}
-              onChange={({ currentTarget }) => controlInputValue(currentTarget)}
+              onChange={({ currentTarget }) => {
+                currentTarget.value = currentTarget.value.toUpperCase()
+                controlInputValue(currentTarget)
+              }}
               autoComplete="off"
               type="text"
               name="personalRegistry"
@@ -151,7 +158,12 @@ const InputGroupDoc = () => {
         <div>
           <button
             className="prev"
-            onClick={() => setNextStep({ currentStep: 'InputGroupPhone' })}
+            onClick={() =>
+              setNextStep({
+                currentStep: 'InputGroupPhone',
+                progressValue: step.progressValue - 7.69,
+              })
+            }
           >
             Voltar
           </button>
