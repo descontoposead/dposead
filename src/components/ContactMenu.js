@@ -4,14 +4,20 @@ import WhatsappGreenIcon from './icon/WhatsappGreenIcon'
 const ContactMenu = () => (
   <>
     <div id="contactMenu">
-      <button>
+      <button on="tap:captureLead">
         <SaleIcon />
         <span>Quero Desconto</span>
       </button>
-      <button>
+      <a
+        href={
+          'https://api.whatsapp.com/send?1=pt_BR&phone=' +
+          process.env.whatsappNumber
+        }
+        target="_blank"
+      >
         <WhatsappGreenIcon />
         <span>Falar com consultor</span>
-      </button>
+      </a>
 
       <style jsx>{`
         @media (min-width: 1000px) {
@@ -49,7 +55,8 @@ const ContactMenu = () => (
         div:hover {
           opacity: 1;
         }
-        div > button {
+        div > button,
+        div > a {
           width: 50%;
           height: 50px;
           display: flex;
@@ -60,7 +67,8 @@ const ContactMenu = () => (
           cursor: pointer;
           justify-content: space-evenly;
         }
-        div > button:focus {
+        div > button:focus,
+        div > a:focus {
           outline: 0;
         }
         div > button:first-child {
@@ -68,10 +76,12 @@ const ContactMenu = () => (
           border-top-left-radius: 4px;
           border-bottom-left-radius: 4px;
         }
-        div > button:last-child {
+        div > a:last-child {
           background: #69b366;
           border-top-right-radius: 4px;
           border-bottom-right-radius: 4px;
+          text-decoration: none;
+          color: #000;
         }
       `}</style>
     </div>

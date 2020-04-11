@@ -1,104 +1,102 @@
-const Modal = () => (
+const Lightbox = () => (
   <>
-    <amp-script
-      layout="container"
-      src="https://descontoposead.com.br/amp-scripts/hideModal.js"
-    >
-      <div>
-        <button>&times;</button>
-      </div>
+    <amp-lightbox id="captureLead" layout="nodisplay">
       <form action-xhr="/saveLead" method="post">
         <div>
           <label htmlFor="email">
-            Falar com um <strong>especialista</strong>
+            Quer estudar com <strong>desconto?</strong>
           </label>
           <input
+            autoComplete="off"
+            autoFocus
             id="email"
             name="email"
             type="email"
-            placeholder="Digite seu melhor e-mail"
+            placeholder="Escreva seu melhor e-mail..."
           />
         </div>
         <div>
-          <button className="btn btn-red">Enviar</button>
+          <button on="tap:captureLead.close" className="btn btn-red">
+            Enviar
+          </button>
         </div>
       </form>
-    </amp-script>
+    </amp-lightbox>
 
     <style jsx>{`
-      @keyframes openModal {
-        from {
-          transform: translate(0, 0);
+      @media (min-width: 451px) {
+        amp-lightbox form > div:first-child {
+          height: 95px;
         }
-        to {
-          transform: translate(0, -40vh);
+        amp-lightbox label {
+          font-size: 1.5rem;
         }
       }
-      amp-script {
-        // animation: openModal 0.5s;
-        animation-delay: 10s;
-        animation-fill-mode: forwards;
+      @media (max-width: 450px) {
+        amp-lightbox form > div:first-child {
+          height: 90px;
+        }
+        amp-lightbox label {
+          font-size: 1.4rem;
+        }
+      }
+      amp-lightbox {
         opacity: 1;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-content: space-evenly;
-        top: 100vh;
         background: rgb(10, 19, 29);
-        z-index: 2;
         position: fixed;
         height: 40vh;
         width: 455px;
-        left: 0;
-        right: 0;
         margin: 0 auto;
         border-radius: 10px;
         padding: 10px 20px;
         border: 4px solid #fdfdfd;
         color: white;
-        transition: top 1s;
+        margin-top: 25vh;
       }
-      amp-script > div {
+      amp-lightbox > div {
         flex: 1;
         display: flex;
         justify-content: flex-end;
         margin-top: 10px;
       }
-      amp-script > div button {
+      amp-lightbox > div button {
         border: 0;
         font-size: 2rem;
         background: transparent;
         color: #df2936;
         cursor: pointer;
       }
-      amp-script form {
+      amp-lightbox form {
         display: flex;
         flex-wrap: wrap;
         align-content: space-evenly;
         height: 100%;
         justify-content: center;
       }
-      amp-script form > div:first-child {
+      amp-lightbox form > div:first-child {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        height: 85px;
       }
-      amp-script label {
-        font-size: 1.5rem;
-      }
-      amp-script label > strong {
+      amp-lightbox label > strong {
         color: var(--red);
       }
-      amp-script input {
+      amp-lightbox input {
         border-radius: 10px;
         border: 0;
         padding: 5px 20px;
         font-size: 1.1rem;
         min-width: 300px;
       }
+      amp-lightbox input:focus {
+        outline: none;
+      }
       @media (max-width: 450px) {
-        amp-script {
+        amp-lightbox {
           width: 100vw;
         }
       }
@@ -106,4 +104,4 @@ const Modal = () => (
   </>
 )
 
-export default Modal
+export default Lightbox

@@ -1,9 +1,11 @@
 import Header from './home/Header'
 import Footer from './shared/Footer'
 import ContactMenu from './ContactMenu'
+import Lightbox from './Lightbox'
 
 const withLayout = (Page, opts = { onlyToolbar: false }) => () => (
   <>
+    <Lightbox />
     <Header {...opts} />
     <Page />
     <ContactMenu />
