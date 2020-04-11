@@ -83,6 +83,10 @@ const ContactMenu = () => (
           text-decoration: none;
           color: #000;
         }
+        span {
+          text-align: left;
+          margin-left: 10px;
+        }
       `}</style>
     </div>
   </>

@@ -3,6 +3,7 @@ import Link from 'next/link'
 const Toolbar = () => (
   <div className="toolbar">
     <amp-img
+      media="(min-width: 500px)"
       className="logotipo"
       alt="Logo da Desconto POSEAD"
       src="/static/images/logotipo.webp"
@@ -10,6 +11,16 @@ const Toolbar = () => (
       height="28"
       layout="responsive"
     ></amp-img>
+    <amp-img
+      media="(max-width: 499px)"
+      className="logotipo"
+      alt="Logo da Desconto POSEAD"
+      src="/static/images/logotipo__mobile.webp"
+      width="115"
+      height="40"
+      layout="responsive"
+    ></amp-img>
+
     <div className="cta">
       <Link href="/matricular">
         <a className="btn btn-write">Matricule-se</a>
@@ -66,7 +77,6 @@ const Toolbar = () => (
           position: relative;
           left: 0px;
         }
-        
       }
       @media (max-width: 650px) {
         .toolbar {
@@ -98,18 +108,19 @@ const Toolbar = () => (
       @media (max-width: 450px) {
         div.toolbar {
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: space-between;
           align-content: space-between;
-          height: 115px;
+        }
+        div.toolbar > amp-img {
+          width: 115px;
+          height: 40px;
         }
         .toolbar .cta {
-          width: 288px;
           justify-content: space-between;
         }
         .toolbar .cta .btn {
           padding: 15px 10px;
           font-size: 1rem;
-          width: 100%;
         }
         .toolbar .btn {
           padding: 5px;
