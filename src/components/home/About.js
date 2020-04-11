@@ -64,6 +64,7 @@ const About = () => (
       section > div > h3 {
         font-size: 1.4rem;
         font-weight: 500;
+        height: 183px;
       }
 
       @media (min-width: 1000px) {

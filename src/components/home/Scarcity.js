@@ -31,8 +31,11 @@ const Scarcity = () => (
         servidores públicos, segundo o jornal extra. Nisso nós podemos te
         ajudar.
       </span>
+      <div>
       <BtnCta className="mt15 btn btn-red" />
+      </div>
     </article>
+    
 
     <style jsx>{`
       section {
@@ -57,7 +60,8 @@ const Scarcity = () => (
       section > article > span {
         background: var(--blue);
         display: block;
-        padding: 12px;
+        padding: 18px;
+
       }
       section > article > button {
         margin-top: 15px;
@@ -105,7 +109,7 @@ const Scarcity = () => (
           font-size: 2rem;
         }
         section > article span {
-          font-size: 1.3rem;
+          font-size: 1.2rem;
         }
       }
       @media (max-width: 384px) {
@@ -118,6 +122,7 @@ const Scarcity = () => (
         section {
           height: 910px;
         }
+
       }
     `}</style>
   </section>
