@@ -32,8 +32,7 @@ const Footer = () => (
         justify-content: space-between;
         background: #08395a;
         color: var(--write);
-        padding-top: 30px;
-        padding-bottom: 30px;
+        height: 215px;
       }
       footer > amp-img {
         width: 147px;
@@ -67,7 +66,7 @@ const Footer = () => (
       }
       @media (max-width: 750px) {
         footer {
-          padding: 30px 20px;
+          padding: 0px 20px;
         }
       }
       @media (max-width: 650px) {

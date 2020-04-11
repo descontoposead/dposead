@@ -46,6 +46,9 @@ const ContactMenu = () => (
           z-index: 9;
           justify-content: center;
         }
+        div:hover {
+          opacity: 1;
+        }
         div > button {
           width: 50%;
           height: 50px;
@@ -72,23 +75,6 @@ const ContactMenu = () => (
         }
       `}</style>
     </div>
-    <script
-      type="text/javascript"
-      dangerouslySetInnerHTML={{
-        __html: `
-        let isScrolling;
-        let contactMenu = document.querySelector('#contactMenu');
-
-        window.addEventListener('scroll', ( event ) => {
-          contactMenu.style.opacity = 1
-          window.clearTimeout(isScrolling);
-        
-          isScrolling = setTimeout(() => {
-            contactMenu.style.opacity = 0
-          }, 3000);
-        }, false);`,
-      }}
-    ></script>
   </>
 )
 
