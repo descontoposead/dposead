@@ -119,7 +119,9 @@ const About = () => (
           font-size: 2rem;
         }
         section > div h3 {
-          font-size: 1.4rem;
+          font-size: 1.2rem;
+          height: 228px;
+        }
         }
       }
       @media (max-width: 384px) {
@@ -131,6 +133,7 @@ const About = () => (
         section > div {
           width: 100vw;
           left: 0;
+          top:183px;
         }
       }
       @media (max-width: 330px) {
@@ -139,7 +142,11 @@ const About = () => (
           height: 664px;
         }
         section > div {
-          top: 190px;
+          top: 223px;
+        }
+        section > div h3 {
+          font-size: 1.2rem;
+          height: 248px;
         }
       }
     `}</style>

@@ -63,7 +63,7 @@ const ThreeReasons = () => (
         color: var(--write);
       }
       section > article > h3 {
-        width: 60%;
+        width: 100%;
         font-size: 2.5rem;
         padding-bottom: 60px;
       }
@@ -105,6 +105,14 @@ const ThreeReasons = () => (
         section > article > ul {
           padding-left: 20px;
         }
+
+        section > article > ul {
+          list-style: none;
+          font-size: 1.1rem;
+          width: 100%;
+        }
+
+
       }
       @media (max-width: 650px) {
       }

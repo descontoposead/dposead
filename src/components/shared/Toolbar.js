@@ -66,6 +66,7 @@ const Toolbar = () => (
           position: relative;
           left: 0px;
         }
+        
       }
       @media (max-width: 650px) {
         .toolbar {
