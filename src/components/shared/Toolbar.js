@@ -1,7 +1,5 @@
 import Link from 'next/link'
 
-import BtnCta from './BtnCta'
-
 const Toolbar = () => (
   <div className="toolbar">
     <amp-img
@@ -12,9 +10,6 @@ const Toolbar = () => (
       height="28"
       layout="responsive"
     ></amp-img>
-     <div className="bntcon">
-    <BtnCta className="btn btn-outline" style={{ marginRight: 10 }} />
-    </div>
     <div className="cta">
       <Link href="/matricular">
         <a className="btn btn-write">Matricule-se</a>
@@ -22,11 +17,13 @@ const Toolbar = () => (
     </div>
 
     <style jsx>{`
-
-    div.bntcon{
-      position: relative;
-      left: 147px;
-    }
+      div.cta > a {
+        padding: 10px 30px;
+        font-size: 1.2rem;
+        text-align: center;
+        color: var(--blue);
+        text-decoration: none;
+      }
 
       div.toolbar {
         position: fixed;
@@ -48,13 +45,6 @@ const Toolbar = () => (
         padding: 10px 30px;
         font-size: 1.2rem;
       }
-      a {
-        padding: 10px 30px;
-        font-size: 1.2rem;
-        text-align: center;
-        color: var(--blue);
-        text-decoration: none;
-      }
 
       @media (min-width: 1000px) {
         div.toolbar {
@@ -72,12 +62,10 @@ const Toolbar = () => (
         div.toolbar {
           padding: 10px 20px;
         }
-        div.bntcon{
+        div.bntcon {
           position: relative;
           left: 0px;
         }
-
-
       }
       @media (max-width: 650px) {
         .toolbar {
@@ -93,17 +81,12 @@ const Toolbar = () => (
           display: flex;
           flex-wrap: wrap;
           justify-content: flex-end;
-          
         }
         .toolbar .cta > * {
           margin-bottom: 5px;
         }
         .toolbar .cta > .btn:nth-child(1) {
           margin-right: 5px;
-        }
-        .bntcon{
-          position:relative;
-          left:-16px;
         }
       }
       @media (max-width: 550px) {
@@ -116,10 +99,10 @@ const Toolbar = () => (
           flex-wrap: wrap;
           justify-content: center;
           align-content: space-between;
-          height: 175px;
+          height: 115px;
         }
         .toolbar .cta {
-          width: 100%;
+          width: 288px;
           justify-content: space-between;
         }
         .toolbar .cta .btn {

@@ -1,6 +1,8 @@
 import InstagramIcon from '../icon/InstagramIcon'
 import FacebookIcon from '../icon/FacebookIcon'
 import WhatsappIcon from '../icon/WhatsappIcon'
+import WhatsappGreenIcon from '../icon/WhatsappGreenIcon'
+import SaleIcon from '../icon/SaleIcon'
 
 const Footer = () => (
   <footer>
@@ -53,7 +55,6 @@ const Footer = () => (
       footer > ul > li:last-child {
         margin-right: 0;
       }
-
       @media (min-width: 1000px) {
         footer {
           padding: 10px var(--margin-lg);

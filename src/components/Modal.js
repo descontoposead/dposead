@@ -35,7 +35,7 @@ const Modal = () => (
         }
       }
       amp-script {
-        animation: openModal 0.5s;
+        // animation: openModal 0.5s;
         animation-delay: 10s;
         animation-fill-mode: forwards;
         opacity: 1;

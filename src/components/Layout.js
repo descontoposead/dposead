@@ -1,10 +1,12 @@
 import Header from './home/Header'
 import Footer from './shared/Footer'
+import ContactMenu from './ContactMenu'
 
 const withLayout = (Page, opts = { onlyToolbar: false }) => () => (
   <>
     <Header {...opts} />
     <Page />
+    <ContactMenu />
     <Footer />
     <style jsx global>{`
       * {
