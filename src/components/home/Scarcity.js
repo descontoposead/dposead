@@ -61,6 +61,7 @@ const Scarcity = () => (
         background: var(--blue);
         display: block;
         padding: 18px;
+        font-size: 1.4git push -u origin masterrem;
 
       }
       section > article > button {

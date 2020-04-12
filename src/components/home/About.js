@@ -54,7 +54,7 @@ const About = () => (
         position: absolute;
         bottom: var(--margin-between);
         z-index: 1;
-        top: 133px;
+        top: 195px;
       }
       section > div > h2 {
         font-size: 3.5rem;

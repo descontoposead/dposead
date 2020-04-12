@@ -81,6 +81,7 @@ const Capitation = () => (
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        
       }
 
       section > form > div * {
@@ -98,6 +99,7 @@ const Capitation = () => (
         font-weight: 500;
         margin-bottom: 25px;
       }
+
       section > form > div > div:nth-of-type(1) {
         display: flex;
         flex: 1;
