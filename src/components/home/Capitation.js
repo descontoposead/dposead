@@ -1,3 +1,5 @@
+import WhatsappGreenIcon from '../icon/WhatsappGreenIcon'
+
 const Capitation = () => (
   <section>
     <form method="get" action="true" action-xhr="/api/leads" target="_top">
@@ -11,17 +13,36 @@ const Capitation = () => (
         <div className="topinput">
           <div>
             <label htmlFor="name">NOME</label>
-            <input id="name" type="text" name="name" />
+            <input
+              id="name"
+              type="text"
+              name="name"
+              autoComplete="off"
+              required
+            />
           </div>
           <div>
             <label htmlFor="phone">TELEFONE</label>
-            <input id="phone" type="text" name="whatsapp" />
+            <input
+              id="phone"
+              type="text"
+              name="whatsapp"
+              autoComplete="off"
+              required
+            />
           </div>
         </div>
         <div>
           <div>
             <label htmlFor="email">E-MAIL</label>
-            <input className="inputmail" id="email" type="text" name="email" />
+            <input
+              className="inputmail"
+              id="email"
+              type="email"
+              name="email"
+              autoComplete="off"
+              required
+            />
           </div>
         </div>
         <div>
@@ -30,7 +51,10 @@ const Capitation = () => (
           </button>
           <span>
             Ou entre em contato conosco
-            <button className="btn btn-green">Via whatsapp</button>
+            <button className="btn btn-green">
+              <WhatsappGreenIcon />
+              <span>Via Whatsapp</span>
+            </button>
           </span>
         </div>
       </div>
@@ -65,7 +89,9 @@ const Capitation = () => (
         width: 70%;
         left: 21%;
       }
-
+      .btn-green > span {
+        margin-left: 10px;
+      }
       section > amp-img {
         width: 40vw;
         position: absolute;
@@ -132,13 +158,19 @@ const Capitation = () => (
       }
       section > form > div > div:nth-of-type(3) > span {
         text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
       }
       section > form > div > div:nth-of-type(3) > span > button {
-        background: rgb(21, 128, 21);
+        background: #69b366;
         border: 1px solid;
         font-size: 1rem;
         padding: 5px 20px;
         margin-left: 10px;
+        display: flex;
+        align-items: center;
       }
       section > form > div > div > div {
         display: flex;
@@ -251,6 +283,9 @@ const Capitation = () => (
         section {
           height: 650px;
           margin: 100px 0 415px;
+        }
+        .btn-green > span {
+          margin-left: 5px;
         }
         div.container {
           position: relative;

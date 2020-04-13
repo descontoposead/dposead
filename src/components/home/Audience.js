@@ -17,7 +17,7 @@ const Audience = () => (
       layout="responsive"
     ></amp-img>
     <article>
-      <h3>O que estão falando sobre nós</h3>
+      <h4>O que estão falando sobre nós</h4>
     </article>
 
     <style jsx>{`
