@@ -51,10 +51,16 @@ const Capitation = () => (
           </button>
           <span>
             Ou entre em contato conosco
-            <button className="btn btn-green">
+            <a
+              className="btn btn-green"
+              href={
+                'https://api.whatsapp.com/send?1=pt_BR&phone=' +
+                process.env.whatsappNumber
+              }
+            >
               <WhatsappGreenIcon />
               <span>Via Whatsapp</span>
-            </button>
+            </a>
           </span>
         </div>
       </div>
@@ -163,7 +169,7 @@ const Capitation = () => (
         justify-content: center;
         align-items: center;
       }
-      section > form > div > div:nth-of-type(3) > span > button {
+      section > form > div > div:nth-of-type(3) > span > a.btn {
         background: #69b366;
         border: 1px solid;
         font-size: 1rem;
@@ -171,6 +177,7 @@ const Capitation = () => (
         margin-left: 10px;
         display: flex;
         align-items: center;
+        text-decoration: none;
       }
       section > form > div > div > div {
         display: flex;

@@ -30,7 +30,8 @@ const withLayout = (Page, opts = { onlyToolbar: false }) => () => (
         --margin-between: 60px;
         --section-height: 600px;
       }
-      .btn {
+      button.btn,
+      a.btn {
         border: 0;
         padding: 5px 30px;
         border-radius: 5px;
