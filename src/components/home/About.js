@@ -90,6 +90,7 @@ const About = () => (
         }
         section > div {
           left: 20px;
+          top:36%;
         }
       }
       @media (max-width: 650px) {
