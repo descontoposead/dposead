@@ -1,6 +1,7 @@
 import faunadb from 'faunadb'
 import joi from '@hapi/joi'
 import fetch from 'node-fetch'
+import absoluteUrl from 'next-absolute-url'
 
 const secret = process.env.DPOS_FAUNADB_SECRET_KEY
 const q = faunadb.query
@@ -66,6 +67,7 @@ export default async (req, res) => {
     const dbs = await client.query(
       q.Create(q.Collection('leads'), { data: value })
     )
+    res.setHeader('AMP-Redirect-To', `${absoluteUrl(req).origin}/obrigado`)
     res.status(201).json(dbs.data)
   } catch (e) {
     res.status(500).json({ error: e.message })

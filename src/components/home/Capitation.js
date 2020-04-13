@@ -1,6 +1,6 @@
 const Capitation = () => (
   <section>
-    <form action-xhr="/saveLead" method="post">
+    <form method="get" action="true" action-xhr="/api/leads" target="_top">
       <div className="container">
         <h3>Deixe seu contato</h3>
         <h4>
@@ -15,17 +15,19 @@ const Capitation = () => (
           </div>
           <div>
             <label htmlFor="phone">TELEFONE</label>
-            <input id="phone" type="text" name="phone"  />
+            <input id="phone" type="text" name="whatsapp" />
           </div>
         </div>
         <div>
-          <div >
+          <div>
             <label htmlFor="email">E-MAIL</label>
             <input className="inputmail" id="email" type="text" name="email" />
           </div>
         </div>
         <div>
-          <button className="btn btn-black">Enviar</button>
+          <button type="submit" className="btn btn-black">
+            Enviar
+          </button>
           <span>
             Ou entre em contato conosco
             <button className="btn btn-green">Via whatsapp</button>
@@ -58,10 +60,10 @@ const Capitation = () => (
         display: flex;
         align-items: center;
       }
-      div.container{
-        position:relative;
-        width:70%;
-        left:21%;
+      div.container {
+        position: relative;
+        width: 70%;
+        left: 21%;
       }
 
       section > amp-img {
@@ -81,7 +83,7 @@ const Capitation = () => (
         align-items: center;
       }
       section > form input {
-        height:40px;
+        height: 40px;
         border-radius: 6px;
       }
 
@@ -158,12 +160,12 @@ const Capitation = () => (
       @media (max-width: 999px) {
         section {
           margin: 50px 0 0;
-        }        
-        div.container{
-          position:relative;
-          width:100%;
-          left:0%;
-          top:12px;
+        }
+        div.container {
+          position: relative;
+          width: 100%;
+          left: 0%;
+          top: 12px;
         }
         section > form > div > h4 {
           font-size: 0.9rem;
@@ -175,11 +177,11 @@ const Capitation = () => (
         section {
           margin: 150px 0 0;
         }
-        div.container{
-          position:relative;
-          width:100%;
-          left:0%;
-          top:12px;
+        div.container {
+          position: relative;
+          width: 100%;
+          left: 0%;
+          top: 12px;
         }
         section > form > div > h4 {
           font-size: 0.9rem;
@@ -212,11 +214,11 @@ const Capitation = () => (
           padding: 0;
           margin: 5px;
         }
-        div.container{
-          position:relative;
-          width:100%;
-          left:0%;
-          top:12px;
+        div.container {
+          position: relative;
+          width: 100%;
+          left: 0%;
+          top: 12px;
         }
         section > form > div > h4 {
           font-size: 0.9rem;
@@ -233,11 +235,11 @@ const Capitation = () => (
           width: 100%;
           flex: auto;
         }
-        div.container{
-          position:relative;
-          width:100%;
-          left:0%;
-          top:12px;
+        div.container {
+          position: relative;
+          width: 100%;
+          left: 0%;
+          top: 12px;
         }
         section > form > div > h4 {
           font-size: 0.9rem;
@@ -250,11 +252,11 @@ const Capitation = () => (
           height: 650px;
           margin: 100px 0 415px;
         }
-        div.container{
-          position:relative;
-          width:100%;
-          left:0%;
-          top:12px;
+        div.container {
+          position: relative;
+          width: 100%;
+          left: 0%;
+          top: 12px;
         }
         section > form > div > h4 {
           font-size: 0.9rem;
@@ -267,11 +269,11 @@ const Capitation = () => (
           height: 550px;
           margin: 100px 0 524px;
         }
-        div.container{
-          position:relative;
-          width:100%;
-          left:0%;
-          top:12px;
+        div.container {
+          position: relative;
+          width: 100%;
+          left: 0%;
+          top: 12px;
         }
         section > form > div > h4 {
           font-size: 0.9rem;
@@ -280,11 +282,11 @@ const Capitation = () => (
         }
       }
       @media (max-width: 330px) {
-        div.container{
-          position:relative;
-          width:100%;
-          left:0%;
-          top:12px;
+        div.container {
+          position: relative;
+          width: 100%;
+          left: 0%;
+          top: 12px;
         }
         section > form > div > h4 {
           font-size: 0.9rem;
