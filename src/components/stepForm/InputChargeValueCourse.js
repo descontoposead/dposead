@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useDebounce } from 'react-use'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
@@ -17,6 +18,15 @@ const InputChargeValueCourse = () => {
       min: 1,
     },
   })
+  const [typedVoucher, setTypedVoucher] = useState('')
+
+  useDebounce(
+    () => {
+      console.log(typedVoucher)
+    },
+    1000,
+    [typedVoucher]
+  )
 
   useEffect(() => {
     controlInputValue({
@@ -96,6 +106,22 @@ const InputChargeValueCourse = () => {
             </strong>
             <button onClick={(e) => decrementInstalment(e)}>&#10093;</button>
           </section>
+          <div>
+            {values.voucher && (
+              <label htmlFor="voucher">Voucher de Desconto</label>
+            )}
+            <input
+              onChange={({ target }) => setTypedVoucher(target.value)}
+              autoComplete="off"
+              autoFocus
+              type="text"
+              placeholder="Voucher de Desconto"
+              name="voucher"
+            />
+            <strong className="hasInvalidError">
+              Precisa ser um voucher válido!
+            </strong>
+          </div>
         </div>
         <div>
           <button
@@ -133,8 +159,8 @@ const InputChargeValueCourse = () => {
               width: 250px
             }
           }
-          div:nth-child(2) {
-            flex-direction: column;
+          div:nth-child(2) > div > input {
+            border-bottom: 4px solid #000000;
           }
           section {
             display: flex;
