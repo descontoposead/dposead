@@ -19,8 +19,8 @@ const About = () => (
       media="(min-width: 500px)"
       alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
       src="/static/images/smile_girl_nature.webp"
-      width="664"
-      height="332"
+      width="674"
+      height="380"
       layout="responsive"
     ></amp-img>
     <amp-img
@@ -54,7 +54,7 @@ const About = () => (
         position: absolute;
         bottom: var(--margin-between);
         z-index: 1;
-        top: 195px;
+        top: 125px;
       }
       section > div > h2 {
         font-size: 3.5rem;

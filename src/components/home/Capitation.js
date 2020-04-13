@@ -1,27 +1,27 @@
 const Capitation = () => (
   <section>
     <form action-xhr="/saveLead" method="post">
-      <div>
+      <div className="container">
         <h3>Deixe seu contato</h3>
         <h4>
           E ganhe uma consultoria totalmente gratuita com um especialista de
           aconselhamento educacional capaz de te ajudar a escolher o curso que
           mais atende sua necessidade.
         </h4>
-        <div>
+        <div className="topinput">
           <div>
-            <label htmlFor="name">Nome</label>
+            <label htmlFor="name">NOME</label>
             <input id="name" type="text" name="name" />
           </div>
           <div>
-            <label htmlFor="phone">Telefone</label>
-            <input id="phone" type="text" name="phone" />
+            <label htmlFor="phone">TELEFONE</label>
+            <input id="phone" type="text" name="phone"  />
           </div>
         </div>
         <div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <input id="email" type="text" name="email" />
+          <div >
+            <label htmlFor="email">E-MAIL</label>
+            <input className="inputmail" id="email" type="text" name="email" />
           </div>
         </div>
         <div>
@@ -58,6 +58,12 @@ const Capitation = () => (
         display: flex;
         align-items: center;
       }
+      div.container{
+        position:relative;
+        width:70%;
+        left:21%;
+      }
+
       section > amp-img {
         width: 40vw;
         position: absolute;
@@ -75,13 +81,13 @@ const Capitation = () => (
         align-items: center;
       }
       section > form input {
-        border-radius: 10px;
+        height:40px;
+        border-radius: 6px;
       }
-      section > form > div {
+
+      section > form > div.topinput {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
-        
       }
 
       section > form > div * {
@@ -152,11 +158,33 @@ const Capitation = () => (
       @media (max-width: 999px) {
         section {
           margin: 50px 0 0;
+        }        
+        div.container{
+          position:relative;
+          width:100%;
+          left:0%;
+          top:12px;
+        }
+        section > form > div > h4 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          margin-bottom: 25px;
         }
       }
       @media (max-width: 750px) {
         section {
           margin: 150px 0 0;
+        }
+        div.container{
+          position:relative;
+          width:100%;
+          left:0%;
+          top:12px;
+        }
+        section > form > div > h4 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          margin-bottom: 25px;
         }
       }
       @media (max-width: 650px) {
@@ -184,6 +212,17 @@ const Capitation = () => (
           padding: 0;
           margin: 5px;
         }
+        div.container{
+          position:relative;
+          width:100%;
+          left:0%;
+          top:12px;
+        }
+        section > form > div > h4 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          margin-bottom: 25px;
+        }
       }
       @media (max-width: 550px) {
         section {
@@ -194,11 +233,33 @@ const Capitation = () => (
           width: 100%;
           flex: auto;
         }
+        div.container{
+          position:relative;
+          width:100%;
+          left:0%;
+          top:12px;
+        }
+        section > form > div > h4 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          margin-bottom: 25px;
+        }
       }
       @media (max-width: 450px) {
         section {
           height: 650px;
           margin: 100px 0 415px;
+        }
+        div.container{
+          position:relative;
+          width:100%;
+          left:0%;
+          top:12px;
+        }
+        section > form > div > h4 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          margin-bottom: 25px;
         }
       }
       @media (max-width: 384px) {
@@ -206,8 +267,30 @@ const Capitation = () => (
           height: 550px;
           margin: 100px 0 524px;
         }
+        div.container{
+          position:relative;
+          width:100%;
+          left:0%;
+          top:12px;
+        }
+        section > form > div > h4 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          margin-bottom: 25px;
+        }
       }
       @media (max-width: 330px) {
+        div.container{
+          position:relative;
+          width:100%;
+          left:0%;
+          top:12px;
+        }
+        section > form > div > h4 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          margin-bottom: 25px;
+        }
       }
     `}</style>
   </section>
