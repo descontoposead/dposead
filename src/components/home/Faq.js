@@ -1,76 +1,133 @@
 const Faq = () => (
-  <section>
+  <div>
     <h3>Perguntas frequentes</h3>
-    <article>
-      <strong>Quais as formas de pagamento?</strong>
-      <span></span>
-    </article>
-    <article>
-      <strong>Qual a duração dos cursos?</strong>
-      <span></span>
-    </article>
-    <article>
-      <strong>Os cursos são 100% online?</strong>
-      <span></span>
-    </article>
-    <article>
-      <strong>Qual instituição certifica os cursos?</strong>
-      <span></span>
-    </article>
-    <article>
-      <strong>Todos os cursos são autorizados pelo MEC?</strong>
-      <span></span>
-    </article>
-    <article>
-      <strong>Preciso fazer o TCC?</strong>
-      <span></span>
-    </article>
-    <article>
-      <strong>
-        Qual a diferença entre os cursos presenciais e a distância?
-      </strong>
-      <span></span>
-    </article>
-    <article>
-      <strong>Quais documentos são necessários para começar?</strong>
-      <span></span>
-    </article>
-    <article>
-      <strong>Qual a diferença entre Pós-Graduação e MBA?</strong>
-      <span></span>
-    </article>
-
+    <amp-accordion>
+      <section>
+        <h4>Quais as formas de pagamento?</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempore
+          dolores excepturi aperiam qui debitis dolorum, asperiores veritatis
+          consequuntur doloremque non deserunt doloribus enim alias ea quod
+          temporibus laudantium impedit!
+        </p>
+      </section>
+      <section>
+        <h4>Qual a duração dos cursos?</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempore
+          dolores excepturi aperiam qui debitis dolorum, asperiores veritatis
+          consequuntur doloremque non deserunt doloribus enim alias ea quod
+          temporibus laudantium impedit!
+        </p>
+      </section>
+      <section>
+        <h4>Os cursos são 100% online?</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempore
+          dolores excepturi aperiam qui debitis dolorum, asperiores veritatis
+          consequuntur doloremque non deserunt doloribus enim alias ea quod
+          temporibus laudantium impedit!
+        </p>
+      </section>
+      <section>
+        <h4>Qual instituição certifica os cursos?</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempore
+          dolores excepturi aperiam qui debitis dolorum, asperiores veritatis
+          consequuntur doloremque non deserunt doloribus enim alias ea quod
+          temporibus laudantium impedit!
+        </p>
+      </section>
+      <section>
+        <h4>Todos os cursos são autorizados pelo MEC?</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempore
+          dolores excepturi aperiam qui debitis dolorum, asperiores veritatis
+          consequuntur doloremque non deserunt doloribus enim alias ea quod
+          temporibus laudantium impedit!
+        </p>
+      </section>
+      <section>
+        <h4>Preciso fazer o TCC?</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempore
+          dolores excepturi aperiam qui debitis dolorum, asperiores veritatis
+          consequuntur doloremque non deserunt doloribus enim alias ea quod
+          temporibus laudantium impedit!
+        </p>
+      </section>
+      <section>
+        <h4>Qual a diferença entre os cursos presenciais e a distância?</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempore
+          dolores excepturi aperiam qui debitis dolorum, asperiores veritatis
+          consequuntur doloremque non deserunt doloribus enim alias ea quod
+          temporibus laudantium impedit!
+        </p>
+      </section>
+      <section>
+        <h4>Quais documentos são necessários para começar?</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempore
+          dolores excepturi aperiam qui debitis dolorum, asperiores veritatis
+          consequuntur doloremque non deserunt doloribus enim alias ea quod
+          temporibus laudantium impedit!
+        </p>
+      </section>
+      <section>
+        <h4>Qual a diferença entre Pós-Graduação e MBA?</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempore
+          dolores excepturi aperiam qui debitis dolorum, asperiores veritatis
+          consequuntur doloremque non deserunt doloribus enim alias ea quod
+          temporibus laudantium impedit!
+        </p>
+      </section>
+    </amp-accordion>
     <style jsx>{`
-      section {
+      div {
         margin: 0 0 100px;
       }
-      section > h3 {
+      div > h3 {
         font-size: 2.5rem;
         color: var(--write);
         margin-bottom: 30px;
       }
-      section > article {
+      div > amp-accordion > section {
+        display: flex;
+        flex-wrap: wrap;
         background: #08395a;
         margin-bottom: 10px;
         padding: 10px;
         color: #fff;
         border-radius: 10px;
+        align-items: center;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      div > amp-accordion > section h4 {
+        background: transparent;
+        border: 0;
+        margin-bottom: 10px;
+      }
+      div > amp-accordion > section h4:focus {
+        outline: none;
       }
 
       @media (min-width: 1000px) {
-        section {
+        div {
           padding-left: var(--margin-lg);
           padding-right: var(--margin-lg);
         }
       }
       @media (max-width: 999px) {
-        section {
+        div {
           padding-left: var(--margin-sm);
           padding-right: var(--margin-sm);
         }
       }
       @media (max-width: 750px) {
-        section {
+        div {
           padding-left: 20px;
           padding-right: 20px;
         }
@@ -78,9 +135,12 @@ const Faq = () => (
       @media (max-width: 650px) {
       }
       @media (max-width: 550px) {
+        div > amp-accordion > section:not([expanded]) {
+          height: 85px;
+        }
       }
       @media (max-width: 450px) {
-        section {
+        div {
           margin: 0 0 100px;
         }
       }
@@ -89,7 +149,7 @@ const Faq = () => (
       @media (max-width: 330px) {
       }
     `}</style>
-  </section>
+  </div>
 )
 
 export default Faq
