@@ -4,9 +4,8 @@ import fetch from 'node-fetch'
 import absoluteUrl from 'next-absolute-url'
 
 const q = faunadb.query
-const client = new faunadb.Client({
-  secret: process.env.DPOS_FAUNADB_SECRET_KEY,
-})
+const secret = process.env.DPOS_FAUNADB_SECRET_KEY
+const client = new faunadb.Client({ secret })
 
 export default async (req, res) => {
   const schema = joi
@@ -48,7 +47,7 @@ export default async (req, res) => {
 
     const { contact_id } = res.json()
 
-    fetch('https://api.egoiapp.com/lists/1/contacts/actions/attach-tag', {
+    await fetch('https://api.egoiapp.com/lists/1/contacts/actions/attach-tag', {
       headers: {
         'Content-Type': 'application/json',
         Apikey: process.env.DPOS_EGOI_API_KEY,
@@ -65,13 +64,11 @@ export default async (req, res) => {
 
   //save lead on dpos datasource
   try {
-    const dbs = await client.query(
-      q.Create(q.Collection('leads'), { data: value })
-    )
-    console.log(absoluteUrl(req))
+    await client.query(q.Create(q.Collection('leads'), { data: value }))
     res.setHeader('AMP-Redirect-To', `${absoluteUrl(req).origin}/obrigado`)
-    res.status(201).json(dbs.data)
-  } catch (e) {
-    res.status(500).json({ error: e.message })
+  } catch (err) {
+    console.error(err)
   }
+
+  res.status(200).end()
 }
