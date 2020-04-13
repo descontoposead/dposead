@@ -6,7 +6,7 @@ const Resume = () => {
 
   useEffect(() => {
     if (currentStepIs('Resume', step)) {
-      fetch('/api/save', {
+      fetch('/api/students', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',

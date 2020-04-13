@@ -1,10 +1,16 @@
 const Lightbox = () => (
   <>
     <amp-lightbox id="captureLead" layout="nodisplay">
-      <form action-xhr="/saveLead" method="post">
+      <form
+        method="get"
+        action="true"
+        action-xhr="/api/leads"
+        target="_top"
+        on="submit-success:captureLead.close;"
+      >
         <div>
           <label htmlFor="email">
-            Quer estudar com <strong>desconto?</strong>
+            Quer estudar com <strong>Desconto?</strong>
           </label>
           <input
             autoComplete="off"
@@ -12,12 +18,29 @@ const Lightbox = () => (
             id="email"
             name="email"
             type="email"
-            placeholder="Escreva seu melhor e-mail..."
+            placeholder="Seu melhor e-mail..."
+            required
+          />
+          <input
+            autoComplete="off"
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Seu nome..."
+            required
+          />
+          <input
+            autoComplete="off"
+            id="whatsapp"
+            name="whatsapp"
+            type="text"
+            placeholder="Seu whatsapp..."
+            required
           />
         </div>
         <div>
-          <button on="tap:captureLead.close" className="btn btn-red">
-            Enviar
+          <button type="submit" className="btn btn-red">
+            Receber Desconto
           </button>
         </div>
       </form>
@@ -26,7 +49,6 @@ const Lightbox = () => (
     <style jsx>{`
       @media (min-width: 451px) {
         amp-lightbox form > div:first-child {
-          height: 95px;
         }
         amp-lightbox label {
           font-size: 1.5rem;
@@ -34,10 +56,19 @@ const Lightbox = () => (
       }
       @media (max-width: 450px) {
         amp-lightbox form > div:first-child {
-          height: 90px;
         }
         amp-lightbox label {
           font-size: 1.4rem;
+        }
+      }
+      @media (min-height: 451px) {
+        amp-lightbox {
+          height: 55vh;
+        }
+      }
+      @media (max-height: 450px) {
+        amp-lightbox {
+          height: 60vh;
         }
       }
       amp-lightbox {
@@ -48,14 +79,16 @@ const Lightbox = () => (
         align-content: space-evenly;
         background: rgb(10, 19, 29);
         position: fixed;
-        height: 40vh;
         width: 455px;
         margin: 0 auto;
         border-radius: 10px;
         padding: 10px 20px;
         border: 4px solid #fdfdfd;
         color: white;
-        margin-top: 25vh;
+        margin-top: 15vh;
+      }
+      amp-lightbox form > div > label {
+        margin-bottom: 15px;
       }
       amp-lightbox > div {
         flex: 1;
@@ -91,6 +124,8 @@ const Lightbox = () => (
         padding: 5px 20px;
         font-size: 1.1rem;
         min-width: 300px;
+        height: 40px;
+        margin-bottom: 5px;
       }
       amp-lightbox input:focus {
         outline: none;
