@@ -23,8 +23,7 @@ const Header = (props) => (
 
     <style jsx>{`
       header {
-        background-image: url('/static/images/head.webp'),
-          url('/static/images/head.jpg');
+        background-image: url('/static/images/head.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         height: 600px;
