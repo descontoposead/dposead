@@ -7,7 +7,7 @@ const BtnCta = (props) => (
     }
     target="_blank"
   >
-  Falar com um consultor
+    Falar com um consultor
     <style jsx>{`
       a {
         padding: 10px 30px;
@@ -15,8 +15,6 @@ const BtnCta = (props) => (
         left: 10px;
         text-decoration: none;
       }
-
-
       @media (max-width: 450px) {
         .btn-red {
           width: 100%;
