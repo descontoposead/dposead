@@ -13,7 +13,10 @@ const Header = (props) => (
           <hr />
           <div>
             <span>Estude agora com descontos imperdíveis</span>
+            <div className="bnt">
             <BtnCta className="btn btn-red" />
+            </div>
+
 
           </div>
         </div>
@@ -32,6 +35,10 @@ const Header = (props) => (
       }
       header > div {
         z-index: 1;
+      }
+      div.bnt{
+        position:relative;
+        top:20px;
       }
       div.cta {
         display: flex;
