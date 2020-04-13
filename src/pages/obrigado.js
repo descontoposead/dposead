@@ -26,7 +26,7 @@ const ThankYou = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância"
         src="/static/images/man_happy.jpg"
         width="700"
@@ -43,7 +43,7 @@ const ThankYou = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância"
         src="/static/images/man_happy.jpg"
         width="700"

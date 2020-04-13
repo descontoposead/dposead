@@ -9,7 +9,7 @@ const Audience = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Aluna satisfeita com o portal do aluno"
         src="/static/images/smile_girl_mac.jpg"
         width="835"
@@ -26,7 +26,7 @@ const Audience = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Aluna satisfeita com o portal do aluno"
         src="/static/images/smile_girl_mac.jpg"
         width="835"

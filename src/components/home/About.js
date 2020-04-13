@@ -22,7 +22,7 @@ const About = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
         src="/static/images/smile_girl_nature.jpg"
         width="674"
@@ -39,7 +39,7 @@ const About = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
         src="/static/images/smile_girl_nature.jpg"
         width="664"

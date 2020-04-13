@@ -12,7 +12,7 @@ const Footer = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Logo da Desconto POSEAD"
         src="/static/images/footer_logo.png"
         width="147"

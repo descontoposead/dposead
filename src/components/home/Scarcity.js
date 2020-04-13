@@ -11,7 +11,7 @@ const Scarcity = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Aluno da POSEAD estudando na comodidade do ser escritório."
         src="/static/images/success_man.jpg"
         width="835"
@@ -28,7 +28,7 @@ const Scarcity = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Aluno da POSEAD estudando na comodidade do ser escritório."
         src="/static/images/success_man.jpg"
         width="835"

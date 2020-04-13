@@ -12,7 +12,7 @@ const ThreeReasons = () => (
             layout="responsive"
           >
             <amp-img
-              fallback
+              fallback=""
               alt="Cursos com qualidade no MEC nota 4"
               src="/static/icons/star.png"
               width="60"
@@ -34,7 +34,7 @@ const ThreeReasons = () => (
             layout="responsive"
           >
             <amp-img
-              fallback
+              fallback=""
               alt="Certificado em 6 meses"
               src="/static/icons/school.png"
               width="40"
@@ -56,7 +56,7 @@ const ThreeReasons = () => (
             layout="responsive"
           >
             <amp-img
-              fallback
+              fallback=""
               src="/static/icons/calendar.jpg"
               width="40"
               height="40"

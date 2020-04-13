@@ -74,7 +74,7 @@ const Capitation = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Aluno feliz com nossos cursos online"
         src="/static/images/smile_man.jpg"
         width="460"
@@ -91,7 +91,7 @@ const Capitation = () => (
       layout="responsive"
     >
       <amp-img
-        fallback
+        fallback=""
         alt="Aluno feliz com nossos cursos online"
         src="/static/images/smile_man.jpg"
         width="460"

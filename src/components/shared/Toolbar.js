@@ -13,7 +13,7 @@ const Toolbar = () => (
           height="28"
         >
           <amp-img
-            fallback
+            fallback=""
             className="logotipo"
             alt="Logo da Desconto POSEAD"
             src="/static/images/logotipo.png"
@@ -30,7 +30,7 @@ const Toolbar = () => (
           height="40"
         >
           <amp-img
-            fallback
+            fallback=""
             className="logotipo"
             alt="Logo da Desconto POSEAD"
             src="/static/images/logotipo__mobile.png"
