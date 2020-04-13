@@ -3,12 +3,14 @@
     "DPOS_FAUNADB_SECRET_KEY": "@dpos_faunadb_secret_key",
     "DPOS_GN_CLIENT_ID": "@dpos_gn_client_id",
     "DPOS_GN_CLIENT_SECRET": "@dpos_gn_client_secret",
-    "DPOS_GN_ACCOUNT_ID": "@dpos_gn_account_id"
+    "DPOS_GN_ACCOUNT_ID": "@dpos_gn_account_id",
+    "DPOS_EGOI_API_KEY": "@dpos_egoi_api_key"
   },
   "build": {
     "env": {
       "DPOS_FAUNADB_SECRET_KEY": "@dpos_faunadb_secret_key",
-      "DPOS_GN_ACCOUNT_ID": "@dpos_gn_account_id"
+      "DPOS_GN_ACCOUNT_ID": "@dpos_gn_account_id",
+      "DPOS_EGOI_API_KEY": "@dpos_egoi_api_key"
     }
   }
 }

@@ -1,5 +1,6 @@
 import faunadb from 'faunadb'
 import joi from '@hapi/joi'
+import fetch from 'node-fetch'
 
 const secret = process.env.DPOS_FAUNADB_SECRET_KEY
 const q = faunadb.query
@@ -27,6 +28,41 @@ export default async (req, res) => {
   }
 
   try {
+    //save lead on egoi platform
+    const fullName = value.name.split(' ')
+    const haveLastName = fullName.length > 1
+    fetch('https://api.egoiapp.com/lists/1/contacts', {
+      headers: {
+        'Content-Type': 'application/json',
+        Apikey: process.env.DPOS_EGOI_API_KEY,
+      },
+      method: 'post',
+      body: JSON.stringify({
+        base: {
+          email: value.email,
+          first_name: fullName[0],
+          last_name: haveLastName ? fullName.pop() : '',
+          cellphone: '55-' + value.whatsapp, //all brazil code by default
+        },
+      }),
+    })
+      .then((res) => res.json())
+      .then(({ contact_id }) =>
+        fetch('https://api.egoiapp.com/lists/1/contacts/actions/attach-tag', {
+          headers: {
+            'Content-Type': 'application/json',
+            Apikey: process.env.DPOS_EGOI_API_KEY,
+          },
+          method: 'post',
+          body: JSON.stringify({
+            tag_id: 1,
+            contacts: [contact_id],
+          }),
+        })
+      )
+      .catch(console.log)
+
+    //save lead on dpos datasource
     const dbs = await client.query(
       q.Create(q.Collection('leads'), { data: value })
     )
