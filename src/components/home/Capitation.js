@@ -269,6 +269,9 @@ const Capitation = () => (
           height: 550px;
           margin: 100px 0 524px;
         }
+        section > form {
+          height: 550px;
+        }
         div.container {
           position: relative;
           width: 100%;
@@ -282,6 +285,13 @@ const Capitation = () => (
         }
       }
       @media (max-width: 330px) {
+        section {
+          height: 450px;
+          margin: 100px 0 732px;
+        }
+        section > form {
+          height: 650px;
+        }
         div.container {
           position: relative;
           width: 100%;
@@ -289,7 +299,7 @@ const Capitation = () => (
           top: 12px;
         }
         section > form > div > h4 {
-          font-size: 0.9rem;
+          font-size: 1.2rem;
           font-weight: 500;
           margin-bottom: 25px;
         }

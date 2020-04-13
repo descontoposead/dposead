@@ -5,13 +5,11 @@ const About = () => (
     <div>
       <h2>Mais barato, porque você merece</h2>
       <h3>
-      O ensino presencial não funciona mais. Por
-        conta da correria do dia a dia temos que 
-        dividir a atenção com várias responsabilidades.
-        Mesmo se desdobrando durante todo o dia 
-        você chegou ate aqui. e merece uma educação
-        de qualidade. Fale com um de nossos 
-        consultores para receber mais informações.
+        O ensino presencial não funciona mais. Por conta da correria do dia a
+        dia temos que dividir a atenção com várias responsabilidades. Mesmo se
+        desdobrando durante todo o dia você chegou ate aqui. e merece uma
+        educação de qualidade. Fale com um de nossos consultores para receber
+        mais informações.
       </h3>
       <BtnCta className="mt40 btn btn-red" />
     </div>
@@ -107,7 +105,7 @@ const About = () => (
       }
       @media (max-width: 450px) {
         section {
-          margin-top: 10px;
+          margin-top: 70px;
           margin-bottom: 0px;
           height: 600px;
         }
@@ -128,19 +126,19 @@ const About = () => (
       }
       @media (max-width: 384px) {
         section {
-          margin-top: 10px;
+          margin-top: 100px;
           margin-bottom: 0;
           height: 640px;
         }
         section > div {
           width: 100vw;
           left: 0;
-          top:183px;
+          top: 214px;
         }
       }
       @media (max-width: 330px) {
         section {
-          margin-top: 70px;
+          margin-top: 60px;
           height: 664px;
         }
         section > div {
@@ -148,7 +146,7 @@ const About = () => (
         }
         section > div h3 {
           font-size: 1.2rem;
-          height: 248px;
+          height: 250px;
         }
       }
     `}</style>
