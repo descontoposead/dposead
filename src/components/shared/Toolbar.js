@@ -2,24 +2,26 @@ import Link from 'next/link'
 
 const Toolbar = () => (
   <div className="toolbar">
-    <amp-img
-      media="(min-width: 500px)"
-      className="logotipo"
-      alt="Logo da Desconto POSEAD"
-      src="/static/images/logotipo.webp"
-      width="288"
-      height="28"
-      layout="responsive"
-    ></amp-img>
-    <amp-img
-      media="(max-width: 499px)"
-      className="logotipo"
-      alt="Logo da Desconto POSEAD"
-      src="/static/images/logotipo__mobile.webp"
-      width="115"
-      height="40"
-      layout="responsive"
-    ></amp-img>
+    <Link href="/">
+      <a>
+        <amp-img
+          media="(min-width: 500px)"
+          className="logotipo"
+          alt="Logo da Desconto POSEAD"
+          src="/static/images/logotipo.webp"
+          width="288"
+          height="28"
+        ></amp-img>
+        <amp-img
+          media="(max-width: 499px)"
+          className="logotipo"
+          alt="Logo da Desconto POSEAD"
+          src="/static/images/logotipo__mobile.webp"
+          width="115"
+          height="40"
+        ></amp-img>
+      </a>
+    </Link>
 
     <div className="cta">
       <Link href="/matricular">
