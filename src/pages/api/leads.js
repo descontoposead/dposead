@@ -45,7 +45,7 @@ export default async (req, res) => {
       }),
     })
 
-    const { contact_id } = res.json()
+    const { contact_id } = await res.json()
 
     await fetch('https://api.egoiapp.com/lists/1/contacts/actions/attach-tag', {
       headers: {
