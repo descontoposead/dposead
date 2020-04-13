@@ -10,7 +10,16 @@ const ThreeReasons = () => (
             width="60"
             height="30"
             layout="responsive"
-          ></amp-img>
+          >
+            <amp-img
+              fallback
+              alt="Cursos com qualidade no MEC nota 4"
+              src="/static/icons/star.png"
+              width="60"
+              height="30"
+              layout="responsive"
+            ></amp-img>
+          </amp-img>
           <span>
             Todos os nossos cursos possuem qualidade garantida pelo Decreto nº
             5.773/06 do MEC, avaliado como nota 4 (de 1 a 5) pelo IGC.
@@ -23,7 +32,16 @@ const ThreeReasons = () => (
             width="40"
             height="40"
             layout="responsive"
-          ></amp-img>
+          >
+            <amp-img
+              fallback
+              alt="Certificado em 6 meses"
+              src="/static/icons/school.png"
+              width="40"
+              height="40"
+              layout="responsive"
+            ></amp-img>
+          </amp-img>
           <span>
             Garanta a sua certificação em um prazo mínimo de 6 meses, de acordo
             com o que você precisa nesse momento.
@@ -36,7 +54,15 @@ const ThreeReasons = () => (
             width="40"
             height="40"
             layout="responsive"
-          ></amp-img>
+          >
+            <amp-img
+              fallback
+              src="/static/icons/calendar.jpg"
+              width="40"
+              height="40"
+              layout="responsive"
+            ></amp-img>
+          </amp-img>
           <span>
             Você está no controle e decide qual o melhor horário e local para
             estudar.
@@ -53,7 +79,8 @@ const ThreeReasons = () => (
       section > article {
         width: 100%;
         height: 1000px;
-        background: url('/static/images/footer.webp');
+        background: url('/static/images/footer.webp'),
+          url('/static/images/footer.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         display: flex;
@@ -111,8 +138,6 @@ const ThreeReasons = () => (
           font-size: 1.1rem;
           width: 100%;
         }
-
-
       }
       @media (max-width: 650px) {
       }

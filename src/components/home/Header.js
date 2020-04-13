@@ -14,10 +14,8 @@ const Header = (props) => (
           <div>
             <span>Estude agora com descontos imperdíveis</span>
             <div className="bnt">
-            <BtnCta className="btn btn-red" />
+              <BtnCta className="btn btn-red" />
             </div>
-
-
           </div>
         </div>
       </header>
@@ -25,7 +23,8 @@ const Header = (props) => (
 
     <style jsx>{`
       header {
-        background-image: url('/static/images/head.webp');
+        background-image: url('/static/images/head.webp'),
+          url('/static/images/head.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         height: 600px;
@@ -36,9 +35,9 @@ const Header = (props) => (
       header > div {
         z-index: 1;
       }
-      div.bnt{
-        position:relative;
-        top:20px;
+      div.bnt {
+        position: relative;
+        top: 20px;
       }
       div.cta {
         display: flex;

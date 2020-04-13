@@ -20,7 +20,16 @@ const About = () => (
       width="674"
       height="380"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
+        src="/static/images/smile_girl_nature.jpg"
+        width="674"
+        height="380"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
     <amp-img
       media="(max-width: 499px)"
       alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
@@ -28,7 +37,16 @@ const About = () => (
       width="664"
       height="332"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Estudante feliz por estudar a distância com cursos EAD de qualidade."
+        src="/static/images/smile_girl_nature.jpg"
+        width="664"
+        height="332"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
 
     <style jsx>{`
       section {

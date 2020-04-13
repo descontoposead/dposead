@@ -31,6 +31,9 @@ const Enrolment = () => {
       <img
         id="logo"
         src="/static/images/logo-prominas.webp"
+        onError={(event) =>
+          (event.target.src = '/static/images/logo-prominas.png')
+        }
         alt="Logo da Instituição parceira ofertante dos cursos"
       />
 

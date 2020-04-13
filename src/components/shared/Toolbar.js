@@ -11,7 +11,16 @@ const Toolbar = () => (
           src="/static/images/logotipo.webp"
           width="288"
           height="28"
-        ></amp-img>
+        >
+          <amp-img
+            fallback
+            className="logotipo"
+            alt="Logo da Desconto POSEAD"
+            src="/static/images/logotipo.png"
+            width="288"
+            height="28"
+          ></amp-img>
+        </amp-img>
         <amp-img
           media="(max-width: 499px)"
           className="logotipo"
@@ -19,10 +28,18 @@ const Toolbar = () => (
           src="/static/images/logotipo__mobile.webp"
           width="115"
           height="40"
-        ></amp-img>
+        >
+          <amp-img
+            fallback
+            className="logotipo"
+            alt="Logo da Desconto POSEAD"
+            src="/static/images/logotipo__mobile.png"
+            width="115"
+            height="40"
+          ></amp-img>
+        </amp-img>
       </a>
     </Link>
-
     <div className="cta">
       <Link href="/matricular">
         <a className="btn btn-write">Matricule-se</a>

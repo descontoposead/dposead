@@ -7,7 +7,16 @@ const Audience = () => (
       width="835"
       height="550"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Aluna satisfeita com o portal do aluno"
+        src="/static/images/smile_girl_mac.jpg"
+        width="835"
+        height="550"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
     <amp-img
       media="(max-width: 499px)"
       alt="Aluna satisfeita com o portal do aluno"
@@ -15,7 +24,16 @@ const Audience = () => (
       width="835"
       height="550"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Aluna satisfeita com o portal do aluno"
+        src="/static/images/smile_girl_mac.jpg"
+        width="835"
+        height="550"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
     <article>
       <h4>O que estão falando sobre nós</h4>
     </article>

@@ -24,7 +24,16 @@ const ThankYou = () => (
       width="700"
       height="844"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância"
+        src="/static/images/man_happy.jpg"
+        width="700"
+        height="844"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
     <amp-img
       media="(max-width: 499px)"
       alt="Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância"
@@ -32,7 +41,16 @@ const ThankYou = () => (
       width="700"
       height="844"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância"
+        src="/static/images/man_happy.jpg"
+        width="700"
+        height="844"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
 
     <style jsx>{`
       main {

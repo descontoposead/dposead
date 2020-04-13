@@ -72,7 +72,16 @@ const Capitation = () => (
       width="460"
       height="610"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Aluno feliz com nossos cursos online"
+        src="/static/images/smile_man.jpg"
+        width="460"
+        height="610"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
     <amp-img
       media="(max-width: 499px)"
       alt="Aluno feliz com nossos cursos online"
@@ -80,7 +89,16 @@ const Capitation = () => (
       width="460"
       height="610"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Aluno feliz com nossos cursos online"
+        src="/static/images/smile_man.jpg"
+        width="460"
+        height="610"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
 
     <style jsx>{`
       section {

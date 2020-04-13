@@ -1,8 +1,6 @@
 import InstagramIcon from '../icon/InstagramIcon'
 import FacebookIcon from '../icon/FacebookIcon'
 import WhatsappIcon from '../icon/WhatsappIcon'
-import WhatsappGreenIcon from '../icon/WhatsappGreenIcon'
-import SaleIcon from '../icon/SaleIcon'
 
 const Footer = () => (
   <footer>
@@ -12,7 +10,16 @@ const Footer = () => (
       width="147"
       height="48"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Logo da Desconto POSEAD"
+        src="/static/images/footer_logo.png"
+        width="147"
+        height="48"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
     <ul>
       <li>
         <InstagramIcon />

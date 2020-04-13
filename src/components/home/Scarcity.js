@@ -9,7 +9,16 @@ const Scarcity = () => (
       width="835"
       height="550"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Aluno da POSEAD estudando na comodidade do ser escritório."
+        src="/static/images/success_man.jpg"
+        width="835"
+        height="550"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
     <amp-img
       media="(max-width: 499px)"
       alt="Aluno da POSEAD estudando na comodidade do ser escritório."
@@ -17,7 +26,16 @@ const Scarcity = () => (
       width="835"
       height="550"
       layout="responsive"
-    ></amp-img>
+    >
+      <amp-img
+        fallback
+        alt="Aluno da POSEAD estudando na comodidade do ser escritório."
+        src="/static/images/success_man.jpg"
+        width="835"
+        height="550"
+        layout="responsive"
+      ></amp-img>
+    </amp-img>
     <article>
       <h3> Profissionais de sucesso estão se especializando neste momento</h3>
       <span>
@@ -32,10 +50,9 @@ const Scarcity = () => (
         ajudar.
       </span>
       <div className="bnt">
-      <BtnCta className="mt15 btn btn-red" />
+        <BtnCta className="mt15 btn btn-red" />
       </div>
     </article>
-    
 
     <style jsx>{`
     div.bnt{
