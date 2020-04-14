@@ -36,6 +36,18 @@ const Audience = () => (
     </amp-img>
     <article>
       <h4>O que estão falando sobre nós</h4>
+      <div>
+      <amp-img
+        fallback=""
+        alt="Aluna satisfeita com o portal do aluno"
+        src="/static/images/avatar.jpg"
+        width="10"
+        height="10"
+        layout="responsive"
+      ></amp-img>
+      <h3>Meu nome é Tallis, eu trabalho no banco do Brasil e conclui um curso de Pós graduação na Faculdade Única.
+Depois de fazer o curso eu consegui aplicar muitos conhecimentos e obter resultados, isso tudo fazendo o curso sem sair de casa.</h3>
+      </div>
     </article>
 
     <style jsx>{`
@@ -55,6 +67,24 @@ const Audience = () => (
         right: 0;
         color: var(--write);
         font-size: 2.5rem;
+      }
+      section > article > div{
+        align-items: center;
+        justify-content: center
+        
+      }
+      section > article > div > h3{
+        position: relative;
+        width: 100%;
+        color: var(--write);
+        font-size: 1.2rem;
+        top:30px;
+        margin: 0;
+      }
+      section > article > div > amp-img{
+        position: relative;
+        width:100px;
+        border-radius:50px;
       }
 
       @media (max-width: 999px) {
