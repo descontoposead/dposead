@@ -19,7 +19,10 @@ const Footer = () => (
         height="48"
         layout="responsive"
       ></amp-img>
+
     </amp-img>
+
+
     <ul>
       <li>
         <InstagramIcon />
@@ -32,6 +35,7 @@ const Footer = () => (
       </li>
     </ul>
 
+
     <style jsx>{`
       footer {
         display: flex;
@@ -41,6 +45,7 @@ const Footer = () => (
         color: var(--write);
         height: 215px;
       }
+
       footer > amp-img {
         width: 147px;
       }
@@ -82,11 +87,21 @@ const Footer = () => (
       }
       @media (max-width: 450px) {
         footer > ul {
-          flex-wrap: wrap;
-          width: 80px;
+          top: 27%;
+          left: -31%;
         }
       }
       @media (max-width: 384px) {
+        footer > amp-img {
+          position:relative;
+          width: 600px;          
+          left:26%;
+        }
+        footer > ul {
+          position: relative;
+          left: -31%;
+          top: -27%;
+        }
       }
       @media (max-width: 330px) {
       }

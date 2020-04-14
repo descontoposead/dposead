@@ -1,4 +1,6 @@
-const InstaIcon = () => (
+const InstaIcon = () => ( 
+  
+  <a href="https://instagram.com/descontoposead?igshid=19a0gc51et6yt">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
@@ -16,6 +18,7 @@ const InstaIcon = () => (
       style={{ fill: '#fff' }}
     />
   </svg>
+  </a>
 )
 
 export default InstaIcon
