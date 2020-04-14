@@ -23,18 +23,25 @@ export default async (req, res) => {
       q.Map(
         q.Paginate(
           q.Union(
-            q.Match(q.Index('voucher_by_raw'), 'ListaVip400'),
-            q.Match(q.Index('voucher_by_pretty'), 'ListaVip400')
+            q.Match(q.Index('voucher_by_raw'), value.q),
+            q.Match(q.Index('voucher_by_pretty'), value.q)
           )
         ),
         q.Lambda('vouchers', q.Get(q.Var('vouchers')))
       )
     )
 
-    res.status(200).json(data.map((data) => data.data))
-  } catch (err) {
-    console.error(err)
-  }
+    const item = data
+      .map((data) => data.data)
+      .filter((voucher) => voucher.isActive)
+      .pop()
 
-  res.status(200).end()
+    if (item) {
+      res.status(200).json(item)
+    } else {
+      res.status(404).end()
+    }
+  } catch (err) {
+    res.status(500).json(err)
+  }
 }

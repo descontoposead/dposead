@@ -8,6 +8,11 @@ const InputChargeValueCourse = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
   const [chargeValueCourse, setChargeValueCourse] = useState(null)
+  const [chargeInitialValueCourse] = useState({
+    instalment: 1,
+    value: 200000,
+    currency: 2000,
+  })
   const [instalmentPlan] = useState({
     creditCard: {
       max: 12,
@@ -19,10 +24,39 @@ const InputChargeValueCourse = () => {
     },
   })
   const [typedVoucher, setTypedVoucher] = useState('')
+  const [isFetching, setFetching] = useState(false)
+  const [hasError, setError] = useState(null)
+  const [voucher, setVoucher] = useState(null)
+  const refVoucherInput = useRef(null)
 
   useDebounce(
     () => {
-      console.log(typedVoucher)
+      fetch(`/api/vouchers?q=${typedVoucher}`)
+        .then((res) => res.json())
+        .then((res) => {
+          setError(false)
+          setFetching(false)
+          setVoucher(res)
+          controlInputValue({
+            name: refVoucherInput.current.name,
+            value: res.pretty,
+          })
+          setChargeValueCourse({
+            instalment: 1,
+            value: chargeInitialValueCourse.value - res.value,
+            currency: chargeInitialValueCourse.currency - res.currency,
+          })
+        })
+        .catch((err) => {
+          setFetching(false)
+          setVoucher(false)
+          setError(err)
+          controlInputValue({
+            name: 'voucher',
+            value: '',
+          })
+          setChargeValueCourse(chargeInitialValueCourse)
+        })
     },
     1000,
     [typedVoucher]
@@ -52,6 +86,11 @@ const InputChargeValueCourse = () => {
         name: 'chargeValueCourse',
         value: initialChargeCourseValue,
       })
+    }
+
+    if (refVoucherInput.current) {
+      const { current } = refVoucherInput
+      current.value = values[current.name] || ''
     }
   }, [step]) //onstepchange
 
@@ -100,27 +139,47 @@ const InputChargeValueCourse = () => {
               <mark>{values.courseName}</mark> por
             </strong>
             <button onClick={(e) => incrementInstalment(e)}>&#10092;</button>
-            <strong>
-              {chargeValueCourse?.instalment} x de{' '}
-              <i>{chargeValueCourse?.currency.toFixed(2)} reais</i>
-            </strong>
+            {!voucher && (
+              <strong>
+                {chargeValueCourse?.instalment} x de{' '}
+                <i>R$ {chargeValueCourse?.currency.toFixed(2)}</i>
+              </strong>
+            )}
+            {voucher && (
+              <>
+                <strong className="striked">
+                  De {chargeInitialValueCourse?.instalment} x de{' '}
+                  <i>R$ {chargeInitialValueCourse?.currency.toFixed(2)}</i>
+                </strong>
+                <strong>
+                  Por {chargeValueCourse?.instalment} x de{' '}
+                  <i>R$ {chargeValueCourse?.currency.toFixed(2)}</i>
+                </strong>
+              </>
+            )}
             <button onClick={(e) => decrementInstalment(e)}>&#10093;</button>
           </section>
-          <div>
+          <div className="voucher-choicer">
             {values.voucher && (
-              <label htmlFor="voucher">Voucher de Desconto</label>
+              <label htmlFor="voucher">Usando o Voucher</label>
             )}
             <input
-              onChange={({ target }) => setTypedVoucher(target.value)}
+              ref={refVoucherInput}
+              onChange={({ target }) => {
+                setVoucher(false)
+                setError(false)
+                setFetching(true)
+                setTypedVoucher(target.value)
+              }}
               autoComplete="off"
               autoFocus
               type="text"
               placeholder="Voucher de Desconto"
               name="voucher"
             />
-            <strong className="hasInvalidError">
-              Precisa ser um voucher válido!
-            </strong>
+            {isFetching && !hasError && 'Buscando seu voucher...'}
+            {hasError && !voucher && 'Esse voucher existe?'}
+            {voucher && voucher.description}
           </div>
         </div>
         <div>
@@ -158,6 +217,16 @@ const InputChargeValueCourse = () => {
             section {
               width: 250px
             }
+          }
+          div.voucher-choicer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          strong.striked {
+            text-decoration: line-through;
+            color: #666;
+            font-weight: 100;
           }
           div:nth-child(2) > div > input {
             border-bottom: 4px solid #000000;
