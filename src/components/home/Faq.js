@@ -1,7 +1,7 @@
 const Faq = () => (
   <div>
     <h3>Perguntas frequentes</h3>
-    <amp-accordion>
+    <amp-accordion expand-single-section="">
       <section>
         <h4>
           Quais as formas de pagamento?
@@ -64,6 +64,7 @@ const Faq = () => (
           da União, em 18/08/2017, com validade em todo território nacional.
           Além disso, a Faculdade ÚNICA foi avaliada como nota 4 (em uma escala
           de 1 a 5) no IGC.
+          <br />
           <br />
           <a
             rel="nofollow"
@@ -174,6 +175,9 @@ const Faq = () => (
       }
       div > amp-accordion > section p {
         font-size: 1.15rem;
+      }
+      div > amp-accordion > section a {
+        color: #fff;
       }
       div > amp-accordion > section h4 {
         width: 100%;
