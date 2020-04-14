@@ -49,7 +49,7 @@ const ContactMenu = () => (
           display: flex;
           position: fixed;
           bottom: 10px;
-          z-index: 9;
+          z-index: 99;
           justify-content: center;
         }
         div:hover {
