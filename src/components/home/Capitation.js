@@ -127,7 +127,7 @@ const Capitation = () => (
         position: absolute;
         left: 0;
         background: var(--red);
-        z-index: 1;
+        z-index: 2;
         padding: 20px;
         display: flex;
         align-items: center;

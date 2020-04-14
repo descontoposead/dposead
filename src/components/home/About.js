@@ -69,7 +69,7 @@ const About = () => (
         padding: 15px;
         position: absolute;
         bottom: var(--margin-between);
-        z-index: 1;
+        z-index: 2;
         top: 125px;
       }
       section > div > h2 {
@@ -164,7 +164,7 @@ const About = () => (
         }
         section > div h3 {
           font-size: 1.2rem;
-          height: 250px;
+          height: 260px;
         }
       }
     `}</style>

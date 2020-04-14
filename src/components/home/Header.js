@@ -30,6 +30,7 @@ const Header = (props) => (
         display: flex;
         flex-wrap: wrap;
         color: #fff;
+        z-index: 2;
       }
       header > div {
         z-index: 1;
@@ -122,6 +123,7 @@ const Header = (props) => (
           background-size: 777px;
           background-position-y: 65px;
           height: 616px;
+          transform: translate3d(0, 0, 1px);
         }
       }
     `}</style>

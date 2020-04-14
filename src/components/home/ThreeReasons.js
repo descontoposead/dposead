@@ -57,7 +57,7 @@ const ThreeReasons = () => (
           >
             <amp-img
               fallback=""
-              src="/static/icons/calendar.jpg"
+              src="/static/icons/calendar.png"
               width="40"
               height="40"
               layout="responsive"
