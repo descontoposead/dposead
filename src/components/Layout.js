@@ -5,36 +5,6 @@ import Lightbox from './Lightbox'
 
 const withLayout = (Page, opts = { onlyToolbar: false }) => () => (
   <>
-    {/* Facebook Pixel */}
-    <amp-pixel
-      src="https://www.facebook.com/tr?id=2142419396064150&ev=PageView&noscript=1"
-      layout="nodisplay"
-    ></amp-pixel>
-    <amp-analytics type="facebookpixel" id="facebook-pixel">
-      <script
-        type="application/json"
-        dangerouslySetInnerHTML={{
-          __html: `{
-              "vars": {
-                  "pixelId": "2142419396064150"
-              },
-              "triggers": {
-                  "trackPageview": {
-                      "on": "visible",
-                      "request": "pageview"
-                  },
-                  "formSubmit": {
-                      "on": "amp-form-submit-success",
-                      "request": "event",
-                      "vars": {
-                        "eventName": "Entrou na página home"
-                      }
-              }   }
-          }`,
-        }}
-      ></script>
-    </amp-analytics>
-
     <Lightbox />
     <Header {...opts} />
     <Page />
