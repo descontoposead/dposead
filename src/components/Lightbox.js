@@ -47,7 +47,13 @@ const Lightbox = () => (
           />
           <input type="hidden" name="trigger" value="user-action" />
         </div>
+
         <div>
+          <div submitting="">
+            <template type="amp-mustache">
+              <strong>Enviando...</strong>
+            </template>
+          </div>
           <button type="submit" className="btn btn-red">
             Receber Desconto
           </button>
@@ -56,6 +62,9 @@ const Lightbox = () => (
     </amp-lightbox>
 
     <style jsx>{`
+      .amp-form-submitting button {
+        display: none;
+      }
       div.close {
         position: absolute;
         right: 10px;
