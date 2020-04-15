@@ -31,7 +31,7 @@ const Capitation = () => (
             <label htmlFor="phone">TELEFONE</label>
             <input
               id="phone"
-              type="text"
+              type="number"
               name="whatsapp"
               autoComplete="off"
               required
@@ -55,6 +55,11 @@ const Capitation = () => (
           <button type="submit" className="btn btn-black">
             Enviar
           </button>
+          <div submitting="">
+            <template type="amp-mustache">
+              <strong>Enviando...</strong>
+            </template>
+          </div>
           <span>
             Ou entre em contato conosco
             <a
@@ -63,6 +68,7 @@ const Capitation = () => (
                 'https://api.whatsapp.com/send?1=pt_BR&phone=' +
                 process.env.whatsappNumber
               }
+              target="_blank"
             >
               <WhatsappGreenIcon sm={true} />
               <span>Via Whatsapp</span>
@@ -107,6 +113,9 @@ const Capitation = () => (
     </amp-img>
 
     <style jsx>{`
+      .amp-form-submitting button[type='submit'] {
+        display: none;
+      }
       section {
         margin: 150px 0 150px;
         position: relative;

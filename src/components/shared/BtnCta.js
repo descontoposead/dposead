@@ -1,5 +1,5 @@
 const BtnCta = (props) => (
-  <a {...props} href="#falar-com-consultor" target="_blank">
+  <a {...props} href="#falar-com-consultor">
     Falar com um consultor
     <style jsx>{`
       a {

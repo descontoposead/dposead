@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import withLayout from '../components/Layout'
+import Link from 'next/link'
 
 export const config = { amp: true }
 
@@ -53,8 +54,18 @@ const ThankYou = () => (
           em “Matriule-se” abaixo para garantir sua matrícula.
         </span>
         <div>
-          <button>Conversar no whatsapp</button>
-          <button>Matricule-se</button>
+          <a
+            href={
+              'https://api.whatsapp.com/send?1=pt_BR&phone=' +
+              process.env.whatsappNumber
+            }
+            target="_blank"
+          >
+            Conversar no whatsapp
+          </a>
+          <Link href="/matricular">
+            <a className="btn btn-write">Matricule-se</a>
+          </Link>
         </div>
       </div>
 
@@ -94,30 +105,33 @@ const ThankYou = () => (
           margin-top: 30px;
         }
 
-        main > div > div button {
+        main > div > div a {
+          text-decoration: none;
           margin-right: 7px;
           border-radius: 4px;
           height: 36px;
           border: 0px;
           margin-bottom: 5px;
-          padding: 0 15px;
+          padding: 10px 15px;
           height: 40px;
           font-size: 1.1rem;
+          font-weight: bold;
+          cursor: pointer;
         }
-        main > div > div button:first-child {
+        main > div > div a:first-child {
           background: #427e38;
           color: #ffff;
         }
-        main > div > div > button:nth-of-type(2) {
+        main > div > div > a:nth-of-type(2) {
           background: #fff;
-          color: #000000;
+          color: var(--blue);
         }
 
         @media (min-width: 1000px) {
           main > div {
             height: 50vh;
             position: absolute;
-            left: 375px;
+            left: 425px;
           }
         }
 
