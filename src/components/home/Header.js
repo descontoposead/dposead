@@ -21,18 +21,19 @@ const Header = (props) => (
 
     <style jsx>{`
       /* CSS specific to iOS devices */
-      @supports (-webkit-touch-callout: none) and @media (max-width: 450px) {
-        header:before {
-          content: '';
-          background-image: url('/static/images/head__mobile.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position-x: -185px;
-          height: 100vh;
-          background-size: 777px;
-          background-position-y: 65px;
-        }
-      }
+      // @supports (-webkit-touch-callout: none) and @media (max-width: 450px) {
+      //   header:before {
+      //     content: '';
+      //     background-image: url('/static/images/head__mobile.jpg');
+      //     background-repeat: no-repeat;
+      //     background-size: cover;
+      //     background-position-x: -185px;
+      //     height: 100vh;
+      //     background-size: 777px;
+      //     background-position-y: 65px;
+      //     position: fixed
+      //   }
+      // }
       header {
         background-image: url('/static/images/head.jpg');
         background-repeat: no-repeat;
@@ -107,7 +108,8 @@ const Header = (props) => (
       }
       @media (max-width: 450px) {
         header {
-          background-image: url('/static/images/head__mobile.webp');
+          background-image: url('/static/images/head__mobile.webp'),
+            url('/static/images/head.jpg');
           background-position-x: -185px;
           height: 100vh;
           background-size: 777px;
