@@ -76,7 +76,7 @@ const Modal = () => (
       }
       @media (min-width: 749px) {
         amp-script.modal {
-          animation: fadeIn 0.2s linear 15s;
+          animation: fadeIn 0.2s linear 2s;
           animation-fill-mode: forwards;
         }
       }
@@ -110,13 +110,15 @@ const Modal = () => (
         }
         to {
           opacity: 1;
+          visibility: visible;
         }
       }
       amp-script.modal {
+        display: flex;
+        visibility: hidden;
         transition: 0.2s;
         width: 380px;
         opacity: 0;
-        display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-content: space-evenly;
