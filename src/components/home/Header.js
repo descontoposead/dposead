@@ -20,6 +20,19 @@ const Header = (props) => (
     )}
 
     <style jsx>{`
+      @media only screen and (max-width: 959px) {
+        header:before {
+          content: '';
+          background-image: url('/static/images/head.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
       header {
         background-image: url('/static/images/head.jpg');
         background-repeat: no-repeat;
@@ -33,6 +46,7 @@ const Header = (props) => (
         position: relative;
         z-index: 1;
         background: transparent;
+        align-self: flex-end;
       }
       div.cta {
         display: flex;

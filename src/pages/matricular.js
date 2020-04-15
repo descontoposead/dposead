@@ -13,6 +13,7 @@ const Enrolment = () => {
   return (
     <>
       <Head>
+        <title>Nova Matricula - Desconto Pos EaD</title>
         <script
           dangerouslySetInnerHTML={{
             __html:
