@@ -269,7 +269,6 @@ const Capitation = () => (
         section > form {
           height: 525px;
           background: var(--red);
-          z-index: 1;
           padding: 20px;
           display: flex;
           width: 100%;

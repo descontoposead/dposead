@@ -99,6 +99,7 @@ const Audience = () => (
         position: absolute;
         font-size: 4rem;
         top: 112px;
+        margin-left: 5px;
       }
       section > article > div > p > span.high {
         position: absolute;
@@ -196,13 +197,13 @@ const Audience = () => (
         section > article > div > p > span.low {
           position: absolute;
           font-size: 2.5rem;
-          top: 109px;
+          top: 90px;
         }
         section > article > div > p > span.high {
           position: absolute;
           font-size: 2.5rem;
           top: -15px;
-          left: -17px;
+          left: -9px;
         }
       }
       @media (max-width: 384px) {
@@ -294,13 +295,13 @@ const Audience = () => (
         section > article > div > p > span.low {
           position: absolute;
           font-size: 2.5rem;
-          top: 128px;
+          top: 110px;
         }
         section > article > div > p > span.high {
           position: absolute;
           font-size: 2.5rem;
           top: -15px;
-          left: 3px;
+          left: -3px;
         }
       }
 
