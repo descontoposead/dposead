@@ -21,17 +21,16 @@ const Header = (props) => (
 
     <style jsx>{`
       /* CSS specific to iOS devices */
-      @supports (-webkit-touch-callout: none) {
+      @supports (-webkit-touch-callout: none) and @media (max-width: 450px) {
         header:before {
           content: '';
-          background-image: url('/static/images/head.jpg');
+          background-image: url('/static/images/head__mobile.jpg');
           background-repeat: no-repeat;
           background-size: cover;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+          background-position-x: -185px;
+          height: 100vh;
+          background-size: 777px;
+          background-position-y: 65px;
         }
       }
       header {
