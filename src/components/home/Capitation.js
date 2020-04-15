@@ -142,6 +142,8 @@ const Capitation = () => (
       section > form:target {
         padding-top: 110px;
         height: 105vh;
+        max-height: 590px;
+        min-height: 540px;
       }
       section > form input {
         height: 40px;
