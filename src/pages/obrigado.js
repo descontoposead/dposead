@@ -10,19 +10,6 @@ const ThankYou = () => (
       <title>Obrigado - Desconto Pos EaD</title>
     </Head>
     <main>
-      <div>
-        <h1>Pronto, falta muito pouco para mudar seu futuro.</h1>
-        <span>
-          Obrigado pela confiança, você pode falar agora com um consultor
-          clicando em “Converse no whatsap” ou aguardar o contato de nosso
-          consultor. Caso já tenha tomado a decisão de estudar conosco, clique
-          em “Matriule-se” abaixo para garantir sua matrícula.
-        </span>
-        <div>
-          <button>Conversar no whatsapp</button>
-          <button>Matricule-se</button>
-        </div>
-      </div>
       <amp-img
         media="(min-width: 500px)"
         alt="Aluno feliz porque se inscreveu numa incrível oportunidade de curso a distância"
@@ -57,6 +44,19 @@ const ThankYou = () => (
           layout="responsive"
         ></amp-img>
       </amp-img>
+      <div>
+        <h1>Pronto, falta muito pouco para mudar seu futuro.</h1>
+        <span>
+          Obrigado pela confiança, você pode falar agora com um consultor
+          clicando em “Converse no whatsap” ou aguardar o contato de nosso
+          consultor. Caso já tenha tomado a decisão de estudar conosco, clique
+          em “Matriule-se” abaixo para garantir sua matrícula.
+        </span>
+        <div>
+          <button>Conversar no whatsapp</button>
+          <button>Matricule-se</button>
+        </div>
+      </div>
 
       <style jsx>{`
         main {
@@ -96,19 +96,29 @@ const ThankYou = () => (
 
         main > div > div button {
           margin-right: 7px;
-          border-radius: 10px;
-          font-size: 1rem;
+          border-radius: 4px;
           height: 36px;
           border: 0px;
           margin-bottom: 5px;
+          padding: 0 15px;
+          height: 40px;
+          font-size: 1.1rem;
         }
         main > div > div button:first-child {
           background: #427e38;
           color: #ffff;
         }
         main > div > div > button:nth-of-type(2) {
-          background: ffffff;
+          background: #fff;
           color: #000000;
+        }
+
+        @media (min-width: 1000px) {
+          main > div {
+            height: 50vh;
+            position: absolute;
+            left: 375px;
+          }
         }
 
         @media (max-width: 999px) {
@@ -130,15 +140,16 @@ const ThankYou = () => (
           main > div {
             width: auto;
             padding: 0;
-            margin-top: 80px;
+            margin-bottom: 40px;
           }
           main > amp-img {
-            margin-bottom: 100px;
+            margin-top: 90px;
+            margin-bottom: 40px;
           }
         }
         @media (max-width: 450px) {
           main > div {
-            margin-top: 190px;
+            height: auto;
           }
         }
       `}</style>
