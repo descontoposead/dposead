@@ -34,6 +34,28 @@ const Enrolment = () => {
         src="static/images/logo-prominas.png"
         alt="Logo da Instituição parceira ofertante dos cursos"
       />
+      <style jsx>{`
+        img#logo {
+          position: fixed;
+          right: 10px;
+          bottom: 20px;
+        }
+        header {
+          width: 100vw;
+          height: 10px;
+          border-right: 0;
+          border-left: 0;
+          background: #cecece;
+        }
+        header > div {
+          width: ${progressBarValue > 100 ? 100 : progressBarValue}vw;
+          height: 10px;
+          background: #000;
+          transition: 1s;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 7px;
+        }
+      `}</style>
       {/* Facebook Pixel */}
       <amp-pixel
         src="https://www.facebook.com/tr?id=2534781333293766&ev=PageView&noscript=1"
@@ -57,28 +79,6 @@ const Enrolment = () => {
           }}
         ></script>
       </amp-analytics>
-      <style jsx>{`
-        img#logo {
-          position: fixed;
-          right: 10px;
-          bottom: 20px;
-        }
-        header {
-          width: 100vw;
-          height: 10px;
-          border-right: 0;
-          border-left: 0;
-          background: #cecece;
-        }
-        header > div {
-          width: ${progressBarValue > 100 ? 100 : progressBarValue}vw;
-          height: 10px;
-          background: #000;
-          transition: 1s;
-          border-top-right-radius: 5px;
-          border-bottom-right-radius: 7px;
-        }
-      `}</style>
     </>
   )
 }
