@@ -17,7 +17,7 @@ const Capitation = () => (
           mais atende sua necessidade.
         </h4>
         <div className="topinput">
-          <div>
+          <div className="input-control">
             <label htmlFor="name">NOME</label>
             <input
               id="name"
@@ -27,7 +27,7 @@ const Capitation = () => (
               required
             />
           </div>
-          <div>
+          <div className="input-control">
             <label htmlFor="phone">TELEFONE</label>
             <input
               id="phone"
@@ -39,7 +39,7 @@ const Capitation = () => (
           </div>
         </div>
         <div>
-          <div>
+          <div className="input-control">
             <label htmlFor="email">E-MAIL</label>
             <input
               className="inputmail"
@@ -57,7 +57,7 @@ const Capitation = () => (
           </button>
           <div submitting="">
             <template type="amp-mustache">
-              <strong>Enviando...</strong>
+              <strong>Aguarde só um momento...</strong>
             </template>
           </div>
           <span>
@@ -113,6 +113,10 @@ const Capitation = () => (
     </amp-img>
 
     <style jsx>{`
+      div[submitting] {
+        padding: 0;
+        margin-bottom: 20px;
+      }
       .amp-form-submitting button[type='submit'] {
         display: none;
       }
@@ -220,7 +224,7 @@ const Capitation = () => (
         align-items: center;
         text-decoration: none;
       }
-      section > form > div > div > div {
+      section > form > div > div > div.input-control {
         display: flex;
         flex-flow: column;
         padding: 15px;
