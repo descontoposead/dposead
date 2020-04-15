@@ -20,7 +20,8 @@ const Header = (props) => (
     )}
 
     <style jsx>{`
-      @media only screen and (max-width: 959px) {
+      /* CSS specific to iOS devices */
+      @supports (-webkit-touch-callout: none) {
         header:before {
           content: '';
           background-image: url('/static/images/head.jpg');
