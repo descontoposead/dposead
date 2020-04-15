@@ -86,10 +86,17 @@ const Footer = () => (
       @media (max-width: 550px) {
       }
       @media (max-width: 450px) {
-        footer > ul {
-          top: 27%;
-          left: -31%;
+        footer > amp-img {
+          position:relative;
+          width: 600px;          
+          left:26%;
         }
+        footer > ul {
+          position: relative;
+          left: -31%;
+          top: -30%;
+        }
+      }
       }
       @media (max-width: 384px) {
         footer > amp-img {

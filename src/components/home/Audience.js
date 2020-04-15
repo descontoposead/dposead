@@ -37,7 +37,16 @@ const Audience = () => (
     <article>
       <h4>O que estão falando sobre nós</h4>
       <div>
-      <amp-img
+
+      <p>
+         <span className="high">"</span> Meu nome é Tallis, eu trabalho no banco do Brasil
+       e conclui um curso de Pós graduação na Faculdade Única.
+       Depois de fazer o curso eu consegui aplicar muitos conhecimentos e obter resultados, 
+       isso tudo fazendo o curso sem sair de casa. <span className="low">"</span>
+       </p>
+       
+<div className="avatar">
+<amp-img
         fallback=""
         alt="Aluna satisfeita com o portal do aluno"
         src="/static/images/avatar.jpg"
@@ -45,8 +54,8 @@ const Audience = () => (
         height="10"
         layout="responsive"
       ></amp-img>
-      <h3>Meu nome é Tallis, eu trabalho no banco do Brasil e conclui um curso de Pós graduação na Faculdade Única.
-Depois de fazer o curso eu consegui aplicar muitos conhecimentos e obter resultados, isso tudo fazendo o curso sem sair de casa.</h3>
+      <section>Tallis Gomes</section>
+      </div>
       </div>
     </article>
 
@@ -67,26 +76,56 @@ Depois de fazer o curso eu consegui aplicar muitos conhecimentos e obter resulta
         right: 0;
         color: var(--write);
         font-size: 2.5rem;
-      }
-      section > article > div{
-        align-items: center;
-        justify-content: center
+        text-align: center;
         
       }
-      section > article > div > h3{
+      section > article > div{
         position: relative;
-        width: 100%;
-        color: var(--write);
-        font-size: 1.2rem;
-        top:30px;
-        margin: 0;
+        top:13%;
+        align-text: center;
+        justify-content: center
+        
+        
       }
-      section > article > div > amp-img{
+      section > article > div >  p{
         position: relative;
-        width:100px;
-        border-radius:50px;
+        width: 96%;
+        color: var(--write);
+        font-size: 1.6rem;
+        top:30px;
+        font-weight: lighter;
+        left:16px;
+        line-height:1.3;
+      }
+      section > article > div > p > span.low {
+        position: absolute;
+        font-size: 4rem;
+        top:112px;
+      }
+      section > article > div > p > span.high {
+        position: absolute;
+        font-size: 4rem;
+        top: -21px;
+        left: -17px;
       }
 
+      section > article > div > div.avatar > amp-img{
+        position: relative;
+        width:80px;
+        border-radius:50px;
+        left:30%;
+      }
+      section > article > div > div.avatar > section{
+        position: relative;
+        font-size: 1.5rem;
+        left:5%;
+        top:-51px;    
+      }
+      section > article > div >div.avatar{
+        position:relative;
+        top:54px;
+        left:13px;
+      }
       @media (max-width: 999px) {
         section > article {
           height: 400px;
@@ -123,6 +162,55 @@ Depois de fazer o curso eu consegui aplicar muitos conhecimentos e obter resulta
         section > article {
           top: 160px;
         }
+
+        section > article > div{
+          align-items: center;
+          justify-content: center
+        }
+        section > article > div >  p{
+          position: relative;
+          color: var(--write);
+          font-size: 1rem;
+          text-aling: center;
+          font-weight: lighter;
+          width:100%;
+          top:-30px;
+          left:2px;
+        }
+        section > article > div >div.avatar{
+          position:relative;
+          top:-15px;
+          left:13px;
+          left:2px;
+        }
+        section > article > div > div.avatar > amp-img{
+          position: relative;
+          width:40px;
+          border-radius:50px;
+          left:27%;
+        }
+        section > article > div > div.avatar > section{
+          position: relative;
+          font-size: 1rem;
+          left:14%;
+          top:-129px;    
+        }
+        section > article > div > p > span.low {
+          position: absolute;
+          font-size: 2.5rem;
+          top:109px;
+        }
+        section > article > div > p > span.high {
+          position: absolute;
+          font-size: 2.5rem;
+          top: -15px;
+          left: -17px;
+        }
+
+
+
+
+
       }
       @media (max-width: 384px) {
         section {
@@ -132,8 +220,154 @@ Depois de fazer o curso eu consegui aplicar muitos conhecimentos e obter resulta
         section > article {
           top: 160px;
         }
+        section > article > div{
+          align-items: center;
+          justify-content: center
+        }
+        section > article > div >  p{
+          position: relative;
+          color: var(--write);
+          font-size: 1rem;
+          text-aling: center;
+          font-weight: lighter;
+          width:100%;
+          top:-30px;
+          left:2px;
+        }
+        section > article > div >div.avatar{
+          position:relative;
+          top:-15px;
+          left:13px;
+          left:2px;
+        }
+        section > article > div > div.avatar > amp-img{
+          position: relative;
+          width:40px;
+          border-radius:50px;
+          left:28%;
+        }
+        section > article > div > div.avatar > section{
+          position: relative;
+          font-size: 1rem;
+          left:14%;
+          top:-129px;    
+        }
+        section > article > div > p > span.low {
+          position: absolute;
+          font-size: 2.5rem;
+          top:109px;
+        }
+        section > article > div > p > span.high {
+          position: absolute;
+          font-size: 2.5rem;
+          top: -15px;
+          left: -12px;
+        }
+
+
+
+
       }
+
+      @media (max-width: 360px) {
+
+        section > article > div{
+          align-items: center;
+          justify-content: center
+        }
+        section > article > div >  p{
+          position: relative;
+          color: var(--write);
+          font-size: 1rem;
+          text-aling: center;
+          font-weight: lighter;
+          width:100%;
+          top:-30px;
+          left:2px;
+        }
+        section > article > div >div.avatar{
+          position:relative;
+          top:-15px;
+          left:13px;
+          left:2px;
+        }
+        section > article > div > div.avatar > amp-img{
+          position: relative;
+          width:40px;
+          border-radius:50px;
+          left:27%;
+        }
+        section > article > div > div.avatar > section{
+          position: relative;
+          font-size: 1rem;
+          left:14%;
+          top:-129px;    
+        }
+        section > article > div > p > span.low {
+          position: absolute;
+          font-size: 2.5rem;
+          top:128px;
+        }
+        section > article > div > p > span.high {
+          position: absolute;
+          font-size: 2.5rem;
+          top: -15px;
+          left: 3px;
+        }
+
+
+      }
+
+
+
+
       @media (max-width: 330px) {
+
+        section > article > div{
+          align-items: center;
+          justify-content: center
+        }
+        section > article > div >  p{
+          position: relative;
+          color: var(--write);
+          font-size: 1rem;
+          text-aling: center;
+          font-weight: lighter;
+          width:100%;
+          top:-30px;
+          left:2px;
+        }
+        section > article > div >div.avatar{
+          position:relative;
+          top:-15px;
+          left:13px;
+          left:2px;
+        }
+        section > article > div > div.avatar > amp-img{
+          position: relative;
+          width:40px;
+          border-radius:50px;
+          left:27%;
+        }
+        section > article > div > div.avatar > section{
+          position: relative;
+          font-size: 1rem;
+          left:14%;
+          top:-129px;    
+        }
+        section > article > div > p > span.low {
+          position: absolute;
+          font-size: 2.5rem;
+          top:128px;
+        }
+        section > article > div > p > span.high {
+          position: absolute;
+          font-size: 2.5rem;
+          top: -15px;
+          left: -17px;
+        }
+
+
       }
     `}</style>
   </section>
