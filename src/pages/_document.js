@@ -12,7 +12,6 @@ class CustomDocument extends Document {
         <Head />
         <body>
           <Main />
-          <NextScript />
           {/* Facebook Pixel */}
           <amp-pixel
             src="https://www.facebook.com/tr?id=2534781333293766&ev=PageView&noscript=1"
@@ -36,6 +35,7 @@ class CustomDocument extends Document {
               }}
             ></script>
           </amp-analytics>
+          <NextScript />
         </body>
       </Html>
     )
