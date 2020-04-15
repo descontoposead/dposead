@@ -1,8 +1,14 @@
 import WhatsappGreenIcon from '../icon/WhatsappGreenIcon'
 
 const Capitation = () => (
-  <section id="falar-com-consultor">
-    <form method="get" action="true" action-xhr="/api/leads" target="_top">
+  <section>
+    <form
+      id="falar-com-consultor"
+      method="get"
+      action="true"
+      action-xhr="/api/leads"
+      target="_top"
+    >
       <div className="container">
         <h3>Deixe seu contato</h3>
         <h4>
@@ -131,6 +137,11 @@ const Capitation = () => (
         padding: 20px;
         display: flex;
         align-items: center;
+        transition: 0.5s;
+      }
+      section > form:target {
+        padding-top: 110px;
+        height: 85vh;
       }
       section > form input {
         height: 40px;
