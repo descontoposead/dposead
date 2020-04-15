@@ -228,7 +228,6 @@ const Capitation = () => (
       section > form > div > div > div.input-control {
         display: flex;
         flex-flow: column;
-        padding: 15px;
         flex: 1;
       }
       section > form > div > div > div label {
@@ -331,6 +330,11 @@ const Capitation = () => (
           margin-bottom: 25px;
         }
       }
+      @media (min-width: 451px) {
+        div.input-control {
+          padding: 15px;
+        }
+      }
       @media (max-width: 450px) {
         section {
           height: 650px;
@@ -349,6 +353,9 @@ const Capitation = () => (
           font-size: 0.9rem;
           font-weight: 500;
           margin-bottom: 25px;
+        }
+        div.input-control {
+          padding: 0;
         }
       }
       @media (max-width: 384px) {
