@@ -1,7 +1,7 @@
 import WhatsappGreenIcon from '../icon/WhatsappGreenIcon'
 
 const Capitation = () => (
-  <section>
+  <section id="falar-com-consultor">
     <form method="get" action="true" action-xhr="/api/leads" target="_top">
       <div className="container">
         <h3>Deixe seu contato</h3>

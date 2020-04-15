@@ -1,12 +1,5 @@
 const BtnCta = (props) => (
-  <a
-    {...props}
-    href={
-      'https://api.whatsapp.com/send?1=pt_BR&phone=' +
-      process.env.whatsappNumber
-    }
-    target="_blank"
-  >
+  <a {...props} href="#falar-com-consultor" target="_blank">
     Falar com um consultor
     <style jsx>{`
       a {
