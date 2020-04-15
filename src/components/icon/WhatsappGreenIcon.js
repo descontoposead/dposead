@@ -1,4 +1,4 @@
-const WhatsappGreenIcon = () => (
+const WhatsappGreenIcon = (props) => (
   <>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,8 +27,8 @@ const WhatsappGreenIcon = () => (
     <style jsx>{`
       @media (min-width: 451px) {
         svg {
-          width: 50px;
-          height: 45px;
+          width: ${props.sm ? '35px' : '50px'};
+          height: ${props.sm ? '25px' : '45px'};
         }
       }
       @media (max-width: 450px) {

@@ -58,7 +58,7 @@ const Capitation = () => (
                 process.env.whatsappNumber
               }
             >
-              <WhatsappGreenIcon />
+              <WhatsappGreenIcon sm={true} />
               <span>Via Whatsapp</span>
             </a>
           </span>
