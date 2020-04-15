@@ -141,7 +141,7 @@ const Capitation = () => (
       }
       section > form:target {
         padding-top: 110px;
-        height: 85vh;
+        height: 105vh;
       }
       section > form input {
         height: 40px;
@@ -227,7 +227,7 @@ const Capitation = () => (
 
       @media (max-width: 999px) {
         section {
-          margin: 50px 0 0;
+          margin: 50px 0 100px;
         }
         div.container {
           position: relative;
@@ -243,7 +243,7 @@ const Capitation = () => (
       }
       @media (max-width: 750px) {
         section {
-          margin: 150px 0 0;
+          margin: 150px 0 100px;
         }
         div.container {
           position: relative;
@@ -338,10 +338,14 @@ const Capitation = () => (
       @media (max-width: 384px) {
         section {
           height: 550px;
-          margin: 100px 0 524px;
+          margin: 100px 0 564px;
         }
         section > form {
           height: 550px;
+        }
+        section > form:target {
+          padding-top: 50px;
+          height: 115vh;
         }
         div.container {
           position: relative;
@@ -362,6 +366,10 @@ const Capitation = () => (
         }
         section > form {
           height: 650px;
+        }
+        section > form:target {
+          padding-top: 50px;
+          height: 115vh;
         }
         div.container {
           position: relative;
