@@ -29,8 +29,10 @@ const Header = (props) => (
         flex-wrap: wrap;
         color: #fff;
       }
-      header > div {
+      header > div.cta {
+        position: relative;
         z-index: 1;
+        background: transparent;
       }
       div.cta {
         display: flex;

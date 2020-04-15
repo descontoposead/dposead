@@ -74,6 +74,7 @@ const Scarcity = () => (
         width: 700px;
         top: 81%;
         right: 0%;
+        z-index: 1;
       }
       section > article > h3 {
         font-size: 2.5rem;

@@ -126,6 +126,7 @@ const Capitation = () => (
         width: 40vw;
         position: absolute;
         right: 0;
+        z-index: 1;
       }
       section > form {
         width: 65vw;

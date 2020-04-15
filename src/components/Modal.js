@@ -76,7 +76,7 @@ const Modal = () => (
       }
       @media (min-width: 749px) {
         amp-script.modal {
-          animation: fadeIn 0.2s linear 2s;
+          animation: fadeIn 0.2s linear 15s;
           animation-fill-mode: forwards;
         }
       }

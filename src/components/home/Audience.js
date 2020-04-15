@@ -37,25 +37,25 @@ const Audience = () => (
     <article>
       <h4>O que estão falando sobre nós</h4>
       <div>
+        <p>
+          <span className="high">"</span> Meu nome é Tallis, eu trabalho no
+          banco do Brasil e conclui um curso de Pós graduação na Faculdade
+          Única. Depois de fazer o curso eu consegui aplicar muitos
+          conhecimentos e obter resultados, isso tudo fazendo o curso sem sair
+          de casa. <span className="low">"</span>
+        </p>
 
-      <p>
-         <span className="high">"</span> Meu nome é Tallis, eu trabalho no banco do Brasil
-       e conclui um curso de Pós graduação na Faculdade Única.
-       Depois de fazer o curso eu consegui aplicar muitos conhecimentos e obter resultados, 
-       isso tudo fazendo o curso sem sair de casa. <span className="low">"</span>
-       </p>
-       
-<div className="avatar">
-<amp-img
-        fallback=""
-        alt="Aluna satisfeita com o portal do aluno"
-        src="/static/images/avatar.jpg"
-        width="10"
-        height="10"
-        layout="responsive"
-      ></amp-img>
-      <section>Tallis Gomes</section>
-      </div>
+        <div className="avatar">
+          <amp-img
+            fallback=""
+            alt="Aluna satisfeita com o portal do aluno"
+            src="/static/images/avatar.jpg"
+            width="10"
+            height="10"
+            layout="responsive"
+          ></amp-img>
+          <section>Tallis Gomes</section>
+        </div>
       </div>
     </article>
 
@@ -77,30 +77,28 @@ const Audience = () => (
         color: var(--write);
         font-size: 2.5rem;
         text-align: center;
-        
+        z-index: 1;
       }
-      section > article > div{
+      section > article > div {
         position: relative;
-        top:13%;
+        top: 13%;
         align-text: center;
-        justify-content: center
-        
-        
+        justify-content: center;
       }
-      section > article > div >  p{
+      section > article > div > p {
         position: relative;
         width: 96%;
         color: var(--write);
         font-size: 1.6rem;
-        top:30px;
+        top: 30px;
         font-weight: lighter;
-        left:16px;
-        line-height:1.3;
+        left: 16px;
+        line-height: 1.3;
       }
       section > article > div > p > span.low {
         position: absolute;
         font-size: 4rem;
-        top:112px;
+        top: 112px;
       }
       section > article > div > p > span.high {
         position: absolute;
@@ -109,22 +107,22 @@ const Audience = () => (
         left: -17px;
       }
 
-      section > article > div > div.avatar > amp-img{
+      section > article > div > div.avatar > amp-img {
         position: relative;
-        width:80px;
-        border-radius:50px;
-        left:30%;
+        width: 80px;
+        border-radius: 50px;
+        left: 30%;
       }
-      section > article > div > div.avatar > section{
+      section > article > div > div.avatar > section {
         position: relative;
         font-size: 1.5rem;
-        left:5%;
-        top:-51px;    
+        left: 5%;
+        top: -51px;
       }
-      section > article > div >div.avatar{
-        position:relative;
-        top:54px;
-        left:13px;
+      section > article > div > div.avatar {
+        position: relative;
+        top: 54px;
+        left: 13px;
       }
       @media (max-width: 999px) {
         section > article {
@@ -163,42 +161,42 @@ const Audience = () => (
           top: 160px;
         }
 
-        section > article > div{
+        section > article > div {
           align-items: center;
-          justify-content: center
+          justify-content: center;
         }
-        section > article > div >  p{
+        section > article > div > p {
           position: relative;
           color: var(--write);
           font-size: 1rem;
           text-aling: center;
           font-weight: lighter;
-          width:100%;
-          top:-30px;
-          left:2px;
+          width: 100%;
+          top: -30px;
+          left: 2px;
         }
-        section > article > div >div.avatar{
-          position:relative;
-          top:-15px;
-          left:13px;
-          left:2px;
-        }
-        section > article > div > div.avatar > amp-img{
+        section > article > div > div.avatar {
           position: relative;
-          width:40px;
-          border-radius:50px;
-          left:27%;
+          top: -15px;
+          left: 13px;
+          left: 2px;
         }
-        section > article > div > div.avatar > section{
+        section > article > div > div.avatar > amp-img {
+          position: relative;
+          width: 40px;
+          border-radius: 50px;
+          left: 27%;
+        }
+        section > article > div > div.avatar > section {
           position: relative;
           font-size: 1rem;
-          left:14%;
-          top:-129px;    
+          left: 14%;
+          top: -129px;
         }
         section > article > div > p > span.low {
           position: absolute;
           font-size: 2.5rem;
-          top:109px;
+          top: 109px;
         }
         section > article > div > p > span.high {
           position: absolute;
@@ -206,11 +204,6 @@ const Audience = () => (
           top: -15px;
           left: -17px;
         }
-
-
-
-
-
       }
       @media (max-width: 384px) {
         section {
@@ -220,42 +213,42 @@ const Audience = () => (
         section > article {
           top: 160px;
         }
-        section > article > div{
+        section > article > div {
           align-items: center;
-          justify-content: center
+          justify-content: center;
         }
-        section > article > div >  p{
+        section > article > div > p {
           position: relative;
           color: var(--write);
           font-size: 1rem;
           text-aling: center;
           font-weight: lighter;
-          width:100%;
-          top:-30px;
-          left:2px;
+          width: 100%;
+          top: -30px;
+          left: 2px;
         }
-        section > article > div >div.avatar{
-          position:relative;
-          top:-15px;
-          left:13px;
-          left:2px;
-        }
-        section > article > div > div.avatar > amp-img{
+        section > article > div > div.avatar {
           position: relative;
-          width:40px;
-          border-radius:50px;
-          left:28%;
+          top: -15px;
+          left: 13px;
+          left: 2px;
         }
-        section > article > div > div.avatar > section{
+        section > article > div > div.avatar > amp-img {
+          position: relative;
+          width: 40px;
+          border-radius: 50px;
+          left: 28%;
+        }
+        section > article > div > div.avatar > section {
           position: relative;
           font-size: 1rem;
-          left:14%;
-          top:-129px;    
+          left: 14%;
+          top: -129px;
         }
         section > article > div > p > span.low {
           position: absolute;
           font-size: 2.5rem;
-          top:109px;
+          top: 109px;
         }
         section > article > div > p > span.high {
           position: absolute;
@@ -263,50 +256,45 @@ const Audience = () => (
           top: -15px;
           left: -12px;
         }
-
-
-
-
       }
 
       @media (max-width: 360px) {
-
-        section > article > div{
+        section > article > div {
           align-items: center;
-          justify-content: center
+          justify-content: center;
         }
-        section > article > div >  p{
+        section > article > div > p {
           position: relative;
           color: var(--write);
           font-size: 1rem;
           text-aling: center;
           font-weight: lighter;
-          width:100%;
-          top:-30px;
-          left:2px;
+          width: 100%;
+          top: -30px;
+          left: 2px;
         }
-        section > article > div >div.avatar{
-          position:relative;
-          top:-15px;
-          left:13px;
-          left:2px;
-        }
-        section > article > div > div.avatar > amp-img{
+        section > article > div > div.avatar {
           position: relative;
-          width:40px;
-          border-radius:50px;
-          left:27%;
+          top: -15px;
+          left: 13px;
+          left: 2px;
         }
-        section > article > div > div.avatar > section{
+        section > article > div > div.avatar > amp-img {
+          position: relative;
+          width: 40px;
+          border-radius: 50px;
+          left: 27%;
+        }
+        section > article > div > div.avatar > section {
           position: relative;
           font-size: 1rem;
-          left:14%;
-          top:-129px;    
+          left: 14%;
+          top: -129px;
         }
         section > article > div > p > span.low {
           position: absolute;
           font-size: 2.5rem;
-          top:128px;
+          top: 128px;
         }
         section > article > div > p > span.high {
           position: absolute;
@@ -314,51 +302,45 @@ const Audience = () => (
           top: -15px;
           left: 3px;
         }
-
-
       }
 
-
-
-
       @media (max-width: 330px) {
-
-        section > article > div{
+        section > article > div {
           align-items: center;
-          justify-content: center
+          justify-content: center;
         }
-        section > article > div >  p{
+        section > article > div > p {
           position: relative;
           color: var(--write);
           font-size: 1rem;
           text-aling: center;
           font-weight: lighter;
-          width:100%;
-          top:-30px;
-          left:2px;
+          width: 100%;
+          top: -30px;
+          left: 2px;
         }
-        section > article > div >div.avatar{
-          position:relative;
-          top:-15px;
-          left:13px;
-          left:2px;
-        }
-        section > article > div > div.avatar > amp-img{
+        section > article > div > div.avatar {
           position: relative;
-          width:40px;
-          border-radius:50px;
-          left:27%;
+          top: -15px;
+          left: 13px;
+          left: 2px;
         }
-        section > article > div > div.avatar > section{
+        section > article > div > div.avatar > amp-img {
+          position: relative;
+          width: 40px;
+          border-radius: 50px;
+          left: 27%;
+        }
+        section > article > div > div.avatar > section {
           position: relative;
           font-size: 1rem;
-          left:14%;
-          top:-129px;    
+          left: 14%;
+          top: -129px;
         }
         section > article > div > p > span.low {
           position: absolute;
           font-size: 2.5rem;
-          top:128px;
+          top: 128px;
         }
         section > article > div > p > span.high {
           position: absolute;
@@ -366,8 +348,6 @@ const Audience = () => (
           top: -15px;
           left: -17px;
         }
-
-
       }
     `}</style>
   </section>
