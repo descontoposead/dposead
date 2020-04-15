@@ -96,8 +96,8 @@ const Faq = () => (
           <button>&#8249;</button>
         </h4>
         <p>
-          Durante o curso algumas declarações totalmente gratuitas, você poderá
-          acessar em seu portal as seguintes declarações:
+          Durante o curso algumas declarações são totalmente gratuitas, e você
+          poderá acessar em seu portal, sendo elas:
           <br />
           <br />
           a) Cursando. <br />
