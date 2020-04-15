@@ -138,19 +138,7 @@ const Faq = () => (
           f) Comprovante de endereço.
         </p>
       </section>
-      <section>
-        <h4>
-          Qual a diferença entre Pós-Graduação e MBA?
-          <button>&#8249;</button>
-        </h4>
-        <p>
-          Segundo o MEC, ambas são modalidades de Pós-Graduação lato sensu e
-          garantem o título de especialista. A diferença é que os cursos de
-          cursos de MBA são mais focados em negócios e gerenciamento de
-          processos e pessoas, sendo mais indicado para aquele que precisa
-          desenvolver habilidades empreendedoras ou de gestor.
-        </p>
-      </section>
+
     </amp-accordion>
     <style jsx>{`
       div {
