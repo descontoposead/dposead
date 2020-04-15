@@ -41,7 +41,7 @@ export default async (req, res) => {
           email: value.email,
           first_name: fullName[0],
           last_name: haveLastName ? fullName.pop() : '',
-          cellphone: '55-' + value.whatsapp, //brazil code by default
+          cellphone: '55-' + value.whatsapp.replace(/\D/, ''), //brazil code by default
         },
       }),
     })

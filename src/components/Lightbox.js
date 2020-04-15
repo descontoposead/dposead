@@ -38,10 +38,11 @@ const Lightbox = () => (
             required
           />
           <input
+            mask="(00)_90000-0000"
+            type="tel"
             autoComplete="off"
             id="whatsapp"
             name="whatsapp"
-            type="text"
             placeholder="Seu whatsapp..."
             required
           />

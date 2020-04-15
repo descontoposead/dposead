@@ -28,10 +28,11 @@ const Capitation = () => (
             />
           </div>
           <div className="input-control">
-            <label htmlFor="phone">TELEFONE</label>
+            <label htmlFor="phone">WHATSAPP</label>
             <input
+              mask="(00)_90000-0000"
+              type="tel"
               id="phone"
-              type="number"
               name="whatsapp"
               autoComplete="off"
               required

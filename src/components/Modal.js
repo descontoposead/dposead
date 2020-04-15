@@ -25,10 +25,11 @@ const Modal = () => (
             required
           />
           <input
+            mask="(00)_90000-0000"
+            type="tel"
             autoComplete="off"
             id="whatsapp"
             name="whatsapp"
-            type="text"
             placeholder="Seu whatsapp..."
             required
           />
@@ -76,7 +77,7 @@ const Modal = () => (
       }
       @media (min-width: 749px) {
         amp-script.modal {
-          animation: fadeIn 0.2s linear 15s;
+          animation: fadeIn 0.2s linear 10s;
           animation-fill-mode: forwards;
         }
       }
