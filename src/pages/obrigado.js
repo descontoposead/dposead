@@ -49,9 +49,9 @@ const ThankYou = () => (
         <h1>Pronto, falta muito pouco para mudar seu futuro.</h1>
         <span>
           Obrigado pela confiança, você pode falar agora com um consultor
-          clicando em “Converse no whatsap” ou aguardar o contato de nosso
+          clicando em “Converse no Whatsapp” ou aguardar o contato de nosso
           consultor. Caso já tenha tomado a decisão de estudar conosco, clique
-          em “Matriule-se” abaixo para garantir sua matrícula.
+          em “Matricule-se” abaixo para garantir sua matrícula.
         </span>
         <div>
           <a

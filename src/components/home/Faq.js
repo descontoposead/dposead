@@ -8,11 +8,11 @@ const Faq = () => (
           <button>&#8249;</button>
         </h4>
         <p>
-          Para iniciar o curso você deverá realizar o pagamento da matrícula em
-          boleto único ou em até 3 vezes no cartão sem juros. Durante o curso
-          você deverá realizar o pagamento das mensalidades através do boleto
-          bancário em até 18 mensalidades ou no cartão de crédito em até 12
-          vezes sem juros.
+          Para iniciar o curso você deverá realizar o pagamento da matrícula,
+          liberando assim o portal do aluno, e materiais para iniciar os
+          estudos. Durante o curso você deverá realizar o pagamento das
+          mensalidades através do boleto bancário em até 18 vezes, ou no cartão
+          de crédito em até 12 vezes sem juros.
         </p>
       </section>
       <section>
