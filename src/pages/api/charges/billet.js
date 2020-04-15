@@ -89,12 +89,18 @@ export default async (req, res) => {
       return res.status(charge.code).json(billet)
     }
 
+    console.log(process.env)
+
     res.status(201).json({
       barcode: billet.data.barcode,
       archive: billet.data.pdf.charge,
+      secrets: {
+        client_id: process.env.DPOS_GN_CLIENT_ID,
+        client_secret: process.env.DPOS_GN_CLIENT_SECRET,
+        token: process.env.DPOS_GN_ACCOUNT_ID,
+      },
     })
   } catch (err) {
-    console.log(process.env.DPOS_GN_CLIENT_ID)
     res.status(500).json(err)
   }
 }
