@@ -27,8 +27,8 @@ const WhatsappGreenIcon = () => (
     <style jsx>{`
       @media (min-width: 451px) {
         svg {
-          width: 30px;
-          height: 25px;
+          width: 50px;
+          height: 45px;
         }
       }
       @media (max-width: 450px) {

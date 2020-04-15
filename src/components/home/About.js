@@ -1,7 +1,7 @@
 import BtnCta from '../shared/BtnCta'
 
 const About = () => (
-  <section>
+  <section on="over:captureLead.open">
     <div>
       <h2>Mais barato, porque você merece</h2>
       <h3>

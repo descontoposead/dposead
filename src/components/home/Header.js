@@ -13,9 +13,7 @@ const Header = (props) => (
           <hr />
           <div>
             <span>Estude agora com descontos imperdíveis</span>
-            <div className="bnt">
-              <BtnCta className="btn btn-red" />
-            </div>
+            <BtnCta className="btn btn-red" />
           </div>
         </div>
       </header>
@@ -30,14 +28,9 @@ const Header = (props) => (
         display: flex;
         flex-wrap: wrap;
         color: #fff;
-        z-index: 2;
       }
       header > div {
         z-index: 1;
-      }
-      div.bnt {
-        position: relative;
-        top: 20px;
       }
       div.cta {
         display: flex;
@@ -123,7 +116,6 @@ const Header = (props) => (
           background-size: 777px;
           background-position-y: 65px;
           height: 616px;
-          transform: translate3d(0, 0, 1px);
         }
       }
     `}</style>

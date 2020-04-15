@@ -13,6 +13,7 @@ export default async (req, res) => {
       name: joi.string().required(),
       email: joi.string().required(),
       whatsapp: joi.string().required(),
+      trigger: joi.string(),
       __amp_source_origin: joi.string(),
     })
     .required()
@@ -70,5 +71,5 @@ export default async (req, res) => {
     console.error(err)
   }
 
-  res.status(200).end()
+  res.status(200).json({})
 }
