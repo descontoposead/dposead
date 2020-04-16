@@ -247,7 +247,7 @@ const CreditCard = ({ values, goToPayMethodTax }) => {
         fbq('trackSingleCustom', '2534781333293766', 'Purchase', {
           content_name: values.courseName,
           content_type: 'CARTÃO DE CREDITO',
-          value: values.chargeValueTax.value.currency,
+          value: values.chargeValueTax.currency,
           currency: 'BRL',
         })
       })
