@@ -196,12 +196,18 @@ const InputChargeValueCourse = () => {
           </button>
           <button
             className="next"
-            onClick={() =>
+            onClick={() => {
+              fbq('trackSingleCustom', '2534781333293766', 'AddCart', {
+                content_name: values.courseName,
+                content_type: voucher,
+                value: chargeValueCourse.currency,
+              })
+
               setNextStep({
                 currentStep: 'InputPayMethodTax',
                 progressValue: step.progressValue + 7.69,
               })
-            }
+            }}
           >
             Assim está bom
           </button>

@@ -94,6 +94,10 @@ const InputCourse = () => {
     setFetchedGrade([])
     setToggleGradeButton(false)
     controlInputValue(target)
+
+    fbq('trackSingleCustom', '2534781333293766', 'SelectedCourse', {
+      content_name: target.value,
+    })
   }
 
   const onSearchCourse = (target) => {
