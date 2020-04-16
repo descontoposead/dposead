@@ -80,7 +80,7 @@ const InputZip = () => {
     currentStepIs('InputZip', step) && (
       <>
         <div>
-          <h1>Qual é seu cep?</h1>
+          <h1>Agora vamos agilizar! Digite seu CEP</h1>
         </div>
         <div>
           <div>

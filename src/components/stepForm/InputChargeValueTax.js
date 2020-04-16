@@ -130,7 +130,7 @@ const InputChargeValueTax = () => {
               })
             }
           >
-            Assim está bom
+            ok
           </button>
         </div>
 

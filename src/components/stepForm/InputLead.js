@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+  import { useRef, useEffect, useState } from 'react'
 import { useVibrate, useToggle } from 'react-use'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
@@ -66,7 +66,7 @@ const InputLead = () => {
     currentStepIs('InputLead', step) && (
       <>
         <div>
-          <h1>Olá, vamos começar com isto</h1>
+          <h1>Olá, vamos começar!</h1>
         </div>
         <div>
           <div>

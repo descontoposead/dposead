@@ -76,7 +76,7 @@ const InputGroupPhone = () => {
     currentStepIs('InputGroupPhone', step) && (
       <>
         <div>
-          <h1>Caso precisemos entrar em contato</h1>
+          <h1>Nos informe seu contato</h1>
         </div>
         <div>
           <div>
@@ -109,7 +109,7 @@ const InputGroupPhone = () => {
             />
             <strong className="hasEmptyError">Você esqueceu o telefone!</strong>
             <strong className="hasInvalidError">
-              O telefone não é válido! Como entrariamos em contato?
+              verifique se seu número está correto!
             </strong>
           </div>
           <div>

@@ -57,7 +57,7 @@ const InputGroupParent = () => {
     currentStepIs('InputGroupParent', step) && (
       <>
         <div>
-          <h1>Agora meu certificado fica lindo...</h1>
+          <h1>E nessário que informe sua filiação</h1>
         </div>
         <div>
           <div>

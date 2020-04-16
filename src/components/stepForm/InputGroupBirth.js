@@ -89,7 +89,7 @@ const InputGroupBirth = () => {
     currentStepIs('InputGroupBirth', step) && (
       <>
         <div>
-          <h1>Também necessário para seu certificado</h1>
+          <h1>Necessário para seu certificado</h1>
         </div>
         <div>
           <div>
@@ -110,7 +110,7 @@ const InputGroupBirth = () => {
             />
             <strong className="hasEmptyError">Faltou o estado aqui!</strong>
             <strong className="hasInvalidError">
-              Você está no Brasil? Não reconhecemos esse estado.
+              Digite a sigla de seu estado. Ex: MG
             </strong>
           </div>
           <div>
@@ -162,7 +162,7 @@ const InputGroupBirth = () => {
             Voltar
           </button>
           <button className="next" onClick={goToNext(optsNextStep)}>
-            Estou indo bem
+            Continuar...
           </button>
         </div>
       </>

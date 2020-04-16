@@ -101,7 +101,7 @@ const InputGroupDoc = () => {
     currentStepIs('InputGroupDoc', step) && (
       <>
         <div>
-          <h1>Para te certificar no futuro</h1>
+          <h1>Para sua segurança preencha:</h1>
         </div>
         <div>
           <div>
@@ -134,7 +134,7 @@ const InputGroupDoc = () => {
             />
             <strong className="hasEmptyError">O CPF é essencial!</strong>
             <strong className="hasInvalidError">
-              Este CPF veio da receita federal?
+              Desculpe, CPF inválido.
             </strong>
           </div>
           <div>
