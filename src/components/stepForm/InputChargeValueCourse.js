@@ -10,8 +10,8 @@ const InputChargeValueCourse = () => {
   const [chargeValueCourse, setChargeValueCourse] = useState(null)
   const [chargeInitialValueCourse] = useState({
     instalment: 1,
-    value: 200000,
-    currency: 2000,
+    value: 180000,
+    currency: 1800,
   })
   const [instalmentPlan] = useState({
     creditCard: {
@@ -67,8 +67,8 @@ const InputChargeValueCourse = () => {
       name: 'chargeValueCourse',
       value: {
         instalment: 1,
-        value: 200000,
-        currency: 2000,
+        value: 180000,
+        currency: 1800,
       },
     })
   }, []) //oninit
@@ -78,8 +78,8 @@ const InputChargeValueCourse = () => {
       //reset
       const initialChargeCourseValue = {
         instalment: 1,
-        value: 200000,
-        currency: 2000,
+        value: 180000,
+        currency: 1800,
       }
       setChargeValueCourse(initialChargeCourseValue)
       controlInputValue({

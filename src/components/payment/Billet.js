@@ -37,6 +37,12 @@ const Billet = ({ values, goToPayMethodTax }) => {
         setPaymentResponse(res)
         setFetchError(false)
         autosizeBarcodeInput()
+        fbq('trackSingleCustom', '2534781333293766', 'Purchase', {
+          content_name: values.courseName,
+          content_type: 'BOLETO',
+          value: values.chargeValueTax.value.currency,
+          currency: 'BRL',
+        })
       })
       .catch(setFetchError)
   }, [doRefresh])

@@ -243,6 +243,13 @@ const CreditCard = ({ values, goToPayMethodTax }) => {
         setFetching(false)
         setPaymentResponse(res)
         setFetchError(false)
+
+        fbq('trackSingleCustom', '2534781333293766', 'Purchase', {
+          content_name: values.courseName,
+          content_type: 'CARTÃO DE CREDITO',
+          value: values.chargeValueTax.value.currency,
+          currency: 'BRL',
+        })
       })
       .catch((err) => {
         setFetchError(err)

@@ -23,8 +23,8 @@ const InputChargeValueTax = () => {
       name: 'chargeValueTax',
       value: {
         instalment: 1,
-        value: 0.05,
-        currency: 5,
+        value: 18000,
+        currency: 180,
       },
     })
   }, []) //oninit
@@ -34,8 +34,8 @@ const InputChargeValueTax = () => {
       //reset
       const initialChargeTaxValue = {
         instalment: 1,
-        value: 0.05,
-        currency: 5,
+        value: 18000,
+        currency: 180,
       }
       setChargeValueTax(initialChargeTaxValue)
       controlInputValue({
