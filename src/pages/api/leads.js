@@ -49,5 +49,5 @@ export default async (req, res) => {
     console.error(err)
   }
 
-  res.status(200).json({})
+  res.status(200).json({ i: process.env.DPOS_EGOI_API_KEY })
 }
