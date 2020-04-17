@@ -42,7 +42,7 @@ export default async (req, res) => {
       }),
     })
   } catch (e) {
-    console.error(e)
+    res.status(500).json({ e: e })
   }
 
   //save lead on dpos datasource
