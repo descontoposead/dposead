@@ -17,9 +17,17 @@ import InputChargeValueCourse from './InputChargeValueCourse'
 import InputPayMethodCourse from './InputPayMethodCourse'
 import Resume from './Resume'
 import FinalStep from './FinalStep'
+import { useKeyPressEvent } from 'react-use'
 
 const Form = ({ onProgress }) => {
   const [step] = useSharedStep()
+
+  useKeyPressEvent('Enter', (e) => {
+    e.preventDefault()
+
+    const btnNext = document.querySelector('button.next')
+    btnNext.click()
+  })
 
   useEffect(() => {
     onProgress(step.progressValue)

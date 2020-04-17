@@ -3,6 +3,7 @@ import { createStateContext } from 'react-use'
 const [useSharedStep, SharedStepProvider] = createStateContext({
   currentStep: 'InputLead',
   progressValue: 1,
+  values: {},
   // values: {
   //   address: {
   //     state: 'MG',

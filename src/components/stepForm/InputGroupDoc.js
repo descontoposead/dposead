@@ -133,9 +133,7 @@ const InputGroupDoc = () => {
               ]}
             />
             <strong className="hasEmptyError">O CPF é essencial!</strong>
-            <strong className="hasInvalidError">
-              Desculpe, CPF inválido.
-            </strong>
+            <strong className="hasInvalidError">Desculpe, CPF inválido.</strong>
           </div>
           <div>
             {values.personalRegistry && (

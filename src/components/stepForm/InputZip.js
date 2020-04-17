@@ -106,7 +106,7 @@ const InputZip = () => {
             className="prev"
             onClick={() =>
               setNextStep({
-                currentStep: 'InputProfession',
+                currentStep: 'InputGroupParent',
                 progressValue: step.progressValue - 7.69,
               })
             }

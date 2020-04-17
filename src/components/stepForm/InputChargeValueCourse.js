@@ -8,7 +8,7 @@ const InputChargeValueCourse = () => {
   const [step, setNextStep] = useSharedStep()
   const [values, setSharedValues] = useSharedValues()
   const [chargeValueCourse, setChargeValueCourse] = useState(null)
-  const [chargeInitialValueCourse] = useState({
+  const [chargeInitialValueCourse, setChargeInitialValueCourse] = useState({
     instalment: 1,
     value: 180000,
     currency: 1800,
@@ -65,22 +65,14 @@ const InputChargeValueCourse = () => {
   useEffect(() => {
     controlInputValue({
       name: 'chargeValueCourse',
-      value: {
-        instalment: 1,
-        value: 180000,
-        currency: 1800,
-      },
+      value: chargeInitialValueCourse,
     })
   }, []) //oninit
 
   useEffect(() => {
     if (currentStepIs('InputChargeValueCourse', step)) {
       //reset
-      const initialChargeCourseValue = {
-        instalment: 1,
-        value: 180000,
-        currency: 1800,
-      }
+      const initialChargeCourseValue = chargeInitialValueCourse
       setChargeValueCourse(initialChargeCourseValue)
       controlInputValue({
         name: 'chargeValueCourse',
@@ -93,6 +85,22 @@ const InputChargeValueCourse = () => {
       current.value = values[current.name] || ''
     }
   }, [step]) //onstepchange
+
+  useEffect(() => {
+    if (values.courseName === 'ENGENHARIA DE SEGURANÇA DO TRABALHO') {
+      setChargeInitialValueCourse({
+        instalment: 1,
+        value: 400000,
+        currency: 4000,
+      })
+    } else {
+      setChargeInitialValueCourse({
+        instalment: 1,
+        value: 180000,
+        currency: 1800,
+      })
+    }
+  }, [values?.courseName])
 
   const incrementInstalment = (e) => {
     e.preventDefault()
@@ -197,10 +205,8 @@ const InputChargeValueCourse = () => {
           <button
             className="next"
             onClick={() => {
-              fbq('trackSingleCustom', '2534781333293766', 'AddCart', {
-                content_name: values.courseName,
-                content_type: voucher,
-                value: chargeValueCourse.currency,
+              fbq('trackSingleCustom', '2534781333293766', 'BuyIntention', {
+                content_name: `${values.courseName}, ${values.payMethodCourse}, ${chargeValueCourse.currency}`,
               })
 
               setNextStep({

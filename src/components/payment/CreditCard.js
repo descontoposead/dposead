@@ -156,7 +156,7 @@ const CreditCard = ({ values, goToPayMethodTax }) => {
         } = await getPaymentTokenAsync(cardValues)
         setPaymentToken(payment_token)
         setTokenError(false)
-        setTimeout(() => flipCard()({ preventDefault: () => null }), 2000)
+        setTimeout(() => flipCard()({ preventDefault: () => null }), 1000)
       } catch (e) {
         setTokenError(true)
         console.log(e)

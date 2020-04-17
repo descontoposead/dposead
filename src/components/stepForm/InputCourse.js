@@ -24,13 +24,16 @@ const InputCourse = () => {
   useVibrate(vibrating, timers, isInfiniteLoop)
   useDebounce(() => similarCourseFrom(typed), 1000, [typed])
 
-  const similarCourseFrom = (match) =>
+  const similarCourseFrom = (match) => {
+    if (!match) return
+
     setCoursesDesires(
       courses
         .filter(({ name }) => like(match, name))
         .splice(0, 20)
-        .reverse() //just 20 firsts
-    )
+        .reverse()
+    ) //just 20 firsts
+  }
 
   // scrap-fetch courses
   useEffect(() => {
@@ -94,10 +97,6 @@ const InputCourse = () => {
     setFetchedGrade([])
     setToggleGradeButton(false)
     controlInputValue(target)
-
-    fbq('trackSingleCustom', '2534781333293766', 'SelectedCourse', {
-      content_name: target.value,
-    })
   }
 
   const onSearchCourse = (target) => {
@@ -207,7 +206,16 @@ const InputCourse = () => {
           >
             Voltar
           </button>
-          <button className="next" onClick={goToNext(optsNextStep)}>
+          <button
+            className="next"
+            onClick={(e) => {
+              goToNext(optsNextStep)(e)
+
+              fbq('trackSingleCustom', '2534781333293766', 'SelectedCourse', {
+                content_name: values.courseName,
+              })
+            }}
+          >
             É este que eu quero
           </button>
         </div>

@@ -1,4 +1,4 @@
-  import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useVibrate, useToggle } from 'react-use'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
@@ -96,7 +96,7 @@ const InputLead = () => {
             {values.name && (
               <label htmlFor="dateOfBirth">Nome que você informou</label>
             )}
-            <textarea
+            <input
               ref={refGroup.refNameInput}
               onChange={({ currentTarget }) => {
                 currentTarget.value = currentTarget.value.replace(
@@ -110,7 +110,7 @@ const InputLead = () => {
               placeholder="escreva seu nome..."
               type="text"
               name="name"
-            ></textarea>
+            />
             <strong className="hasEmptyError">
               Precisamos saber quem é você!
             </strong>
