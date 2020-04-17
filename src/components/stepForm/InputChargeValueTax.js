@@ -23,7 +23,7 @@ const InputChargeValueTax = () => {
       name: 'chargeValueTax',
       value: {
         instalment: 1,
-        value: 5,
+        value: 500,
         currency: 5,
       },
     })
@@ -34,7 +34,7 @@ const InputChargeValueTax = () => {
       //reset
       const initialChargeTaxValue = {
         instalment: 1,
-        value: 5,
+        value: 500,
         currency: 5,
       }
       setChargeValueTax(initialChargeTaxValue)
