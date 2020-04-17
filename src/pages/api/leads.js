@@ -26,25 +26,29 @@ export default async (req, res) => {
   }
 
   //save lead on egoi platform
-  await fetch('https://api.egoiapp.com/lists/1/contacts', {
-    headers: {
-      'Content-Type': 'application/json',
-      Apikey: process.env.DPOS_EGOI_API_KEY,
-    },
-    method: 'post',
-    body: JSON.stringify({
-      base: {
-        email: value.email,
-        first_name: value.name,
-        cellphone: '55-' + value.whatsapp.replace(/\D/, ''), //brazil code by default
+  try {
+    await fetch('https://api.egoiapp.com/lists/1/contacts', {
+      headers: {
+        'Content-Type': 'application/json',
+        Apikey: process.env.DPOS_EGOI_API_KEY,
       },
-    }),
-  })
+      method: 'post',
+      body: JSON.stringify({
+        base: {
+          email: value.email,
+          first_name: value.name,
+          cellphone: '55-' + value.whatsapp.replace(/\D/, ''), //brazil code by default
+        },
+      }),
+    })
+  } catch (e) {
+    console.error(e)
+  }
 
   //save lead on dpos datasource
   try {
     await client.query(q.Create(q.Collection('leads'), { data: value }))
-    res.setHeader('AMP-Redirect-To', `${absoluteUrl(req).origin}/obrigado`)
+    // res.setHeader('AMP-Redirect-To', `${absoluteUrl(req).origin}/obrigado`)
   } catch (err) {
     console.error(err)
   }
