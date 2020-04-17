@@ -17,8 +17,10 @@ const InputZip = () => {
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
 
-  const controlInputValue = (target) =>
+  const controlInputValue = (target) => {
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
+    console.log(values)
+  }
 
   useEffect(() => {
     if (!values.hasOwnProperty('address')) {
@@ -56,8 +58,9 @@ const InputZip = () => {
       )
         .then((res) => res.json())
         .then((res) => {
+          let inputAddress = {}
           if (res.status === 200) {
-            const inputAddress = {
+            inputAddress = {
               name: 'address',
               value: {
                 state: res.state,
@@ -67,11 +70,15 @@ const InputZip = () => {
                 street: res.address,
               },
             }
-            controlInputValue(inputAddress)
+          } else {
+            inputAddress = {
+              name: 'address',
+              value: {
+                zipcode: currentTarget.value,
+              },
+            }
           }
-
-          if (res.status === 404) {
-          }
+          controlInputValue(inputAddress)
         })
     }
   }
