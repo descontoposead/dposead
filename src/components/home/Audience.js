@@ -47,13 +47,21 @@ const Audience = () => (
 
         <div className="avatar">
           <amp-img
-            fallback=""
-            alt="Aluna satisfeita com o portal do aluno"
-            src="/static/images/avatar.jpg"
+            alt="Depoimento de aluno satisfeito com o curso de Pós Graduação"
+            src="/static/images/avatar.webp"
             width="10"
             height="10"
             layout="responsive"
-          ></amp-img>
+          >
+            <amp-img
+              fallback=""
+              alt="Depoimento de aluno satisfeito com o curso de Pós Graduação"
+              src="/static/images/avatar.jpg"
+              width="10"
+              height="10"
+              layout="responsive"
+            ></amp-img>
+          </amp-img>
           <section>Tallis Gomes</section>
         </div>
       </div>
