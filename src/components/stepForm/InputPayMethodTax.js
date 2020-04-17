@@ -70,7 +70,7 @@ const InputPayMethodTax = () => {
             className="prev"
             onClick={() =>
               setNextStep({
-                currentStep: 'InputPayMethodTax',
+                currentStep: 'InputChargeValueCourse',
                 progressValue: step.progressValue - 7.69,
               })
             }
