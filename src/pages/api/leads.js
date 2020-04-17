@@ -26,7 +26,7 @@ export default async (req, res) => {
   }
 
   //save lead on egoi platform
-  fetch('https://api.egoiapp.com/lists/1/contacts', {
+  await fetch('https://api.egoiapp.com/lists/1/contacts', {
     headers: {
       'Content-Type': 'application/json',
       Apikey: process.env.DPOS_EGOI_API_KEY,
