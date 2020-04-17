@@ -442,11 +442,11 @@ const CreditCard = ({ values, goToPayMethodTax }) => {
             </h4>
           </div>
 
-          <div className="actions">
+          {/* <div className="actions">
             <button onClick={() => window.location.replace('/')}>
               Voltar ao site
             </button>
-          </div>
+          </div> */}
         </>
       )}
 
