@@ -221,7 +221,9 @@ const CreditCard = ({ values, goToPayMethodTax }) => {
           cpf: values.personalDocument.replace(/\D/g, ''),
           email: values.email,
           phone_number: values.whatsapp.replace(/\D/g, ''),
-          birth: new Date(values.dateOfBirth)
+          birth: new Date(
+            values.dateOfBirth.replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3')
+          )
             .toISOString()
             .replace(/=?T.*/, ''),
         },

@@ -45,20 +45,22 @@ const InputGroupBirth = () => {
           inputEl: inputGroupRefs.inputDateOfBirthRef.current.inputElement,
           validator: () => [
             (() => {
-              // try {
-              //   return new RegExp(/./).test(
-              //     //TODO validate date
-              //     new Date(
-              //       inputGroupRefs.inputDateOfBirthRef.current.inputElement.value
-              //     )
-              //       .toISOString()
-              //       .replace(/=?T.*/, '')
-              //   )
-              // } catch (e) {
-              //   return false
-              // }
-
-              return true
+              try {
+                return new RegExp(
+                  /[12][0-9]{3}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/
+                ).test(
+                  new Date(
+                    inputGroupRefs.inputDateOfBirthRef.current.inputElement.value.replace(
+                      /(\d{2})\/(\d{2})\/(\d{4})/,
+                      '$2/$1/$3'
+                    )
+                  )
+                    .toISOString()
+                    .replace(/=?T.*/, '')
+                )
+              } catch (e) {
+                return false
+              }
             })(),
             'invalid-value-error',
           ],
