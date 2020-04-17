@@ -44,7 +44,7 @@ const Scarcity = () => (
         no mercado de trabalho.
       </span>
       <span>
-        Segundo o site de empresas Catho, fazer uma pós graduação pode aumentar
+        Segundo o site de empregos Catho, fazer uma pós graduação pode aumentar
         seu salário em até 50% no meio privado ou em até 47% se tratando de
         servidores públicos, segundo o jornal extra. Nisso nós podemos te
         ajudar.

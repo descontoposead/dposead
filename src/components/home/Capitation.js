@@ -12,7 +12,7 @@ const Capitation = () => (
       <div className="container">
         <h3>Deixe seu contato</h3>
         <h4>
-          E ganhe uma consultoria totalmente gratuita com um especialista de
+          E ganhe uma consultoria totalmente gratuita com um especialista em
           aconselhamento educacional capaz de te ajudar a escolher o curso que
           mais atende sua necessidade.
         </h4>
@@ -23,6 +23,7 @@ const Capitation = () => (
               id="name"
               type="text"
               name="name"
+              placeholder="Escreva seu nome..."
               autoComplete="off"
               required
             />
@@ -31,6 +32,7 @@ const Capitation = () => (
             <label htmlFor="phone">WHATSAPP</label>
             <input
               mask="(00)_90000-0000"
+              placeholder="(xx) 9xxxx-xxxx"
               type="tel"
               id="phone"
               name="whatsapp"
@@ -47,6 +49,7 @@ const Capitation = () => (
               id="email"
               type="email"
               name="email"
+              placeholder="Escreva seu melhor e-mail..."
               autoComplete="off"
               required
             />

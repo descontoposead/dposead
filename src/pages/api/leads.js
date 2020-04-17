@@ -25,9 +25,8 @@ export default async (req, res) => {
     return res.status(400).json(error)
   }
 
-  //save lead on egoi platform
   try {
-    await fetch('https://api.egoiapp.com/lists/1/contacts', {
+    const res = await fetch('https://api.egoiapp.com/lists/1/contacts', {
       headers: {
         'Content-Type': 'application/json',
         Apikey: process.env.DPOS_EGOI_API_KEY,
@@ -37,21 +36,20 @@ export default async (req, res) => {
         base: {
           email: value.email,
           first_name: value.name,
-          cellphone: '55-' + value.whatsapp.replace(/\D/, ''), //brazil code by default
+          cellphone: '55-' + value.whatsapp.replace(/\D/gi, ''),
         },
       }),
     })
+
+    await client.query(
+      q.Create(q.Collection('leads'), {
+        data: Object.assign(value, await res.json()),
+      })
+    )
   } catch (e) {
-    res.status(500).json({ e: e })
+    console.log(e)
   }
 
-  //save lead on dpos datasource
-  try {
-    await client.query(q.Create(q.Collection('leads'), { data: value }))
-    // res.setHeader('AMP-Redirect-To', `${absoluteUrl(req).origin}/obrigado`)
-  } catch (err) {
-    console.error(err)
-  }
-
-  res.status(200).json({ i: process.env.DPOS_EGOI_API_KEY })
+  res.setHeader('AMP-Redirect-To', `${absoluteUrl(req).origin}/obrigado`)
+  res.status(200).json({})
 }
