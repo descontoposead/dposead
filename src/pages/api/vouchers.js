@@ -23,8 +23,8 @@ export default async (req, res) => {
       q.Map(
         q.Paginate(
           q.Union(
-            q.Match(q.Index('voucher_by_raw'), value.q),
-            q.Match(q.Index('voucher_by_pretty'), value.q)
+            q.Match(q.Index('voucher_by_raw'), value.q.toLowerCase()),
+            q.Match(q.Index('voucher_by_pretty'), value.q.toLowerCase())
           )
         ),
         q.Lambda('vouchers', q.Get(q.Var('vouchers')))
