@@ -1,4 +1,4 @@
-const Modal = () => (
+const Modal = (props) => (
   <>
     <amp-script className="modal" script="modal">
       <div className="close">&#10006;</div>
@@ -77,7 +77,7 @@ const Modal = () => (
       }
       @media (min-width: 749px) {
         amp-script.modal {
-          animation: fadeIn 0.2s linear 17s;
+          animation: fadeIn 0.2s linear ${props.timer || 17}s;
           animation-fill-mode: forwards;
         }
       }

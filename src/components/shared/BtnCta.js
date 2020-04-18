@@ -1,6 +1,6 @@
 const BtnCta = (props) => (
-  <a {...props} href="#falar-com-consultor">
-    Falar com um consultor
+  <a className={props.className} href="#falar-com-consultor">
+    {props.text || 'Falar com um consultor'}
     <style jsx>{`
       a {
         padding: 10px 30px;
@@ -9,14 +9,11 @@ const BtnCta = (props) => (
         text-decoration: none;
       }
       @media (max-width: 450px) {
-        .btn-red {
-          width: 100%;
-        }
         a {
           padding: 15px 38px 12px;
-          font-size: 1rem;
-          width: 100%;
+          font-size: 1.4rem;
           margin-bottom: 5px;
+          line-height: 1;
         }
       }
     `}</style>

@@ -3,7 +3,7 @@ const Audience = () => (
     <amp-img
       media="(min-width: 500px)"
       alt="Aluna satisfeita com o portal do aluno"
-      src="/static/images/smile_girl_mac.webp"
+      src="/static/images/aluno_ouvindo_video_aulas_na_desconto_pos_ead.webp"
       width="835"
       height="550"
       layout="responsive"
@@ -11,7 +11,7 @@ const Audience = () => (
       <amp-img
         fallback=""
         alt="Aluna satisfeita com o portal do aluno"
-        src="/static/images/smile_girl_mac.jpg"
+        src="/static/images/aluno_ouvindo_video_aulas_na_desconto_pos_ead.jpg"
         width="835"
         height="550"
         layout="responsive"
@@ -20,7 +20,7 @@ const Audience = () => (
     <amp-img
       media="(max-width: 499px)"
       alt="Aluna satisfeita com o portal do aluno"
-      src="/static/images/smile_girl_mac__mobile.webp"
+      src="/static/images/aluno_ouvindo_video_aulas_na_desconto_pos_ead.webp"
       width="835"
       height="550"
       layout="responsive"
@@ -28,7 +28,7 @@ const Audience = () => (
       <amp-img
         fallback=""
         alt="Aluna satisfeita com o portal do aluno"
-        src="/static/images/smile_girl_mac.jpg"
+        src="/static/images/aluno_ouvindo_video_aulas_na_desconto_pos_ead.jpg"
         width="835"
         height="550"
         layout="responsive"
@@ -200,12 +200,12 @@ const Audience = () => (
           position: relative;
           font-size: 1rem;
           left: 14%;
-          top: -129px;
+          top: -130px;
         }
         section > article > div > p > span.low {
           position: absolute;
           font-size: 2.5rem;
-          top: 90px;
+          top: 107px;
         }
         section > article > div > p > span.high {
           position: absolute;
@@ -217,7 +217,7 @@ const Audience = () => (
       @media (max-width: 384px) {
         section {
           height: 560px;
-          margin: 102px 20px 0 20px;
+          margin: 65px 20px 0 20px;
         }
         section > article {
           top: 160px;
@@ -252,7 +252,7 @@ const Audience = () => (
           position: relative;
           font-size: 1rem;
           left: 14%;
-          top: -129px;
+          top: -93px;
         }
         section > article > div > p > span.low {
           position: absolute;
@@ -298,12 +298,12 @@ const Audience = () => (
           position: relative;
           font-size: 1rem;
           left: 14%;
-          top: -129px;
+          top: -97px;
         }
         section > article > div > p > span.low {
           position: absolute;
           font-size: 2.5rem;
-          top: 110px;
+          top: 129px;
         }
         section > article > div > p > span.high {
           position: absolute;
@@ -317,9 +317,6 @@ const Audience = () => (
         section > article > div {
           align-items: center;
           justify-content: center;
-        }
-        section > article > h4 {
-          font-size: 2rem;
         }
         section > article > div > p {
           position: relative;
