@@ -4,56 +4,11 @@ import { useEffect } from 'react'
 const Resume = () => {
   const [step, setNextStep] = useSharedStep()
 
-  useEffect(() => {
-    if (currentStepIs('Resume', step)) {
-      fetch('/api/students', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          student: {
-            email: step.values.email,
-            name: step.values.name,
-            phone: step.values.phone,
-            whatsapp: step.values.whatsapp,
-            personalDocument: step.values.personalDocument,
-            personalRegistry: step.values.personalRegistry,
-            stateOfBirth: step.values.stateOfBirth,
-            cityOfBirth: step.values.cityOfBirth,
-            dateOfBirth: step.values.dateOfBirth,
-            parentName: step.values.parentName,
-            motherName: step.values.motherName,
-            zipcode: step.values.zipcode,
-            graduation: step.values.graduation,
-            dateOfGraduation: step.values.dateOfGraduation,
-            address: step.values.address,
-          },
-          enrollment: {
-            course: step.values.courseName,
-            charges: [
-              {
-                name: 'courseValue',
-                description: 'Cobrança do valor total do curso',
-                payMethod: step.values.payMethodCourse,
-                installments: step.values.chargeValueCourse.instalment,
-                value: step.values.chargeValueCourse.value,
-                currency: step.values.chargeValueCourse.currency,
-              },
-              {
-                name: 'courseTax',
-                description: 'Cobrança do valor da matricula',
-                payMethod: step.values.payMethodTax,
-                installments: step.values.chargeValueTax.instalment,
-                value: step.values.chargeValueTax.value,
-                currency: step.values.chargeValueTax.currency,
-              },
-            ],
-          },
-        }),
-      })
-    }
-  }, [step])
+  // useEffect(() => {
+  //   if (currentStepIs('Resume', step)) {
+
+  //   }
+  // }, [step])
 
   return (
     currentStepIs('Resume', step) && (
@@ -134,6 +89,7 @@ const Resume = () => {
               setNextStep({
                 currentStep: 'InputChargeValueTax',
                 progressValue: step.progressValue - 7.69,
+                values,
               })
             }
           >

@@ -82,6 +82,7 @@ const InputGroupDoc = () => {
         setNextStep({
           currentStep: 'InputGroupBirth',
           progressValue: step.progressValue + 7.69,
+          values,
         }),
       vibrateFn: () => toggleVibrating(),
     })
@@ -160,6 +161,7 @@ const InputGroupDoc = () => {
               setNextStep({
                 currentStep: 'InputGroupPhone',
                 progressValue: step.progressValue - 7.69,
+                values,
               })
             }
           >

@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useKeyPressEvent } from 'react-use'
 
 import { useSharedStep } from '../../hooks/useSharedStep'
 import { SharedValuesProvider } from '../../hooks/useSharedValues'
@@ -17,10 +18,26 @@ import InputChargeValueCourse from './InputChargeValueCourse'
 import InputPayMethodCourse from './InputPayMethodCourse'
 import Resume from './Resume'
 import FinalStep from './FinalStep'
-import { useKeyPressEvent } from 'react-use'
 
 const Form = ({ onProgress }) => {
-  const [step] = useSharedStep()
+  const [step, setStep] = useSharedStep()
+  const [student, setStudent] = useState({})
+  const [requiredFields] = useState([
+    'email',
+    'name',
+    'phone',
+    'whatsapp',
+    'personalDocument',
+    'personalRegistry',
+    'stateOfBirth',
+    'cityOfBirth',
+    'dateOfBirth',
+    'parentName',
+    'motherName',
+    'graduation',
+    'dateOfGraduation',
+    'address',
+  ])
 
   useKeyPressEvent('Enter', (e) => {
     e.preventDefault()
@@ -31,6 +48,34 @@ const Form = ({ onProgress }) => {
 
   useEffect(() => {
     onProgress(step.progressValue)
+
+    Object.keys(step.values).forEach((prop) => {
+      if (
+        (typeof step.values[prop] === 'string' && !step.values[prop]) ||
+        (typeof step.values[prop] === 'object' &&
+          !Object.keys(step.values[prop]).length)
+      ) {
+        return
+      }
+
+      if (requiredFields.includes(prop)) {
+        setStudent(Object.assign(student, { [prop]: step.values[prop] }))
+      }
+    })
+
+    fetch('/api/steps', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ student }),
+    })
+      .then((res) => res.json())
+      .then((res) =>
+        setStep(
+          Object.assign(step, { values: Object.assign(step.values, res) })
+        )
+      )
   }, [step])
 
   return (

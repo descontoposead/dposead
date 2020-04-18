@@ -197,6 +197,7 @@ const InputChargeValueCourse = () => {
               setNextStep({
                 currentStep: 'InputPayMethodCourse',
                 progressValue: step.progressValue - 7.69,
+                values,
               })
             }
           >
@@ -212,6 +213,7 @@ const InputChargeValueCourse = () => {
               setNextStep({
                 currentStep: 'InputPayMethodTax',
                 progressValue: step.progressValue + 7.69,
+                values,
               })
             }}
           >

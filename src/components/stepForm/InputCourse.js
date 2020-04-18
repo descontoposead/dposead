@@ -40,16 +40,14 @@ const InputCourse = () => {
     let page = 0
 
     ;(async function paginate() {
-      const stream = await fetch('/api/courses/' + page++)
-      const res = await stream.json()
-
-      if (stream.status === 200) {
-        setCourses((data) => [...data, ...res])
-      } else {
-        return
-      }
-
-      await paginate()
+      // const stream = await fetch('/api/courses/' + page++)
+      // const res = await stream.json()
+      // if (stream.status === 200) {
+      //   setCourses((data) => [...data, ...res])
+      // } else {
+      //   return
+      // }
+      // await paginate()
     })()
   }, [])
 
@@ -60,6 +58,7 @@ const InputCourse = () => {
         setNextStep({
           currentStep: 'InputPayMethodCourse',
           progressValue: step.progressValue + 7.69,
+          values,
         }),
       vibrateFn: () => toggleVibrating(),
     })
@@ -201,6 +200,7 @@ const InputCourse = () => {
               setNextStep({
                 currentStep: 'InputGroupGraduation',
                 progressValue: step.progressValue - 7.69,
+                values,
               })
             }
           >

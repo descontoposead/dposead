@@ -17,10 +17,8 @@ const InputZip = () => {
   const [values, setSharedValues] = useSharedValues()
   const inputRef = useRef(null)
 
-  const controlInputValue = (target) => {
+  const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
-    console.log(values)
-  }
 
   useEffect(() => {
     if (!values.hasOwnProperty('address')) {
@@ -33,6 +31,7 @@ const InputZip = () => {
         setNextStep({
           currentStep: 'InputGroupAddress',
           progressValue: step.progressValue + 7.69,
+          values,
         }),
       vibrateFn: () => toggleVibrating(),
     })
@@ -50,8 +49,6 @@ const InputZip = () => {
       currentTarget.value.replace(/_/, '').length === zipFullLength
 
     if (isCompletedZipValue) {
-      controlInputValue(currentTarget)
-
       fetch(
         'https://apps.widenet.com.br/busca-cep/api/cep.json?code=' +
           currentTarget.value
@@ -115,6 +112,7 @@ const InputZip = () => {
               setNextStep({
                 currentStep: 'InputGroupParent',
                 progressValue: step.progressValue - 7.69,
+                values,
               })
             }
           >

@@ -61,6 +61,7 @@ const InputGroupAddress = () => {
         setNextStep({
           currentStep: 'InputGroupGraduation',
           progressValue: step.progressValue + 7.69,
+          values,
         }),
       vibrateFn: () => toggleVibrating(),
     })
@@ -190,6 +191,7 @@ const InputGroupAddress = () => {
               setNextStep({
                 currentStep: 'InputZip',
                 progressValue: step.progressValue - 7.69,
+                values,
               })
             }
           >

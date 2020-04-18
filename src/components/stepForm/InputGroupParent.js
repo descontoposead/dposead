@@ -38,6 +38,7 @@ const InputGroupParent = () => {
         setNextStep({
           currentStep: 'InputZip',
           progressValue: step.progressValue + 7.69,
+          values,
         }),
       vibrateFn: () => toggleVibrating(),
     })
@@ -109,6 +110,7 @@ const InputGroupParent = () => {
               setNextStep({
                 currentStep: 'InputGroupBirth',
                 progressValue: step.progressValue - 7.69,
+                values,
               })
             }
           >
