@@ -54,7 +54,11 @@ const Scarcity = () => (
         especialistas
       </span>
       <div className="bnt">
-        <BtnCta text={'Começar agora'} className="mt15 btn btn-red" />
+        <BtnCta
+          goto="/matricular"
+          text={'Começar agora'}
+          className="mt15 btn btn-red"
+        />
       </div>
     </article>
 

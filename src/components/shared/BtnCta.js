@@ -1,5 +1,5 @@
 const BtnCta = (props) => (
-  <a className={props.className} href="#falar-com-consultor">
+  <a className={props.className} href={props.goto || '#falar-com-consultor'}>
     {props.text || 'Falar com um consultor'}
     <style jsx>{`
       a {

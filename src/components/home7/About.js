@@ -10,7 +10,11 @@ const About = () => (
         pode concluir o seu curso em 6 meses e ser um especialista em sua área
         de atuação.
       </h3>
-      <BtnCta text={'Começar agora'} className="mt40 btn btn-red" />
+      <BtnCta
+        goto="/matricular"
+        text={'Começar agora'}
+        className="mt40 btn btn-red"
+      />
     </div>
     <amp-img
       media="(min-width: 500px)"

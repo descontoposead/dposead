@@ -15,7 +15,11 @@ const Header = (props) => (
             <span>
               É exatamente o que você precisa para ser um especialista
             </span>
-            <BtnCta text={'Começar agora'} className="btn btn-red" />
+            <BtnCta
+              goto="/matricular"
+              text={'Começar agora'}
+              className="btn btn-red"
+            />
           </div>
         </div>
       </header>
