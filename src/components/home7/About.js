@@ -11,7 +11,7 @@ const About = () => (
         de atuação.
       </h3>
       <BtnCta
-        goto="/matricular"
+        goto="/matricular?voucher=7REAIS"
         text={'Começar agora'}
         className="mt40 btn btn-red"
       />
