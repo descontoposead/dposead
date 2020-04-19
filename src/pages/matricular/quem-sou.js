@@ -3,68 +3,72 @@ import { useVibrate, useToggle, useSessionStorage } from 'react-use'
 
 import goToNext from '../../helpers/goToNext'
 import { timers, isInfiniteLoop } from '../../helpers/vibrateTimer'
+import withStepLayout from '../../components/StepLayout'
 
-const InputLead = () => {
+const Step = () => {
   const [vibrating, toggleVibrating] = useToggle(false)
-  const [optsNextStep, setOptNextStep] = useState()
+  const [validatesBeforeNavigation, setValidatesBeforeNavigation] = useState()
+  const [stepPage] = useState({
+    prev: '',
+    next: '/matricular/telefones-para-contato',
+  })
+
+  const [progressValue, setProgressValue] = useSessionStorage('progressValue')
+  const [values, setValues] = useSessionStorage('values', {})
+
+  const refs = {
+    nameInput: useRef(null),
+    emailInput: useRef(null),
+  }
 
   useVibrate(vibrating, timers, isInfiniteLoop)
 
-  const [progressValue] = useSessionStorage('progressValue')
-  const [values, setValues] = useSessionStorage('values')
-  const [step, setStep] = useSessionStorage('steps', {
-    currentStep: 'InputGroupPhone',
-    progressValue: progressValue + 7.69,
-    values,
-  })
+  useEffect(function progressBarAfterInitPage() {
+    setProgressValue(1)
+  }, [])
 
-  const refGroup = {
-    refNameInput: useRef(null),
-    refEmailInput: useRef(null),
-  }
+  useEffect(function cacheInputValues() {
+    Object.keys(refs).forEach((ref) => {
+      if (refs[ref].current) {
+        const { current } = refs[ref]
+        current.value = values[current.name] || ''
+      }
+    })
+  }, [])
 
-  const controlInputValue = (target) =>
-    setValues(Object.assign(values, { [target.name]: target.value }))
-
-  useEffect(() => {
-    setOptNextStep({
+  useEffect(function validateBeforeNavigation() {
+    setValidatesBeforeNavigation({
       inputGroup: [
         () => ({
-          inputEl: refGroup.refNameInput.current,
+          inputEl: refs.nameInput.current,
           validator: () => [
             new RegExp(/^[ ]*(.+[ ]+)+.+[ ]*$/).test(
-              refGroup.refNameInput.current.value
+              refs.nameInput.current.value
             ), //boolean validator
             'invalid-value-error', //class
           ],
         }),
         () => ({
-          inputEl: refGroup.refEmailInput.current,
+          inputEl: refs.emailInput.current,
           validator: () => [
             new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(
-              refGroup.refEmailInput.current.value
+              refs.emailInput.current.value
             ), //boolean validator
             'invalid-value-error', //class
           ],
         }),
       ],
-      setNextFn: () =>
-        setStep({
-          currentStep: 'InputGroupPhone',
-          progressValue: progressValue + 7.69,
-          values,
-        }),
-      vibrateFn: () => toggleVibrating(),
+      navigationByStep: () => {
+        setProgressValue(progressValue + 7.69)
+        setValues(values)
+        window.location.assign(stepPage.next)
+      },
+      vibrateOnError: () => toggleVibrating(),
     })
+  }, [])
 
-    //cache values to input refs masked or not
-    Object.keys(refGroup).forEach((ref) => {
-      if (refGroup[ref].current) {
-        const { current } = refGroup[ref]
-        current.value = values[current.name] || ''
-      }
-    })
-  }, [step])
+  const mergeInputValue = (target) =>
+    setValues(Object.assign(values, { [target.name]: target.value }))
 
   return (
     <>
@@ -77,10 +81,10 @@ const InputLead = () => {
             <label htmlFor="email">E-mail que você informou</label>
           )}
           <input
-            ref={refGroup.refEmailInput}
+            ref={refs.emailInput}
             onChange={({ currentTarget }) => {
               currentTarget.value = currentTarget.value.toLowerCase()
-              controlInputValue(currentTarget)
+              mergeInputValue(currentTarget)
             }}
             autoComplete="off"
             autoFocus
@@ -100,13 +104,13 @@ const InputLead = () => {
             <label htmlFor="dateOfBirth">Nome que você informou</label>
           )}
           <input
-            ref={refGroup.refNameInput}
+            ref={refs.nameInput}
             onChange={({ currentTarget }) => {
               currentTarget.value = currentTarget.value.replace(
                 /(?:^|\s)\S/g,
                 (word) => word.toUpperCase()
               )
-              controlInputValue(currentTarget)
+              mergeInputValue(currentTarget)
             }}
             autoComplete="off"
             autoFocus
@@ -123,7 +127,7 @@ const InputLead = () => {
         </div>
       </div>
       <div>
-        <button className="next" onClick={goToNext(optsNextStep)}>
+        <button className="next" onClick={goToNext(validatesBeforeNavigation)}>
           Próximo
         </button>
       </div>
@@ -131,4 +135,4 @@ const InputLead = () => {
   )
 }
 
-export default InputLead
+export default withStepLayout(Step)

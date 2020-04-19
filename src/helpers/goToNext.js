@@ -2,8 +2,8 @@ const goToNext = (
   opts = {
     inputEl: null,
     inputGroup: null,
-    setNextFn: null,
-    vibrateFn: null,
+    navigationByStep: null,
+    vibrateOnError: null,
   }
 ) => (e) => {
   e.preventDefault()
@@ -24,9 +24,9 @@ const goToNext = (
 
     if (!isValid) {
       opts.inputEl().classList.add(errorClass)
-      opts.vibrateFn()
+      opts.vibrateOnError()
     } else {
-      opts.setNextFn()
+      opts.navigationByStep()
     }
   }
 
@@ -66,12 +66,12 @@ const goToNext = (
         if (!isValid) {
           hasErrors = true
           validateInput.inputEl.classList.add(errorClass)
-          opts.vibrateFn()
+          opts.vibrateOnError()
         }
       })
 
     if (!hasErrors) {
-      opts.setNextFn()
+      opts.navigationByStep()
     }
   }
 }
