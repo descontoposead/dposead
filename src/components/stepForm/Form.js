@@ -87,7 +87,7 @@ const Form = ({ onProgress }) => {
           }
         })
     },
-    [step.currentStep]
+    [step]
   )
 
   return (

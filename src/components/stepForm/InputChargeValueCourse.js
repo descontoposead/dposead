@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useDebounce } from 'react-use'
+import { useDebounce, useLocation } from 'react-use'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'
@@ -86,6 +86,19 @@ const InputChargeValueCourse = () => {
     }
   }, [step]) //onstepchange
 
+  useEffect(
+    function setVoucherOnInQueryUrl() {
+      if (refVoucherInput.current) {
+        const searchVoucher = window.location.search.split('=').pop()
+        if (searchVoucher) {
+          setVoucherOnType(searchVoucher)
+          refVoucherInput.current.value = searchVoucher
+        }
+      }
+    },
+    [refVoucherInput.current]
+  )
+
   useEffect(() => {
     if (values.courseName === 'ENGENHARIA DE SEGURANÇA DO TRABALHO') {
       setChargeInitialValueCourse({
@@ -135,6 +148,13 @@ const InputChargeValueCourse = () => {
   const controlInputValue = (target) =>
     setSharedValues(Object.assign(values, { [target.name]: target.value }))
 
+  const setVoucherOnType = (value) => {
+    setVoucher(false)
+    setError(false)
+    setFetching(true)
+    setTypedVoucher(value)
+  }
+
   return (
     currentStepIs('InputChargeValueCourse', step) && (
       <>
@@ -173,12 +193,7 @@ const InputChargeValueCourse = () => {
             )}
             <input
               ref={refVoucherInput}
-              onChange={({ target }) => {
-                setVoucher(false)
-                setError(false)
-                setFetching(true)
-                setTypedVoucher(target.value)
-              }}
+              onChange={({ target }) => setVoucherOnType(target.value)}
               autoComplete="off"
               autoFocus
               type="text"
