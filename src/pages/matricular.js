@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 
 import { SharedStepProvider } from '../hooks/useSharedStep'
-import Form from '../components/stepForm/Form'
+import Form from '../components/steps/Form'
 
 const Enrolment = () => {
   const [progressBarValue, setProgressBarValue] = useState(0)
