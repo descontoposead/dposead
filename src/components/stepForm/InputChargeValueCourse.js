@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useDebounce, useLocation } from 'react-use'
+import { useDebounce } from 'react-use'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useSharedValues } from '../../hooks/useSharedValues'

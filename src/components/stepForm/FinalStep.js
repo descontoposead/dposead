@@ -1,14 +1,17 @@
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import CreditCard from '../payment/CreditCard'
 import Billet from '../payment/Billet'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
 const FinalStep = () => {
   const [step, setNextStep] = useSharedStep()
+  const [values] = useSharedValues()
 
   const goToPayMethodTax = () => {
     setNextStep({
       currentStep: 'InputPayMethodTax',
       progressValue: step.progressValue - 7.69 * 2,
+      values,
     })
   }
 

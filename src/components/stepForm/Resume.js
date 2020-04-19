@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
 
 import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
+import { useSharedValues } from '../../hooks/useSharedValues'
 
 const Resume = () => {
   const [step, setNextStep] = useSharedStep()
+  const [values] = useSharedValues()
 
   useEffect(
     function matriculateStudent() {
@@ -137,7 +139,7 @@ const Resume = () => {
               setNextStep({
                 currentStep: 'FinalStep',
                 progressValue: step.progressValue + 7.69,
-                values: step.values,
+                values,
               })
             }
           >

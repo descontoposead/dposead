@@ -50,9 +50,7 @@ const Form = ({ onProgress }) => {
   useEffect(
     function onProgressSaveStudent() {
       onProgress(step.progressValue)
-
-      console.log(step)
-
+      if (!step.values) return
       Object.keys(step.values).forEach((prop) => {
         if (
           (typeof step.values[prop] === 'string' && !step.values[prop]) ||
