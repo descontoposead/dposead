@@ -159,7 +159,6 @@ const CreditCard = ({ values, goToPayMethodTax }) => {
         setTimeout(() => flipCard()({ preventDefault: () => null }), 1000)
       } catch (e) {
         setTokenError(true)
-        console.log(e)
 
         if (!e.hasOwnProperty('error_description')) {
           return

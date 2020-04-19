@@ -1,14 +1,50 @@
-import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 import { useEffect } from 'react'
+
+import { useSharedStep, currentStepIs } from '../../hooks/useSharedStep'
 
 const Resume = () => {
   const [step, setNextStep] = useSharedStep()
 
-  // useEffect(() => {
-  //   if (currentStepIs('Resume', step)) {
-
-  //   }
-  // }, [step])
+  useEffect(
+    function matriculateStudent() {
+      if (currentStepIs('Resume', step)) {
+        fetch('/api/matriculate', {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            student: {
+              email: step.values.email,
+            },
+            product: {
+              course: step.values.courseName,
+              charges: [
+                {
+                  name: 'courseValue',
+                  description: 'Cobrança do valor total do curso',
+                  payMethod: step.values.payMethodCourse,
+                  installments: step.values.chargeValueCourse.instalment,
+                  value: step.values.chargeValueCourse.value,
+                  currency: step.values.chargeValueCourse.currency,
+                  voucher: step.values?.voucher,
+                },
+                {
+                  name: 'courseTax',
+                  description: 'Cobrança do valor da matricula',
+                  payMethod: step.values.payMethodTax,
+                  installments: step.values.chargeValueTax.instalment,
+                  value: step.values.chargeValueTax.value,
+                  currency: step.values.chargeValueTax.currency,
+                },
+              ],
+            },
+          }),
+        })
+      }
+    },
+    [step]
+  )
 
   return (
     currentStepIs('Resume', step) && (

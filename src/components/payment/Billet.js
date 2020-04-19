@@ -10,8 +10,6 @@ const Billet = ({ values, goToPayMethodTax }) => {
   useEffect(() => {
     setFetchError(false)
 
-    console.log(values)
-
     fetch('/api/charges/billet', {
       method: 'post',
       headers: {

@@ -22,7 +22,7 @@ import FinalStep from './FinalStep'
 const Form = ({ onProgress }) => {
   const [step, setStep] = useSharedStep()
   const [student, setStudent] = useState({})
-  const [requiredFields] = useState([
+  const [allowableFields] = useState([
     'email',
     'name',
     'phone',
@@ -38,6 +38,7 @@ const Form = ({ onProgress }) => {
     'dateOfGraduation',
     'address',
   ])
+  const [isCached, setCached] = useState(false)
 
   useKeyPressEvent('Enter', (e) => {
     e.preventDefault()
@@ -46,37 +47,48 @@ const Form = ({ onProgress }) => {
     btnNext.click()
   })
 
-  useEffect(() => {
-    onProgress(step.progressValue)
+  useEffect(
+    function onProgressSaveStudent() {
+      onProgress(step.progressValue)
 
-    Object.keys(step.values).forEach((prop) => {
-      if (
-        (typeof step.values[prop] === 'string' && !step.values[prop]) ||
-        (typeof step.values[prop] === 'object' &&
-          !Object.keys(step.values[prop]).length)
-      ) {
-        return
-      }
+      console.log(step)
 
-      if (requiredFields.includes(prop)) {
-        setStudent(Object.assign(student, { [prop]: step.values[prop] }))
-      }
-    })
+      Object.keys(step.values).forEach((prop) => {
+        if (
+          (typeof step.values[prop] === 'string' && !step.values[prop]) ||
+          (typeof step.values[prop] === 'object' &&
+            !Object.keys(step.values[prop]).length)
+        ) {
+          return
+        }
 
-    fetch('/api/steps', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ student }),
-    })
-      .then((res) => res.json())
-      .then((res) =>
-        setStep(
-          Object.assign(step, { values: Object.assign(step.values, res) })
-        )
-      )
-  }, [step])
+        if (allowableFields.includes(prop)) {
+          setStudent(Object.assign(student, { [prop]: step.values[prop] }))
+        }
+      })
+
+      fetch('/api/steps', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ student }),
+      })
+        .then(async (res) => {
+          if (res.status == 200 || res.status == 201) return await res.json()
+          throw await res.json()
+        })
+        .then((res) => {
+          if (!isCached) {
+            setStep(
+              Object.assign(step, { values: Object.assign(step.values, res) })
+            )
+            setCached(true)
+          }
+        })
+    },
+    [step.currentStep]
+  )
 
   return (
     <form>

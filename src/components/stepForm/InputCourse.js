@@ -40,14 +40,14 @@ const InputCourse = () => {
     let page = 0
 
     ;(async function paginate() {
-      // const stream = await fetch('/api/courses/' + page++)
-      // const res = await stream.json()
-      // if (stream.status === 200) {
-      //   setCourses((data) => [...data, ...res])
-      // } else {
-      //   return
-      // }
-      // await paginate()
+      const stream = await fetch('/api/courses/' + page++)
+      const res = await stream.json()
+      if (stream.status === 200) {
+        setCourses((data) => [...data, ...res])
+      } else {
+        return
+      }
+      await paginate()
     })()
   }, [])
 

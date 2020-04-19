@@ -11,7 +11,7 @@ const BtnCta = (props) => (
       @media (max-width: 450px) {
         a {
           padding: 15px 38px 12px;
-          font-size: 1.4rem;
+          font-size: ${props.text ? '1.4' : '1'}rem;
           margin-bottom: 5px;
           line-height: 1;
         }
