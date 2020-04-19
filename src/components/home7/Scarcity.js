@@ -77,14 +77,14 @@ const Scarcity = () => (
         width: 100%;
       }
       section > amp-img {
-        height: 882px;
+        height: auto;
       }
       section > article {
         position: absolute;
         background: var(--blue);
         color: var(--write);
         width: 700px;
-        top: 50%;
+        top: 60%;
         right: 0%;
         z-index: 1;
         height: 500px;
@@ -143,7 +143,7 @@ const Scarcity = () => (
           height: 817px;
         }
         section > amp-img {
-          height: 320px;
+          height: auto;
         }
         section > article {
           top: 20%;
@@ -169,7 +169,7 @@ const Scarcity = () => (
           height: 883px;
         }
         section > amp-img {
-          height: 290px;
+          height: 250px;
         }
         section > article {
           top: 19%;

@@ -4,10 +4,10 @@ import BtnCta from '../shared/BtnCta'
 const Header = (props) => (
   <>
     {props.onlyToolbar ? (
-      <Toolbar />
+      <Toolbar ctaGoto="/matricular?voucher=listavip400" />
     ) : (
       <header>
-        <Toolbar />
+        <Toolbar ctaGoto="/matricular?voucher=listavip400" />
         <div className="cta">
           <h1>O que você faz com 7 reais por dia?</h1>
           <hr />
@@ -16,7 +16,7 @@ const Header = (props) => (
               É exatamente o que você precisa para ser um especialista
             </span>
             <BtnCta
-              goto="/matricular?voucher=7REAIS"
+              goto="/matricular?voucher=listavip400"
               text={'Começar agora'}
               className="btn btn-red"
             />

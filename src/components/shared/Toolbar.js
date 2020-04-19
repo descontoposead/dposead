@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const Toolbar = () => (
+const Toolbar = (props) => (
   <div className="toolbar">
     <Link href="/">
       <a>
@@ -41,7 +41,7 @@ const Toolbar = () => (
       </a>
     </Link>
     <div className="cta">
-      <Link href="/matricular">
+      <Link href={props.ctaGoto ? props.ctaGoto : '/matricular'}>
         <a className="btn btn-write">Matricule-se</a>
       </Link>
     </div>
