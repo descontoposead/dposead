@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useRef, useEffect, useState } from 'react'
 import { useVibrate, useToggle, useSessionStorage } from 'react-use'
 
@@ -46,6 +47,9 @@ const Step = () => {
       ],
       navigationByStep: async () => {
         sessionStorage.setItem('values', JSON.stringify(values))
+        document
+          .querySelector('button.next')
+          .setAttribute('disabled', 'disabled')
         await postStep({ email: values.email, name: values.name }, true)
         window.location.assign(stepPage.next)
       },
@@ -58,6 +62,9 @@ const Step = () => {
 
   return (
     <>
+      <Head>
+        <link rel="prefetch" href={stepPage.next}></link>
+      </Head>
       <div>
         <h1>Olá, vamos começar!</h1>
       </div>

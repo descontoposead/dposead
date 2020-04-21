@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import { useSessionStorage } from 'react-use'
 
@@ -60,6 +61,9 @@ const Step = () => {
 
   return (
     <>
+      <Head>
+        <link rel="prefetch" href={stepPage.next}></link>
+      </Head>
       <div>
         <h1>Confira sua inscrição</h1>
       </div>
@@ -135,6 +139,9 @@ const Step = () => {
         <button
           className="next"
           onClick={async () => {
+            Array.from(
+              document.querySelectorAll('button.next, button.prev')
+            ).map((b) => b.setAttribute('disabled', 'disabled'))
             sessionStorage.setItem('values', JSON.stringify(values))
             postMatriculate()
             window.location.assign(stepPage.next)

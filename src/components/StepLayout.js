@@ -71,6 +71,24 @@ const withStepLayout = (Step, props = { progressValue: 0 }) => () => {
         alt="Logo da Instituição parceira ofertante dos cursos"
       />
       <style jsx global>{`
+        button.next[disabled] {
+          visibility: hidden;
+          border-color: #a6a6a6;
+          color: #a6a6a6;
+          cursor: not-allowed;
+          user-select: none;
+        }
+        button.prev[disabled] {
+          display: none;
+        }
+        button.next[disabled]:after {
+          content: 'Enviando...';
+          visibility: visible;
+          display: flex;
+          border: 4px solid #a6a6a6;
+          padding: 10px 15px;
+          border-radius: 10px;
+        }
         img#logo {
           position: fixed;
           right: 10px;

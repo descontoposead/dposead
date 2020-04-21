@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useRef, useEffect, useState } from 'react'
 import { useVibrate, useToggle, useSessionStorage } from 'react-use'
 import MaskedInput from 'react-text-mask'
@@ -26,6 +27,9 @@ const Step = () => {
       inputEl: () => inputRef.current.inputElement,
       navigationByStep: async () => {
         sessionStorage.setItem('values', JSON.stringify(values))
+        Array.from(
+          document.querySelectorAll('button.next, button.prev')
+        ).map((b) => b.setAttribute('disabled', 'disabled'))
         await postStep({
           email: values.email,
           address: {
@@ -86,6 +90,9 @@ const Step = () => {
 
   return (
     <>
+      <Head>
+        <link rel="prefetch" href={stepPage.next}></link>
+      </Head>
       <div>
         <h1>Agora vamos agilizar! Digite seu CEP</h1>
       </div>

@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useRef, useEffect, useState } from 'react'
 import {
   useVibrate,
@@ -50,6 +51,9 @@ const Step = () => {
     setValidatesBeforeNavigation({
       inputEl: () => inputRef.current,
       navigationByStep: async () => {
+        Array.from(
+          document.querySelectorAll('button.next, button.prev')
+        ).map((b) => b.setAttribute('disabled', 'disabled'))
         sessionStorage.setItem('values', JSON.stringify(values))
         window.location.assign(stepPage.next)
       },
@@ -95,6 +99,9 @@ const Step = () => {
 
   return (
     <>
+      <Head>
+        <link rel="prefetch" href={stepPage.next}></link>
+      </Head>
       <div>
         <h1>Que curso você deseja iniciar?</h1>
       </div>
