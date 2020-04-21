@@ -4,6 +4,7 @@ import { useSessionStorage } from 'react-use'
 import withStepLayout from '../../components/StepLayout'
 import CreditCard from '../../components/payment/CreditCard'
 import Billet from '../../components/payment/Billet'
+import Head from 'next/head'
 
 const Step = () => {
   const [stepPage] = useState({
@@ -19,6 +20,15 @@ const Step = () => {
 
   return (
     <>
+      <script
+        dangerouslySetInnerHTML={{
+          __html:
+            process.env.NODE_ENV === 'production'
+              ? `var s=document.createElement('script');s.type='text/javascript';var v=parseInt(Math.random()*1000000);s.src='https://api.gerencianet.com.br/v1/cdn/${process.env.gnAccountId}/'+v;s.async=false;s.id='${process.env.gnAccountId}';if(!document.getElementById('${process.env.gnAccountId}')){document.getElementsByTagName('head')[0].appendChild(s);};$gn={validForm:true,processed:false,done:{},ready:function(fn){$gn.done=fn;}};$gn.ready((checkout) => {})`
+              : `var s=document.createElement('script');s.type='text/javascript';var v=parseInt(Math.random()*1000000);s.src='https://sandbox.gerencianet.com.br/v1/cdn/${process.env.gnAccountId}/'+v;s.async=false;s.id='${process.env.gnAccountId}';if(!document.getElementById('${process.env.gnAccountId}')){document.getElementsByTagName('head')[0].appendChild(s);};$gn={validForm:true,processed:false,done:{},ready:function(fn){$gn.done=fn;}};$gn.ready((checkout) => {})`,
+        }}
+      ></script>
+
       {values.payMethodTax === 'billet' && <Billet {...propsPay} />}
 
       {values.payMethodTax === 'creditCard' && (
