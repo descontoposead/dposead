@@ -25,7 +25,7 @@ const Step = () => {
   }, [])
 
   const postMatriculate = () =>
-    fetch('/api/matriculate', {
+    fetch('/api/students/matriculate', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

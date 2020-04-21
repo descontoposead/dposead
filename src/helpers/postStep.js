@@ -1,5 +1,5 @@
 const postStep = (values, store = false) =>
-  fetch('/api/steps', {
+  fetch('/api/students/steps', {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
