@@ -4,6 +4,7 @@ import { useSessionStorage } from 'react-use'
 import withStepLayout from '../../components/StepLayout'
 import CreditCard from '../../components/payment/CreditCard'
 import Billet from '../../components/payment/Billet'
+import Head from 'next/head'
 
 const Step = () => {
   const [stepPage] = useState({
