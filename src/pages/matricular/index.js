@@ -4,6 +4,7 @@ import { useVibrate, useToggle, useSessionStorage } from 'react-use'
 import goToNext from '../../helpers/goToNext'
 import { timers, isInfiniteLoop } from '../../helpers/vibrateTimer'
 import withStepLayout from '../../components/StepLayout'
+import postStep from '../../helpers/postStep'
 
 const Step = () => {
   const [vibrating, toggleVibrating] = useToggle(false)
@@ -12,8 +13,6 @@ const Step = () => {
     prev: '',
     next: '/matricular/telefones-para-contato',
   })
-
-  const [progressValue, setProgressValue] = useSessionStorage('progressValue')
   const [values, setValues] = useSessionStorage('values', {})
 
   const refs = {
@@ -22,19 +21,6 @@ const Step = () => {
   }
 
   useVibrate(vibrating, timers, isInfiniteLoop)
-
-  useEffect(function progressBarAfterInitPage() {
-    setProgressValue(1)
-  }, [])
-
-  useEffect(function cacheInputValues() {
-    Object.keys(refs).forEach((ref) => {
-      if (refs[ref].current) {
-        const { current } = refs[ref]
-        current.value = values[current.name] || ''
-      }
-    })
-  }, [])
 
   useEffect(function validateBeforeNavigation() {
     setValidatesBeforeNavigation({
@@ -58,9 +44,9 @@ const Step = () => {
           ],
         }),
       ],
-      navigationByStep: () => {
-        setProgressValue(progressValue + 7.69)
-        setValues(values)
+      navigationByStep: async () => {
+        sessionStorage.setItem('values', JSON.stringify(values))
+        await postStep({ email: values.email, name: values.name }, true)
         window.location.assign(stepPage.next)
       },
       vibrateOnError: () => toggleVibrating(),
@@ -86,6 +72,7 @@ const Step = () => {
               currentTarget.value = currentTarget.value.toLowerCase()
               mergeInputValue(currentTarget)
             }}
+            defaultValue={values.email}
             autoComplete="off"
             autoFocus
             type="text"
@@ -112,6 +99,7 @@ const Step = () => {
               )
               mergeInputValue(currentTarget)
             }}
+            defaultValue={values.name}
             autoComplete="off"
             autoFocus
             placeholder="escreva seu nome..."
@@ -135,4 +123,4 @@ const Step = () => {
   )
 }
 
-export default withStepLayout(Step)
+export default withStepLayout(Step, { progressValue: 7.5 })

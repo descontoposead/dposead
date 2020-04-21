@@ -5,16 +5,15 @@ import MaskedInput from 'react-text-mask'
 import goToNext from '../../helpers/goToNext'
 import { timers, isInfiniteLoop } from '../../helpers/vibrateTimer'
 import withStepLayout from '../../components/StepLayout'
+import postStep from '../../helpers/postStep'
 
 const Step = () => {
   const [vibrating, toggleVibrating] = useToggle(false)
   const [validatesBeforeNavigation, setValidatesBeforeNavigation] = useState()
   const [stepPage] = useState({
-    prev: '',
+    prev: '/matricular',
     next: '/matricular/documentos-pessoais',
   })
-
-  const [progressValue, setProgressValue] = useSessionStorage('progressValue')
   const [values, setValues] = useSessionStorage('values', {})
 
   const refs = {
@@ -23,15 +22,6 @@ const Step = () => {
   }
 
   useVibrate(vibrating, timers, isInfiniteLoop)
-
-  useEffect(function cacheInputValues() {
-    Object.keys(refs).forEach((ref) => {
-      if (refs[ref].current) {
-        const { current } = refs[ref]
-        current.value = values[current.name] || ''
-      }
-    })
-  }, [])
 
   useEffect(function validateBeforeNavigation() {
     setValidatesBeforeNavigation({
@@ -55,9 +45,13 @@ const Step = () => {
           ],
         }),
       ],
-      navigationByStep: () => {
-        setProgressValue(progressValue + 7.69)
-        setValues(values)
+      navigationByStep: async () => {
+        sessionStorage.setItem('values', JSON.stringify(values))
+        await postStep({
+          email: values.email,
+          phone: values.phone,
+          whatsapp: values.whatsapp,
+        })
         window.location.assign(stepPage.next)
       },
       vibrateOnError: () => toggleVibrating(),
@@ -80,6 +74,7 @@ const Step = () => {
           <MaskedInput
             ref={refs.phoneInput}
             onChange={({ currentTarget }) => mergeInputValue(currentTarget)}
+            defaultValue={values.phone}
             autoComplete="off"
             name="phone"
             placeholder="seu telefone..."
@@ -113,6 +108,7 @@ const Step = () => {
           <MaskedInput
             ref={refs.whatsappInput}
             onChange={({ currentTarget }) => mergeInputValue(currentTarget)}
+            defaultValue={values.whatsapp}
             autoComplete="off"
             name="whatsapp"
             placeholder="seu whatsapp..."
@@ -143,13 +139,7 @@ const Step = () => {
       <div>
         <button
           className="prev"
-          onClick={() =>
-            setNextStep({
-              currentStep: 'InputLead',
-              progressValue: step.progressValue - 7.69,
-              values,
-            })
-          }
+          onClick={() => window.location.assign(stepPage.prev)}
         >
           Voltar
         </button>
@@ -161,4 +151,4 @@ const Step = () => {
   )
 }
 
-export default withStepLayout(Step)
+export default withStepLayout(Step, { progressValue: 15 })

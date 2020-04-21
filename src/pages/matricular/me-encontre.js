@@ -5,35 +5,33 @@ import MaskedInput from 'react-text-mask'
 import goToNext from '../../helpers/goToNext'
 import { timers, isInfiniteLoop } from '../../helpers/vibrateTimer'
 import withStepLayout from '../../components/StepLayout'
+import postStep from '../../helpers/postStep'
 
 const Step = () => {
   const [vibrating, toggleVibrating] = useToggle(false)
   const [validatesBeforeNavigation, setValidatesBeforeNavigation] = useState()
   const [stepPage] = useState({
-    prev: '',
+    prev: '/matricular/quem-sao-meus-pais',
     next: '/matricular/meu-endereco',
   })
 
-  const [progressValue, setProgressValue] = useSessionStorage('progressValue')
   const [values, setValues] = useSessionStorage('values', {})
 
   const inputRef = useRef(null)
 
   useVibrate(vibrating, timers, isInfiniteLoop)
 
-  useEffect(function cacheInputValues() {
-    if (inputRef.current && values.address) {
-      inputRef.current.inputElement.value =
-        values.address[inputRef.current.inputElement.name] || ''
-    }
-  }, [])
-
   useEffect(function validateBeforeNavigation() {
     setValidatesBeforeNavigation({
       inputEl: () => inputRef.current.inputElement,
-      navigationByStep: () => {
-        setProgressValue(progressValue + 7.69)
-        setValues(values)
+      navigationByStep: async () => {
+        sessionStorage.setItem('values', JSON.stringify(values))
+        await postStep({
+          email: values.email,
+          address: {
+            zipcode: values.address.zipcode,
+          },
+        })
         window.location.assign(stepPage.next)
       },
       vibrateOnError: () => toggleVibrating(),
@@ -99,8 +97,7 @@ const Step = () => {
           <MaskedInput
             ref={inputRef}
             onChange={onInputTypeZip()}
-            autoComplete="off"
-            autoFocus
+            defaultValue={values.address?.zipcode}
             name="zipcode"
             placeholder="escreva o cep..."
             mask={[/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]}
@@ -111,13 +108,7 @@ const Step = () => {
       <div>
         <button
           className="prev"
-          onClick={() =>
-            setNextStep({
-              currentStep: 'InputGroupParent',
-              progressValue: step.progressValue - 7.69,
-              values,
-            })
-          }
+          onClick={() => window.location.assign(stepPage.prev)}
         >
           Voltar
         </button>
@@ -136,4 +127,4 @@ const Step = () => {
   )
 }
 
-export default withStepLayout(Step)
+export default withStepLayout(Step, { progressValue: 45 })

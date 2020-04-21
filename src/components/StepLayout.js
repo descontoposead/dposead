@@ -1,8 +1,12 @@
 import Head from 'next/head'
 import { useSessionStorage, useKeyPressEvent } from 'react-use'
+import { useEffect } from 'react'
 
-const withStepLayout = (Step) => () => {
-  const [progressValue] = useSessionStorage('progressValue', 0)
+const withStepLayout = (Step, props = { progressValue: 0 }) => () => {
+  const [scrap, setScrap] = useSessionStorage('scrap', {
+    page: 0,
+    courses: [],
+  })
 
   useKeyPressEvent('Enter', function gotoNextStep(e) {
     e.preventDefault()
@@ -10,6 +14,21 @@ const withStepLayout = (Step) => () => {
     const btnNext = document.querySelector('button.next')
     btnNext.click()
   })
+
+  useEffect(function onLoadPageScrapCourses() {
+    let page = scrap.page
+
+    ;(async function paginate() {
+      const res = await fetch('/api/courses/' + page++)
+      const data = await res.json()
+      if (res.status === 200) {
+        setScrap((scp) => ({ page, courses: [...scp.courses, ...data] }))
+      } else {
+        return
+      }
+      await paginate()
+    })()
+  }, [])
 
   return (
     <>
@@ -19,7 +38,7 @@ const withStepLayout = (Step) => () => {
       <header>
         <div></div>
       </header>
-      <form action="">
+      <form action="" onSubmit={(e) => e.preventDefault()}>
         <Step />
       </form>
       <img
@@ -28,8 +47,6 @@ const withStepLayout = (Step) => () => {
         alt="Logo da Instituição parceira ofertante dos cursos"
       />
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css?family=Baloo+2&display=swap');
-
         img#logo {
           position: fixed;
           right: 10px;
@@ -43,7 +60,7 @@ const withStepLayout = (Step) => () => {
           background: #cecece;
         }
         header > div {
-          width: ${progressValue > 100 ? 100 : progressValue}vw;
+          width: ${props.progressValue}vw;
           height: 10px;
           background: #000;
           transition: 1s;
@@ -113,7 +130,7 @@ const withStepLayout = (Step) => () => {
           touch-action: pan-y;
         }
         * {
-          font-family: 'Baloo 2', cursive;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
           line-height: 1;
         }
         form {
@@ -180,6 +197,7 @@ const withStepLayout = (Step) => () => {
           border-radius: 10px;
           font-weight: bold;
           background: transparent;
+          cursor: pointer;
         }
         form > div button.prev {
           border-color: #6b6b6b;

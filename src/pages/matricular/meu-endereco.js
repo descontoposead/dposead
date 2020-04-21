@@ -4,16 +4,16 @@ import { useVibrate, useToggle, useSessionStorage } from 'react-use'
 import goToNext from '../../helpers/goToNext'
 import { timers, isInfiniteLoop } from '../../helpers/vibrateTimer'
 import withStepLayout from '../../components/StepLayout'
+import postStep from '../../helpers/postStep'
 
 const Step = () => {
   const [vibrating, toggleVibrating] = useToggle(false)
   const [validatesBeforeNavigation, setValidatesBeforeNavigation] = useState()
   const [stepPage] = useState({
-    prev: '',
-    next: '/matricular/',
+    prev: '/matricular/me-encontre',
+    next: '/matricular/formacao-academica',
   })
 
-  const [progressValue, setProgressValue] = useSessionStorage('progressValue')
   const [values, setValues] = useSessionStorage('values', {})
 
   const refs = {
@@ -25,15 +25,6 @@ const Step = () => {
   }
 
   useVibrate(vibrating, timers, isInfiniteLoop)
-
-  useEffect(function cacheInputValues() {
-    Object.keys(refs).forEach((ref) => {
-      if (refs[ref].current) {
-        const { current } = refs[ref]
-        current.value = values[current.name] || ''
-      }
-    })
-  }, [])
 
   useEffect(function validateBeforeNavigation() {
     setValidatesBeforeNavigation({
@@ -60,9 +51,9 @@ const Step = () => {
           inputEl: refs.streetInput.current,
         }),
       ],
-      navigationByStep: () => {
-        setProgressValue(progressValue + 7.69)
-        setValues(values)
+      navigationByStep: async () => {
+        sessionStorage.setItem('values', JSON.stringify(values))
+        await postStep({ email: values.email, address: values.address })
         window.location.assign(stepPage.next)
       },
       vibrateOnError: () => toggleVibrating(),
@@ -70,7 +61,13 @@ const Step = () => {
   }, [])
 
   const mergeInputValue = (target) =>
-    setValues(Object.assign(values, { [target.name]: target.value }))
+    setValues(
+      Object.assign(values, {
+        address: Object.assign(values.address, {
+          [target.name]: target.value,
+        }),
+      })
+    )
 
   return (
     <>
@@ -88,6 +85,7 @@ const Step = () => {
               currentTarget.value = currentTarget.value.toUpperCase()
               mergeInputValue(currentTarget)
             }}
+            defaultValue={values.address?.state}
             autoComplete="none"
             autoFocus
             type="text"
@@ -110,6 +108,7 @@ const Step = () => {
               )
               mergeInputValue(currentTarget)
             }}
+            defaultValue={values.address?.city}
             autoComplete="none"
             type="text"
             name="city"
@@ -130,6 +129,7 @@ const Step = () => {
               )
               mergeInputValue(currentTarget)
             }}
+            defaultValue={values.address?.neighborhood}
             autoComplete="none"
             type="text"
             name="neighborhood"
@@ -150,6 +150,7 @@ const Step = () => {
               )
               mergeInputValue(currentTarget)
             }}
+            defaultValue={values.address?.number}
             autoComplete="none"
             type="text"
             name="number"
@@ -172,6 +173,7 @@ const Step = () => {
               )
               mergeInputValue(currentTarget)
             }}
+            defaultValue={values.address?.street}
             autoComplete="none"
             type="text"
             name="street"
@@ -183,13 +185,7 @@ const Step = () => {
       <div>
         <button
           className="prev"
-          onClick={() =>
-            setNextStep({
-              currentStep: 'InputZip',
-              progressValue: step.progressValue - 7.69,
-              values,
-            })
-          }
+          onClick={() => window.location.assign(stepPage.prev)}
         >
           Voltar
         </button>
@@ -201,4 +197,4 @@ const Step = () => {
   )
 }
 
-export default withStepLayout(Step)
+export default withStepLayout(Step, { progressValue: 52.5 })

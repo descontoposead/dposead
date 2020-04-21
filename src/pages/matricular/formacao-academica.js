@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { useVibrate, useToggle, useSessionStorage } from 'react-use'
+import MaskedInput from 'react-text-mask'
 
 import goToNext from '../../helpers/goToNext'
 import { timers, isInfiniteLoop } from '../../helpers/vibrateTimer'
@@ -10,34 +11,28 @@ const Step = () => {
   const [vibrating, toggleVibrating] = useToggle(false)
   const [validatesBeforeNavigation, setValidatesBeforeNavigation] = useState()
   const [stepPage] = useState({
-    prev: '/matricular/quando-e-onde-nasci',
-    next: '/matricular/me-encontre',
+    prev: '/matricular/meu-endereco',
+    next: '/matricular/escolha-um-novo-curso',
   })
+
   const [values, setValues] = useSessionStorage('values', {})
 
   const refs = {
-    parentNameInput: useRef(null),
-    motherNameInput: useRef(null),
+    graduationInput: useRef(null),
+    dateOfGraduationInput: useRef(null),
   }
 
   useVibrate(vibrating, timers, isInfiniteLoop)
 
   useEffect(function validateBeforeNavigation() {
     setValidatesBeforeNavigation({
-      inputGroup: [
-        () => ({
-          inputEl: refs.parentNameInput.current,
-        }),
-        () => ({
-          inputEl: refs.motherNameInput.current,
-        }),
-      ],
+      inputGroup: [],
       navigationByStep: async () => {
         sessionStorage.setItem('values', JSON.stringify(values))
         await postStep({
           email: values.email,
-          parentName: values.parentName,
-          motherName: values.motherName,
+          graduation: values.graduation,
+          dateOfGraduation: values.dateOfGraduation,
         })
         window.location.assign(stepPage.next)
       },
@@ -51,51 +46,43 @@ const Step = () => {
   return (
     <>
       <div>
-        <h1>E nessário que informe sua filiação</h1>
+        <h1>Precisamos saber sobre a sua graduação</h1>
       </div>
       <div>
         <div>
-          {values.parentName && (
-            <label htmlFor="parentName">O nome do meu pai</label>
-          )}
+          <label htmlFor="graduation">Nome da sua graduação</label>
           <textarea
-            ref={refs.parentNameInput}
+            ref={refs.graduationInput}
             onChange={({ currentTarget }) => {
+              mergeInputValue(currentTarget)
               currentTarget.value = currentTarget.value.replace(
                 /(?:^|\s)\S/g,
                 (word) => word.toUpperCase()
               )
-              mergeInputValue(currentTarget)
             }}
-            defaultValue={values.parentName}
+            defaultValue={values.graduation}
             autoComplete="off"
             autoFocus
             type="text"
-            name="parentName"
-            placeholder="nome do seu pai..."
+            name="graduation"
+            placeholder="escreva sua graduação"
           ></textarea>
-          <strong className="hasError">Qual é o nome do seu pai?</strong>
+          <strong className="hasError">
+            Isso é importante para o seu certificado!
+          </strong>
         </div>
         <div>
-          {values.motherName && (
-            <label htmlFor="motherName">O nome da minha mãe</label>
-          )}
-          <textarea
-            ref={refs.motherNameInput}
-            onChange={({ currentTarget }) => {
-              currentTarget.value = currentTarget.value.replace(
-                /(?:^|\s)\S/g,
-                (word) => word.toUpperCase()
-              )
-              mergeInputValue(currentTarget)
-            }}
-            defaultValue={values.motherName}
+          <label htmlFor="dateOfGraduation">Quando eu colei grau</label>
+          <MaskedInput
+            ref={refs.dateOfGraduationInput}
+            onChange={({ currentTarget }) => mergeInputValue(currentTarget)}
+            defaultValue={values.dateOfGraduation}
             autoComplete="off"
-            type="text"
-            name="motherName"
-            placeholder="nome da sua mãe..."
-          ></textarea>
-          <strong className="hasError">Qual é o nome da sua mãe?</strong>
+            name="dateOfGraduation"
+            placeholder="dia/mês/ano"
+            mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+          />
+          <strong className="hasError">Precisamos saber essa data!</strong>
         </div>
       </div>
       <div>
@@ -106,11 +93,11 @@ const Step = () => {
           Voltar
         </button>
         <button className="next" onClick={goToNext(validatesBeforeNavigation)}>
-          Vamos lá...
+          Ultimos passos...
         </button>
       </div>
     </>
   )
 }
 
-export default withStepLayout(Step, { progressValue: 37.5 })
+export default withStepLayout(Step, { progressValue: 60 })

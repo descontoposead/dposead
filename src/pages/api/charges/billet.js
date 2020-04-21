@@ -76,7 +76,7 @@ export default async (req, res) => {
       {
         payment: {
           banking_billet: {
-            expire_at: addDays(new Date(), 1),
+            expire_at: addDays(new Date(), 7),
             customer: value.student,
             message:
               'Em até 2 dias depois do boleto pago, o acesso ao Portal Do Aluno será enviado no e-mail cadastrado.',
