@@ -11,13 +11,9 @@ const Step = () => {
     next: '',
   })
 
-  const [_, setProgressValue] = useSessionStorage('progressValue')
   const [values] = useSessionStorage('values', {})
 
-  const goToPayMethodTax = () => {
-    setProgressValue(86.66740000000001)
-    window.location.assign(stepPage.prev)
-  }
+  const goToPayMethodTax = () => window.location.assign(stepPage.prev)
 
   const propsPay = { values, goToPayMethodTax }
 
