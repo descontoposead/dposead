@@ -27,8 +27,8 @@ const Header = (props) => (
 
     <style jsx>{`
       header {
-        // background-image: url('/static/images/aluno_de_pos_feliz_porque_conseguiu_estudar_com_7_reais_por_dia.webp'),
-        //   url('/static/images/aluno_de_pos_feliz_porque_conseguiu_estudar_com_7_reais_por_dia.jpg');
+        background-image: url('/static/images/aluno_conversando_no_telefone_enquanto_realiza_atividades_no_portal.webp'),
+          url('/static/images/aluno_conversando_no_telefone_enquanto_realiza_atividades_no_portal.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         height: 600px;
@@ -101,8 +101,8 @@ const Header = (props) => (
       }
       @media (max-width: 450px) {
         header {
-          background-image: url('/static/images/head__mobile.webp'),
-            url('/static/images/head.jpg');
+          background-image: url('/static/images/aluno_conversando_no_telefone_enquanto_realiza_atividades_no_portal.webp'),
+            url('/static/images/aluno_conversando_no_telefone_enquanto_realiza_atividades_no_portal.jpg');
           background-position-x: -185px;
           height: 100vh;
           background-size: 777px;
