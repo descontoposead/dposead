@@ -5,15 +5,27 @@ import { useSessionStorage, useDebounce } from 'react-use'
 import withStepLayout from '../../components/StepLayout'
 
 const Step = () => {
+  const [values, setValues] = useSessionStorage('values', {})
+
   const [stepPage] = useState({
     prev: '/matricular/escolha-o-metodo-de-pagamento-do-curso',
     next: '/matricular/escolha-o-metodo-de-pagamento-da-matricula',
   })
   const [chargeValueCourse, setChargeValueCourse] = useState(null)
-  const [chargeInitialValueCourse, setChargeInitialValueCourse] = useState({
-    instalment: 1,
-    value: 180000,
-    currency: 1800,
+  const [chargeInitialValueCourse] = useState(() => {
+    if (values.courseName === 'ENGENHARIA DE SEGURANÇA DO TRABALHO') {
+      return {
+        instalment: 1,
+        value: 400000,
+        currency: 4000,
+      }
+    }
+
+    return {
+      instalment: 1,
+      value: 180000,
+      currency: 1800,
+    }
   })
   const [instalmentPlan] = useState({
     creditCard: {
@@ -30,8 +42,6 @@ const Step = () => {
   const [hasError, setError] = useState(null)
   const [voucher, setVoucher] = useState(null)
   const refVoucherInput = useRef(null)
-
-  const [values, setValues] = useSessionStorage('values', {})
 
   const mergeInputValue = (target) =>
     setValues(Object.assign(values, { [target.name]: target.value }))
@@ -96,25 +106,6 @@ const Step = () => {
       }
     },
     [values.voucher]
-  )
-
-  useEffect(
-    function setCustomValueToAnUniqueCourse() {
-      if (values.courseName === 'ENGENHARIA DE SEGURANÇA DO TRABALHO') {
-        setChargeInitialValueCourse({
-          instalment: 1,
-          value: 400000,
-          currency: 4000,
-        })
-      } else {
-        setChargeInitialValueCourse({
-          instalment: 1,
-          value: 180000,
-          currency: 1800,
-        })
-      }
-    },
-    [values?.courseName]
   )
 
   const incrementInstalment = (e) => {
