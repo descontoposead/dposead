@@ -1,9 +1,11 @@
 import * as gn from 'gn-api-sdk-node'
 import joi from '@hapi/joi'
+import absoluteUrl from 'next-absolute-url'
 
 export default async (req, res) => {
   const schema = joi
     .object({
+      dpos_charge_id: joi.string().required(),
       installments: joi.number().integer().min(1).max(12).required(),
       payment_token: joi
         .string()
@@ -93,6 +95,12 @@ export default async (req, res) => {
     const payed = await gnsdk.oneStep(
       {},
       {
+        metadata: {
+          custom_id: value.dpos_charge_id,
+          notification_url: `${
+            absoluteUrl(req).origin
+          }/api/students/charge-notification`,
+        },
         items: [value.product],
         payment: {
           credit_card: {

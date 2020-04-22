@@ -19,6 +19,7 @@ export default async (req, res) => {
           charges: joi.array().items(
             joi
               .object({
+                id: joi.string(),
                 name: joi.string().required(),
                 description: joi.string(),
                 payMethod: joi.string().required(),
@@ -26,6 +27,12 @@ export default async (req, res) => {
                 value: joi.number().required(),
                 currency: joi.number().required(),
                 voucher: joi.string().allow(''),
+              })
+              .when('name', {
+                is: 'courseTax',
+                then: joi.object({
+                  id: joi.required(),
+                }),
               })
               .required()
           ),
@@ -39,6 +46,13 @@ export default async (req, res) => {
   if (error) {
     return res.status(400).json(error)
   }
+
+  const getProductChargesWithFirstTaxChargeNotPayed = () =>
+    value.product.charges.map((charge) =>
+      charge.name === 'courseTax'
+        ? Object.assign(charge, { firstPaid: false })
+        : charge
+    )
 
   try {
     const found = await client.query(
@@ -58,7 +72,12 @@ export default async (req, res) => {
     await client.query(
       q.Update(found.ref, {
         data: {
-          enrollments: [value.product, ...found.enrollments],
+          enrollments: [
+            Object.assign(value.product, {
+              charges: getProductChargesWithFirstTaxChargeNotPayed(),
+            }),
+            ...found.enrollments,
+          ],
         },
       })
     )

@@ -16,6 +16,7 @@ const Billet = ({ values, goToPayMethodTax }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          dpos_charge_id: window.location.search.split('=').pop(),
           product: {
             name: 'Taxa de inscrição para o curso - ' + values.courseName,
             value: values.chargeValueTax.value,
@@ -23,6 +24,7 @@ const Billet = ({ values, goToPayMethodTax }) => {
           student: {
             name: values.name,
             cpf: values.personalDocument.replace(/\D/g, ''),
+            email: values.email,
             phone_number: values.whatsapp.replace(/\D/g, ''),
           },
         }),
@@ -104,15 +106,15 @@ const Billet = ({ values, goToPayMethodTax }) => {
             </button>
           </div>
           <style>{`
-      textarea {
-        margin-top: 20px;
-        padding: 10px;
-        background: yellow;
-        border-radius: 10px;
-      }
-      label > strong {
-        font-size: 1rem !important;
-      }
+          textarea {
+            margin-top: 20px;
+            padding: 10px;
+            background: yellow;
+            border-radius: 10px;
+          }
+          label > strong {
+            font-size: 1rem !important;
+          }
       `}</style>
         </>
       )}

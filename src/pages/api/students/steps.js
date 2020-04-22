@@ -30,8 +30,7 @@ export default async (req, res) => {
         street: joi.string(),
         number: joi.string(),
       }),
-      isFinished: joi.boolean().default(false),
-      isPayed: joi.boolean().default(false),
+      isStepEnd: joi.boolean().default(false),
     })
     .required()
 

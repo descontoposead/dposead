@@ -1,13 +1,15 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import { useSessionStorage } from 'react-use'
+import { nanoid } from 'nanoid'
 
 import withStepLayout from '../../components/StepLayout'
 
 const Step = () => {
+  const [nanoID] = useState(nanoid(7))
   const [stepPage] = useState({
     prev: '/matricular/como-eu-vou-pagar-a-matricula',
-    next: '/matricular/efetuar-pagamento',
+    next: `/matricular/efetuar-pagamento?pay=${nanoID}`,
   })
   const [formatedAddress, setFormatedAddress] = useState('')
 
@@ -47,6 +49,7 @@ const Step = () => {
               voucher: values?.voucher,
             },
             {
+              id: nanoID,
               name: 'courseTax',
               description: 'Cobrança do valor da matricula',
               payMethod: values.payMethodTax,
@@ -143,7 +146,7 @@ const Step = () => {
               document.querySelectorAll('button.next, button.prev')
             ).map((b) => b.setAttribute('disabled', 'disabled'))
             sessionStorage.setItem('values', JSON.stringify(values))
-            postMatriculate()
+            await postMatriculate()
             window.location.assign(stepPage.next)
           }}
         >

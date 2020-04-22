@@ -1,5 +1,6 @@
 import * as gn from 'gn-api-sdk-node'
 import joi from '@hapi/joi'
+import absoluteUrl from 'next-absolute-url'
 
 const formatDate = (date) => {
   let d = new Date(date),
@@ -22,6 +23,7 @@ const addDays = (date, days) => {
 export default async (req, res) => {
   const schema = joi
     .object({
+      dpos_charge_id: joi.string().required(),
       product: joi
         .object({
           name: joi
@@ -42,6 +44,14 @@ export default async (req, res) => {
             .pattern(new RegExp('^[ ]*(.+[ ]+)+.+[ ]*$'))
             .required(),
           cpf: joi.string().pattern(new RegExp('^[0-9]+$')).required(),
+          email: joi
+            .string()
+            .pattern(
+              new RegExp(
+                '^[A-Za-z0-9_\\-]+(?:[.][A-Za-z0-9_\\-]+)*@[A-Za-z0-9_]+(?:[-.][A-Za-z0-9_]+)*\\.[A-Za-z0-9_]+$'
+              )
+            )
+            .required(),
           phone_number: joi
             .string()
             .pattern(new RegExp('^[1-9]{2}9?[0-9]{8}$'))
@@ -65,7 +75,18 @@ export default async (req, res) => {
   })
 
   try {
-    const charge = await gnsdk.createCharge({}, { items: [value.product] })
+    const charge = await gnsdk.createCharge(
+      {},
+      {
+        metadata: {
+          custom_id: value.dpos_charge_id,
+          notification_url: `${
+            absoluteUrl(req).origin
+          }/api/students/charge-notification`,
+        },
+        items: [value.product],
+      }
+    )
 
     if (charge.code !== 200) {
       return res.status(charge.code).json(charge)
