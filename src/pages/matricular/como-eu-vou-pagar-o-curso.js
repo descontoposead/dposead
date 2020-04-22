@@ -99,19 +99,6 @@ const Step = () => {
   )
 
   useEffect(
-    function setVoucherWhenQueryByUrl() {
-      if (refVoucherInput.current) {
-        const searchVoucher = window.location.search.split('=').pop()
-        if (searchVoucher) {
-          setVoucherOnType(searchVoucher)
-          refVoucherInput.current.value = searchVoucher
-        }
-      }
-    },
-    [refVoucherInput.current]
-  )
-
-  useEffect(
     function setCustomValueToAnUniqueCourse() {
       if (values.courseName === 'ENGENHARIA DE SEGURANÇA DO TRABALHO') {
         setChargeInitialValueCourse({

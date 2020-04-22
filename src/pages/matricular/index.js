@@ -23,6 +23,14 @@ const Step = () => {
 
   useVibrate(vibrating, timers, isInfiniteLoop)
 
+  useEffect(function setVoucherWhenQueryByUrl() {
+    const searchVoucher = window.location.search.split('=').pop()
+    if (searchVoucher) {
+      setValues(Object.assign(values, { voucher: searchVoucher }))
+      sessionStorage.setItem('values', JSON.stringify(values))
+    }
+  }, [])
+
   useEffect(function validateBeforeNavigation() {
     setValidatesBeforeNavigation({
       inputGroup: [

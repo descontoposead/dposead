@@ -12,24 +12,27 @@ const postStep = (values, store = false) =>
     })
     .then((data) => {
       if (store) {
+        const values = JSON.parse(sessionStorage.getItem('values') || {})
         sessionStorage.setItem(
           'values',
-          JSON.stringify({
-            email: data.email,
-            name: data.name,
-            phone: data.phone,
-            whatsapp: data.whatsapp,
-            personalDocument: data.personalDocument,
-            personalRegistry: data.personalRegistry,
-            stateOfBirth: data.stateOfBirth,
-            cityOfBirth: data.cityOfBirth,
-            dateOfBirth: data.dateOfBirth,
-            parentName: data.parentName,
-            motherName: data.motherName,
-            graduation: data.graduation,
-            dateOfGraduation: data.dateOfGraduation,
-            address: data.address,
-          })
+          JSON.stringify(
+            Object.assign(values, {
+              email: data.email,
+              name: data.name,
+              phone: data.phone,
+              whatsapp: data.whatsapp,
+              personalDocument: data.personalDocument,
+              personalRegistry: data.personalRegistry,
+              stateOfBirth: data.stateOfBirth,
+              cityOfBirth: data.cityOfBirth,
+              dateOfBirth: data.dateOfBirth,
+              parentName: data.parentName,
+              motherName: data.motherName,
+              graduation: data.graduation,
+              dateOfGraduation: data.dateOfGraduation,
+              address: data.address,
+            })
+          )
         )
       }
 
