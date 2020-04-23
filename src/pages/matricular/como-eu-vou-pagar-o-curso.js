@@ -7,10 +7,17 @@ import withStepLayout from '../../components/StepLayout'
 const Step = () => {
   const [values, setValues] = useSessionStorage('values', {})
 
-  const [stepPage] = useState({
-    prev: '/matricular/escolha-o-metodo-de-pagamento-do-curso',
-    next: '/matricular/escolha-o-metodo-de-pagamento-da-matricula',
-  })
+  const [stepPage] = useState(() =>
+    values.payMethodCourse === 'billet'
+      ? {
+          prev: '/matricular/escolha-o-metodo-de-pagamento-do-curso',
+          next: '/matricular/quando-pagar-as-mensalidades',
+        }
+      : {
+          prev: '/matricular/escolha-o-metodo-de-pagamento-do-curso',
+          next: '/matricular/escolha-o-metodo-de-pagamento-da-matricula',
+        }
+  )
   const [chargeValueCourse, setChargeValueCourse] = useState(null)
   const [chargeInitialValueCourse] = useState(() => {
     if (values.courseName === 'ENGENHARIA DE SEGURANÇA DO TRABALHO') {

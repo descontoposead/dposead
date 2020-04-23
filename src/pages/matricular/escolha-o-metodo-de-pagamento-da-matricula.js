@@ -5,11 +5,18 @@ import { useSessionStorage } from 'react-use'
 import withStepLayout from '../../components/StepLayout'
 
 const Step = () => {
-  const [stepPage] = useState({
-    prev: '/matricular/como-eu-vou-pagar-o-curso',
-    next: '/matricular/como-eu-vou-pagar-a-matricula',
-  })
   const [values, setValues] = useSessionStorage('values', {})
+  const [stepPage] = useState(() =>
+    values.payMethodCourse === 'billet'
+      ? {
+          prev: '/matricular/quando-pagar-as-mensalidades',
+          next: '/matricular/como-eu-vou-pagar-a-matricula',
+        }
+      : {
+          prev: '/matricular/como-eu-vou-pagar-o-curso',
+          next: '/matricular/como-eu-vou-pagar-a-matricula',
+        }
+  )
 
   const mergeInputValue = (target) =>
     setValues(Object.assign(values, { [target.name]: target.value }))

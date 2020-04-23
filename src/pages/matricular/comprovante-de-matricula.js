@@ -26,6 +26,14 @@ const Step = () => {
     )
   }, [])
 
+  const getIfBilletCustomConfigurationFromStudent = () =>
+    values.payMethodCourse === 'billet'
+      ? {
+          dueDay: values.billetDueDay,
+          startIn: values.billetChargeStartIn,
+        }
+      : {}
+
   const postMatriculate = () =>
     fetch('/api/students/matriculate', {
       method: 'post',
@@ -39,15 +47,18 @@ const Step = () => {
         product: {
           course: values.courseName,
           charges: [
-            {
-              name: 'courseValue',
-              description: 'Cobrança do valor total do curso',
-              payMethod: values.payMethodCourse,
-              installments: values.chargeValueCourse.instalment,
-              value: values.chargeValueCourse.value,
-              currency: values.chargeValueCourse.currency,
-              voucher: values?.voucher,
-            },
+            Object.assign(
+              {
+                name: 'courseValue',
+                description: 'Cobrança do valor total do curso',
+                payMethod: values.payMethodCourse,
+                installments: values.chargeValueCourse.instalment,
+                value: values.chargeValueCourse.value,
+                currency: values.chargeValueCourse.currency,
+                voucher: values?.voucher,
+              },
+              getIfBilletCustomConfigurationFromStudent()
+            ),
             {
               id: nanoID,
               name: 'courseTax',

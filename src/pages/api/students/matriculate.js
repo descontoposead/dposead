@@ -23,6 +23,8 @@ export default async (req, res) => {
                 name: joi.string().required(),
                 description: joi.string(),
                 payMethod: joi.string().required(),
+                dueDay: joi.string(),
+                startIn: joi.string(),
                 installments: joi.number().integer().required(),
                 value: joi.number().required(),
                 currency: joi.number().required(),
@@ -32,6 +34,13 @@ export default async (req, res) => {
                 is: 'courseTax',
                 then: joi.object({
                   id: joi.required(),
+                }),
+              })
+              .when('payMethod', {
+                is: 'billet',
+                then: joi.object({
+                  dueDay: joi.required(),
+                  startIn: joi.required(),
                 }),
               })
               .required()
@@ -72,6 +81,7 @@ export default async (req, res) => {
     await client.query(
       q.Update(found.ref, {
         data: {
+          isStepEnd: true,
           enrollments: [
             Object.assign(value.product, {
               charges: getProductChargesWithFirstTaxChargeNotPayed(),
