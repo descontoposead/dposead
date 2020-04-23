@@ -75,7 +75,7 @@ export default async (req, res) => {
   })
 
   try {
-    const charge = await gnsdk.createCharge(
+    const billet = await gnsdk.oneStep(
       {},
       {
         metadata: {
@@ -85,16 +85,6 @@ export default async (req, res) => {
           }/api/students/charge-notification`,
         },
         items: [value.product],
-      }
-    )
-
-    if (charge.code !== 200) {
-      return res.status(charge.code).json(charge)
-    }
-
-    const billet = await gnsdk.payCharge(
-      { id: charge.data.charge_id },
-      {
         payment: {
           banking_billet: {
             expire_at: addDays(new Date(), 7),
